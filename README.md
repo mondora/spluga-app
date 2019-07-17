@@ -1,4 +1,4 @@
-# spuga app
+# spluga app
 
 Spluga App single page application.
 
