@@ -1,0 +1,97 @@
+.Root {
+    height: 100vh;
+}
+
+.ant-layout-header.Root-header {
+    background: #11b7ff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.Root-header-icon {
+    height: 35px;
+    margin-right: 15px;
+}
+
+.Root-header-text-container {
+    line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 16px;
+}
+
+.Root-header-text {
+    margin: 0px;
+}
+
+.Root-header-text-distributor {
+    margin: 0px;
+    color: darkgrey;
+}
+
+.Root-content {
+    background-color: #ecf0f5;
+    height: 100%;
+    padding: 15px;
+    position: relative;
+    overflow: auto;
+}
+
+.Root-footer {
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.Root-trigger {
+    font-size: 30px;
+    /*border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;*/
+    cursor: pointer;
+    margin-left: 10px;
+    padding-top: 5px;
+}
+
+/*.Root-trigger:hover {
+    color: #135d98;
+}*/
+
+.Root-Icon {
+    height: 64px;
+    background: #11b7ff;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 10px 15px;
+    font-size: 25px;
+}
+
+.ant-carousel .slick-slide {
+    text-align: center;
+    height: 100px;
+    line-height: 80px;
+    background: rgb(218, 228, 232, 0);
+    overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+    color: #595959;
+}
+
+.Root-logo {
+    text-align: center;
+    margin: 32px;
+}
+
+.Root-logo-img {
+    height: 80px;
+}
+
+.c-root-spin {
+    margin-top: 40vh;
+    text-align: center;
+}

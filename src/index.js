@@ -1,12 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { Spin } from "antd";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import Routes from "./views";
+import "antd/dist/antd.min.css";
+import "./index.css";
+import store from "./reducers";
+import { persistor } from "./reducers/index";
+
+import { SpinContainer } from "./styled";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <PersistGate
+      loading={
+        <SpinContainer>
+          <Spin size="large" />
+        </SpinContainer>
+      }
+      persistor={persistor}
+    >
+      <Routes />
+    </PersistGate>
+  </Provider>,
+  document.getElementById("root")
+);
