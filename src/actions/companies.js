@@ -5,7 +5,7 @@ export const GET_COMPANY_START = "GET_COMPANY_START";
 export const GET_COMPANY_SUCCESS = "GET_COMPANY_SUCCESS";
 export const GET_COMPANY_ERROR = "GET_COMPANY_ERROR";
 
-export function getCompany(collectionName, query) {
+export function getCompany(query) {
   return async dispatch => {
     dispatch({
       type: GET_COMPANY_START
@@ -20,7 +20,7 @@ export function getCompany(collectionName, query) {
       RemoteMongoClient.factory,
       "mongodb-atlas"
     );
-    const collection = mongodb.db(MONGO_DB_NAME).collection(collectionName);
+    const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
     collection
       .find(query)
       .toArray()
@@ -45,7 +45,7 @@ export const ADD_COMPANY_SUCCESS = "ADD_COMPANY_SUCCESS";
 export const ADD_COMPANY_ERROR = "ADD_COMPANY_ERROR";
 export const ADD_COMPANY_RESET = "ADD_COMPANY_RESET";
 
-export function addCompany(collectionName, data, userId) {
+export function addCompany(data, userId) {
   return async dispatch => {
     dispatch({
       type: ADD_COMPANY_START
@@ -61,7 +61,7 @@ export function addCompany(collectionName, data, userId) {
         RemoteMongoClient.factory,
         "mongodb-atlas"
       );
-      const collection = mongodb.db(MONGO_DB_NAME).collection(collectionName);
+      const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
       collection.insertOne({ ownerId: userId, ...data });
       dispatch({
         type: ADD_COMPANY_SUCCESS

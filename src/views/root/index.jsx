@@ -35,7 +35,7 @@ export class Root extends Component {
       login();
     } else if (company) {
       //getCompany
-      getCompany("companies", {});
+      getCompany({});
     }
   }
 
@@ -60,9 +60,7 @@ export class Root extends Component {
         </div>
 
         <div>
-          <Button
-            onClick={() => addCompany("companies", data, auth.currentUser.id)}
-          >
+          <Button onClick={() => addCompany(data, auth.currentUser.id)}>
             Write
           </Button>
         </div>
