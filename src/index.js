@@ -7,7 +7,6 @@ import { Spin } from "antd";
 
 import Routes from "./views";
 import "antd/dist/antd.min.css";
-import "./index.css";
 import store from "./reducers";
 import { persistor } from "./reducers/index";
 

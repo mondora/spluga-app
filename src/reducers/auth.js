@@ -9,8 +9,7 @@ const defaultState = {
       code: "",
       message: ""
     }
-  },
-  currentUser: null
+  }
 };
 
 export function auth(state = defaultState, { type, payload, error }) {
@@ -43,8 +42,6 @@ export function auth(state = defaultState, { type, payload, error }) {
         }
       };
     default:
-      return {
-        ...defaultState
-      };
+      return state;
   }
 }

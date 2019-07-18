@@ -1,7 +1,4 @@
 import { auth } from "./auth";
+import { read, write } from "./companies";
 
-const reducersSchema = {
-  auth
-};
-
-export default reducersSchema;
+export default { auth, read, write };

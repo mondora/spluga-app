@@ -13,7 +13,6 @@ const config = {
   storage,
   whitelist: ["auth", "sso"]
 };
-
 const persistedReducer = persistCombineReducers(config, reducersSchema);
 
 const reducer = (state, action) => {
