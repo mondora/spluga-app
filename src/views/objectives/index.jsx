@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { PageContainer } from "./styled";
 
 export class Objectives extends Component {
-	render() {
-		return <div>MY OBJECTIVES </div>;
-	}
+  render() {
+    return <PageContainer>MY OBJECTIVES </PageContainer>;
+  }
 }
 
 export default Objectives;

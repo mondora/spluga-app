@@ -1,65 +1,46 @@
-import React, { useMemo } from "react";
-import { addLocaleData, IntlProvider } from "react-intl";
-import { LocaleProvider } from "antd";
-import itLocaleData from "react-intl/locale-data/it";
-import { BrowserRouter, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
-import { getMessagesFromLocale } from "../i18n";
 import { Route } from "react-router-dom";
 import Root from "./root";
-import Activities from "./activities";
-
-import Companies from "./companies";
-import Objectives from "./objectives";
-import Goals from "./goals";
-import NavBar from "../components/navbar";
-
-import it_IT from "antd/lib/locale-provider/it_IT";
-import moment from "moment";
 import "moment/locale/it";
+import PropTypes from "prop-types";
+import { login } from "../actions/auth";
 
-moment.locale("it");
-addLocaleData(itLocaleData);
+const Routes = ({ auth, login }) => {
+  useEffect(() => {
+    if (auth && !auth.currentUser) {
+      login();
+    }
+  }, [auth, login]);
 
-const Test = ({ match }) => (
-	<React.Fragment>
-		<NavBar currentPage={match.params.page} />
-		<Switch>
-			<Route exact path="/" component={Root} />
-			<Route path="/companies" component={Companies} />
-			<Route path="/objectives" component={Objectives} />
-			<Route path="/activities" component={Activities} />
-			<Route path="/goals" component={Goals} />
-		</Switch>
-	</React.Fragment>
-);
+  return (
+    <BrowserRouter>
+      <Route path="/:page?" component={Root} />
+    </BrowserRouter>
+  );
+};
 
-const Routes = ({ user, userLocale }) => {
-	const messages = useMemo(() => getMessagesFromLocale(userLocale), [
-		userLocale
-	]);
-	return (
-		<LocaleProvider locale={it_IT}>
-			<IntlProvider
-				key="it"
-				locale="it"
-				messages={messages}
-				timeZoneName="it-IT">
-				<BrowserRouter>
-					<Route path="/:page?" component={Test} />
-				</BrowserRouter>
-			</IntlProvider>
-		</LocaleProvider>
-	);
+Routes.propTypes = {
+  auth: PropTypes.object.isRequired,
+  login: PropTypes.func
+};
+
+const actions = {
+  login
 };
 
 const mapStateToProps = state => ({
-	user: state.user,
-	userLocale: "it"
+  auth: state.auth
 });
 
-const composedHoc = compose(connect(mapStateToProps));
+const composedHoc = compose(
+  connect(
+    mapStateToProps,
+    actions
+  )
+);
 
 export default composedHoc(Routes);
