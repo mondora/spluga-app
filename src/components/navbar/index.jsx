@@ -9,6 +9,12 @@ export const NavBar = ({ currentPage }) => {
   return (
     <PageContainer>
       <Menu selectedKeys={[currentPage]} mode="inline">
+        <Menu.Item key="home">
+          <Link to="/">
+            <Icon type="home" />
+            Home
+          </Link>
+        </Menu.Item>
         <Menu.Item key="companies">
           <Link to="/companies">
             <Icon type="team" />
