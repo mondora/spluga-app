@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 
 import Home from "../home";
 import Companies from "../companies";
-import Objectives from "../objectives";
+import Targets from "../targets";
 import Goals from "../goals";
 import { connect } from "react-redux";
 import { Container, Menu, Page, PageContainer } from "./styled.js";
@@ -23,7 +23,7 @@ const Root = ({ match, auth }) => (
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route path="/companies" component={Companies} />
-					<Route path="/objectives" component={Objectives} />
+					<Route path="/targets" component={Targets} />
 					<Route path="/activities" component={Activities} />
 					<Route path="/goals" component={Goals} />
 				</Switch>
