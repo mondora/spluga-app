@@ -1,4 +1,4 @@
 import { auth } from "./auth";
-import { read, write } from "./companies";
+import { read, write, remove } from "./companies";
 
-export default { auth, read, write };
+export default { auth, read, write, remove };

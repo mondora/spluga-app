@@ -45,7 +45,7 @@ export const NavBar = ({ currentPage }) => {
 };
 
 NavBar.propTypes = {
-	currentPage: PropTypes.object
+	currentPage: PropTypes.string
 };
 
 export default NavBar;

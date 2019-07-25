@@ -11,7 +11,9 @@ import Targets from "../targets";
 import Goals from "../goals";
 import { connect } from "react-redux";
 import { Container, Menu, Page, PageContainer } from "./styled.js";
+import { PropTypes } from "prop-types";
 
+//auth mappa l'oggetto dello store alla Root
 const Root = ({ match, auth }) => (
 	<PageContainer>
 		<Header user={auth.currentUser} />
@@ -32,6 +34,9 @@ const Root = ({ match, auth }) => (
 	</PageContainer>
 );
 
+Root.PropType = {
+	auth: PropTypes.object.isRequired
+};
 const mapStateToProps = state => ({
 	auth: state.auth
 });
