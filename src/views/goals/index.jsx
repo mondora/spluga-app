@@ -12,18 +12,23 @@ export const Goals = ({
 	getUserGoals,
 	addUserGoal
 }) => {
+	//	const ownerId = { ownerId: auth.currentUser.id };
+	const companyCode = 1;
 	useEffect(() => {
-		getUserGoals({});
+		getUserGoals({ companyId: { $in: [companyCode] } });
 	}, [getUserGoals]);
 
 	return (
 		<PageContainer>
-			{/*}
+			{console.log(
+				"auth ownerId",
+				auth
+			) /*}
 			user GOALS / MY company goals:
   {console.log(goal.goals)} */}
 			{goal.goals === undefined || goal.goals.length === 0
 				? "   I have no goal  "
-				: `my goals: ${goal.goals[0].name}`}
+				: `my goals: ${goal.goals[0].name} ${goal.goals[1].name}`}
 		</PageContainer>
 	);
 };
@@ -51,7 +56,6 @@ export default connect(
 /*
 lettura/scrittura/modiufica goals
 {"_id":{"$oid":"5d29cfea491c5f73367a0367"},"name":"Co2 saved","description":"Number of kilometres done","uom":"km"}
-
 per i goal visto che sono comuni a tutti , su spluga-stitch definirei un ruolo di tipo “Users can read all data, but only write their own data“
 Gli utenti posso aggiungere dati (leggere/scrivere goals),
 
@@ -59,6 +63,8 @@ Gli utenti posso aggiungere dati (leggere/scrivere goals),
 -->tutti gli user possono leggere i dati condivisi --> read: userId 
 
 --> in mongo sono gia inseriti due goals, non hanno owner id (ad esempio per il mio user) per cui in teoria potrei solo leggerli e non potrei modificarli.
+
+OWNER ID è IL MIO USER ID, IN OR CON COMPANY ID
 
 
 --> nella UI:
