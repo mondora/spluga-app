@@ -1,7 +1,6 @@
 import React from "react";
 import { SplugaTable } from ".";
-import Enzyme from "enzyme";
-import { shallow } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -10,9 +9,8 @@ describe("SplugaTable", () => {
   const onChange = jest.fn();
   it("Render component without data", () => {
     const element = shallow(
-      <SplugaTable datasource={null} onChange={onChange} />
+      <SplugaTable datasource={null} loadingStatus={true} onChange={onChange} />
     );
-
     expect(element.find("Table").length).toBe(0);
     expect(element.find("Spin").length).toBe(1);
   });

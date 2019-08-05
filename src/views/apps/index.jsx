@@ -114,6 +114,7 @@ const Apps = ({
 
 Apps.propTypes = {
   apps: PropTypes.array,
+  app: PropTypes.object,
   disableAppStatus: PropTypes.object,
   enableAppStatus: PropTypes.object,
   deleteAppStatus: PropTypes.object,

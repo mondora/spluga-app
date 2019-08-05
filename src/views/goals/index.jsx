@@ -16,7 +16,8 @@ export const Goals = ({
   goal,
   getGoalsStatus,
   getGoals,
-  addGoalStatus
+  addGoalStatus,
+  addGoal
 }) => {
   useEffect(() => {
     if (!getGoals.started && !addGoalStatus.started) {
@@ -29,7 +30,7 @@ export const Goals = ({
   };
 
   const onSubmit = data => {
-    const ownerId = { ownerId: auth.currentUser.id };
+    const ownerId = auth.currentUser.id;
     addGoal(ownerId, data);
   };
 
@@ -101,7 +102,8 @@ Goals.propTypes = {
   goal: PropTypes.object,
   getGoalsStatus: PropTypes.object,
   getGoals: PropTypes.func,
-  addGoalStatus: PropTypes.object
+  addGoalStatus: PropTypes.object,
+  addGoal: PropTypes.func
 };
 
 const mapStateToProps = state => ({

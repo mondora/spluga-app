@@ -24,14 +24,12 @@ const mongodb = client.getServiceClient(
 );
 
 //DEFINE ACTION CREATORS
-//get user goals
 export function getGoals(query) {
   return async dispatch => {
     console.log("get");
     dispatch({
       type: GET_GOALS_START
     });
-
     const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
 
     try {
@@ -55,9 +53,7 @@ export function getGoals(query) {
 export const ADD_GOAL_START = "ADD_GOAL_START";
 export const ADD_GOAL_SUCCESS = "ADD_GOAL_SUCCESS";
 export const ADD_GOAL_ERROR = "ADD_GOAL_ERROR";
-
 export function addGoal(ownerId, data) {
-  console.log("add");
   return async dispatch => {
     console.log({ ownerId });
     console.log({ data });
@@ -68,10 +64,11 @@ export function addGoal(ownerId, data) {
     const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
 
     try {
-      await collection.insertOne({ ownerId, ...data });
+      const result = await collection.insertOne({ ownerId, ...data });
 
       dispatch({
-        type: ADD_GOAL_SUCCESS
+        type: ADD_GOAL_SUCCESS,
+        payload: { goal: result }
       });
     } catch (error) {
       dispatch({

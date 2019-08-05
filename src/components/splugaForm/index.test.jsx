@@ -1,16 +1,48 @@
 import React from "react";
-import { shallow } from "enzyme";
-import Enzyme from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import { FormApp } from ".";
+import SplugaForm from ".";
+//import { Title } from "./styled";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("FormApp", () => {
+describe("SplugaForm", () => {
+  const fields = [
+    {
+      name: "appName",
+      description: "App Name",
+      ref: {
+        required: "this is required",
+        minLength: {
+          value: 2,
+          message: "Min length is 2"
+        }
+      }
+    }
+  ];
   const onSubmit = jest.fn();
   it("Render component without error", () => {
-    shallow(<FormApp serverError={""} onSubmit={onSubmit} />);
-    shallow(<FormApp serverError={"server error"} onSubmit={onSubmit} />);
+    shallow(
+      <SplugaForm fields={fields} serverError={""} onSubmit={onSubmit} />
+    );
+    shallow(
+      <SplugaForm
+        fields={fields}
+        serverError={"server error"}
+        onSubmit={onSubmit}
+      />
+    );
   });
+
+  /* TODO
+  it("Render component with title", () => {
+    const element = shallow(
+      <SplugaForm title={"test-title"} fields={fields} onSubmit={onSubmit} />
+    );
+    console.log("element", element);
+    expect(element.find(Title)).toBe(1);
+  });
+
+  */
 });

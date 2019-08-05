@@ -85,7 +85,8 @@ export const SplugaTable = ({
 Container.propTypes = {
   dataSourceName: PropTypes.string,
   dataSource: PropTypes.array,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  loadingStatus: PropTypes.object
 };
 
 export default SplugaTable;

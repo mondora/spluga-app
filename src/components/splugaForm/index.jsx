@@ -15,23 +15,17 @@ import {
 export const SplugaForm = ({ title, fields, onSubmit, serverError }) => {
   const { register, handleSubmit, errors } = useForm();
 
-  const filedsComponent = [];
-
-  fields.forEach(function(field) {
-    filedsComponent.push(
-      <Fields>
-        <Label htmlFor={field.name}>{field.description}</Label>
-        <Input name={field.name} ref={register(field.ref)} />
-        <Error>{errors[field.name] && errors[field.name].message}</Error>
-      </Fields>
-    );
-  });
-
   return (
     <Container>
       <Title>{title}</Title>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        {filedsComponent}
+        {fields.map(field => (
+          <Fields>
+            <Label htmlFor={field.name}>{field.description}</Label>
+            <Input name={field.name} ref={register(field.ref)} />
+            <Error>{errors[field.name] && errors[field.name].message}</Error>
+          </Fields>
+        ))}
         <Fields>
           <Button type="submit">Create</Button>
         </Fields>
@@ -44,8 +38,8 @@ export const SplugaForm = ({ title, fields, onSubmit, serverError }) => {
 Container.propTypes = {
   title: PropTypes.string,
   fields: PropTypes.array,
-  dataSource: PropTypes.array,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  serverError: PropTypes.string
 };
 
 export default SplugaForm;
