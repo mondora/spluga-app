@@ -12,26 +12,26 @@ import {
   Title
 } from "./styled";
 
-export const FormApp = ({ onSubmit, serverError }) => {
+export const SplugaForm = ({ title, fields, onSubmit, serverError }) => {
   const { register, handleSubmit, errors } = useForm();
 
-  const appNameRef = {
-    required: "this is required",
-    minLength: {
-      value: 2,
-      message: "Min length is 2"
-    }
-  };
+  const filedsComponent = [];
+
+  fields.forEach(function(field) {
+    filedsComponent.push(
+      <Fields>
+        <Label htmlFor={field.name}>{field.description}</Label>
+        <Input name={field.name} ref={register(field.ref)} />
+        <Error>{errors[field.name] && errors[field.name].message}</Error>
+      </Fields>
+    );
+  });
 
   return (
     <Container>
-      <Title>Create App</Title>
+      <Title>{title}</Title>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Fields>
-          <Label htmlFor="appName">App Name</Label>
-          <Input name="appName" ref={register(appNameRef)} />
-          <Error>{errors.appName && errors.appName.message}</Error>
-        </Fields>
+        {filedsComponent}
         <Fields>
           <Button type="submit">Create</Button>
         </Fields>
@@ -42,8 +42,10 @@ export const FormApp = ({ onSubmit, serverError }) => {
 };
 
 Container.propTypes = {
+  title: PropTypes.string,
+  fields: PropTypes.array,
   dataSource: PropTypes.array,
   onSubmit: PropTypes.func
 };
 
-export default FormApp;
+export default SplugaForm;

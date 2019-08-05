@@ -1,56 +1,120 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getSharedGoals, getUserGoals, addUserGoal } from "../../actions/goals";
 
-import { PageContainer } from "./styled";
+import { getGoals, addGoal } from "../../actions/goals";
+
+import { PageContainer, Title } from "./styled";
+
+import SplugaTable from "../../components/splugaTable";
+import SplugaForm from "../../components/splugaForm";
+import SplugaResult from "../../components/splugaResult";
 
 export const Goals = ({
-	auth,
-	goal,
-	getSharedGoals,
-	getUserGoals,
-	addUserGoal
+  auth,
+  goals,
+  goal,
+  getGoalsStatus,
+  getGoals,
+  addGoalStatus
 }) => {
-	//	const ownerId = { ownerId: auth.currentUser.id };
-	const companyCode = 1;
-	useEffect(() => {
-		getUserGoals({ companyId: { $in: [companyCode] } });
-	}, [getUserGoals]);
+  useEffect(() => {
+    if (!getGoals.started && !addGoalStatus.started) {
+      getGoals();
+    }
+  }, [getGoals, addGoalStatus]);
 
-	return (
-		<PageContainer>
-			{console.log(
-				"auth ownerId",
-				auth
-			) /*}
-			user GOALS / MY company goals:
-  {console.log(goal.goals)} */}
-			{goal.goals === undefined || goal.goals.length === 0
-				? "   I have no goal  "
-				: `my goals: ${goal.goals[0].name} ${goal.goals[1].name}`}
-		</PageContainer>
-	);
+  const onChange = data => {
+    console.log("onChange");
+  };
+
+  const onSubmit = data => {
+    const ownerId = { ownerId: auth.currentUser.id };
+    addGoal(ownerId, data);
+  };
+
+  const serverError = null;
+
+  const fields = [
+    {
+      name: "name",
+      description: "Name",
+      ref: {
+        required: "this is required",
+        minLength: {
+          value: 2,
+          message: "Min length is 2"
+        }
+      }
+    },
+    {
+      name: "description",
+      description: "Description",
+      ref: {
+        required: "this is required",
+        minLength: {
+          value: 2,
+          message: "Min length is 2"
+        }
+      }
+    },
+    {
+      name: "uom",
+      description: "Unit of Measure",
+      ref: {
+        required: "this is required",
+        minLength: {
+          value: 2,
+          message: "Min length is 2"
+        }
+      }
+    }
+  ];
+
+  return goal ? (
+    <PageContainer>
+      <Title>Goals</Title>
+      <SplugaResult title={"New Goal created"} />
+    </PageContainer>
+  ) : (
+    <PageContainer>
+      <Title>Goals</Title>
+      <SplugaTable
+        dataSourceName="goals"
+        dataSource={goals}
+        onChange={x => onChange(x)}
+        loadingStatus={getGoalsStatus}
+      />
+      <SplugaForm
+        title="Create Goals"
+        fields={fields}
+        serverError={serverError}
+        onSubmit={x => onSubmit(x)}
+      />
+    </PageContainer>
+  );
 };
 
 Goals.propTypes = {
-	auth: PropTypes.object.isRequired,
-	goal: PropTypes.object,
-	getUserGoals: PropTypes.func,
-	getSharedGoals: PropTypes.func,
-	addUserGoal: PropTypes.func
+  auth: PropTypes.object.isRequired,
+  goals: PropTypes.array,
+  goal: PropTypes.object,
+  getGoalsStatus: PropTypes.object,
+  getGoals: PropTypes.func,
+  addGoalStatus: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-	auth: state.auth,
-	goal: state.readGoal,
-	write: state.writeGoal
+  auth: state.auth,
+  goals: state.getGoals.goals,
+  goal: state.addGoal.goal,
+  getGoalsStatus: state.getGoals.status,
+  addGoalStatus: state.addGoal.status
 });
 
-//connecting my component at these functions (state, actionCreators)
 export default connect(
-	mapStateToProps,
-	{ getSharedGoals, getUserGoals, addUserGoal }
+  mapStateToProps,
+  { getGoals, addGoal }
 )(Goals);
 
 /*

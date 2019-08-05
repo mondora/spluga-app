@@ -11,7 +11,7 @@ import {
 } from "../../actions/apps";
 
 import SplugaTable from "../../components/splugaTable";
-import FormApp from "../../components/formApp";
+import SplugaForm from "../../components/splugaForm";
 import SplugaResult from "../../components/splugaResult";
 
 import { PageContainer, Title } from "./styled";
@@ -69,6 +69,21 @@ const Apps = ({
   const resultSubTitle = app
     ? "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key."
     : null;
+
+  const fields = [
+    {
+      name: "appName",
+      description: "App Name",
+      ref: {
+        required: "this is required",
+        minLength: {
+          value: 2,
+          message: "Min length is 2"
+        }
+      }
+    }
+  ];
+
   return app ? (
     <PageContainer>
       <Title>Apps</Title>
@@ -82,11 +97,17 @@ const Apps = ({
     <PageContainer>
       <Title>Apps</Title>
       <SplugaTable
+        dataSourceName="apps"
         dataSource={apps}
         onChange={x => onChange(x)}
         loadingStatus={getAppsStatus}
       />
-      <FormApp serverError={serverError} onSubmit={x => onSubmit(x)} />
+      <SplugaForm
+        title="Create App"
+        fields={fields}
+        serverError={serverError}
+        onSubmit={x => onSubmit(x)}
+      />
     </PageContainer>
   );
 };
