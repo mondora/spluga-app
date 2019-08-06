@@ -17,7 +17,7 @@ export const NavBar = ({ currentPage }) => {
         </Menu.Item>
         <Menu.Item key="apps">
           <Link to="/apps">
-            <Icon type="team" />
+            <Icon type="api" />
             Apps
           </Link>
         </Menu.Item>
