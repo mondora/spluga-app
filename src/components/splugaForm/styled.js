@@ -11,20 +11,6 @@ export const Title = styled.div`
   font-size: 20px;
 `;
 
-export const Fields = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-`;
-
-export const Error = styled.label`
-  display: flex;
-  flex-direction: row;
-  color: red;
-  font-weight: bolder;
-  margin-left: 5px;
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -32,18 +18,33 @@ export const Form = styled.form`
   padding: 5px;
 `;
 
+export const Fields = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+`;
+
 export const Label = styled.label`
   text-align: left;
-  display: block;
+  flex-direction: column;
   font-weight: bolder;
   margin-right: 5px;
+  flex: 1;
 `;
 
 export const Input = styled.input`
-  display: block;
   box-sizing: border-box;
   border-radius: 4px;
   border: 1px solid grey;
+  flex: 2;
+`;
+
+export const Error = styled.label`
+  display: flex;
+  color: red;
+  font-weight: bolder;
+  margin-left: 5px;
+  flex: 3;
 `;
 
 export const Button = styled.button`

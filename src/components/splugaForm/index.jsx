@@ -15,14 +15,37 @@ import {
 export const SplugaForm = ({ title, fields, onSubmit, serverError }) => {
   const { register, handleSubmit, errors } = useForm();
 
+  const input = field => {
+    if (field.type === "select") {
+      return (
+        <select name={field.name} value="ddd">
+          {field.list.map(option => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      );
+    } else {
+      return (
+        <Input
+          name={field.name}
+          ref={register(field.ref)}
+          type={field.type}
+          autocomplete="off"
+        />
+      );
+    }
+  };
+
   return (
     <Container>
       <Title>{title}</Title>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         {fields.map(field => (
-          <Fields>
+          <Fields key={field.name}>
             <Label htmlFor={field.name}>{field.description}</Label>
-            <Input name={field.name} ref={register(field.ref)} />
+            {input(field)}
             <Error>{errors[field.name] && errors[field.name].message}</Error>
           </Fields>
         ))}

@@ -3,7 +3,6 @@ import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 import SplugaForm from ".";
-//import { Title } from "./styled";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -34,15 +33,4 @@ describe("SplugaForm", () => {
       />
     );
   });
-
-  /* TODO
-  it("Render component with title", () => {
-    const element = shallow(
-      <SplugaForm title={"test-title"} fields={fields} onSubmit={onSubmit} />
-    );
-    console.log("element", element);
-    expect(element.find(Title)).toBe(1);
-  });
-
-  */
 });
