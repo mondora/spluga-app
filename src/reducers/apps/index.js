@@ -1,7 +1,7 @@
 import {
-  CREATE_APP_START,
-  CREATE_APP_SUCCESS,
-  CREATE_APP_ERROR,
+  ADD_APP_START,
+  ADD_APP_SUCCESS,
+  ADD_APP_ERROR,
   GET_APPS_START,
   GET_APPS_SUCCESS,
   GET_APPS_ERROR,
@@ -28,9 +28,9 @@ const defaultState = {
   }
 };
 
-export function createApp(state = defaultState, { type, payload, error }) {
+export function addApp(state = defaultState, { type, payload, error }) {
   switch (type) {
-    case CREATE_APP_START:
+    case ADD_APP_START:
       return {
         status: {
           started: true,
@@ -38,7 +38,7 @@ export function createApp(state = defaultState, { type, payload, error }) {
           ended: false
         }
       };
-    case CREATE_APP_SUCCESS:
+    case ADD_APP_SUCCESS:
       return {
         status: {
           started: false,
@@ -47,7 +47,7 @@ export function createApp(state = defaultState, { type, payload, error }) {
         },
         ...payload
       };
-    case CREATE_APP_ERROR:
+    case ADD_APP_ERROR:
       return {
         ...state,
         status: {

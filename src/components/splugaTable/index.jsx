@@ -61,6 +61,41 @@ export const SplugaTable = ({
           </div>
         )
       }
+    ],
+    targets: [
+      {
+        title: "Name",
+        dataIndex: "name",
+        rowKey: "name"
+      },
+      {
+        title: "Description",
+        dataIndex: "description"
+      },
+      {
+        title: "Stakeholder",
+        dataIndex: "stakeholder"
+      },
+      {
+        title: "Company",
+        dataIndex: "company"
+      },
+      {
+        title: "Goal",
+        dataIndex: "goal"
+      },
+      {
+        title: "Limit",
+        dataIndex: "limit"
+      },
+      {
+        title: "Start Date",
+        dataIndex: "startDate"
+      },
+      {
+        title: "End Date",
+        dataIndex: "endDate"
+      }
     ]
   };
 

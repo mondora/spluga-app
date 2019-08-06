@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import {
-  createApp,
+  addApp,
   getApps,
   deleteApp,
   disableApp,
@@ -16,15 +16,15 @@ import SplugaResult from "../../components/splugaResult";
 
 import { PageContainer, Title } from "./styled";
 
-const Apps = ({
+export const Apps = ({
   apps,
   app,
   disableAppStatus,
   enableAppStatus,
   deleteAppStatus,
-  createAppStatus,
+  addAppStatus,
   getAppsStatus,
-  createApp,
+  addApp,
   enableApp,
   disableApp,
   deleteApp,
@@ -41,9 +41,7 @@ const Apps = ({
     }
   }, [getApps, disableAppStatus, enableAppStatus, deleteAppStatus]);
 
-  const serverError = createAppStatus.error
-    ? createAppStatus.errorInfo.message
-    : "";
+  const serverError = addAppStatus.error ? addAppStatus.errorInfo.message : "";
 
   const onChange = data => {
     const id = data.id;
@@ -62,7 +60,7 @@ const Apps = ({
   };
 
   const onSubmit = data => {
-    createApp(data.appName);
+    addApp(data.appName);
   };
 
   const resultTitle = app ? "New app " + app.name + " created" : null;
@@ -118,9 +116,9 @@ Apps.propTypes = {
   disableAppStatus: PropTypes.object,
   enableAppStatus: PropTypes.object,
   deleteAppStatus: PropTypes.object,
-  createAppStatus: PropTypes.object,
+  addAppStatus: PropTypes.object,
   getAppsStatus: PropTypes.object,
-  createApp: PropTypes.func,
+  addApp: PropTypes.func,
   getApps: PropTypes.func,
   deleteApp: PropTypes.func,
   disableApp: PropTypes.func,
@@ -129,9 +127,9 @@ Apps.propTypes = {
 
 const mapStateToProps = state => ({
   apps: state.getApps.apps,
-  app: state.createApp.app,
+  app: state.addApp.app,
   getAppsStatus: state.getApps.status,
-  createAppStatus: state.createApp.status,
+  addAppStatus: state.addApp.status,
   disableAppStatus: state.disableApp.status,
   enableAppStatus: state.enableApp.status,
   deleteAppStatus: state.deleteApp.status
@@ -139,5 +137,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { createApp, getApps, deleteApp, disableApp, enableApp }
+  { addApp, getApps, deleteApp, disableApp, enableApp }
 )(Apps);

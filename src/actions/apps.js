@@ -4,9 +4,9 @@ import {
 } from "mongodb-stitch-browser-sdk";
 import { STITCH_APP_ID } from "../config";
 
-export const CREATE_APP_START = "CREATE_APP_START";
-export const CREATE_APP_SUCCESS = "CREATE_APP_SUCCESS";
-export const CREATE_APP_ERROR = "CREATE_APP_ERROR";
+export const ADD_APP_START = "ADD_APP_START";
+export const ADD_APP_SUCCESS = "ADD_APP_SUCCESS";
+export const ADD_APP_ERROR = "ADD_APP_ERROR";
 
 // Get a client for your Stitch app, or instantiate a new one
 function getDefaultAppClient() {
@@ -22,10 +22,10 @@ function getProviderClient() {
   );
 }
 
-export function createApp(appName) {
+export function addApp(appName) {
   return async dispatch => {
     dispatch({
-      type: CREATE_APP_START
+      type: ADD_APP_START
     });
 
     const providerClient = getProviderClient();
@@ -34,13 +34,13 @@ export function createApp(appName) {
       .createApiKey(appName)
       .then(result => {
         dispatch({
-          type: CREATE_APP_SUCCESS,
+          type: ADD_APP_SUCCESS,
           payload: { app: result }
         });
       })
       .catch(error => {
         dispatch({
-          type: CREATE_APP_ERROR,
+          type: ADD_APP_ERROR,
           error: error,
           errorInfo: error
         });

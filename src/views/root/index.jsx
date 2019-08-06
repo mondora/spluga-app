@@ -15,7 +15,7 @@ import { Container, Menu, Page, PageContainer } from "./styled.js";
 import { PropTypes } from "prop-types";
 
 //auth mappa l'oggetto dello store alla Root
-const Root = ({ match, auth }) => (
+export const Root = ({ match, auth }) => (
   <PageContainer>
     <Header user={auth.currentUser} />
     <Container>

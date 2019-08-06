@@ -1,7 +1,8 @@
 import { auth } from "./auth";
 import { read, write, remove } from "./companies";
 import { getGoals, addGoal } from "./goals";
-import { createApp, getApps, enableApp, disableApp, deleteApp } from "./apps";
+import { getTargets, addTarget } from "./targets";
+import { addApp, getApps, enableApp, disableApp, deleteApp } from "./apps";
 
 export default {
   auth,
@@ -10,9 +11,11 @@ export default {
   write,
   getGoals,
   remove,
-  createApp,
+  addApp,
   getApps,
   enableApp,
   disableApp,
-  deleteApp
+  deleteApp,
+  getTargets,
+  addTarget
 };

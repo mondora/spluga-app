@@ -1,9 +1,9 @@
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
 import { STITCH_APP_ID, MONGO_DB_NAME } from "../config";
 
-export const GET_GOALS_START = "GET_GOALS_START";
-export const GET_GOALS_SUCCESS = "GET_GOALS_SUCCESS";
-export const GET_GOALS_ERROR = "GET_GOALS_ERROR";
+export const GET_TARGETS_START = "GET_TARGETS_START";
+export const GET_TARGETS_SUCCESS = "GET_TARGETS_SUCCESS";
+export const GET_TARGETS_ERROR = "GET_TARGETS_ERROR";
 
 // Get a client for your Stitch app, or instantiate a new one
 function getClient() {
@@ -24,24 +24,24 @@ const mongodb = client.getServiceClient(
 );
 
 //DEFINE ACTION CREATORS
-export function getGoals(query) {
+export function getTargets(query) {
   return async dispatch => {
     dispatch({
-      type: GET_GOALS_START
+      type: GET_TARGETS_START
     });
-    const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
+    const collection = mongodb.db(MONGO_DB_NAME).collection("targets");
 
     try {
       //only ownerId data
       const result = await collection.find(query).toArray();
 
       dispatch({
-        type: GET_GOALS_SUCCESS,
-        payload: { goals: result }
+        type: GET_TARGETS_SUCCESS,
+        payload: { targets: result }
       });
     } catch (error) {
       dispatch({
-        type: GET_GOALS_ERROR,
+        type: GET_TARGETS_ERROR,
         error: error,
         errorInfo: error
       });
@@ -49,27 +49,27 @@ export function getGoals(query) {
   };
 }
 
-export const ADD_GOAL_START = "ADD_GOAL_START";
-export const ADD_GOAL_SUCCESS = "ADD_GOAL_SUCCESS";
-export const ADD_GOAL_ERROR = "ADD_GOAL_ERROR";
-export function addGoal(ownerId, data) {
+export const ADD_TARGET_START = "ADD_TARGET_START";
+export const ADD_TARGET_SUCCESS = "ADD_TARGET_SUCCESS";
+export const ADD_TARGET_ERROR = "ADD_TARGET_ERROR";
+export function addTarget(ownerId, data) {
   return async dispatch => {
     dispatch({
-      type: ADD_GOAL_START
+      type: ADD_TARGET_START
     });
 
-    const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
+    const collection = mongodb.db(MONGO_DB_NAME).collection("targets");
 
     try {
       const result = await collection.insertOne({ ownerId, ...data });
 
       dispatch({
-        type: ADD_GOAL_SUCCESS,
-        payload: { goal: result }
+        type: ADD_TARGET_SUCCESS,
+        payload: { target: result }
       });
     } catch (error) {
       dispatch({
-        type: ADD_GOAL_ERROR,
+        type: ADD_TARGET_ERROR,
         error: error,
         errorInfo: error
       });
