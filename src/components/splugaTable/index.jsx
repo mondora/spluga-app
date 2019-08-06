@@ -101,7 +101,7 @@ export const SplugaTable = ({
 
   const column = columns[dataSourceName];
 
-  return dataSource || loadingStatus.error ? (
+  return dataSource || (loadingStatus && loadingStatus.error) ? (
     <Container>
       <Table
         columns={column}

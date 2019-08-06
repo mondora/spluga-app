@@ -161,7 +161,7 @@ Targets.propTypes = {
   targets: PropTypes.array,
   target: PropTypes.object,
   getTargets: PropTypes.func,
-  addTargetStatus: PropTypes.object,
+  getTargetsStatus: PropTypes.object,
   addTarget: PropTypes.func
 };
 
@@ -169,7 +169,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
   targets: state.getTargets.targets,
   target: state.addTarget.target,
-  addTargetStatus: state.addTarget.status
+  getTargetsStatus: state.addTarget.status
 });
 
 export default connect(
