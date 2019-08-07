@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { PageContainer } from "./styled";
-import Card from "../../components/card";
 import { getCompany } from "../../actions/companies";
 
-const Home = ({ auth, getCompany, company, getCompanyStatus }) => {
+import Card from "../../components/card";
+import { Spin } from "antd";
+import { PageContainer, SpinContainer } from "./styled";
+
+export const Home = ({ auth, getCompany, company, getCompanyStatus }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,13 +20,15 @@ const Home = ({ auth, getCompany, company, getCompanyStatus }) => {
         }
     }, [getCompanyStatus]);
 
-    return !loading ? (
+    return !loading && !getCompanyStatus.started ? (
         <PageContainer>
-            <Card auth={auth} company={company} type={true} />
-            <Card auth={auth} company={company} type={false} />
+            <Card auth={auth} company={company.companies[0]} type={"user"} />
+            <Card auth={auth} company={company.companies[0]} type={"company"} />
         </PageContainer>
     ) : (
-        "SONO LENTO!"
+        <SpinContainer>
+            <Spin size="large" />
+        </SpinContainer>
     );
 };
 Home.propTypes = {
@@ -39,7 +43,6 @@ const mapStateToProps = state => ({
     getCompanyStatus: state.read.status
 });
 
-//connecting my component at these functions (state, actionCreators)
 export default connect(
     mapStateToProps,
     { getCompany }

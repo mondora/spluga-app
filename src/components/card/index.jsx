@@ -9,46 +9,53 @@ import {
 } from "./styled";
 import { Avatar } from "antd";
 
-const Card = ({ auth, company, type = false }) => {
+//export Card for testing pourpose
+export const Card = ({ auth, company, type }) => {
     const data =
-        auth.currentUser && auth.currentUser.profile
+        auth && auth.currentUser && auth.currentUser.profile
             ? auth.currentUser.profile.data
             : null;
 
-    console.log("auth", auth);
-
     return (
         <CardContainer>
-            {data && type ? (
+            {data && type === "user" ? (
                 <div>
                     <CardTitle> {data.name.toUpperCase()}</CardTitle>
-                    <CardSubtitle>{company.companies[0].name}</CardSubtitle>
+                    <CardSubtitle>{company.name}</CardSubtitle>
                 </div>
             ) : (
-                <div>
-                    <CardTitle>
-                        {company.companies[0].name.toUpperCase()}
-                    </CardTitle>
+                <div style={{ marginBottom: 40 }}>
+                    <CardTitle>{company.name.toUpperCase()}</CardTitle>
                 </div>
             )}
             <AvatarContainer>
-                <Avatar size={70} src={data ? data.picture : null} />
-                <CardSubtitle>{type ? "Dipendente" : ""}</CardSubtitle>
+                <Avatar
+                    size={70}
+                    src={data && type === "user" ? data.picture : null}
+                />
+                <CardSubtitle>
+                    {type === "user" ? "Dipendente" : "Company"}
+                </CardSubtitle>
             </AvatarContainer>
             <CardDescription>
                 {`grazie al ${
-                    type ? "tuo" : "vostro"
+                    type === "user" ? "tuo" : "vostro"
                 } aiuto sono stati salvati n alberi`}
             </CardDescription>
         </CardContainer>
     );
 };
 
+Card.defaultProps = {
+    type: "user",
+    company: { name: "" }
+};
+
 Card.propTypes = {
-    auth: PropTypes.object,
+    auth: PropTypes.object.isRequired,
     company: PropTypes.object,
-    /** whether the selected type is true, card is referred to user*/
-    type: PropTypes.bool
+    /** whether type: "user", card is referred to user*/
+    type: PropTypes.oneOf(["user", "company"])
 };
 
 export default Card;

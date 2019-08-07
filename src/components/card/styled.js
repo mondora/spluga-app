@@ -19,13 +19,14 @@ export const CardDescription = styled.div`
 
 export const CardContainer = styled.div`
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20em;
-    height: 24em;
+    width: 340px;
+    height: 360px;
     background-color: white;
+    border-color: linear-gradient(to left, #986c6a, #bfbccb);
 `;
 
 export const AvatarContainer = styled.div`
