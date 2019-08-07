@@ -7,7 +7,7 @@ import Card from "../../components/card";
 import { Spin } from "antd";
 import { PageContainer, SpinContainer } from "./styled";
 
-export const Home = ({ auth, getCompany, company, getCompanyStatus }) => {
+export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export const Home = ({ auth, getCompany, company, getCompanyStatus }) => {
         </SpinContainer>
     );
 };
-Home.propTypes = {
+Profile.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
     getCompany: PropTypes.func
@@ -46,4 +46,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { getCompany }
-)(Home);
+)(Profile);

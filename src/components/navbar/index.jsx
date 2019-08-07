@@ -6,52 +6,52 @@ import PropTypes from "prop-types";
 import { PageContainer } from "./styled";
 
 export const NavBar = ({ currentPage }) => {
-  return (
-    <PageContainer>
-      <Menu selectedKeys={[currentPage]} mode="inline">
-        <Menu.Item key="home">
-          <Link to="/">
-            <Icon type="home" />
-            Home
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="apps">
-          <Link to="/apps">
-            <Icon type="api" />
-            Apps
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="companies">
-          <Link to="/companies">
-            <Icon type="team" />
-            Company
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="targets">
-          <Link to="/targets">
-            <Icon type="line-chart" />
-            Targets
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="goals">
-          <Link to="/goals">
-            <Icon type="heart" />
-            Goals
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="activities">
-          <Link to="/activities">
-            <Icon type="rise" />
-            Activities
-          </Link>
-        </Menu.Item>
-      </Menu>
-    </PageContainer>
-  );
+    return (
+        <PageContainer>
+            <Menu selectedKeys={[currentPage]} mode="inline">
+                <Menu.Item key="profile">
+                    <Link to="/">
+                        <Icon type="user" />
+                        Profile
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="companies">
+                    <Link to="/companies">
+                        <Icon type="team" />
+                        Company
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="apps">
+                    <Link to="/apps">
+                        <Icon type="api" />
+                        Apps
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="goals">
+                    <Link to="/goals">
+                        <Icon type="heart" />
+                        Goals
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="targets">
+                    <Link to="/targets">
+                        <Icon type="line-chart" />
+                        Targets
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="activities">
+                    <Link to="/activities">
+                        <Icon type="rise" />
+                        Activities
+                    </Link>
+                </Menu.Item>
+            </Menu>
+        </PageContainer>
+    );
 };
 
 NavBar.propTypes = {
-  currentPage: PropTypes.string
+    currentPage: PropTypes.string
 };
 
 export default NavBar;

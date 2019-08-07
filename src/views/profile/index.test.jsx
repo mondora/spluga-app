@@ -2,11 +2,11 @@ import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import { Home } from "./";
+import { Profile } from ".";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Home", () => {
+describe("Profile", () => {
     const propTypes = {
         auth: {
             currentUser: { profile: { data: { name: "name" } } }
@@ -17,12 +17,12 @@ describe("Home", () => {
     };
 
     it("Render component with only required data", () => {
-        const element = shallow(<Home auth={propTypes.auth} />);
+        const element = shallow(<Profile auth={propTypes.auth} />);
         expect(element.find("Spin").length).toBe(1);
     });
 
     it("Render component with all props not defined", () => {
-        const element = shallow(<Home {...propTypes} />);
+        const element = shallow(<Profile {...propTypes} />);
         expect(element.find("Spin").length).toBe(1);
     });
 });
