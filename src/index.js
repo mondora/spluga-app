@@ -13,17 +13,17 @@ import { persistor } from "./reducers/index";
 import { SpinContainer } from "./styled";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate
-      loading={
-        <SpinContainer>
-          <Spin size="large" />
-        </SpinContainer>
-      }
-      persistor={persistor}
-    >
-      <Routes />
-    </PersistGate>
-  </Provider>,
-  document.getElementById("root")
+    <Provider store={store}>
+        <PersistGate
+            loading={
+                <SpinContainer>
+                    <Spin size="large" />
+                </SpinContainer>
+            }
+            persistor={persistor}
+        >
+            <Routes />
+        </PersistGate>
+    </Provider>,
+    document.getElementById("root")
 );

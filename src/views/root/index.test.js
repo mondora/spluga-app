@@ -7,16 +7,16 @@ import { Root } from "./";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Root view", () => {
-  const propTypes = {
-    auth: {},
-    match: { params: {} }
-  };
+    const propTypes = {
+        auth: {},
+        match: { params: {} }
+    };
 
-  it("Render view without error when proprs are empty", () => {
-    const element = shallow(<Root {...propTypes} />);
-    expect(element.find("Header").length).toBe(1);
-    expect(element.find("NavBar").length).toBe(1);
-    expect(element.find("Switch").length).toBe(1);
-    expect(element.find("Route").length).toBe(6);
-  });
+    it("Render view without error when proprs are empty", () => {
+        const element = shallow(<Root {...propTypes} />);
+        expect(element.find("Header").length).toBe(1);
+        expect(element.find("NavBar").length).toBe(1);
+        expect(element.find("Switch").length).toBe(1);
+        expect(element.find("Route").length).toBe(6);
+    });
 });

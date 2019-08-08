@@ -4,8 +4,8 @@ import en from "./en";
 
 // This object's keys must be an ISO language code (ex: it, it-IT, en-US)
 const availableLocalisations = {
-  en,
-  it
+    en,
+    it
 };
 
 const getUserLocale = () => store; //store.getState().user.user && store.getState().user.user.profile.language;
@@ -16,7 +16,7 @@ const getUserLocale = () => store; //store.getState().user.user && store.getStat
  * @param {string} locale The user's locale expressed as an ISO language code (ex: it, it-IT, en-US)
  */
 function getMessagesFromLocale(locale = getUserLocale()) {
-  /*if (locale) {
+    /*if (locale) {
     const availableLocaleKeys = Object.keys(availableLocalisations);
 
     if (availableLocaleKeys.includes(locale)) {
@@ -26,18 +26,18 @@ function getMessagesFromLocale(locale = getUserLocale()) {
     }
   }*/
 
-  return availableLocalisations["it"];
+    return availableLocalisations["it"];
 }
 
 const translateMessage = key => getMessagesFromLocale()[key] || key;
 const translateMessageWithParams = (key, values) => {
-  let msg = getMessagesFromLocale()[key] || key;
+    let msg = getMessagesFromLocale()[key] || key;
 
-  Object.keys(values).forEach(valueKey => {
-    msg = msg.replace(`{${valueKey}}`, values[valueKey]);
-  });
+    Object.keys(values).forEach(valueKey => {
+        msg = msg.replace(`{${valueKey}}`, values[valueKey]);
+    });
 
-  return msg;
+    return msg;
 };
 
 export { getMessagesFromLocale, translateMessage, translateMessageWithParams };

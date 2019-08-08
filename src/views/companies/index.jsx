@@ -10,41 +10,40 @@ import FormCompany from "../../components/formCompany";
 
 const { Title } = Typography;
 export const Companies = ({ company, getCompany, addCompany, auth }) => {
-	//componentDidUpdate, quando c'è aggiornamento di getCompany richiama getCompany, in questo caso richiama getCompany() anyway
-	useEffect(() => {
-		getCompany({});
-	}, [getCompany]);
+    //componentDidUpdate, quando c'è aggiornamento di getCompany richiama getCompany, in questo caso richiama getCompany() anyway
+    useEffect(() => {
+        getCompany({});
+    }, [getCompany]);
 
-	return (
-		<PageContainer>
-			MY COMPANY:
-			{company.companies === undefined ||
-			company.companies.length === 0 ? (
-				<FormCompany auth={auth} addCompany={addCompany} />
-			) : (
-				<Title>{`my company name: ${company.companies[0].name}`}</Title>
-			)}
-		</PageContainer>
-	);
+    return (
+        <PageContainer>
+            MY COMPANY:
+            {company.companies === undefined || company.companies.length === 0 ? (
+                <FormCompany auth={auth} addCompany={addCompany} />
+            ) : (
+                <Title>{`my company name: ${company.companies[0].name}`}</Title>
+            )}
+        </PageContainer>
+    );
 };
 
 Companies.propTypes = {
-	auth: PropTypes.object.isRequired,
-	company: PropTypes.object,
-	getCompany: PropTypes.func,
-	addCompany: PropTypes.func
+    auth: PropTypes.object.isRequired,
+    company: PropTypes.object,
+    getCompany: PropTypes.func,
+    addCompany: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-	auth: state.auth,
-	company: state.read,
-	write: state.write
+    auth: state.auth,
+    company: state.read,
+    write: state.write
 });
 
 //connecting my component at these functions (state, actionCreators)
 export default connect(
-	mapStateToProps,
-	{ getCompany, addCompany }
+    mapStateToProps,
+    { getCompany, addCompany }
 )(Companies);
 
 /*

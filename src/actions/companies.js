@@ -7,9 +7,9 @@ export const GET_COMPANY_ERROR = "GET_COMPANY_ERROR";
 
 // Get a client for your Stitch app, or instantiate a new one
 function getClient() {
-	return Stitch.hasAppClient(STITCH_APP_ID)
-		? Stitch.getAppClient(STITCH_APP_ID)
-		: Stitch.initializeAppClient(STITCH_APP_ID);
+    return Stitch.hasAppClient(STITCH_APP_ID)
+        ? Stitch.getAppClient(STITCH_APP_ID)
+        : Stitch.initializeAppClient(STITCH_APP_ID);
 }
 
 /*
@@ -19,36 +19,33 @@ with object mongodb i can get the collection handle
 */
 
 const client = getClient();
-const mongodb = client.getServiceClient(
-	RemoteMongoClient.factory,
-	"mongodb-atlas"
-);
+const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
 //DEFINE ACTION CREATORS
 //getCompany info
 export function getCompany(query) {
-	return async dispatch => {
-		dispatch({
-			type: GET_COMPANY_START
-		});
+    return async dispatch => {
+        dispatch({
+            type: GET_COMPANY_START
+        });
 
-		const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
+        const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
 
-		try {
-			const result = await collection.find(query).toArray();
+        try {
+            const result = await collection.find(query).toArray();
 
-			dispatch({
-				type: GET_COMPANY_SUCCESS,
-				payload: { companies: result }
-			});
-		} catch (error) {
-			dispatch({
-				type: GET_COMPANY_ERROR,
-				error: error,
-				errorInfo: error
-			});
-		}
-	};
+            dispatch({
+                type: GET_COMPANY_SUCCESS,
+                payload: { companies: result }
+            });
+        } catch (error) {
+            dispatch({
+                type: GET_COMPANY_ERROR,
+                error: error,
+                errorInfo: error
+            });
+        }
+    };
 }
 
 export const ADD_COMPANY_START = "ADD_COMPANY_START";
@@ -56,12 +53,12 @@ export const ADD_COMPANY_SUCCESS = "ADD_COMPANY_SUCCESS";
 export const ADD_COMPANY_ERROR = "ADD_COMPANY_ERROR";
 
 export function addCompany(data, ownerId) {
-	return async dispatch => {
-		dispatch({
-			type: ADD_COMPANY_START
-		});
+    return async dispatch => {
+        dispatch({
+            type: ADD_COMPANY_START
+        });
 
-		/*
+        /*
 	
 	DocumentT =	{
 		_id: automatically insert
@@ -70,22 +67,22 @@ export function addCompany(data, ownerId) {
 	}
 */
 
-		const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
+        const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
 
-		try {
-			await collection.insertOne({ ownerId, ...data });
+        try {
+            await collection.insertOne({ ownerId, ...data });
 
-			dispatch({
-				type: ADD_COMPANY_SUCCESS
-			});
-		} catch (error) {
-			dispatch({
-				type: ADD_COMPANY_ERROR,
-				error: error,
-				errorInfo: error
-			});
-		}
-	};
+            dispatch({
+                type: ADD_COMPANY_SUCCESS
+            });
+        } catch (error) {
+            dispatch({
+                type: ADD_COMPANY_ERROR,
+                error: error,
+                errorInfo: error
+            });
+        }
+    };
 }
 
 export const REMOVE_COMPANY_START = "REMOVE_COMPANY_START";
@@ -93,24 +90,24 @@ export const REMOVE_COMPANY_SUCCESS = "REMOVE_COMPANY_SUCCESS";
 export const REMOVE_COMPANY_ERROR = "REMOVE_COMPANY_ERROR";
 
 export function removeCompany(query) {
-	return async dispatch => {
-		dispatch({ type: REMOVE_COMPANY_START });
+    return async dispatch => {
+        dispatch({ type: REMOVE_COMPANY_START });
 
-		const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
+        const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
 
-		try {
-			const result = await collection.deleteOne(query);
+        try {
+            const result = await collection.deleteOne(query);
 
-			dispatch({
-				type: REMOVE_COMPANY_SUCCESS,
-				payload: { companies: result }
-			});
-		} catch (error) {
-			dispatch({
-				type: REMOVE_COMPANY_ERROR,
-				error: error,
-				errorInfo: error
-			});
-		}
-	};
+            dispatch({
+                type: REMOVE_COMPANY_SUCCESS,
+                payload: { companies: result }
+            });
+        } catch (error) {
+            dispatch({
+                type: REMOVE_COMPANY_ERROR,
+                error: error,
+                errorInfo: error
+            });
+        }
+    };
 }

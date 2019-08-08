@@ -10,37 +10,37 @@ import PropTypes from "prop-types";
 import { login } from "../actions/auth";
 
 const Routes = ({ auth, login }) => {
-	useEffect(() => {
-		if (!auth.currentUser) {
-			login();
-		}
-	}, [auth.currentUser, login]);
+    useEffect(() => {
+        if (!auth.currentUser) {
+            login();
+        }
+    }, [auth.currentUser, login]);
 
-	return (
-		<BrowserRouter>
-			<Route path="/:page?" component={Root} />
-		</BrowserRouter>
-	);
+    return (
+        <BrowserRouter>
+            <Route path="/:page?" component={Root} />
+        </BrowserRouter>
+    );
 };
 
 Routes.propTypes = {
-	auth: PropTypes.object.isRequired,
-	login: PropTypes.func
+    auth: PropTypes.object.isRequired,
+    login: PropTypes.func
 };
 
 const actions = {
-	login
+    login
 };
 
 const mapStateToProps = state => ({
-	auth: state.auth
+    auth: state.auth
 });
 
 const composedHoc = compose(
-	connect(
-		mapStateToProps,
-		actions
-	)
+    connect(
+        mapStateToProps,
+        actions
+    )
 );
 
 export default composedHoc(Routes);

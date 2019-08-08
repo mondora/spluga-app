@@ -7,9 +7,9 @@ export const GET_GOALS_ERROR = "GET_GOALS_ERROR";
 
 // Get a client for your Stitch app, or instantiate a new one
 function getClient() {
-  return Stitch.hasAppClient(STITCH_APP_ID)
-    ? Stitch.getAppClient(STITCH_APP_ID)
-    : Stitch.initializeAppClient(STITCH_APP_ID);
+    return Stitch.hasAppClient(STITCH_APP_ID)
+        ? Stitch.getAppClient(STITCH_APP_ID)
+        : Stitch.initializeAppClient(STITCH_APP_ID);
 }
 
 /*
@@ -18,61 +18,58 @@ with object mongodb i can get the collection handle: one instance for get/add/re
 */
 
 const client = getClient();
-const mongodb = client.getServiceClient(
-  RemoteMongoClient.factory,
-  "mongodb-atlas"
-);
+const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
 //DEFINE ACTION CREATORS
 export function getGoals(query) {
-  return async dispatch => {
-    dispatch({
-      type: GET_GOALS_START
-    });
-    const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
+    return async dispatch => {
+        dispatch({
+            type: GET_GOALS_START
+        });
+        const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
 
-    try {
-      //only ownerId data
-      const result = await collection.find(query).toArray();
+        try {
+            //only ownerId data
+            const result = await collection.find(query).toArray();
 
-      dispatch({
-        type: GET_GOALS_SUCCESS,
-        payload: { goals: result }
-      });
-    } catch (error) {
-      dispatch({
-        type: GET_GOALS_ERROR,
-        error: error,
-        errorInfo: error
-      });
-    }
-  };
+            dispatch({
+                type: GET_GOALS_SUCCESS,
+                payload: { goals: result }
+            });
+        } catch (error) {
+            dispatch({
+                type: GET_GOALS_ERROR,
+                error: error,
+                errorInfo: error
+            });
+        }
+    };
 }
 
 export const ADD_GOAL_START = "ADD_GOAL_START";
 export const ADD_GOAL_SUCCESS = "ADD_GOAL_SUCCESS";
 export const ADD_GOAL_ERROR = "ADD_GOAL_ERROR";
 export function addGoal(ownerId, data) {
-  return async dispatch => {
-    dispatch({
-      type: ADD_GOAL_START
-    });
+    return async dispatch => {
+        dispatch({
+            type: ADD_GOAL_START
+        });
 
-    const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
+        const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
 
-    try {
-      const result = await collection.insertOne({ ownerId, ...data });
+        try {
+            const result = await collection.insertOne({ ownerId, ...data });
 
-      dispatch({
-        type: ADD_GOAL_SUCCESS,
-        payload: { goal: result }
-      });
-    } catch (error) {
-      dispatch({
-        type: ADD_GOAL_ERROR,
-        error: error,
-        errorInfo: error
-      });
-    }
-  };
+            dispatch({
+                type: ADD_GOAL_SUCCESS,
+                payload: { goal: result }
+            });
+        } catch (error) {
+            dispatch({
+                type: ADD_GOAL_ERROR,
+                error: error,
+                errorInfo: error
+            });
+        }
+    };
 }

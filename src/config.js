@@ -1,6 +1,6 @@
 let enableLogs = true;
 if (process.env.REACT_APP_ENABLE_CONSOLE_LOGS === "false") {
-  enableLogs = false;
+    enableLogs = false;
 }
 
 export const ENABLE_CONSOLE_LOGS = enableLogs;
