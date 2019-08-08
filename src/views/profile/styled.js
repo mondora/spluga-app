@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     height: 100%;
     padding: 5px;
 `;

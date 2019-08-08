@@ -23,7 +23,6 @@ export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
     return !loading && !getCompanyStatus.started ? (
         <PageContainer>
             <SplugaCard auth={auth} company={company.companies[0]} type={"user"} />
-            <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
         </PageContainer>
     ) : (
         <SpinContainer>
