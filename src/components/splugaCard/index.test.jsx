@@ -1,5 +1,5 @@
 import React from "react";
-import Card from ".";
+import SplugaCard from ".";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
@@ -15,16 +15,16 @@ beforeEach(() => {
     console.error.mockClear();
 });
 
-describe("Card", () => {
+describe("SplugaCard", () => {
     it("Render component with only required data", () => {
-        const element = shallow(<Card auth={auth} />);
+        const element = shallow(<SplugaCard auth={auth} />);
         expect(element.find("div").length).toBe(1);
     });
 
     it("Render component with data", () => {
         const company = { name: "name" };
 
-        const element = shallow(<Card auth={auth} company={company} />);
+        const element = shallow(<SplugaCard auth={auth} company={company} />);
         expect(element.find("Avatar").length).toBe(1);
         expect(element.find("div").length).toBe(1);
     });
@@ -32,7 +32,7 @@ describe("Card", () => {
     it("Render component with prop type not in [user, company] ", () => {
         const company = { name: "name" };
 
-        shallow(<Card auth={auth} company={company} type={""} />);
+        shallow(<SplugaCard auth={auth} company={company} type={""} />);
 
         expect(console.error).toHaveBeenCalledTimes(1);
     });

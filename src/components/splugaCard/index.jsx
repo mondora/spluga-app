@@ -3,8 +3,8 @@ import { PropTypes } from "prop-types";
 import { CardContainer, AvatarContainer, CardTitle, CardSubtitle, CardDescription } from "./styled";
 import { Avatar } from "antd";
 
-//export Card for testing pourpose
-export const Card = ({ auth, company, type }) => {
+//export SplugaCard for testing pourpose
+export const SplugaCard = ({ auth, company, type }) => {
     const data = auth && auth.currentUser && auth.currentUser.profile ? auth.currentUser.profile.data : null;
 
     return (
@@ -21,25 +21,23 @@ export const Card = ({ auth, company, type }) => {
             )}
             <AvatarContainer>
                 <Avatar size={70} src={data && type === "user" ? data.picture : null} />
-                <CardSubtitle>{type === "user" ? "Dipendente" : "Company"}</CardSubtitle>
+                <CardSubtitle>{type === "user" ? "Employee" : "Company"}</CardSubtitle>
             </AvatarContainer>
-            <CardDescription>
-                {`grazie al ${type === "user" ? "tuo" : "vostro"} aiuto sono stati salvati n alberi`}
-            </CardDescription>
+            <CardDescription>{`thanks for your help, n trees have been saved`}</CardDescription>
         </CardContainer>
     );
 };
 
-Card.defaultProps = {
+SplugaCard.defaultProps = {
     type: "user",
     company: { name: "" }
 };
 
-Card.propTypes = {
+SplugaCard.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
     /** whether type: "user", card is referred to user*/
     type: PropTypes.oneOf(["user", "company"])
 };
 
-export default Card;
+export default SplugaCard;

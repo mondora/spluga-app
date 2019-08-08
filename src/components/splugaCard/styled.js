@@ -26,7 +26,7 @@ export const CardContainer = styled.div`
     width: 340px;
     height: 360px;
     background-color: white;
-    border-color: linear-gradient(to left, #986c6a, #bfbccb);
+    border: 3px solid #bfbccb;
 `;
 
 export const AvatarContainer = styled.div`

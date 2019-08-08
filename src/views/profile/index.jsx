@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCompany } from "../../actions/companies";
 
-import Card from "../../components/card";
+import SplugaCard from "../../components/splugaCard";
 import { Spin } from "antd";
 import { PageContainer, SpinContainer } from "./styled";
 
@@ -22,8 +22,8 @@ export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
 
     return !loading && !getCompanyStatus.started ? (
         <PageContainer>
-            <Card auth={auth} company={company.companies[0]} type={"user"} />
-            <Card auth={auth} company={company.companies[0]} type={"company"} />
+            <SplugaCard auth={auth} company={company.companies[0]} type={"user"} />
+            <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
         </PageContainer>
     ) : (
         <SpinContainer>
