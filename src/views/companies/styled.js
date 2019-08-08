@@ -4,5 +4,18 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 5px;
+    padding: 20px;
+`;
+
+export const SpinContainer = styled.div`
+    align-items: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+`;
+
+export const Title = styled.div`
+    font-weight: bolder;
+    font-size: 20px;
 `;

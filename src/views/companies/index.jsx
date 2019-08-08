@@ -1,29 +1,68 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { PageContainer } from "./styled";
+import { PageContainer, SpinContainer, Title } from "./styled";
 import { getCompany, addCompany } from "../../actions/companies";
 import { connect } from "react-redux";
 
-import { Typography } from "antd";
+import { Spin } from "antd";
 
-import FormCompany from "../../components/formCompany";
+import SplugaCard from "../../components/splugaCard";
+import SplugaForm from "../../components/splugaForm";
 
-const { Title } = Typography;
-export const Companies = ({ company, getCompany, addCompany, auth }) => {
-    //componentDidUpdate, quando c'è aggiornamento di getCompany richiama getCompany, in questo caso richiama getCompany() anyway
+export const Companies = ({ company, getCompany, addCompany, auth, getCompanyStatus, addCompanyStatus }) => {
+    const [loading, setLoading] = useState(true);
+    const [companyCreated, setCompanyCreated] = useState(false);
     useEffect(() => {
         getCompany({});
-    }, [getCompany]);
+    }, [getCompany, companyCreated]);
 
-    return (
+    useEffect(() => {
+        if (addCompanyStatus.ended) {
+            setCompanyCreated(true);
+        }
+    }, [addCompanyStatus]);
+
+    useEffect(() => {
+        if (getCompanyStatus.ended) {
+            setLoading(false);
+        }
+    }, [getCompanyStatus, companyCreated]);
+
+    const handleSubmit = data => {
+        const ownerId = auth.currentUser.id;
+        addCompany(data, ownerId);
+    };
+    const serverError = null;
+
+    const fields = [
+        {
+            name: "name",
+            description: "Name",
+            ref: {
+                required: "this is required",
+                minLength: {
+                    value: 2,
+                    message: "Min length is 2"
+                }
+            }
+        }
+    ];
+
+    return !loading && !getCompanyStatus.started ? (
         <PageContainer>
-            MY COMPANY:
             {company.companies === undefined || company.companies.length === 0 ? (
-                <FormCompany auth={auth} addCompany={addCompany} />
+                <SplugaForm title="Create Company" fields={fields} serverError={serverError} onSubmit={handleSubmit} />
             ) : (
-                <Title>{`my company name: ${company.companies[0].name}`}</Title>
+                <div>
+                    <Title>Company</Title>
+                    <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
+                </div>
             )}
         </PageContainer>
+    ) : (
+        <SpinContainer>
+            <Spin size="large" />
+        </SpinContainer>
     );
 };
 
@@ -31,45 +70,20 @@ Companies.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
     getCompany: PropTypes.func,
-    addCompany: PropTypes.func
+    addCompany: PropTypes.func,
+    getCompanyStatus: PropTypes.object,
+    addCompanyStatus: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     company: state.read,
-    write: state.write
+    write: state.write,
+    getCompanyStatus: state.read.status,
+    addCompanyStatus: state.write.status
 });
 
-//connecting my component at these functions (state, actionCreators)
 export default connect(
     mapStateToProps,
     { getCompany, addCompany }
 )(Companies);
-
-/*
-
-L’utente entra se non ha una azienda la deve creare altrimenti solo in modifica
-
-utente entra, chiamo getCompany, se ritorna vuoto significa che non ha un'azienda, quindi gli mostro/abilito l'input per fargliene inserire una, setCompany,
-o updateCompany(se cambiassi azienda, non resetto i dati dell'utente perchè fino a li per l'azienda ha creato impatto 
-pero tolgo che c'è un documento per quell'azienda riferito a lui) ???
-
-Campi 
-
-{name: "nome Azienda"}
-
-
-se non appartengo ad un'azienda mi ritorna un array vuoto --> company (che è state.read) .companies[0].name 
-mi dara undefined perche non esiste (primo elemento dell'array è un documento), sarebbe array(1)
-
-company.companies è un array vuoto
-
-getCompany({ name: "mondora srl sb" });
-getCompany({ name: "mondora srl sb" }, { limit: 1 })
-
-auth.currentUser.id  -> ownerId
-
-const handleSubmit = () =>
-		addCompany({ name: "mondora srl sb" }, auth.currentUser.id);
-
-*/
