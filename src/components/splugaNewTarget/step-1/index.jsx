@@ -1,4 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import { Input } from "antd";
+import { StepAction } from "../styled";
 
 const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
     const handleNameChange = ({ target: { value } }) => {
@@ -10,9 +14,9 @@ const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
     };
 
     return (
-        <div>
+        <StepAction>
             <label htmlFor="name">Name</label>
-            <input
+            <Input
                 id="name"
                 name="name"
                 type="text"
@@ -22,7 +26,7 @@ const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
             />
             <div>
                 <label htmlFor="description">Decscription</label>
-                <input
+                <Input.TextArea
                     id="description"
                     name="description"
                     type="text"
@@ -31,7 +35,15 @@ const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
                     onChange={handleDescriptionChange}
                 />
             </div>
-        </div>
+        </StepAction>
     );
 };
+
+Step1.propTypes = {
+    onNameChange: PropTypes.func,
+    onDescriptionChange: PropTypes.func,
+    name: PropTypes.string,
+    description: PropTypes.string
+};
+
 export default Step1;

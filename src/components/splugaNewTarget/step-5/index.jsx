@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import { StepAction } from "../styled";
 import { DatePicker } from "antd";
 
 const { RangePicker } = DatePicker;
@@ -10,10 +13,16 @@ const Step5 = ({ onStartDateChange, onEndDateChange }) => {
     };
 
     return (
-        <div className="form-group">
+        <StepAction>
+            <div style={{ margin: 8 }}>Enter your target period:</div>
             <RangePicker onChange={handleChangeDate} />
-        </div>
+        </StepAction>
     );
+};
+
+Step5.propTypes = {
+    onStartDateChange: PropTypes.func,
+    onEndDateChange: PropTypes.func
 };
 
 export default Step5;

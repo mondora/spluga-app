@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Steps } from "antd";
+import { Button, message, Steps } from "antd";
 
 import Step1 from "./step-1";
 import Step2 from "./step-2";
@@ -22,9 +22,9 @@ step-6: riepilogo--> ok -> splugaResult
 
 
 TODO: 
--antd
 -DEFINE PROPTYPES
 -add tests
+-button done
 
 */
 
@@ -33,7 +33,7 @@ const SplugaNewTarget = props => {
     const [currentStep, setCurrentStep] = useState(0);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [stakeholder, setStakeholder] = useState("environment");
+    const [stakeholder, setStakeholder] = useState("Environment");
     const [goal, setGoal] = useState("");
     const [type, setType] = useState("");
     const [targetOrLimitValue, setTargetOrLimitValue] = useState("");
@@ -97,20 +97,6 @@ const SplugaNewTarget = props => {
         }
     ];
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        alert(`Your registration detail: \n 
-            name: ${name} \n 
-             Description: ${description} \n
-             Stakeholder: ${stakeholder} \n
-            targetOrLimit: ${type} \n
-             targetOrLimitValue : ${targetOrLimitValue} \n
-             Goal: ${goal}\n
-             startDate : ${startDate} \n
-             endDate : ${endDate} \n
-             `);
-    };
-
     const _next = () => {
         currentStep >= 4 ? setCurrentStep(5) : setCurrentStep(currentStep + 1);
     };
@@ -119,34 +105,9 @@ const SplugaNewTarget = props => {
         currentStep <= 0 ? setCurrentStep(0) : setCurrentStep(currentStep - 1);
     };
 
-    /*
-     * the functions for buttons steps
-     */
-    const previousButton = () => {
-        if (currentStep !== 0) {
-            return (
-                <button type="button" onClick={_prev}>
-                    Previous
-                </button>
-            );
-        }
-        return null;
-    };
-
-    const nextButton = () => {
-        if (currentStep < 5) {
-            return (
-                <button type="button" onClick={_next}>
-                    Next
-                </button>
-            );
-        }
-        return null;
-    };
-
     return (
         <React.Fragment>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <Steps current={currentStep}>
                     {steps.map(item => (
                         <Step key={item.key} title={item.title} />
@@ -154,8 +115,29 @@ const SplugaNewTarget = props => {
                 </Steps>
                 <StepContent>{steps[currentStep].content}</StepContent>
                 <StepAction>
-                    {previousButton()}
-                    {nextButton()}
+                    {currentStep < steps.length - 1 && (
+                        <Button type="primary" onClick={_next}>
+                            Next
+                        </Button>
+                    )}
+                    {currentStep === steps.length - 1 && (
+                        <Button.Group>
+                            <Button
+                                type="primary"
+                                onClick={() => message.success(`Processing complete! Your target has been saved`)}
+                            >
+                                Done
+                            </Button>
+                            <Button type="danger" onClick={() => setCurrentStep(0)}>
+                                Reject
+                            </Button>
+                        </Button.Group>
+                    )}
+                    {currentStep > 0 && (
+                        <Button style={{ marginLeft: 8 }} onClick={_prev}>
+                            Previous
+                        </Button>
+                    )}
                 </StepAction>
             </form>
         </React.Fragment>

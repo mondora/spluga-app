@@ -1,4 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import { StepAction } from "../styled";
+import { Input, Select } from "antd";
+
+const { Option } = Select;
 
 //target or limit potrei prenderlo dalle unità di misura (goals) --->  ?
 const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
@@ -6,28 +12,27 @@ const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, t
         onTargetOrLimitValueChange(value);
     };
 
-    const handleOnChangeType = ({ target: { value } }) => {
+    const handleOnChangeType = value => {
         onTypeChange(value);
     };
 
     return (
         <React.Fragment>
-            <div>
+            <StepAction>
                 <label>
-                    Target or Limit:
-                    <select name="type" value={type} onChange={handleOnChangeType}>
-                        <option name="type" value="target">
+                    Target/Limit:
+                    <Select name="type" value={type} onChange={handleOnChangeType}>
+                        <Option name="type" value="target">
                             Target
-                        </option>
-                        <option name="type" value="limit">
+                        </Option>
+                        <Option name="type" value="limit">
                             Limit
-                        </option>
-                    </select>
+                        </Option>
+                    </Select>
                 </label>
-            </div>
-            <div>
+
                 <label htmlFor="value"> Value </label>
-                <input
+                <Input
                     id="value"
                     name="targetOrLimitValue"
                     type="text"
@@ -35,9 +40,16 @@ const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, t
                     value={targetOrLimitValue}
                     onChange={handleOnChangeTargetOrLimitValue}
                 />
-            </div>
+            </StepAction>
         </React.Fragment>
     );
+};
+
+Step4.propTypes = {
+    onTargetOrLimitValueChange: PropTypes.func,
+    onTypeChange: PropTypes.func,
+    targetOrLimitValue: PropTypes.string,
+    type: PropTypes.string
 };
 
 export default Step4;

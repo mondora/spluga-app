@@ -1,29 +1,35 @@
 import React from "react";
-import { Descriptions } from "antd";
+import PropTypes from "prop-types";
 
-/*
-    description (summary)
-    button confirm --> spluga result (or message) 
-    reject-->return to step1
-    */
+import { Descriptions } from "antd";
+import { StepAction } from "../styled";
 
 const Step6 = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
     return (
         <React.Fragment>
-            <Descriptions title="Create Target Summary">
-                <Descriptions.Item label={"name"}> {name} </Descriptions.Item>
-                <Descriptions.Item label={"description"}> {description} </Descriptions.Item>
-                <div />
-                <Descriptions.Item label={"stakeholder"}> {stakeholder} </Descriptions.Item>
-                <Descriptions.Item label={"goal"}> {goal} </Descriptions.Item>
-                <Descriptions.Item label={"limit/target"}> {targetOrLimitValue} </Descriptions.Item>
-                <Descriptions.Item label={"start date"}> {startDate} </Descriptions.Item>
-                <Descriptions.Item label={"end date"}>{endDate} </Descriptions.Item>
-            </Descriptions>
-            <div />
-            <button>confirm</button>
+            <StepAction>
+                <Descriptions title="Create Target Summary">
+                    <Descriptions.Item label={"name"}> {name} </Descriptions.Item>
+                    <Descriptions.Item label={"description"}> {description} </Descriptions.Item>
+                    <Descriptions.Item label={"stakeholder"}> {stakeholder} </Descriptions.Item>
+                    <Descriptions.Item label={"goal"}> {goal} </Descriptions.Item>
+                    <Descriptions.Item label={"limit/target"}> {targetOrLimitValue} </Descriptions.Item>
+                    <Descriptions.Item label={"start date"}> {startDate} </Descriptions.Item>
+                    <Descriptions.Item label={"end date"}>{endDate} </Descriptions.Item>
+                </Descriptions>
+            </StepAction>
         </React.Fragment>
     );
+};
+
+Step6.propTypes = {
+    name: PropTypes.string,
+    description: PropTypes.string,
+    stakeholder: PropTypes.string,
+    goal: PropTypes.string,
+    targetOrLimitValue: PropTypes.string,
+    startDate: PropTypes.string,
+    endDate: PropTypes.string
 };
 
 export default Step6;

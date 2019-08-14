@@ -1,33 +1,44 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import { StepAction } from "../styled";
+import { Select } from "antd";
+
+const { Option } = Select;
 
 const Step2 = ({ onStakeholderChange, stakeholder }) => {
-    const handleStakeholderChange = ({ target: { value } }) => {
+    const handleStakeholderChange = value => {
         onStakeholderChange(value);
     };
     return (
-        <div>
+        <StepAction>
             <label>
                 Stakeholder
-                <select name="stakeholder" value={stakeholder} onChange={handleStakeholderChange}>
-                    <option name="stakeholder" value="EVIRONMENT">
+                <Select name="stakeholder" value={stakeholder} onChange={handleStakeholderChange}>
+                    <Option name="stakeholder" value="Environment">
                         Environment
-                    </option>
-                    <option name="stakeholder" value="COMMUNITY">
+                    </Option>
+                    <Option name="stakeholder" value="Community">
                         Community
-                    </option>
-                    <option name="stakeholder" value="WORKERS">
+                    </Option>
+                    <Option name="stakeholder" value="Workers">
                         Workers
-                    </option>
-                    <option name="stakeholder" value="GOVERNANCE">
+                    </Option>
+                    <Option name="stakeholder" value="Governance">
                         Governance
-                    </option>
-                    <option name="stakeholder" value="CUSTOMER">
+                    </Option>
+                    <Option name="stakeholder" value="Customer">
                         Customer
-                    </option>
-                </select>
+                    </Option>
+                </Select>
             </label>
-        </div>
+        </StepAction>
     );
+};
+
+Step2.propTypes = {
+    onStakeholderChange: PropTypes.func,
+    stakeholder: PropTypes.string
 };
 
 export default Step2;
