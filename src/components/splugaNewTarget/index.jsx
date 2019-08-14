@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Steps } from "antd";
 
 import Step1 from "./step-1";
 import Step2 from "./step-2";
@@ -6,6 +7,9 @@ import Step3 from "./step-3";
 import Step4 from "./step-4";
 import Step5 from "./step-5";
 import Step6 from "./step-6";
+import { StepContent, StepAction } from "./styled";
+
+const { Step } = Steps;
 
 /* 
 INIT (IN VIEW): button -> redirect to "i miei obiettivi": (nel button Link component che mi linka a /targets (i miei obiettivi))
@@ -26,7 +30,7 @@ TODO:
 
 //goals props passed ?
 const SplugaNewTarget = props => {
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(0);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [stakeholder, setStakeholder] = useState("environment");
@@ -35,6 +39,63 @@ const SplugaNewTarget = props => {
     const [targetOrLimitValue, setTargetOrLimitValue] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+
+    const steps = [
+        {
+            key: 0,
+            title: "",
+            content: (
+                <Step1
+                    onNameChange={setName}
+                    onDescriptionChange={setDescription}
+                    name={name}
+                    description={description}
+                />
+            )
+        },
+        {
+            key: 1,
+            title: "",
+            content: <Step2 onStakeholderChange={setStakeholder} stakeholder={stakeholder} />
+        },
+        {
+            key: 2,
+            title: "",
+            content: <Step3 onGoalChange={setGoal} goal={goal} />
+        },
+        {
+            key: 3,
+            title: "",
+            content: (
+                <Step4
+                    onTargetOrLimitValueChange={setTargetOrLimitValue}
+                    onTypeChange={setType}
+                    targetOrLimitValue={targetOrLimitValue}
+                    type={type}
+                />
+            )
+        },
+        {
+            key: 4,
+            title: "",
+            content: <Step5 onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
+        },
+        {
+            key: 5,
+            title: "",
+            content: (
+                <Step6
+                    name={name}
+                    description={description}
+                    stakeholder={stakeholder}
+                    goal={goal}
+                    targetOrLimitValue={targetOrLimitValue}
+                    startDate={startDate}
+                    endDate={endDate}
+                />
+            )
+        }
+    ];
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -51,18 +112,18 @@ const SplugaNewTarget = props => {
     };
 
     const _next = () => {
-        currentStep >= 5 ? setCurrentStep(6) : setCurrentStep(currentStep + 1);
+        currentStep >= 4 ? setCurrentStep(5) : setCurrentStep(currentStep + 1);
     };
 
     const _prev = () => {
-        currentStep <= 1 ? setCurrentStep(1) : setCurrentStep(currentStep - 1);
+        currentStep <= 0 ? setCurrentStep(0) : setCurrentStep(currentStep - 1);
     };
 
     /*
      * the functions for buttons steps
      */
     const previousButton = () => {
-        if (currentStep !== 1) {
+        if (currentStep !== 0) {
             return (
                 <button type="button" onClick={_prev}>
                     Previous
@@ -73,7 +134,7 @@ const SplugaNewTarget = props => {
     };
 
     const nextButton = () => {
-        if (currentStep < 6) {
+        if (currentStep < 5) {
             return (
                 <button type="button" onClick={_next}>
                     Next
@@ -85,43 +146,17 @@ const SplugaNewTarget = props => {
 
     return (
         <React.Fragment>
-            <h1>Target Creation Form</h1>
-            <p>Step {currentStep} </p>
-
             <form onSubmit={handleSubmit}>
-                {/* render the form steps and pass required props in */}
-                {currentStep === 1 && (
-                    <Step1
-                        onNameChange={setName}
-                        onDescriptionChange={setDescription}
-                        name={name}
-                        description={description}
-                    />
-                )}
-                {currentStep === 2 && <Step2 onStakeholderChange={setStakeholder} stakeholder={stakeholder} />}
-                {currentStep === 3 && <Step3 onGoalChange={setGoal} goal={goal} />}
-                {currentStep === 4 && (
-                    <Step4
-                        onTargetOrLimitValueChange={setTargetOrLimitValue}
-                        onTypeChange={setType}
-                        targetOrLimitValue={targetOrLimitValue}
-                        type={type}
-                    />
-                )}
-                {currentStep === 5 && <Step5 onStartDateChange={setStartDate} onEndDateChange={setEndDate} />}
-                {currentStep === 6 && (
-                    <Step6
-                        name={name}
-                        description={description}
-                        stakeholder={stakeholder}
-                        goal={goal}
-                        targetOrLimitValue={targetOrLimitValue}
-                        startDate={startDate}
-                        endDate={endDate}
-                    />
-                )}
-                {previousButton()}
-                {nextButton()}
+                <Steps current={currentStep}>
+                    {steps.map(item => (
+                        <Step key={item.key} title={item.title} />
+                    ))}
+                </Steps>
+                <StepContent>{steps[currentStep].content}</StepContent>
+                <StepAction>
+                    {previousButton()}
+                    {nextButton()}
+                </StepAction>
             </form>
         </React.Fragment>
     );
