@@ -29,7 +29,9 @@ TODO:
 */
 
 //goals props passed ?
-const SplugaNewTarget = props => {
+
+//export function for testing purpose
+export const SplugaNewTarget = props => {
     const [currentStep, setCurrentStep] = useState(0);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");

@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { Input } from "antd";
 import { StepAction } from "../styled";
 
-const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
+//export class for testing pourpose
+export const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
     const handleNameChange = ({ target: { value } }) => {
         onNameChange(value);
     };

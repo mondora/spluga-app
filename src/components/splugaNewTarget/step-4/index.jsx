@@ -7,7 +7,9 @@ import { Input, Select } from "antd";
 const { Option } = Select;
 
 //target or limit potrei prenderlo dalle unità di misura (goals) --->  ?
-const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
+
+//export function for testing pourpose
+export const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
     const handleOnChangeTargetOrLimitValue = ({ target: { value } }) => {
         onTargetOrLimitValueChange(value);
     };

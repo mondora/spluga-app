@@ -6,7 +6,8 @@ import { Select } from "antd";
 
 const { Option } = Select;
 
-const Step2 = ({ onStakeholderChange, stakeholder }) => {
+//export function for testing pourpose
+export const Step2 = ({ onStakeholderChange, stakeholder }) => {
     const handleStakeholderChange = value => {
         onStakeholderChange(value);
     };

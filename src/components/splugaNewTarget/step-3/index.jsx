@@ -16,7 +16,8 @@ TODO GETGOALS
  LIMIT/TARGET  già decisi IN BASE AL TIPO DI GOAL?
 */
 
-const Step3 = ({ onGoalChange, goal }) => {
+//export function for testing pourpose
+export const Step3 = ({ onGoalChange, goal }) => {
     const handleGoalChange = value => {
         onGoalChange(value);
     };

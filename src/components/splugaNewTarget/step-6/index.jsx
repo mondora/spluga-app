@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { Descriptions } from "antd";
 import { StepAction } from "../styled";
 
-const Step6 = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
+//export function for testing pourpose
+export const Step6 = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
     return (
         <React.Fragment>
             <StepAction>

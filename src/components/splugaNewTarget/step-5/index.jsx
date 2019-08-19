@@ -6,7 +6,8 @@ import { DatePicker } from "antd";
 
 const { RangePicker } = DatePicker;
 
-const Step5 = ({ onStartDateChange, onEndDateChange }) => {
+//export function for testing pourpose
+export const Step5 = ({ onStartDateChange, onEndDateChange }) => {
     const handleChangeDate = (...date) => {
         onStartDateChange(date[1][0]);
         onEndDateChange(date[1][1]);
