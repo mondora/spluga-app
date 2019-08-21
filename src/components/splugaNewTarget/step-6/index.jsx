@@ -28,7 +28,7 @@ Step6.propTypes = {
     description: PropTypes.string,
     stakeholder: PropTypes.string,
     goal: PropTypes.string,
-    targetOrLimitValue: PropTypes.string,
+    targetOrLimitValue: PropTypes.number,
     startDate: PropTypes.string,
     endDate: PropTypes.string
 };

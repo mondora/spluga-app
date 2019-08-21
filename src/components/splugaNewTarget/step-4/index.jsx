@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
-import { Input, Select } from "antd";
+import { Select, InputNumber } from "antd";
 
 const { Option } = Select;
 
@@ -10,7 +10,7 @@ const { Option } = Select;
 
 //export function for testing pourpose
 export const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
-    const handleOnChangeTargetOrLimitValue = ({ target: { value } }) => {
+    const handleOnChangeTargetOrLimitValue = value => {
         onTargetOrLimitValueChange(value);
     };
 
@@ -34,11 +34,9 @@ export const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitV
                 </label>
 
                 <label htmlFor="value"> Value </label>
-                <Input
+                <InputNumber
                     id="value"
                     name="targetOrLimitValue"
-                    type="text"
-                    placeholder={`Enter value of your ${type}`}
                     value={targetOrLimitValue}
                     onChange={handleOnChangeTargetOrLimitValue}
                 />
@@ -50,7 +48,7 @@ export const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitV
 Step4.propTypes = {
     onTargetOrLimitValueChange: PropTypes.func,
     onTypeChange: PropTypes.func,
-    targetOrLimitValue: PropTypes.string,
+    targetOrLimitValue: PropTypes.number,
     type: PropTypes.string
 };
 

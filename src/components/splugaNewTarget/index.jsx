@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, message, Steps } from "antd";
+
+import { Button, message, Steps, Progress } from "antd";
 
 import Step1 from "./step-1";
 import Step2 from "./step-2";
@@ -21,11 +22,6 @@ step-5: periodo start/end date
 step-6: riepilogo--> ok -> splugaResult
 
 
-TODO: 
--DEFINE PROPTYPES
--add tests
--button done
-
 */
 
 //goals props passed ?
@@ -38,9 +34,10 @@ export const SplugaNewTarget = props => {
     const [stakeholder, setStakeholder] = useState("Environment");
     const [goal, setGoal] = useState("");
     const [type, setType] = useState("");
-    const [targetOrLimitValue, setTargetOrLimitValue] = useState("");
+    const [targetOrLimitValue, setTargetOrLimitValue] = useState(0);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+    const [done, setDone] = useState(false);
 
     const steps = [
         {
@@ -107,41 +104,71 @@ export const SplugaNewTarget = props => {
         currentStep <= 0 ? setCurrentStep(0) : setCurrentStep(currentStep - 1);
     };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        //create target (addTarget)
+
+        //check on user input
+        if (name && description && startDate && endDate && targetOrLimitValue !== 0 && type) {
+            //clean all form
+            setName();
+            setDescription();
+            setStakeholder();
+            setGoal();
+            setType();
+            setStartDate();
+            setEndDate();
+            //rendering progress bar
+            message.success(`Processing complete! Your target has been saved`);
+            setDone(true);
+        } else {
+            message.error("to create target you need fill all data, please click on reject to go back at step 1");
+        }
+    };
+
     return (
         <React.Fragment>
-            <form>
-                <Steps current={currentStep}>
-                    {steps.map(item => (
-                        <Step key={item.key} title={item.title} />
-                    ))}
-                </Steps>
-                <StepContent>{steps[currentStep].content}</StepContent>
-                <StepAction>
-                    {currentStep < steps.length - 1 && (
-                        <Button type="primary" onClick={_next}>
-                            Next
-                        </Button>
-                    )}
-                    {currentStep === steps.length - 1 && (
-                        <Button.Group>
-                            <Button
-                                type="primary"
-                                onClick={() => message.success(`Processing complete! Your target has been saved`)}
-                            >
-                                Done
+            {done ? (
+                <Progress
+                    type="circle"
+                    strokeColor={{
+                        "0%": "#108ee9",
+                        "100%": "#87d068"
+                    }}
+                    percent={targetOrLimitValue}
+                />
+            ) : (
+                <form name="target-form" onSubmit={handleSubmit}>
+                    <Steps current={currentStep}>
+                        {steps.map(item => (
+                            <Step key={item.key} title={item.title} />
+                        ))}
+                    </Steps>
+                    <StepContent> {steps[currentStep].content} </StepContent>
+                    <StepAction>
+                        {currentStep < steps.length - 1 && (
+                            <Button type="primary" onClick={_next}>
+                                Next
                             </Button>
-                            <Button type="danger" onClick={() => setCurrentStep(0)}>
-                                Reject
+                        )}
+                        {currentStep === steps.length - 1 && (
+                            <Button.Group>
+                                <Button type="primary" htmlType="submit">
+                                    Done
+                                </Button>
+                                <Button type="danger" onClick={() => setCurrentStep(0)}>
+                                    Reject
+                                </Button>
+                            </Button.Group>
+                        )}
+                        {currentStep > 0 && (
+                            <Button style={{ marginLeft: 8 }} onClick={_prev}>
+                                Previous
                             </Button>
-                        </Button.Group>
-                    )}
-                    {currentStep > 0 && (
-                        <Button style={{ marginLeft: 8 }} onClick={_prev}>
-                            Previous
-                        </Button>
-                    )}
-                </StepAction>
-            </form>
+                        )}
+                    </StepAction>
+                </form>
+            )}
         </React.Fragment>
     );
 };

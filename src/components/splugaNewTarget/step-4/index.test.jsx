@@ -10,13 +10,13 @@ describe("Step4", () => {
         const element = shallow(<Step4 />);
         expect(element.find("Select").exists()).toBe(true);
         expect(element.find("Option").exists()).toBeTruthy();
-        expect(element.find("Input").length).toBe(1);
+        expect(element.find("InputNumber").length).toBe(1);
     });
 
     it("Render component passing props", () => {
         const onTargetOrLimitValueChange = jest.fn();
         const onTypeChange = jest.fn();
-        const event = { target: { value: 34 } };
+        const event = 34;
         const element = shallow(
             <Step4
                 onTargetOrLimitValueChange={onTargetOrLimitValueChange}
@@ -29,7 +29,7 @@ describe("Step4", () => {
         expect(element.find("Select").props().value).toBe("target");
         element.find("Select").simulate("change");
         expect(onTypeChange).toHaveBeenCalled();
-        element.find("Input").simulate("change", event);
+        element.find("InputNumber").simulate("change", event);
         expect(onTargetOrLimitValueChange).toHaveBeenCalled();
     });
 });
