@@ -1,6 +1,6 @@
 import store from "../reducers";
-import it from "./it";
-import en from "./en";
+import it from "./it-IT";
+import en from "./en-US";
 
 // This object's keys must be an ISO language code (ex: it, it-IT, en-US)
 const availableLocalisations = {
@@ -16,17 +16,21 @@ const getUserLocale = () => store; //store.getState().user.user && store.getStat
  * @param {string} locale The user's locale expressed as an ISO language code (ex: it, it-IT, en-US)
  */
 function getMessagesFromLocale(locale = getUserLocale()) {
-    /*if (locale) {
-    const availableLocaleKeys = Object.keys(availableLocalisations);
+    if (locale) {
+        const availableLocaleKeys = Object.keys(availableLocalisations);
 
-    if (availableLocaleKeys.includes(locale)) {
-      return availableLocalisations[locale];
-    } else if (availableLocaleKeys.includes(locale.split("-")[0])) {
-      return availableLocalisations[locale.split("-")[0]];
+        console.log(typeof locale);
+        if (typeof locale === "object") {
+            return availableLocalisations["en"];
+        }
+        if (availableLocaleKeys.includes(locale)) {
+            return availableLocalisations[locale];
+        } else if (availableLocaleKeys.includes(locale.split("-")[0])) {
+            return availableLocalisations[locale.split("-")[0]];
+        }
     }
-  }*/
 
-    return availableLocalisations["it"];
+    return availableLocalisations["en"];
 }
 
 const translateMessage = key => getMessagesFromLocale()[key] || key;

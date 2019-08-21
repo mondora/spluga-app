@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import { IntlProvider } from "react-intl";
 
 import { Route } from "react-router-dom";
+import { getMessagesFromLocale } from "../i18n";
 import Root from "./root";
 import "moment/locale/it";
 import PropTypes from "prop-types";
@@ -16,10 +18,17 @@ const Routes = ({ auth, login }) => {
         }
     }, [auth.currentUser, login]);
 
+    const locale =
+        (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || "en-US";
+
+    const messages = useMemo(() => getMessagesFromLocale(locale), [locale]);
+
     return (
-        <BrowserRouter>
-            <Route path="/:page?" component={Root} />
-        </BrowserRouter>
+        <IntlProvider locale={locale} messages={messages}>
+            <BrowserRouter>
+                <Route path="/:page?" component={Root} />
+            </BrowserRouter>
+        </IntlProvider>
     );
 };
 

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { PageContainer, SpinContainer, Title } from "./styled";
+import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { connect } from "react-redux";
 
 import { Spin } from "antd";
 
 import SplugaCard from "../../components/splugaCard";
-import SplugaForm from "../../components/splugaForm";
+import CompanyForm from "../../components/companyForm";
 
 export const Companies = ({ company, getCompany, addCompany, auth, getCompanyStatus, addCompanyStatus }) => {
     const [loading, setLoading] = useState(true);
@@ -29,29 +30,18 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
     }, [getCompanyStatus, companyCreated]);
 
     const handleSubmit = data => {
+        console.log({ data }); /*
         const ownerId = auth.currentUser.id;
-        addCompany(data, ownerId);
+        addCompany(data, ownerId);*/
     };
     const serverError = null;
-
-    const fields = [
-        {
-            name: "name",
-            description: "Name",
-            ref: {
-                required: "this is required",
-                minLength: {
-                    value: 2,
-                    message: "Min length is 2"
-                }
-            }
-        }
-    ];
 
     return !loading && !getCompanyStatus.started ? (
         <PageContainer>
             {company.companies === undefined || company.companies.length === 0 ? (
-                <SplugaForm title="Create Company" fields={fields} serverError={serverError} onSubmit={handleSubmit} />
+                <div>
+                    <CompanyForm serverError={serverError} onSubmit={handleSubmit} />
+                </div>
             ) : (
                 <div>
                     <Title>Company</Title>
@@ -83,7 +73,11 @@ const mapStateToProps = state => ({
     addCompanyStatus: state.write.status
 });
 
-export default connect(
-    mapStateToProps,
-    { getCompany, addCompany }
-)(Companies);
+const composedHoc = compose(
+    connect(
+        mapStateToProps,
+        { getCompany, addCompany }
+    )
+);
+
+export default composedHoc(Companies);

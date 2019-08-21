@@ -15,26 +15,28 @@ import { Container, Menu, Page, PageContainer } from "./styled.js";
 import { PropTypes } from "prop-types";
 
 //auth mappa l'oggetto dello store alla Root
-export const Root = ({ match, auth }) => (
-    <PageContainer>
-        <Header user={auth.currentUser} />
-        <Container>
-            <Menu>
-                <NavBar currentPage={match.params.page} />
-            </Menu>
-            <Page>
-                <Switch>
-                    <Route exact path="/" component={Profile} />
-                    <Route path="/apps" component={Apps} />
-                    <Route path="/companies" component={Companies} />
-                    <Route path="/targets" component={Targets} />
-                    <Route path="/activities" component={Activities} />
-                    <Route path="/goals" component={Goals} />
-                </Switch>
-            </Page>
-        </Container>
-    </PageContainer>
-);
+export const Root = ({ match, auth }) => {
+    return (
+        <PageContainer>
+            <Header user={auth.currentUser} />
+            <Container>
+                <Menu>
+                    <NavBar currentPage={match.params.page} />
+                </Menu>
+                <Page>
+                    <Switch>
+                        <Route exact path="/" component={Profile} />
+                        <Route path="/apps" component={Apps} />
+                        <Route path="/companies" component={Companies} />
+                        <Route path="/targets" component={Targets} />
+                        <Route path="/activities" component={Activities} />
+                        <Route path="/goals" component={Goals} />
+                    </Switch>
+                </Page>
+            </Container>
+        </PageContainer>
+    );
+};
 
 Root.PropType = {
     auth: PropTypes.object.isRequired
