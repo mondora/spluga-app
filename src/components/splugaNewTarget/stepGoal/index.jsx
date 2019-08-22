@@ -17,7 +17,7 @@ TODO GETGOALS
 */
 
 //export function for testing pourpose
-export const Step3 = ({ onGoalChange, goal }) => {
+export const StepGoal = ({ onGoalChange, goal }) => {
     const handleGoalChange = value => {
         onGoalChange(value);
     };
@@ -45,8 +45,8 @@ export const Step3 = ({ onGoalChange, goal }) => {
     );
 };
 
-Step3.propTypes = {
+StepGoal.propTypes = {
     onGoalChange: PropTypes.func,
     goal: PropTypes.string
 };
-export default Step3;
+export default StepGoal;

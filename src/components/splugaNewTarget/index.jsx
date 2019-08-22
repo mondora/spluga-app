@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 import { Button, message, Steps, Progress } from "antd";
 
-import Step1 from "./step-1";
-import Step2 from "./step-2";
-import Step3 from "./step-3";
-import Step4 from "./step-4";
-import Step5 from "./step-5";
-import Step6 from "./step-6";
+import StepInfo from "./stepInfo";
+import StepStakeholder from "./stepStakeholder";
+import StepGoal from "./stepGoal";
+import StepType from "./stepType";
+import StepPeriod from "./stepPeriod";
+import StepSummary from "./stepSummary";
 import { StepContent, StepAction } from "./styled";
 
 const { Step } = Steps;
@@ -44,7 +44,7 @@ export const SplugaNewTarget = props => {
             key: 0,
             title: "",
             content: (
-                <Step1
+                <StepInfo
                     onNameChange={setName}
                     onDescriptionChange={setDescription}
                     name={name}
@@ -55,18 +55,18 @@ export const SplugaNewTarget = props => {
         {
             key: 1,
             title: "",
-            content: <Step2 onStakeholderChange={setStakeholder} stakeholder={stakeholder} />
+            content: <StepStakeholder onStakeholderChange={setStakeholder} stakeholder={stakeholder} />
         },
         {
             key: 2,
             title: "",
-            content: <Step3 onGoalChange={setGoal} goal={goal} />
+            content: <StepGoal onGoalChange={setGoal} goal={goal} />
         },
         {
             key: 3,
             title: "",
             content: (
-                <Step4
+                <StepType
                     onTargetOrLimitValueChange={setTargetOrLimitValue}
                     onTypeChange={setType}
                     targetOrLimitValue={targetOrLimitValue}
@@ -77,13 +77,13 @@ export const SplugaNewTarget = props => {
         {
             key: 4,
             title: "",
-            content: <Step5 onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
+            content: <StepPeriod onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
         },
         {
             key: 5,
             title: "",
             content: (
-                <Step6
+                <StepSummary
                     name={name}
                     description={description}
                     stakeholder={stakeholder}

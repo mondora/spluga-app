@@ -1,13 +1,13 @@
 import React from "react";
-import { Step4 } from ".";
+import { StepType } from ".";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Step4", () => {
+describe("StepType", () => {
     it("Render component without error", () => {
-        const element = shallow(<Step4 />);
+        const element = shallow(<StepType />);
         expect(element.find("Select").exists()).toBe(true);
         expect(element.find("Option").exists()).toBeTruthy();
         expect(element.find("InputNumber").length).toBe(1);
@@ -18,7 +18,7 @@ describe("Step4", () => {
         const onTypeChange = jest.fn();
         const event = 34;
         const element = shallow(
-            <Step4
+            <StepType
                 onTargetOrLimitValueChange={onTargetOrLimitValueChange}
                 onTypeChange={onTypeChange}
                 targetOrLimitValue={"80"}

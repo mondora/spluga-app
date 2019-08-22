@@ -5,7 +5,7 @@ import { Descriptions } from "antd";
 import { StepAction } from "../styled";
 
 //export function for testing pourpose
-export const Step6 = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
+export const StepSummary = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
     return (
         <React.Fragment>
             <StepAction>
@@ -23,7 +23,7 @@ export const Step6 = ({ name, description, stakeholder, goal, targetOrLimitValue
     );
 };
 
-Step6.propTypes = {
+StepSummary.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     stakeholder: PropTypes.string,
@@ -33,4 +33,4 @@ Step6.propTypes = {
     endDate: PropTypes.string
 };
 
-export default Step6;
+export default StepSummary;

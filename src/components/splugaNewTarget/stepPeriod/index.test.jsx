@@ -1,13 +1,13 @@
 import React from "react";
-import { Step5 } from ".";
+import { StepPeriod } from ".";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Step5", () => {
+describe("StepPeriod", () => {
     it("Render component without error", () => {
-        const element = shallow(<Step5 />);
+        const element = shallow(<StepPeriod />);
         expect(element.find("PickerWrapper").exists()).toBe(true);
     });
 });

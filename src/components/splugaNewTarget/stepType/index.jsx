@@ -9,7 +9,7 @@ const { Option } = Select;
 //target or limit potrei prenderlo dalle unità di misura (goals) --->  ?
 
 //export function for testing pourpose
-export const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
+export const StepType = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
     const handleOnChangeTargetOrLimitValue = value => {
         onTargetOrLimitValueChange(value);
     };
@@ -45,11 +45,11 @@ export const Step4 = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitV
     );
 };
 
-Step4.propTypes = {
+StepType.propTypes = {
     onTargetOrLimitValueChange: PropTypes.func,
     onTypeChange: PropTypes.func,
     targetOrLimitValue: PropTypes.number,
     type: PropTypes.string
 };
 
-export default Step4;
+export default StepType;

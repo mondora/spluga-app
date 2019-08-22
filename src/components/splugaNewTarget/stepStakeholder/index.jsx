@@ -7,7 +7,7 @@ import { Select } from "antd";
 const { Option } = Select;
 
 //export function for testing pourpose
-export const Step2 = ({ onStakeholderChange, stakeholder }) => {
+export const StepStakeholder = ({ onStakeholderChange, stakeholder }) => {
     const handleStakeholderChange = value => {
         onStakeholderChange(value);
     };
@@ -37,9 +37,9 @@ export const Step2 = ({ onStakeholderChange, stakeholder }) => {
     );
 };
 
-Step2.propTypes = {
+StepStakeholder.propTypes = {
     onStakeholderChange: PropTypes.func,
     stakeholder: PropTypes.string
 };
 
-export default Step2;
+export default StepStakeholder;

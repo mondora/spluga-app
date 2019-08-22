@@ -5,7 +5,7 @@ import { Input } from "antd";
 import { StepAction } from "../styled";
 
 //export class for testing pourpose
-export const Step1 = ({ onNameChange, onDescriptionChange, name, description }) => {
+export const StepInfo = ({ onNameChange, onDescriptionChange, name, description }) => {
     const handleNameChange = ({ target: { value } }) => {
         onNameChange(value);
     };
@@ -40,11 +40,11 @@ export const Step1 = ({ onNameChange, onDescriptionChange, name, description }) 
     );
 };
 
-Step1.propTypes = {
+StepInfo.propTypes = {
     onNameChange: PropTypes.func,
     onDescriptionChange: PropTypes.func,
     name: PropTypes.string,
     description: PropTypes.string
 };
 
-export default Step1;
+export default StepInfo;

@@ -1,14 +1,13 @@
 import React from "react";
-import { Step6 } from ".";
+import { StepSummary } from ".";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Step6", () => {
+describe("StepSummary", () => {
     it("Render component without error", () => {
-        const element = shallow(<Step6 />);
-        console.log("step6", element.debug());
+        const element = shallow(<StepSummary />);
         expect(element.find("Descriptions").exists()).toBe(true);
     });
 
@@ -23,7 +22,7 @@ describe("Step6", () => {
             endDate: "30-04-2019"
         };
 
-        const element = shallow(<Step6 {...propTypes} />);
+        const element = shallow(<StepSummary {...propTypes} />);
 
         expect(
             element

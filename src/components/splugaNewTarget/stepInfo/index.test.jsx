@@ -1,5 +1,5 @@
 import React from "react";
-import { Step1 } from ".";
+import { StepInfo } from ".";
 import Enzyme from "enzyme";
 import { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
@@ -9,9 +9,9 @@ Enzyme.configure({ adapter: new Adapter() });
 const onDescriptionChange = () => {};
 const onNameChange = () => {};
 
-describe("Step1", () => {
+describe("StepInfo", () => {
     it("Render component without error", () => {
-        const element = shallow(<Step1 />);
+        const element = shallow(<StepInfo />);
         expect(element.find("Input").exists()).toBe(true);
         expect(element.find("TextArea").length).toBe(1);
         expect(element.find("label").length).toBe(2);
@@ -20,7 +20,7 @@ describe("Step1", () => {
     it("Render component passing props", () => {
         const event = { target: { value: "input-test" } };
         const element = shallow(
-            <Step1
+            <StepInfo
                 onNameChange={onNameChange}
                 onDescriptionChange={onDescriptionChange}
                 name={"test-name"}
