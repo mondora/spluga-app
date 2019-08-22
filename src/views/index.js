@@ -1,13 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { compose } from "redux";
 import { IntlProvider } from "react-intl";
 
 import { Route } from "react-router-dom";
-import { getMessagesFromLocale } from "../i18n";
+import { getMessagesLocale, getUserLocale } from "../i18n";
 import Root from "./root";
-import "moment/locale/it";
 import PropTypes from "prop-types";
 import { login } from "../actions/auth";
 
@@ -18,10 +16,8 @@ const Routes = ({ auth, login }) => {
         }
     }, [auth.currentUser, login]);
 
-    const locale =
-        (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || "en-US";
-
-    const messages = useMemo(() => getMessagesFromLocale(locale), [locale]);
+    const locale = getUserLocale();
+    const messages = getMessagesLocale();
 
     return (
         <IntlProvider locale={locale} messages={messages}>
@@ -45,11 +41,7 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-const composedHoc = compose(
-    connect(
-        mapStateToProps,
-        actions
-    )
-);
-
-export default composedHoc(Routes);
+export default connect(
+    mapStateToProps,
+    actions
+)(Routes);

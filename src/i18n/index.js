@@ -1,47 +1,16 @@
-import store from "../reducers";
 import it from "./it-IT";
 import en from "./en-US";
 
-// This object's keys must be an ISO language code (ex: it, it-IT, en-US)
-const availableLocalisations = {
-    en,
-    it
+export const availableLocalisations = {
+    "en-US": en,
+    "it-IT": it
 };
 
-const getUserLocale = () => store; //store.getState().user.user && store.getState().user.user.profile.language;
+export const getUserLocale = () =>
+    (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || "en-US";
 
-/**
- * Given the user's locale, returns the appropriate translated messages.
- * If the provided locale has no matching translations, defaults to italian.
- * @param {string} locale The user's locale expressed as an ISO language code (ex: it, it-IT, en-US)
- */
-function getMessagesFromLocale(locale = getUserLocale()) {
-    if (locale) {
-        const availableLocaleKeys = Object.keys(availableLocalisations);
-
-        console.log(typeof locale);
-        if (typeof locale === "object") {
-            return availableLocalisations["en"];
-        }
-        if (availableLocaleKeys.includes(locale)) {
-            return availableLocalisations[locale];
-        } else if (availableLocaleKeys.includes(locale.split("-")[0])) {
-            return availableLocalisations[locale.split("-")[0]];
-        }
-    }
-
-    return availableLocalisations["en"];
-}
-
-const translateMessage = key => getMessagesFromLocale()[key] || key;
-const translateMessageWithParams = (key, values) => {
-    let msg = getMessagesFromLocale()[key] || key;
-
-    Object.keys(values).forEach(valueKey => {
-        msg = msg.replace(`{${valueKey}}`, values[valueKey]);
-    });
-
-    return msg;
+export const getMessagesLocale = (locale = getUserLocale()) => {
+    return availableLocalisations[locale] || it;
 };
 
-export { getMessagesFromLocale, translateMessage, translateMessageWithParams };
+export const translateMessage = key => getMessagesLocale()[key] || key;
