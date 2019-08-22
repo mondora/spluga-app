@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { CompanyFormContainer, ButtonContainer } from "./styled";
 import { form } from "@mondora/conv-redux-form";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Button } from "antd";
 import TextField from "@mondora/arc/antd/TextField";
 import { Upload, Icon } from "antd";
@@ -20,7 +20,7 @@ export const CompanyForm = ({ handleSubmit }) => {
                     onRemove={file => console.log(file)}
                 >
                     <Button>
-                        <Icon type="upload" /> <FormattedHTMLMessage id="c-company-form.logo" />
+                        <Icon type="upload" /> <FormattedMessage id="c-company-form.logo" />
                     </Button>
                 </Upload>
                 <ButtonContainer>
