@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import useForm from "react-hook-form";
 import { Container, Fields, Error, Form, Input, Label, Button, Title } from "./styled";
+import { FormattedMessage } from "react-intl";
 
 export const SplugaForm = ({ title, fields, onSubmit, serverError }) => {
     const { register, handleSubmit, errors } = useForm();
@@ -34,7 +35,9 @@ export const SplugaForm = ({ title, fields, onSubmit, serverError }) => {
                     </Fields>
                 ))}
                 <Fields>
-                    <Button type="submit">Create</Button>
+                    <Button type="submit">
+                        <FormattedMessage id="general.create" />
+                    </Button>
                 </Fields>
                 <Error>{serverError}</Error>
             </Form>

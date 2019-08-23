@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
 import { Select } from "antd";
+import { FormattedMessage } from "react-intl";
 
 const { Option } = Select;
 
@@ -14,22 +15,22 @@ export const StepStakeholder = ({ onStakeholderChange, stakeholder }) => {
     return (
         <StepAction>
             <label>
-                Stakeholder
+                <FormattedMessage id="newTarget.stakeholder" />
                 <Select name="stakeholder" value={stakeholder} onChange={handleStakeholderChange}>
                     <Option name="stakeholder" value="Environment">
-                        Environment
+                        <FormattedMessage id="newTarget.stakeholder.environment" />
                     </Option>
                     <Option name="stakeholder" value="Community">
-                        Community
+                        <FormattedMessage id="newTarget.stakeholder.community" />
                     </Option>
                     <Option name="stakeholder" value="Workers">
-                        Workers
+                        <FormattedMessage id="newTarget.stakeholder.workers" />
                     </Option>
                     <Option name="stakeholder" value="Governance">
-                        Governance
+                        <FormattedMessage id="newTarget.stakeholder.governance" />
                     </Option>
                     <Option name="stakeholder" value="Customer">
-                        Customer
+                        <FormattedMessage id="newTarget.stakeholder.customer" />
                     </Option>
                 </Select>
             </label>

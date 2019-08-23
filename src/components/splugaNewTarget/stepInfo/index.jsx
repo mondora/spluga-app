@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import { Input } from "antd";
 import { StepAction } from "../styled";
+import { translateMessage } from "../../../i18n";
+import { FormattedMessage } from "react-intl";
 
 //export class for testing pourpose
 export const StepInfo = ({ onNameChange, onDescriptionChange, name, description }) => {
@@ -16,22 +18,26 @@ export const StepInfo = ({ onNameChange, onDescriptionChange, name, description 
 
     return (
         <StepAction>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">
+                <FormattedMessage id="general.name" />
+            </label>
             <Input
                 id="name"
                 name="name"
                 type="text"
-                placeholder="Enter target's name"
+                placeholder={translateMessage("newTarget.info.name")}
                 value={name}
                 onChange={handleNameChange}
             />
             <div>
-                <label htmlFor="description">Decscription</label>
+                <label htmlFor="description">
+                    <FormattedMessage id="general.description" />
+                </label>
                 <Input.TextArea
                     id="description"
                     name="description"
                     type="text"
-                    placeholder="Enter description"
+                    placeholder={translateMessage("newTarget.info.description")}
                     value={description}
                     onChange={handleDescriptionChange}
                 />

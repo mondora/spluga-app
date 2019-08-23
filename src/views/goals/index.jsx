@@ -9,6 +9,7 @@ import { PageContainer, Title } from "./styled";
 import SplugaTable from "../../components/splugaTable";
 import SplugaForm from "../../components/splugaForm";
 import SplugaResult from "../../components/splugaResult";
+import { FormattedMessage } from "react-intl";
 
 export const Goals = ({ auth, goals, goal, getGoalsStatus, getGoals, addGoal }) => {
     useEffect(() => {
@@ -31,7 +32,7 @@ export const Goals = ({ auth, goals, goal, getGoalsStatus, getGoals, addGoal }) 
     const fields = [
         {
             name: "name",
-            description: "Name",
+            description: <FormattedMessage id="general.name" />,
             ref: {
                 required: "this is required",
                 minLength: {
@@ -42,7 +43,7 @@ export const Goals = ({ auth, goals, goal, getGoalsStatus, getGoals, addGoal }) 
         },
         {
             name: "description",
-            description: "Description",
+            description: <FormattedMessage id="general.description" />,
             ref: {
                 required: "this is required",
                 minLength: {
@@ -53,7 +54,7 @@ export const Goals = ({ auth, goals, goal, getGoalsStatus, getGoals, addGoal }) 
         },
         {
             name: "uom",
-            description: "Unit of Measure",
+            description: <FormattedMessage id="goals.uom" />,
             ref: {
                 required: "this is required",
                 minLength: {
@@ -78,7 +79,12 @@ export const Goals = ({ auth, goals, goal, getGoalsStatus, getGoals, addGoal }) 
                 onChange={x => onChange(x)}
                 loadingStatus={getGoalsStatus}
             />
-            <SplugaForm title="Create Goals" fields={fields} serverError={serverError} onSubmit={x => onSubmit(x)} />
+            <SplugaForm
+                title={<FormattedMessage id="goals.create" />}
+                fields={fields}
+                serverError={serverError}
+                onSubmit={x => onSubmit(x)}
+            />
         </PageContainer>
     );
 };

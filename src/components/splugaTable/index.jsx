@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Switch, Button, Table, Spin } from "antd";
 
 import { Container } from "./styled";
+import { FormattedMessage } from "react-intl";
 export const SplugaTable = ({ dataSourceName, dataSource, onChange, loadingStatus }) => {
     const handleChange = row => {
         if (row.disabled) {
@@ -19,12 +20,12 @@ export const SplugaTable = ({ dataSourceName, dataSource, onChange, loadingStatu
     const columns = {
         goals: [
             {
-                title: "Name",
+                title: <FormattedMessage id="general.name" />,
                 dataIndex: "name",
                 rowKey: "name"
             },
             {
-                title: "Description",
+                title: <FormattedMessage id="general.description" />,
                 dataIndex: "description"
             },
             {
@@ -34,22 +35,22 @@ export const SplugaTable = ({ dataSourceName, dataSource, onChange, loadingStatu
         ],
         apps: [
             {
-                title: "Name",
+                title: <FormattedMessage id="general.name" />,
                 dataIndex: "name",
                 rowKey: "name"
             },
             {
-                title: "Enabled",
+                title: <FormattedMessage id="general.enabled" />,
                 key: "enabled",
                 render: row => <Switch checked={!row.disabled} onChange={() => handleChange(row)} />
             },
             {
-                title: "Delete",
+                title: <FormattedMessage id="general.delete" />,
                 key: "delete",
                 render: row => (
                     <div>
                         <Button type="danger" onClick={() => handleDelete(row)}>
-                            Delete
+                            <FormattedMessage id="general.delete" />
                         </Button>
                     </div>
                 )

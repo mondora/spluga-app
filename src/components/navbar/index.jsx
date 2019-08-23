@@ -4,6 +4,7 @@ import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { PageContainer } from "./styled";
+import { FormattedMessage } from "react-intl";
 
 export const NavBar = ({ currentPage }) => {
     return (
@@ -12,19 +13,19 @@ export const NavBar = ({ currentPage }) => {
                 <Menu.Item key="profile">
                     <Link to="/">
                         <Icon type="user" />
-                        Profile
+                        <FormattedMessage id="navbar.profile" />
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="companies">
                     <Link to="/companies">
                         <Icon type="team" />
-                        Company
+                        <FormattedMessage id="navbar.company" />
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="apps">
                     <Link to="/apps">
                         <Icon type="api" />
-                        Apps
+                        <FormattedMessage id="navbar.app" />
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="goals">
@@ -42,7 +43,7 @@ export const NavBar = ({ currentPage }) => {
                 <Menu.Item key="activities">
                     <Link to="/activities">
                         <Icon type="rise" />
-                        Activities
+                        <FormattedMessage id="navbar.activities" />
                     </Link>
                 </Menu.Item>
             </Menu>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
 import { Select, InputNumber } from "antd";
+import { FormattedMessage } from "react-intl";
 
 const { Option } = Select;
 
@@ -22,18 +23,20 @@ export const StepType = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLim
         <React.Fragment>
             <StepAction>
                 <label>
-                    Target/Limit:
+                    <FormattedMessage id="newTarget.type" />
                     <Select name="type" value={type} onChange={handleOnChangeType}>
                         <Option name="type" value="target">
                             Target
                         </Option>
                         <Option name="type" value="limit">
-                            Limit
+                            <FormattedMessage id="newTarget.type.limit" />
                         </Option>
                     </Select>
                 </label>
 
-                <label htmlFor="value"> Value </label>
+                <label htmlFor="value">
+                    <FormattedMessage id="newTarget.type.value" />
+                </label>
                 <InputNumber
                     id="value"
                     name="targetOrLimitValue"

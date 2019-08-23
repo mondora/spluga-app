@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
 import { DatePicker } from "antd";
+import { FormattedMessage } from "react-intl";
 
 const { RangePicker } = DatePicker;
 
@@ -15,7 +16,9 @@ export const StepPeriod = ({ onStartDateChange, onEndDateChange }) => {
 
     return (
         <StepAction>
-            <div style={{ margin: 8 }}>Enter your target period:</div>
+            <div style={{ margin: 8 }}>
+                <FormattedMessage id="newTarget.period" />
+            </div>
             <RangePicker onChange={handleChangeDate} />
         </StepAction>
     );

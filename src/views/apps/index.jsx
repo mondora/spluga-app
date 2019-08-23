@@ -9,6 +9,7 @@ import SplugaForm from "../../components/splugaForm";
 import SplugaResult from "../../components/splugaResult";
 
 import { PageContainer, Title } from "./styled";
+import { FormattedMessage } from "react-intl";
 
 export const Apps = ({
     apps,
@@ -52,15 +53,13 @@ export const Apps = ({
         addApp(data.appName);
     };
 
-    const resultTitle = app ? "New app " + app.name + " created" : null;
-    const resultSubTitle = app
-        ? "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key."
-        : null;
+    const resultTitle = app ? <FormattedMessage id="app.create" values={{ appName: `${app.name}` }} /> : null;
+    const resultSubTitle = app ? <FormattedMessage id="app.message" /> : null;
 
     const fields = [
         {
             name: "appName",
-            description: "App Name",
+            description: <FormattedMessage id="app.name" />,
             ref: {
                 required: "this is required",
                 minLength: {
@@ -85,7 +84,12 @@ export const Apps = ({
                 onChange={x => onChange(x)}
                 loadingStatus={getAppsStatus}
             />
-            <SplugaForm title="Create App" fields={fields} serverError={serverError} onSubmit={x => onSubmit(x)} />
+            <SplugaForm
+                title={<FormattedMessage id={"app.create.title"} />}
+                fields={fields}
+                serverError={serverError}
+                onSubmit={x => onSubmit(x)}
+            />
         </PageContainer>
     );
 };

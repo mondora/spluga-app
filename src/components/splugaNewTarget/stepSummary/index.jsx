@@ -3,20 +3,35 @@ import PropTypes from "prop-types";
 
 import { Descriptions } from "antd";
 import { StepAction } from "../styled";
+import { FormattedMessage } from "react-intl";
 
 //export function for testing pourpose
 export const StepSummary = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
     return (
         <React.Fragment>
             <StepAction>
-                <Descriptions title="Create Target Summary">
-                    <Descriptions.Item label={"name"}> {name} </Descriptions.Item>
-                    <Descriptions.Item label={"description"}> {description} </Descriptions.Item>
-                    <Descriptions.Item label={"stakeholder"}> {stakeholder} </Descriptions.Item>
-                    <Descriptions.Item label={"goal"}> {goal} </Descriptions.Item>
-                    <Descriptions.Item label={"limit/target"}> {targetOrLimitValue} </Descriptions.Item>
-                    <Descriptions.Item label={"start date"}> {startDate} </Descriptions.Item>
-                    <Descriptions.Item label={"end date"}>{endDate} </Descriptions.Item>
+                <Descriptions title={<FormattedMessage id="newTarget.summary.title" />}>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.name" />}>
+                        {name}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.description" />}>
+                        {description}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.stakeholder" />}>
+                        {stakeholder}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.goal" />}>
+                        {goal}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.target" />}>
+                        {targetOrLimitValue}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.startDate" />}>
+                        {startDate}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.endDate" />}>
+                        {endDate}
+                    </Descriptions.Item>
                 </Descriptions>
             </StepAction>
         </React.Fragment>

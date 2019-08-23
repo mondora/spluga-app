@@ -12,7 +12,7 @@ export const CompanyForm = ({ handleSubmit }) => {
     return (
         <Fragment>
             <CompanyFormContainer onSubmit={handleSubmit}>
-                <TextField label={<FormattedMessage id="c-company-form.name" />} name={"name"} />
+                <TextField label={<FormattedMessage id="general.name" />} name={"name"} />
                 <Upload
                     accept="image/*"
                     listType="picture-card"

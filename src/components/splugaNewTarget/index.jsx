@@ -9,6 +9,7 @@ import StepType from "./stepType";
 import StepPeriod from "./stepPeriod";
 import StepSummary from "./stepSummary";
 import { StepContent, StepAction } from "./styled";
+import { FormattedMessage } from "react-intl";
 
 const { Step } = Steps;
 
@@ -148,22 +149,22 @@ export const SplugaNewTarget = props => {
                     <StepAction>
                         {currentStep < steps.length - 1 && (
                             <Button type="primary" onClick={_next}>
-                                Next
+                                <FormattedMessage id="newTarget.next" />
                             </Button>
                         )}
                         {currentStep === steps.length - 1 && (
                             <Button.Group>
                                 <Button type="primary" htmlType="submit">
-                                    Done
+                                    <FormattedMessage id="newTarget.done" />
                                 </Button>
                                 <Button type="danger" onClick={() => setCurrentStep(0)}>
-                                    Reject
+                                    <FormattedMessage id="newTarget.reject" />
                                 </Button>
                             </Button.Group>
                         )}
                         {currentStep > 0 && (
                             <Button style={{ marginLeft: 8 }} onClick={_prev}>
-                                Previous
+                                <FormattedMessage id="newTarget.previous" />
                             </Button>
                         )}
                     </StepAction>
