@@ -10,6 +10,7 @@ import StepPeriod from "./stepPeriod";
 import StepSummary from "./stepSummary";
 import { StepContent, StepAction } from "./styled";
 import { FormattedMessage } from "react-intl";
+import { translateMessage } from "../../i18n";
 
 const { Step } = Steps;
 
@@ -120,10 +121,11 @@ export const SplugaNewTarget = props => {
             setStartDate();
             setEndDate();
             //rendering progress bar
-            message.success(`Processing complete! Your target has been saved`);
+
+            message.success(translateMessage("newTarget.message.success"));
             setDone(true);
         } else {
-            message.error("to create target you need fill all data, please click on reject to go back at step 1");
+            message.error(translateMessage("newTarget.message.error"));
         }
     };
 
