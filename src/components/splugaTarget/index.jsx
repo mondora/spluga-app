@@ -7,7 +7,9 @@ import { Button, Modal } from "antd";
 import { FormattedMessage } from "react-intl";
 
 //TODO:
-const SplugaTarget = props => {
+
+//export class for testing pourpose
+export const SplugaTarget = props => {
     const [visible, setVisible] = useState(false);
 
     const showModal = () => {
