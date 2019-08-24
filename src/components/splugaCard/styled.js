@@ -23,8 +23,6 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 340px;
-    height: 360px;
     background-color: white;
     border: 3px solid #bfbccb;
 `;

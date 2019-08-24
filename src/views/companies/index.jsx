@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
+import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { connect } from "react-redux";
@@ -41,12 +41,15 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
         addCompany(data, ownerId);
     };
     const serverError = null;
+    const companyExist = company.companies === undefined || company.companies.length === 0;
 
     return !loading && !getCompanyStatus.started ? (
-        company.companies === undefined || company.companies.length === 0 ? (
-            <div>
-                <CompanyForm serverError={serverError} onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
-            </div>
+        companyExist ? (
+            <PageContainer>
+                <FieldCenter>
+                    <CompanyForm serverError={serverError} onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
+                </FieldCenter>
+            </PageContainer>
         ) : (
             <PageContainer>
                 <FieldLeft>

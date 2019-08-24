@@ -5,7 +5,7 @@ import { getCompany } from "../../actions/companies";
 
 import SplugaCard from "../../components/splugaCard";
 import { Spin } from "antd";
-import { PageContainer, SpinContainer } from "./styled";
+import { PageContainer, SpinContainer, FieldLeft } from "./styled";
 
 export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
     const [loading, setLoading] = useState(true);
@@ -22,7 +22,9 @@ export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
 
     return !loading && !getCompanyStatus.started ? (
         <PageContainer>
-            <SplugaCard auth={auth} company={company.companies[0]} type={"user"} />
+            <FieldLeft>
+                <SplugaCard auth={auth} company={company.companies[0]} type={"user"} />
+            </FieldLeft>
         </PageContainer>
     ) : (
         <SpinContainer>
