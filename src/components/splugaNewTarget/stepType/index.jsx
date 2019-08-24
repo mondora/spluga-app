@@ -23,19 +23,19 @@ export const StepType = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLim
         <React.Fragment>
             <StepAction>
                 <label>
-                    <FormattedMessage id="newTarget.type" />
+                    <FormattedMessage id="c-splugaNewTarget.type" />
                     <Select name="type" value={type} onChange={handleOnChangeType}>
                         <Option name="type" value="target">
                             Target
                         </Option>
                         <Option name="type" value="limit">
-                            <FormattedMessage id="newTarget.type.limit" />
+                            <FormattedMessage id="c-splugaNewTarget.type.limit" />
                         </Option>
                     </Select>
                 </label>
 
                 <label htmlFor="value">
-                    <FormattedMessage id="newTarget.type.value" />
+                    <FormattedMessage id="c-splugaNewTarget.type.value" />
                 </label>
                 <InputNumber
                     id="value"

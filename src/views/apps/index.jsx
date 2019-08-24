@@ -53,13 +53,13 @@ export const Apps = ({
         addApp(data.appName);
     };
 
-    const resultTitle = app ? <FormattedMessage id="app.create" values={{ appName: `${app.name}` }} /> : null;
-    const resultSubTitle = app ? <FormattedMessage id="app.message" /> : null;
+    const resultTitle = app ? <FormattedMessage id="v-app.create" values={{ appName: `${app.name}` }} /> : null;
+    const resultSubTitle = app ? <FormattedMessage id="v-apps.message" /> : null;
 
     const fields = [
         {
             name: "appName",
-            description: <FormattedMessage id="app.name" />,
+            description: <FormattedMessage id="v-apps.name" />,
             ref: {
                 required: "this is required",
                 minLength: {
@@ -85,7 +85,7 @@ export const Apps = ({
                 loadingStatus={getAppsStatus}
             />
             <SplugaForm
-                title={<FormattedMessage id={"app.create.title"} />}
+                title={<FormattedMessage id={"v-apps.create.title"} />}
                 fields={fields}
                 serverError={serverError}
                 onSubmit={x => onSubmit(x)}

@@ -25,7 +25,7 @@ export const StepInfo = ({ onNameChange, onDescriptionChange, name, description 
                 id="name"
                 name="name"
                 type="text"
-                placeholder={translateMessage("newTarget.info.name")}
+                placeholder={translateMessage("c-splugaNewTarget.info.name")}
                 value={name}
                 onChange={handleNameChange}
             />
@@ -37,7 +37,7 @@ export const StepInfo = ({ onNameChange, onDescriptionChange, name, description 
                     id="description"
                     name="description"
                     type="text"
-                    placeholder={translateMessage("newTarget.info.description")}
+                    placeholder={translateMessage("c-splugaNewTarget.info.description")}
                     value={description}
                     onChange={handleDescriptionChange}
                 />

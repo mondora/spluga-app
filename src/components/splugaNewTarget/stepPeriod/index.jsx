@@ -17,7 +17,7 @@ export const StepPeriod = ({ onStartDateChange, onEndDateChange }) => {
     return (
         <StepAction>
             <div style={{ margin: 8 }}>
-                <FormattedMessage id="newTarget.period" />
+                <FormattedMessage id="c-splugaNewTarget.period" />
             </div>
             <RangePicker onChange={handleChangeDate} />
         </StepAction>

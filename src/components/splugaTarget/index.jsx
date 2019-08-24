@@ -34,7 +34,7 @@ export const SplugaTarget = props => {
             </Button>
 
             <Modal
-                title={<FormattedMessage id="newTarget.create" />}
+                title={<FormattedMessage id="c-splugaNewTarget.create" />}
                 visible={visible}
                 onOk={handleOk}
                 onCancel={handleCancel}

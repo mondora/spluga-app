@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { PageContainer, SpinContainer, Title } from "./styled";
+import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { connect } from "react-redux";
@@ -9,10 +9,12 @@ import { Spin } from "antd";
 
 import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
+import CompanyTeam from "../../components/companyTeam";
 
 export const Companies = ({ company, getCompany, addCompany, auth, getCompanyStatus, addCompanyStatus }) => {
     const [loading, setLoading] = useState(true);
     const [companyCreated, setCompanyCreated] = useState(false);
+    const [selectedFile, setSelectedFile] = useState("");
     useEffect(() => {
         getCompany({});
     }, [getCompany, companyCreated]);
@@ -29,26 +31,32 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
         }
     }, [getCompanyStatus, companyCreated]);
 
+    const handleSelectFile = base64 => {
+        setSelectedFile(base64);
+    };
+
     const handleSubmit = data => {
-        console.log({ data }); /*
+        data.logo = selectedFile;
         const ownerId = auth.currentUser.id;
-        addCompany(data, ownerId);*/
+        addCompany(data, ownerId);
     };
     const serverError = null;
 
     return !loading && !getCompanyStatus.started ? (
-        <PageContainer>
-            {company.companies === undefined || company.companies.length === 0 ? (
-                <div>
-                    <CompanyForm serverError={serverError} onSubmit={handleSubmit} />
-                </div>
-            ) : (
-                <div>
-                    <Title>Company</Title>
+        company.companies === undefined || company.companies.length === 0 ? (
+            <div>
+                <CompanyForm serverError={serverError} onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
+            </div>
+        ) : (
+            <PageContainer>
+                <FieldLeft>
                     <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
-                </div>
-            )}
-        </PageContainer>
+                </FieldLeft>
+                <FieldRight>
+                    <CompanyTeam />
+                </FieldRight>
+            </PageContainer>
+        )
     ) : (
         <SpinContainer>
             <Spin size="large" />

@@ -15,22 +15,22 @@ export const StepStakeholder = ({ onStakeholderChange, stakeholder }) => {
     return (
         <StepAction>
             <label>
-                <FormattedMessage id="newTarget.stakeholder" />
+                <FormattedMessage id="c-splugaNewTarget.stakeholder" />
                 <Select name="stakeholder" value={stakeholder} onChange={handleStakeholderChange}>
                     <Option name="stakeholder" value="Environment">
-                        <FormattedMessage id="newTarget.stakeholder.environment" />
+                        <FormattedMessage id="c-splugaNewTarget.stakeholder.environment" />
                     </Option>
                     <Option name="stakeholder" value="Community">
-                        <FormattedMessage id="newTarget.stakeholder.community" />
+                        <FormattedMessage id="c-splugaNewTarget.stakeholder.community" />
                     </Option>
                     <Option name="stakeholder" value="Workers">
-                        <FormattedMessage id="newTarget.stakeholder.workers" />
+                        <FormattedMessage id="c-splugaNewTarget.stakeholder.workers" />
                     </Option>
                     <Option name="stakeholder" value="Governance">
-                        <FormattedMessage id="newTarget.stakeholder.governance" />
+                        <FormattedMessage id="c-splugaNewTarget.stakeholder.governance" />
                     </Option>
                     <Option name="stakeholder" value="Customer">
-                        <FormattedMessage id="newTarget.stakeholder.customer" />
+                        <FormattedMessage id="c-splugaNewTarget.stakeholder.customer" />
                     </Option>
                 </Select>
             </label>

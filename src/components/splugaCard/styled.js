@@ -34,6 +34,14 @@ export const AvatarContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0px 5px;
+`;
+
+export const Avatar = styled.img`
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
 `;

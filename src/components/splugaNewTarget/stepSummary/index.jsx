@@ -10,26 +10,26 @@ export const StepSummary = ({ name, description, stakeholder, goal, targetOrLimi
     return (
         <React.Fragment>
             <StepAction>
-                <Descriptions title={<FormattedMessage id="newTarget.summary.title" />}>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.name" />}>
+                <Descriptions title={<FormattedMessage id="c-splugaNewTarget.summary.title" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.name" />}>
                         {name}
                     </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.description" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.description" />}>
                         {description}
                     </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.stakeholder" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.stakeholder" />}>
                         {stakeholder}
                     </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.goal" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.goal" />}>
                         {goal}
                     </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.target" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.target" />}>
                         {targetOrLimitValue}
                     </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.startDate" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.startDate" />}>
                         {startDate}
                     </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="newTarget.summary.endDate" />}>
+                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.endDate" />}>
                         {endDate}
                     </Descriptions.Item>
                 </Descriptions>

@@ -58,15 +58,6 @@ export function addCompany(data, ownerId) {
             type: ADD_COMPANY_START
         });
 
-        /*
-	
-	DocumentT =	{
-		_id: automatically insert
-		ownerId":"5d307d2f9e861a411ba585ef",
-		"name":"mondora srl sb"
-	}
-*/
-
         const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
 
         try {

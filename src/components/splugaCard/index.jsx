@@ -1,7 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { CardContainer, AvatarContainer, CardTitle, CardSubtitle, CardDescription } from "./styled";
-import { Avatar } from "antd";
+import { CardContainer, AvatarContainer, CardTitle, CardSubtitle, CardDescription, Avatar } from "./styled";
 import { FormattedMessage } from "react-intl";
 
 //export SplugaCard for testing pourpose
@@ -10,7 +9,6 @@ export const SplugaCard = ({ auth, company, type }) => {
 
     //TODO: n will be taken from the achieved acitvities
     const n = 100;
-
     return (
         <CardContainer>
             {data && type === "user" ? (
@@ -24,17 +22,20 @@ export const SplugaCard = ({ auth, company, type }) => {
                 </div>
             )}
             <AvatarContainer>
-                <Avatar size={70} src={data && type === "user" ? data.picture : null} />
+                <Avatar
+                    size="large"
+                    src={data && type === "user" ? data.picture : `data:image/jpeg;base64,${company.logo}`}
+                />
                 <CardSubtitle>
                     {type === "user" ? (
-                        <FormattedMessage id="splugaCard.employee" />
+                        <FormattedMessage id="c-splugaCard.employee" />
                     ) : (
-                        <FormattedMessage id="splugaCard.company" />
+                        <FormattedMessage id="c-splugaCard.company" />
                     )}
                 </CardSubtitle>
             </AvatarContainer>
             <CardDescription>
-                <FormattedMessage id="splugaCard.description" values={{ n: `${n}` }} />
+                <FormattedMessage id="c-splugaCard.description" values={{ n: `${n}` }} />
             </CardDescription>
         </CardContainer>
     );

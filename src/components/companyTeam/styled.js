@@ -12,14 +12,3 @@ export const Title = styled.div`
     font-weight: bolder;
     font-size: 20px;
 `;
-
-export const UploadContainer = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-
-export const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-`;

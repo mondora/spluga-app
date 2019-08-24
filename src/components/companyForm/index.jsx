@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { CompanyFormContainer, ButtonContainer } from "./styled";
+import { CompanyFormContainer, ButtonContainer, Title, UploadContainer } from "./styled";
 import { form } from "@mondora/conv-redux-form";
 import { FormattedMessage } from "react-intl";
 import { Button } from "antd";
@@ -8,23 +8,39 @@ import TextField from "@mondora/arc/antd/TextField";
 import { Upload, Icon } from "antd";
 import { companyFormSchema } from "../../utils/form-schema/company-form-schema";
 
-export const CompanyForm = ({ handleSubmit }) => {
+export const CompanyForm = ({ handleSubmit, onSelectFile }) => {
+    const handleSelectFile = file => {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = evt => {
+            const fileContent = evt.target.result;
+            const base64 = fileContent.split(",")[1];
+            onSelectFile(base64);
+        };
+    };
     return (
         <Fragment>
             <CompanyFormContainer onSubmit={handleSubmit}>
+                <Title>
+                    <FormattedMessage id="c-companyForm.title" />
+                </Title>
                 <TextField label={<FormattedMessage id="general.name" />} name={"name"} />
-                <Upload
-                    accept="image/*"
-                    listType="picture-card"
-                    beforeUpload={file => console.log(file)}
-                    onRemove={file => console.log(file)}
-                >
-                    <Button>
-                        <Icon type="upload" /> <FormattedMessage id="c-company-form.logo" />
-                    </Button>
-                </Upload>
+                <UploadContainer>
+                    <Upload
+                        accept="image/*"
+                        listType="picture-card"
+                        id={"logo"}
+                        beforeUpload={file => handleSelectFile(file)}
+                        onRemove={file => console.log(file)}
+                    >
+                        <Button>
+                            <Icon type="upload" /> <FormattedMessage id="c-companyForm.logo" />
+                        </Button>
+                    </Upload>
+                </UploadContainer>
+
                 <ButtonContainer>
-                    <Button color="blue" variant="primary" htmlType="submit">
+                    <Button htmlType="submit">
                         <FormattedMessage id="general.save" />
                     </Button>
                 </ButtonContainer>

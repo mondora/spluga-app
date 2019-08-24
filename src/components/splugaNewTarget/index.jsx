@@ -122,10 +122,10 @@ export const SplugaNewTarget = props => {
             setEndDate();
             //rendering progress bar
 
-            message.success(translateMessage("newTarget.message.success"));
+            message.success(translateMessage("c-splugaNewTarget.message.success"));
             setDone(true);
         } else {
-            message.error(translateMessage("newTarget.message.error"));
+            message.error(translateMessage("c-splugaNewTarget.message.error"));
         }
     };
 
@@ -151,22 +151,22 @@ export const SplugaNewTarget = props => {
                     <StepAction>
                         {currentStep < steps.length - 1 && (
                             <Button type="primary" onClick={_next}>
-                                <FormattedMessage id="newTarget.next" />
+                                <FormattedMessage id="general.next" />
                             </Button>
                         )}
                         {currentStep === steps.length - 1 && (
                             <Button.Group>
                                 <Button type="primary" htmlType="submit">
-                                    <FormattedMessage id="newTarget.done" />
+                                    <FormattedMessage id="general.done" />
                                 </Button>
                                 <Button type="danger" onClick={() => setCurrentStep(0)}>
-                                    <FormattedMessage id="newTarget.reject" />
+                                    <FormattedMessage id="general.reject" />
                                 </Button>
                             </Button.Group>
                         )}
                         {currentStep > 0 && (
                             <Button style={{ marginLeft: 8 }} onClick={_prev}>
-                                <FormattedMessage id="newTarget.previous" />
+                                <FormattedMessage id="general.previous" />
                             </Button>
                         )}
                     </StepAction>
