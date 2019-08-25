@@ -41,13 +41,13 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
         addCompany(data, ownerId);
     };
     const serverError = null;
-    const companyExist = company.companies === undefined || company.companies.length === 0;
+    const companyExist = company === undefined || company.companies === undefined || company.companies.length === 0;
 
     return !loading && !getCompanyStatus.started ? (
         companyExist ? (
             <PageContainer>
                 <FieldCenter>
-                    <CompanyForm serverError={serverError} onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
+                    <CompanyForm onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
                 </FieldCenter>
             </PageContainer>
         ) : (

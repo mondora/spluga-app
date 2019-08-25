@@ -13,8 +13,8 @@ describe("Apps view", () => {
     };
 
     it("Render view without error when proprs are empty", () => {
-        const element = shallow(<Apps {...propTypes} />);
-        expect(element.find("SplugaTable").length).toBe(1);
-        expect(element.find("SplugaForm").length).toBe(1);
+        const view = shallow(<Apps {...propTypes} />);
+        expect(view.find("SplugaTable").length).toBe(1);
+        expect(view.find("SplugaForm").length).toBe(1);
     });
 });

@@ -1,15 +1,22 @@
 import React, { Fragment } from "react";
-import { CompanyFormContainer, Title } from "./styled";
+import { CompanyTeamContainer, Title, FieldLeft, FieldRight } from "./styled";
 import { FormattedMessage } from "react-intl";
+import { Icon } from "antd";
 
 export const CompanyTeam = () => {
     return (
         <Fragment>
-            <CompanyFormContainer>
-                <Title>
-                    <FormattedMessage id="c-companyTeam.title" />
-                </Title>
-            </CompanyFormContainer>
+            <CompanyTeamContainer>
+                <FieldLeft>
+                    <Title>
+                        <FormattedMessage id="c-companyTeam.title" />
+                    </Title>
+                </FieldLeft>
+                <FieldRight>
+                    <Icon type="user-add" />
+                    <FormattedMessage id="c-companyTeam.invite" />
+                </FieldRight>
+            </CompanyTeamContainer>
         </Fragment>
     );
 };

@@ -23,54 +23,14 @@ describe("StepSummary", () => {
         };
 
         const element = shallow(<StepSummary {...propTypes} />);
+        const descriptions = element.find("Descriptions");
 
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(0)
-                .props().children[1]
-        ).toBe(propTypes.name);
-
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(1)
-                .props().children[1]
-        ).toBe("test-description");
-
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(2)
-                .props().children[1]
-        ).toBe("test-stakeholder");
-
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(3)
-                .props().children[1]
-        ).toBe("test-goal");
-
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(4)
-                .props().children[1]
-        ).toBe("46");
-
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(5)
-                .props().children[1]
-        ).toBe("01-01-2018");
-
-        expect(
-            element
-                .find("Descriptions")
-                .childAt(6)
-                .props().children[0]
-        ).toBe("30-04-2019");
+        expect(descriptions.childAt(0).prop("children")).toBe(propTypes.name);
+        expect(descriptions.childAt(1).prop("children")).toBe(propTypes.description);
+        expect(descriptions.childAt(2).prop("children")).toBe(propTypes.stakeholder);
+        expect(descriptions.childAt(3).prop("children")).toBe(propTypes.goal);
+        expect(descriptions.childAt(4).prop("children")).toBe(propTypes.targetOrLimitValue);
+        expect(descriptions.childAt(5).prop("children")).toBe(propTypes.startDate);
+        expect(descriptions.childAt(6).prop("children")).toBe(propTypes.endDate);
     });
 });

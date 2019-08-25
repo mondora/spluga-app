@@ -19,6 +19,7 @@ export default {
     "c-companyForm.title": "Create company",
 
     "c-companyTeam.title": "Your team",
+    "c-companyTeam.invite": "Add new people",
 
     "c-splugaCard.employee": "Employee",
     "c-splugaCard.company": "Company",

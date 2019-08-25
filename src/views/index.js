@@ -9,7 +9,7 @@ import Root from "./root";
 import PropTypes from "prop-types";
 import { login } from "../actions/auth";
 
-const Routes = ({ auth, login }) => {
+export const Routes = ({ auth, login }) => {
     useEffect(() => {
         if (!auth.currentUser) {
             login();

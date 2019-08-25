@@ -18,14 +18,15 @@ beforeEach(() => {
 describe("SplugaCard", () => {
     it("Render component with only required data", () => {
         const element = shallow(<SplugaCard auth={auth} />);
+
         expect(element.find("div").length).toBe(1);
     });
 
     it("Render component with data", () => {
         const company = { name: "name" };
-
         const element = shallow(<SplugaCard auth={auth} company={company} />);
-        expect(element.find("Avatar").length).toBe(1);
+
+        expect(element.find("FormattedMessage").length).toBe(2);
         expect(element.find("div").length).toBe(1);
     });
 
@@ -33,7 +34,6 @@ describe("SplugaCard", () => {
         const company = { name: "name" };
 
         shallow(<SplugaCard auth={auth} company={company} type={""} />);
-
         expect(console.error).toHaveBeenCalledTimes(1);
     });
 });

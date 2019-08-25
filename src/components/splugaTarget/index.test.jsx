@@ -9,7 +9,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("SplugaTarget", () => {
     it("Render component without error", () => {
         const element = shallow(<SplugaTarget />);
-        console.log("ciao", element.debug());
         expect(element.find("SplugaNewTarget").exists()).toBe(true);
         expect(element.find("Modal").exists()).toBe(true);
         expect(element.find("Button").length).toBe(2);
