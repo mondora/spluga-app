@@ -14,22 +14,17 @@ describe("StepType", () => {
     });
 
     it("Render component passing props", () => {
-        const onTargetOrLimitValueChange = jest.fn();
+        const onValueChange = jest.fn();
         const onTypeChange = jest.fn();
         const event = 34;
         const element = shallow(
-            <StepType
-                onTargetOrLimitValueChange={onTargetOrLimitValueChange}
-                onTypeChange={onTypeChange}
-                targetOrLimitValue={"80"}
-                type={"target"}
-            />
+            <StepType onValueChange={onValueChange} onTypeChange={onTypeChange} value={"80"} type={"target"} />
         );
 
         expect(element.find("Select").props().value).toBe("target");
         element.find("Select").simulate("change");
         expect(onTypeChange).toHaveBeenCalled();
         element.find("InputNumber").simulate("change", event);
-        expect(onTargetOrLimitValueChange).toHaveBeenCalled();
+        expect(onValueChange).toHaveBeenCalled();
     });
 });

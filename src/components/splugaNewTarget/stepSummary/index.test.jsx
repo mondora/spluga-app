@@ -17,7 +17,7 @@ describe("StepSummary", () => {
             description: "test-description",
             stakeholder: "test-stakeholder",
             goal: "test-goal",
-            targetOrLimitValue: "46",
+            value: "46",
             startDate: "01-01-2018",
             endDate: "30-04-2019"
         };
@@ -29,7 +29,7 @@ describe("StepSummary", () => {
         expect(descriptions.childAt(1).prop("children")).toBe(propTypes.description);
         expect(descriptions.childAt(2).prop("children")).toBe(propTypes.stakeholder);
         expect(descriptions.childAt(3).prop("children")).toBe(propTypes.goal);
-        expect(descriptions.childAt(4).prop("children")).toBe(propTypes.targetOrLimitValue);
+        expect(descriptions.childAt(4).prop("children")).toBe(propTypes.value);
         expect(descriptions.childAt(5).prop("children")).toBe(propTypes.startDate);
         expect(descriptions.childAt(6).prop("children")).toBe(propTypes.endDate);
     });

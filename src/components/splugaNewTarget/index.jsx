@@ -36,7 +36,7 @@ export const SplugaNewTarget = props => {
     const [stakeholder, setStakeholder] = useState("Environment");
     const [goal, setGoal] = useState("");
     const [type, setType] = useState("");
-    const [targetOrLimitValue, setTargetOrLimitValue] = useState(0);
+    const [value, setValue] = useState(0);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [done, setDone] = useState(false);
@@ -67,14 +67,7 @@ export const SplugaNewTarget = props => {
         {
             key: 3,
             title: "",
-            content: (
-                <StepType
-                    onTargetOrLimitValueChange={setTargetOrLimitValue}
-                    onTypeChange={setType}
-                    targetOrLimitValue={targetOrLimitValue}
-                    type={type}
-                />
-            )
+            content: <StepType onValueChange={setValue} onTypeChange={setType} value={value} type={type} />
         },
         {
             key: 4,
@@ -90,7 +83,7 @@ export const SplugaNewTarget = props => {
                     description={description}
                     stakeholder={stakeholder}
                     goal={goal}
-                    targetOrLimitValue={targetOrLimitValue}
+                    value={value}
                     startDate={startDate}
                     endDate={endDate}
                 />
@@ -111,7 +104,7 @@ export const SplugaNewTarget = props => {
         //create target (addTarget)
 
         //check on user input
-        if (name && description && startDate && endDate && targetOrLimitValue !== 0 && type) {
+        if (name && description && startDate && endDate && value !== 0 && type) {
             //clean all form
             setName();
             setDescription();
@@ -138,7 +131,7 @@ export const SplugaNewTarget = props => {
                         "0%": "#108ee9",
                         "100%": "#87d068"
                     }}
-                    percent={targetOrLimitValue}
+                    percent={value}
                 />
             ) : (
                 <form name="target-form" onSubmit={handleSubmit}>

@@ -10,9 +10,9 @@ const { Option } = Select;
 //target or limit potrei prenderlo dalle unità di misura (goals) --->  ?
 
 //export function for testing pourpose
-export const StepType = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLimitValue, type }) => {
-    const handleOnChangeTargetOrLimitValue = value => {
-        onTargetOrLimitValueChange(value);
+export const StepType = ({ onValueChange, onTypeChange, value, type }) => {
+    const handleOnChangeValue = value => {
+        onValueChange(value);
     };
 
     const handleOnChangeType = value => {
@@ -37,21 +37,16 @@ export const StepType = ({ onTargetOrLimitValueChange, onTypeChange, targetOrLim
                 <label htmlFor="value">
                     <FormattedMessage id="c-splugaNewTarget.type.value" />
                 </label>
-                <InputNumber
-                    id="value"
-                    name="targetOrLimitValue"
-                    value={targetOrLimitValue}
-                    onChange={handleOnChangeTargetOrLimitValue}
-                />
+                <InputNumber id="value" name="value" value={value} onChange={handleOnChangeValue} />
             </StepAction>
         </React.Fragment>
     );
 };
 
 StepType.propTypes = {
-    onTargetOrLimitValueChange: PropTypes.func,
+    onValueChange: PropTypes.func,
     onTypeChange: PropTypes.func,
-    targetOrLimitValue: PropTypes.number,
+    value: PropTypes.number,
     type: PropTypes.string
 };
 

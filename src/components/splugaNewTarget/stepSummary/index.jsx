@@ -6,7 +6,7 @@ import { StepAction } from "../styled";
 import { FormattedMessage } from "react-intl";
 
 //export function for testing pourpose
-export const StepSummary = ({ name, description, stakeholder, goal, targetOrLimitValue, startDate, endDate }) => {
+export const StepSummary = ({ name, description, stakeholder, goal, value, startDate, endDate }) => {
     return (
         <React.Fragment>
             <StepAction>
@@ -24,7 +24,7 @@ export const StepSummary = ({ name, description, stakeholder, goal, targetOrLimi
                         {goal}
                     </Descriptions.Item>
                     <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.target" />}>
-                        {targetOrLimitValue}
+                        {value}
                     </Descriptions.Item>
                     <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.startDate" />}>
                         {startDate}
@@ -43,7 +43,7 @@ StepSummary.propTypes = {
     description: PropTypes.string,
     stakeholder: PropTypes.string,
     goal: PropTypes.string,
-    targetOrLimitValue: PropTypes.number,
+    value: PropTypes.number,
     startDate: PropTypes.string,
     endDate: PropTypes.string
 };
