@@ -2,37 +2,49 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
-import { Select } from "antd";
+import { SelectStringField } from "@mondora/arc/antd/SelectField";
 import { FormattedMessage } from "react-intl";
-
-const { Option } = Select;
 
 //export function for testing pourpose
 export const StepStakeholder = ({ onStakeholderChange, stakeholder }) => {
-    const handleStakeholderChange = value => {
-        onStakeholderChange(value);
+    const handleStakeholderChange = (e, value, ...name) => {
+        const stakeholder = Object.values(value);
+
+        console.log("start date", stakeholder.join(""));
+        onStakeholderChange(stakeholder.join(""));
     };
     return (
         <StepAction>
             <label>
                 <FormattedMessage id="c-splugaNewTarget.stakeholder" />
-                <Select name="stakeholder" value={stakeholder} onChange={handleStakeholderChange}>
-                    <Option name="stakeholder" value="Environment">
-                        <FormattedMessage id="c-splugaNewTarget.stakeholder.environment" />
-                    </Option>
-                    <Option name="stakeholder" value="Community">
-                        <FormattedMessage id="c-splugaNewTarget.stakeholder.community" />
-                    </Option>
-                    <Option name="stakeholder" value="Workers">
-                        <FormattedMessage id="c-splugaNewTarget.stakeholder.workers" />
-                    </Option>
-                    <Option name="stakeholder" value="Governance">
-                        <FormattedMessage id="c-splugaNewTarget.stakeholder.governance" />
-                    </Option>
-                    <Option name="stakeholder" value="Customer">
-                        <FormattedMessage id="c-splugaNewTarget.stakeholder.customer" />
-                    </Option>
-                </Select>
+
+                <SelectStringField
+                    name="stakeholder"
+                    value={stakeholder}
+                    onChange={handleStakeholderChange}
+                    options={[
+                        {
+                            value: "Environment",
+                            label: <FormattedMessage id="c-splugaNewTarget.stakeholder.environment" />
+                        },
+                        {
+                            value: "Community",
+                            label: <FormattedMessage id="c-splugaNewTarget.stakeholder.community" />
+                        },
+                        {
+                            value: "Workers",
+                            label: <FormattedMessage id="c-splugaNewTarget.stakeholder.workers" />
+                        },
+                        {
+                            value: "Governance",
+                            label: <FormattedMessage id="c-splugaNewTarget.stakeholder.governance" />
+                        },
+                        {
+                            value: "Customer",
+                            label: <FormattedMessage id="c-splugaNewTarget.stakeholder.customer" />
+                        }
+                    ]}
+                />
             </label>
         </StepAction>
     );

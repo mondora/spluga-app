@@ -2,21 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
-import { Select, InputNumber } from "antd";
+import { SelectStringField } from "@mondora/arc/antd/SelectField";
+import TextField from "@mondora/arc/antd/TextField";
 import { FormattedMessage } from "react-intl";
-
-const { Option } = Select;
 
 //target or limit potrei prenderlo dalle unità di misura (goals) --->  ?
 
 //export function for testing pourpose
 export const StepType = ({ onValueChange, onTypeChange, value, type }) => {
-    const handleOnChangeValue = value => {
-        onValueChange(value);
+    const handleOnChangeValue = (e, value, ...name) => {
+        const val = Object.values(value);
+        console.log("value", val.join(""));
+        onValueChange(val.join(""));
     };
 
-    const handleOnChangeType = value => {
-        onTypeChange(value);
+    const handleOnChangeType = (e, value, ...name) => {
+        const type = Object.values(value);
+        console.log("type", type.join(""));
+        onTypeChange(type.join(""));
     };
 
     return (
@@ -24,20 +27,28 @@ export const StepType = ({ onValueChange, onTypeChange, value, type }) => {
             <StepAction>
                 <label>
                     <FormattedMessage id="c-splugaNewTarget.type" />
-                    <Select name="type" value={type} onChange={handleOnChangeType}>
-                        <Option name="type" value="target">
-                            Target
-                        </Option>
-                        <Option name="type" value="limit">
-                            <FormattedMessage id="c-splugaNewTarget.type.limit" />
-                        </Option>
-                    </Select>
+                    <SelectStringField
+                        name="type.name"
+                        value={type}
+                        onChange={handleOnChangeType}
+                        options={[
+                            {
+                                value: "target",
+                                label: "Target"
+                            },
+                            {
+                                value: "limit",
+                                label: <FormattedMessage id="c-splugaNewTarget.type.limit" />
+                            }
+                        ]}
+                    />
                 </label>
 
-                <label htmlFor="value">
+                <label>
                     <FormattedMessage id="c-splugaNewTarget.type.value" />
+
+                    <TextField name="type.value" value={value} onChange={handleOnChangeValue} />
                 </label>
-                <InputNumber id="value" name="value" value={value} onChange={handleOnChangeValue} />
             </StepAction>
         </React.Fragment>
     );

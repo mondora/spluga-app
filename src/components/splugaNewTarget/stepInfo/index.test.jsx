@@ -12,8 +12,9 @@ const onNameChange = () => {};
 describe("StepInfo", () => {
     it("Render component without error", () => {
         const element = shallow(<StepInfo />);
-        expect(element.find("Input").exists()).toBe(true);
-        expect(element.find("TextArea").length).toBe(1);
+
+        expect(element.find("WrappedField").exists()).toBe(true);
+        expect(element.find("FormattedMessage").length).toBe(2);
         expect(element.find("label").length).toBe(2);
     });
 
@@ -27,11 +28,26 @@ describe("StepInfo", () => {
                 description={"test-description"}
             />
         );
-
-        expect(element.find("Input").props().value).toBe("test-name");
-        element.find("Input").simulate("change", event);
-        expect(element.find("TextArea").props().value).toBe("test-description");
-        element.find("TextArea").simulate("change", event);
+        expect(
+            element
+                .find("WrappedField")
+                .first()
+                .props().value
+        ).toBe("test-name");
+        element
+            .find("WrappedField")
+            .first()
+            .simulate("change", event);
+        expect(
+            element
+                .find("WrappedField")
+                .at(1)
+                .props().value
+        ).toBe("test-description");
+        element
+            .find("WrappedField")
+            .at(1)
+            .simulate("change", event);
         expect(element.find("label").length).toBe(2);
     });
 });

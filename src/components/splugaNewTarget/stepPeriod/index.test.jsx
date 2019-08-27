@@ -8,6 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("StepPeriod", () => {
     it("Render component without error", () => {
         const element = shallow(<StepPeriod />);
-        expect(element.find("PickerWrapper").exists()).toBe(true);
+        expect(element.find("WrappedField").exists()).toBe(true);
+        expect(element.find("FormattedMessage").exists()).toBe(true);
     });
 });

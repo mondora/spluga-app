@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import { getCompany } from "../../actions/companies";
 
 import SplugaCard from "../../components/splugaCard";
+import CompanyTarget from "../../components/companyTarget";
 import { Spin } from "antd";
-import { PageContainer, SpinContainer, FieldLeft } from "./styled";
+import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
 
 export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
     const [loading, setLoading] = useState(true);
@@ -25,6 +26,9 @@ export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
             <FieldLeft>
                 <SplugaCard auth={auth} company={company.companies[0]} type={"user"} />
             </FieldLeft>
+            <FieldRight>
+                <CompanyTarget />
+            </FieldRight>
         </PageContainer>
     ) : (
         <SpinContainer>

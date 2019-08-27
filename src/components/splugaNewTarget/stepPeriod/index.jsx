@@ -2,16 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { StepAction } from "../styled";
-import { DatePicker } from "antd";
 import { FormattedMessage } from "react-intl";
-
-const { RangePicker } = DatePicker;
+import ISO8601DayField from "@mondora/arc/antd/ISO8601DayField";
 
 //export function for testing pourpose
 export const StepPeriod = ({ onStartDateChange, onEndDateChange }) => {
-    const handleChangeDate = (...date) => {
-        onStartDateChange(date[1][0]);
-        onEndDateChange(date[1][1]);
+    const handleChangeStartDate = (e, date, ...name) => {
+        const startDate = Object.values(date);
+
+        //console.log("start date", startDate.join(""));
+        onStartDateChange(startDate.join(""));
+    };
+
+    const handleChangeEndDate = (e, date, ...name) => {
+        const startDate = Object.values(date);
+        // console.log("start date", startDate.join(""));
+        onEndDateChange(startDate.join(""));
     };
 
     return (
@@ -19,7 +25,8 @@ export const StepPeriod = ({ onStartDateChange, onEndDateChange }) => {
             <div style={{ margin: 8 }}>
                 <FormattedMessage id="c-splugaNewTarget.period" />
             </div>
-            <RangePicker onChange={handleChangeDate} />
+            <ISO8601DayField name="date.startDate" onChange={handleChangeStartDate} />
+            <ISO8601DayField name="date.endDate" onChange={handleChangeEndDate} />
         </StepAction>
     );
 };

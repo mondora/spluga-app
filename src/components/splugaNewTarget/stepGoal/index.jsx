@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Select } from "antd";
+import { SelectStringField } from "@mondora/arc/antd/SelectField";
 import { StepAction } from "../styled";
-
-const { Option } = Select;
 
 /*
 
@@ -18,28 +16,40 @@ TODO GETGOALS
 
 //export function for testing pourpose
 export const StepGoal = ({ onGoalChange, goal }) => {
-    const handleGoalChange = value => {
-        onGoalChange(value);
+    const handleGoalChange = (e, value, ...name) => {
+        const goal = Object.values(value);
+
+        console.log("goal", goal.join(""));
+        onGoalChange(goal.join(""));
     };
 
     return (
         <StepAction>
             <label>
                 Goal
-                <Select name="goal" value={goal} onChange={handleGoalChange}>
-                    <Option name="goal" value="goal1">
-                        Goal-1
-                    </Option>
-                    <Option name="goal" value="goal2">
-                        Goal-2
-                    </Option>
-                    <Option name="stakeholder" value="goal3">
-                        Goal-3
-                    </Option>
-                    <Option name="stakeholder" value="goal4">
-                        Goal-4
-                    </Option>
-                </Select>
+                <SelectStringField
+                    name="goal"
+                    value={goal}
+                    onChange={handleGoalChange}
+                    options={[
+                        {
+                            value: "goal1",
+                            label: "Goal-1"
+                        },
+                        {
+                            value: "goal2",
+                            label: "Goal-2"
+                        },
+                        {
+                            value: "goal3",
+                            label: "Goal-3"
+                        },
+                        {
+                            value: "goal4",
+                            label: "Goal-4"
+                        }
+                    ]}
+                />
             </label>
         </StepAction>
     );

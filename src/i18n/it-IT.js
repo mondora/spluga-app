@@ -1,7 +1,6 @@
 export default {
     //General
     "general.add": "Aggiungi",
-    "general.show": "Mostra",
     "general.save": "Salva",
     "general.create": "Crea",
     "general.description": "Descrizione",
@@ -54,6 +53,8 @@ export default {
     "c-splugaNewTarget.type": "Tipologia",
     "c-splugaNewTarget.type.limit": "Limite",
     "c-splugaNewTarget.type.value": "Valore",
+
+    "c-splugsTarget.cardTitle": "Come vanno i tuoi obiettivi",
 
     //Views
     "v-apps.message":
