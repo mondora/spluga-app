@@ -10,22 +10,23 @@ export const StepPeriod = ({ onStartDateChange, onEndDateChange }) => {
     const handleChangeStartDate = (e, date, ...name) => {
         const startDate = Object.values(date);
 
-        //console.log("start date", startDate.join(""));
         onStartDateChange(startDate.join(""));
     };
 
     const handleChangeEndDate = (e, date, ...name) => {
         const startDate = Object.values(date);
-        // console.log("start date", startDate.join(""));
         onEndDateChange(startDate.join(""));
     };
 
     return (
         <StepAction>
-            <div style={{ margin: 8 }}>
+            <div style={{ marginBottom: 20 }}>
                 <FormattedMessage id="c-splugaNewTarget.period" />
             </div>
+            <FormattedMessage id="c-splugaNewTarget.startDate" />
             <ISO8601DayField name="date.startDate" onChange={handleChangeStartDate} />
+
+            <FormattedMessage id="c-splugaNewTarget.endDate" />
             <ISO8601DayField name="date.endDate" onChange={handleChangeEndDate} />
         </StepAction>
     );

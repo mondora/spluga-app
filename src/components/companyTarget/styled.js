@@ -15,10 +15,15 @@ export const Title = styled.div`
     font-weight: bolder;
     font-size: 20px;
 `;
-
+export const AvatarStyle = styled.div`
+    margin-right: 10px;
+`;
 export const FieldLeft = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     grid-column-start: 1;
-    grid-column-end: 1;
+    grid-column-end: 5;
     margin: 10px;
 `;
 

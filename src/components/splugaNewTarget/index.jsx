@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import { Button, Steps } from "antd";
 import { targetFormSchema } from "../../utils/form-schema/target-form-schema";
@@ -137,6 +138,10 @@ export const SplugaNewTarget = ({ handleSubmit }) => {
             </form>
         </React.Fragment>
     );
+};
+
+SplugaNewTarget.propTypes = {
+    handleSubmit: PropTypes.func
 };
 
 const formDefinition = {

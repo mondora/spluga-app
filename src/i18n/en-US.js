@@ -37,6 +37,8 @@ export default {
     "c-splugaNewTarget.message.error":
         "to create target you need fill all data, please click on reject to go back at step one",
     "c-splugaNewTarget.period": "Enter your target period:",
+    "c-splugaNewTarget.startDate ": "Start Date",
+    "c-splugaNewTarget.endDate ": "End Date",
     "c-splugaNewTarget.stakeholder": "Stakeholder",
     "c-splugaNewTarget.stakeholder.environment": "Environment",
     "c-splugaNewTarget.stakeholder.governance": "Governance",

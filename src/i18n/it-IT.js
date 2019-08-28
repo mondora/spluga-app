@@ -35,7 +35,9 @@ export default {
     "c-splugaNewTarget.message.success": "Lavoro completato! Il tuo target è stato salvato",
     "c-splugaNewTarget.message.error":
         "per creare il target è necessario riempire tutti i campi, per favore clicca su annulla e torna al primo step",
-    "c-splugaNewTarget.period": "Iserisci la durata del target:",
+    "c-splugaNewTarget.period": "Inserisci la durata del target:",
+    "c-splugaNewTarget.startDate": "Data di inizio",
+    "c-splugaNewTarget.endDate": "Data di fine",
     "c-splugaNewTarget.stakeholder": "Beneficiario",
     "c-splugaNewTarget.stakeholder.environment": "Ambiente",
     "c-splugaNewTarget.stakeholder.governance": "Governo",

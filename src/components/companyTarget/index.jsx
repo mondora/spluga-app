@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { TargetContainer, Title, FieldRight, FieldLeft } from "./styled";
+import { TargetContainer, Title, FieldRight, FieldLeft, AvatarStyle } from "./styled";
 import SplugaNewTarget from "../splugaNewTarget";
-import { Button, Modal, message, Progress } from "antd";
+import { Button, Modal, message, Progress, Avatar } from "antd";
 import { FormattedMessage } from "react-intl";
 import { translateMessage } from "../../i18n";
 
-//TODO:
+/*
+TODO: 
+- reset spluga new target form after its filling
+
+
+*/
 
 //export class for testing pourpose
 export const CompanyTarget = target => {
     const [visible, setVisible] = useState(false);
     const [done, setDone] = useState(false);
+    const [newTarget, setNewTarget] = useState();
 
     const showModal = () => {
         setVisible(true);
@@ -24,32 +30,31 @@ export const CompanyTarget = target => {
 
             //check on user input
             if (
-                info.name &&
-                info.description &&
+                info !== undefined &&
+                info.name !== undefined &&
+                info.description !== undefined &&
                 stakeholder &&
                 goal &&
-                type.name &&
-                type.value &&
-                date.startDate &&
-                date.endDate
+                type !== undefined &&
+                type.name !== undefined &&
+                type.value !== undefined &&
+                date !== undefined &&
+                date.startDate !== undefined &&
+                date.endDate !== undefined
             ) {
-                message.success(translateMessage("c-splugaNewTarget.message.success"));
-                setVisible(false);
-                setDone(true);
+                if (date.startDate < date.endDate) {
+                    //addTarget
+
+                    message.success(translateMessage("c-splugaNewTarget.message.success"));
+                    setVisible(false);
+                    setNewTarget(newTarget);
+                    setDone(true);
+                } else {
+                    message.error("reinserire il periodo");
+                }
             } else {
                 message.error(translateMessage("c-splugaNewTarget.message.error"));
             }
-
-            console.log(
-                info.name,
-                info.description,
-                stakeholder,
-                goal,
-                type.name,
-                type.value,
-                date.startDate,
-                date.endDate
-            );
         }
     };
 
@@ -61,6 +66,11 @@ export const CompanyTarget = target => {
 
             {done ? (
                 <FieldLeft>
+                    <AvatarStyle>
+                        <Avatar style={{ backgroundColor: "#87d068" }} size={50}>
+                            {newTarget.info.name}
+                        </Avatar>
+                    </AvatarStyle>
                     <Progress
                         strokeColor={{
                             "0%": "#108ee9",
