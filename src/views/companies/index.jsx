@@ -40,17 +40,10 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
         const ownerId = auth.currentUser.id;
         addCompany(data, ownerId);
     };
-    const serverError = null;
-    const companyExist = company === undefined || company.companies === undefined || company.companies.length === 0;
-
+    const serverError = null; //TODO: manage
+    const companyExist = company && company.companies && company.companies.length > 0;
     return !loading && !getCompanyStatus.started ? (
         companyExist ? (
-            <PageContainer>
-                <FieldCenter>
-                    <CompanyForm onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
-                </FieldCenter>
-            </PageContainer>
-        ) : (
             <PageContainer>
                 <FieldLeft>
                     <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
@@ -58,6 +51,12 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
                 <FieldRight>
                     <CompanyTeam />
                 </FieldRight>
+            </PageContainer>
+        ) : (
+            <PageContainer>
+                <FieldCenter>
+                    <CompanyForm onSubmit={handleSubmit} onSelectFile={handleSelectFile} />
+                </FieldCenter>
             </PageContainer>
         )
     ) : (
