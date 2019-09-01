@@ -77,10 +77,10 @@ Companies.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    company: state.read,
-    write: state.write,
-    getCompanyStatus: state.read.status,
-    addCompanyStatus: state.write.status
+    company: state.getCompany,
+    write: state.addCompany,
+    getCompanyStatus: state.getCompany.status,
+    addCompanyStatus: state.addCompany.status
 });
 
 const composedHoc = compose(

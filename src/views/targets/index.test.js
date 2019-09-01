@@ -14,6 +14,5 @@ describe("Targets view", () => {
     it("Render view without error when proprs are empty", () => {
         const element = shallow(<Targets {...propTypes} />);
         expect(element.find("SplugaTable").length).toBe(1);
-        expect(element.find("SplugaForm").length).toBe(1);
     });
 });

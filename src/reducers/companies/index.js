@@ -9,7 +9,7 @@ import {
     REMOVE_COMPANY_SUCCESS,
     REMOVE_COMPANY_ERROR
 } from "../../actions/companies";
-//reducer: (prevState, action) => newState
+
 const defaultState = {
     status: {
         started: false,
@@ -22,7 +22,7 @@ const defaultState = {
     }
 };
 
-export function remove(state = defaultState, { type, payload, error }) {
+export function removeCompany(state = defaultState, { type, payload, error }) {
     switch (type) {
         case REMOVE_COMPANY_START:
             return {
@@ -56,7 +56,7 @@ export function remove(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function read(state = defaultState, { type, payload, error }) {
+export function getCompany(state = defaultState, { type, payload, error }) {
     switch (type) {
         case GET_COMPANY_START:
             return {
@@ -90,7 +90,7 @@ export function read(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function write(state = defaultState, { type, payload, error }) {
+export function addCompany(state = defaultState, { type, payload, error }) {
     switch (type) {
         case ADD_COMPANY_START:
             return {

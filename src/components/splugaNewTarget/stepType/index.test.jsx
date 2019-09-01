@@ -8,7 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("StepType", () => {
     it("Render component without error", () => {
         const element = shallow(<StepType />);
-        console.log(element.debug());
 
         expect(element.find("WrappedField").exists()).toBe(true);
         expect(element.find("FormattedMessage").exists()).toBeTruthy();

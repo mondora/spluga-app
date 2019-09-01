@@ -44,8 +44,8 @@ Profile.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    company: state.read,
-    getCompanyStatus: state.read.status
+    company: state.getCompany,
+    getCompanyStatus: state.getCompany.status
 });
 
 export default connect(

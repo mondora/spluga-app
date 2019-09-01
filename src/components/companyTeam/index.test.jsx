@@ -11,6 +11,6 @@ describe("CompanyTeam", () => {
         const component = shallow(<CompanyTeam />);
 
         expect(component.find("Fragment").length).toBe(1);
-        expect(component.find("FormattedMessage").length).toBe(1);
+        expect(component.find("FormattedMessage").length).toBe(2);
     });
 });

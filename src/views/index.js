@@ -19,6 +19,9 @@ export const Routes = ({ auth, login }) => {
     const locale = getUserLocale();
     const messages = getMessagesLocale();
 
+    console.log({ locale });
+    console.log({ messages });
+
     return (
         <IntlProvider locale={locale} messages={messages}>
             <BrowserRouter>
