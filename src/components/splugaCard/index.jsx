@@ -9,22 +9,24 @@ export const SplugaCard = ({ auth, company, type }) => {
 
     //TODO: n will be taken from the achieved acitvities
     const n = 100;
+    const companyName = company ? company.name : null;
+    const companyLogo = company ? company.logo : null;
     return (
         <CardContainer>
             {data && type === "user" ? (
                 <div>
                     <CardTitle> {data.name.toUpperCase()}</CardTitle>
-                    <CardSubtitle>{company.name}</CardSubtitle>
+                    <CardSubtitle>{companyName}</CardSubtitle>
                 </div>
             ) : (
                 <div style={{ marginBottom: 40 }}>
-                    <CardTitle>{company.name.toUpperCase()}</CardTitle>
+                    <CardTitle>{companyName}</CardTitle>
                 </div>
             )}
             <AvatarContainer>
                 <Avatar
                     size="large"
-                    src={data && type === "user" ? data.picture : `data:image/jpeg;base64,${company.logo}`}
+                    src={data && type === "user" ? data.picture : `data:image/jpeg;base64,${companyLogo}`}
                 />
                 <CardSubtitle>
                     {type === "user" ? (

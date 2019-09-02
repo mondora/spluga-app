@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCompany } from "../../actions/companies";
@@ -8,23 +8,17 @@ import CompanyTarget from "../../components/companyTarget";
 import { Spin } from "antd";
 import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
 
-export const Profile = ({ auth, getCompany, company, getCompanyStatus }) => {
-    const [loading, setLoading] = useState(true);
-
+export const Profile = ({ auth, getCompany, company }) => {
     useEffect(() => {
         getCompany({});
     }, [getCompany]);
 
-    useEffect(() => {
-        if (getCompanyStatus.ended) {
-            setLoading(false);
-        }
-    }, [getCompanyStatus]);
-
-    return !loading && !getCompanyStatus.started ? (
+    const loading = company && company.status ? company.status.started : true;
+    const selectedCompany = company && company.result ? company.result : null;
+    return !loading ? (
         <PageContainer>
             <FieldLeft>
-                <SplugaCard auth={auth} company={company.companies[0]} type={"user"} />
+                <SplugaCard auth={auth} company={selectedCompany} type={"user"} />
             </FieldLeft>
             <FieldRight>
                 <CompanyTarget />
@@ -44,8 +38,7 @@ Profile.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    company: state.getCompany,
-    getCompanyStatus: state.getCompany.status
+    company: state.getCompany
 });
 
 export default connect(

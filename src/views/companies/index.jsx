@@ -30,21 +30,22 @@ export const Companies = ({ company, companyCreated, getCompany, addCompany, aut
 
     const handleInvite = data => {
         const ownerId = auth.currentUser.id;
-        addInvitation(data.email, ownerId, company.companies[0]._id);
+        const companyId = company && company.result ? company.result._id : null;
+        addInvitation(data.email, ownerId, companyId);
     };
 
     //const serverError = null; //TODO: manage
     const getCompanyStatus = company.status;
     const createCompanyStatus = companyCreated.status;
-    const companyExist = company && company.companies && company.companies.length > 0;
+    const selectedCompany = company && company.result ? company.result : null;
     const loading =
         getCompanyStatus && createCompanyStatus ? getCompanyStatus.started || createCompanyStatus.started : true;
 
     return !loading ? (
-        companyExist ? (
+        selectedCompany ? (
             <PageContainer>
                 <FieldLeft>
-                    <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
+                    <SplugaCard auth={auth} company={selectedCompany} type={"company"} />
                 </FieldLeft>
                 <FieldRight>
                     <CompanyTeam onInvite={handleInvite} />

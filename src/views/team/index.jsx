@@ -10,7 +10,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
-export const Team = ({ invitation, getPendingInvitation, getPendingInvitationStatus, acceptInvitation }) => {
+export const Team = ({ invitation, getPendingInvitation, acceptInvitation }) => {
     const [urlId] = useQueryParam("id", StringParam);
 
     useEffect(() => {
@@ -18,14 +18,15 @@ export const Team = ({ invitation, getPendingInvitation, getPendingInvitationSta
     }, [getPendingInvitation, urlId]);
 
     useEffect(() => {
-        if (invitation) {
-            acceptInvitation(invitation);
+        if (invitation && invitation.result) {
+            acceptInvitation(invitation.result);
         }
     }, [acceptInvitation, invitation]);
-
-    return !getPendingInvitationStatus.started ? (
-        invitation ? (
-            <PageContainer>{invitation.toString()}</PageContainer>
+    const status = invitation && invitation.status ? invitation.status : { started: true };
+    console.log(status);
+    return !status.started ? (
+        invitation && invitation.result ? (
+            <PageContainer>{invitation.result.toString()}</PageContainer>
         ) : (
             <PageContainer>
                 <Alert
@@ -46,13 +47,11 @@ export const Team = ({ invitation, getPendingInvitation, getPendingInvitationSta
 Team.propTypes = {
     id: PropTypes.object,
     getPendingInvitation: PropTypes.func,
-    getPendingInvitationStatus: PropTypes.object,
     acceptInvitation: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-    invitation: state.getPendingInvitation.invitation,
-    getPendingInvitationStatus: state.getPendingInvitation.status
+    invitation: state.getPendingInvitation
 });
 
 const composedHoc = compose(

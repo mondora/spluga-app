@@ -32,11 +32,11 @@ export function getCompany(query) {
         const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
 
         try {
-            const result = await collection.find(query).toArray();
+            const result = await collection.findOne(query);
 
             dispatch({
                 type: GET_COMPANY_SUCCESS,
-                payload: { companies: result }
+                payload: { result }
             });
         } catch (error) {
             dispatch({

@@ -69,7 +69,7 @@ export function getPendingInvitation(id) {
             const result = await collection.find(query).first();
             dispatch({
                 type: GET_PENDING_INVITATION_SUCCESS,
-                payload: { invitation: result }
+                payload: { result }
             });
         } catch (error) {
             dispatch({

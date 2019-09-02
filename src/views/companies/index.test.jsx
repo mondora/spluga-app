@@ -37,7 +37,7 @@ describe("Companies", () => {
 
     it("Render view company data", () => {
         propTypes.company.status = { started: false };
-        propTypes.company.companies = [{}];
+        propTypes.company.result = {};
         const view = shallow(<Companies {...propTypes} />);
 
         expect(view.find("SplugaCard").length).toBe(1);

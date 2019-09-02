@@ -16,13 +16,13 @@ describe("Profile", () => {
         getCompany: () => {}
     };
 
-    it("Render component with only required data", () => {
-        const element = shallow(<Profile auth={propTypes.auth} />);
-        expect(element.find("Spin").length).toBe(1);
+    it("Render view with only required data", () => {
+        const view = shallow(<Profile auth={propTypes.auth} />);
+        expect(view.find("Spin").length).toBe(1);
     });
 
-    it("Render component with all props not defined", () => {
-        const element = shallow(<Profile {...propTypes} />);
-        expect(element.find("Spin").length).toBe(1);
+    it("Render view with all props not defined", () => {
+        const view = shallow(<Profile {...propTypes} />);
+        expect(view.find("Spin").length).toBe(1);
     });
 });
