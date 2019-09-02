@@ -12,33 +12,11 @@ import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
 import CompanyTeam from "../../components/companyTeam";
 
-export const Companies = ({
-    company,
-    getCompany,
-    addCompany,
-    auth,
-    getCompanyStatus,
-    addCompanyStatus,
-    addInvitation
-}) => {
-    const [loading, setLoading] = useState(true);
-    const [companyCreated, setCompanyCreated] = useState(false); //TODO: Serve???
+export const Companies = ({ company, companyCreated, getCompany, addCompany, auth, addInvitation }) => {
     const [selectedFile, setSelectedFile] = useState("");
     useEffect(() => {
         getCompany({});
     }, [getCompany, companyCreated]);
-
-    useEffect(() => {
-        if (addCompanyStatus.ended) {
-            setCompanyCreated(true);
-        }
-    }, [addCompanyStatus]);
-
-    useEffect(() => {
-        if (getCompanyStatus.ended) {
-            setLoading(false);
-        }
-    }, [getCompanyStatus, companyCreated]);
 
     const handleSelectFile = base64 => {
         setSelectedFile(base64);
@@ -56,8 +34,13 @@ export const Companies = ({
     };
 
     //const serverError = null; //TODO: manage
+    const getCompanyStatus = company.status;
+    const createCompanyStatus = companyCreated.status;
     const companyExist = company && company.companies && company.companies.length > 0;
-    return !loading && !getCompanyStatus.started ? (
+    const loading =
+        getCompanyStatus && createCompanyStatus ? getCompanyStatus.started || createCompanyStatus.started : true;
+
+    return !loading ? (
         companyExist ? (
             <PageContainer>
                 <FieldLeft>
@@ -84,19 +67,16 @@ export const Companies = ({
 Companies.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
+    companyCreated: PropTypes.object,
     getCompany: PropTypes.func,
     addCompany: PropTypes.func,
-    getCompanyStatus: PropTypes.object,
-    addCompanyStatus: PropTypes.object,
     addInvitation: PropTypes.func
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     company: state.getCompany,
-    write: state.addCompany,
-    getCompanyStatus: state.getCompany.status,
-    addCompanyStatus: state.addCompany.status
+    companyCreated: state.addCompany
 });
 
 const composedHoc = compose(

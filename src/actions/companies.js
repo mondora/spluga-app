@@ -61,10 +61,11 @@ export function addCompany(data, ownerId) {
         const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
 
         try {
-            await collection.insertOne({ ownerId, ...data });
+            const objectId = await collection.insertOne({ ownerId, ...data });
 
             dispatch({
-                type: ADD_COMPANY_SUCCESS
+                type: ADD_COMPANY_SUCCESS,
+                payload: { company: objectId }
             });
         } catch (error) {
             dispatch({
