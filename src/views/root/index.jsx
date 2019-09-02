@@ -10,6 +10,7 @@ import Companies from "../companies";
 import Targets from "../targets";
 import Goals from "../goals";
 import Apps from "../apps";
+import Team from "../team";
 import { connect } from "react-redux";
 import { Container, Menu, Page, PageContainer } from "./styled.js";
 import { PropTypes } from "prop-types";
@@ -31,6 +32,7 @@ export const Root = ({ match, auth }) => {
                         <Route path="/targets" component={Targets} />
                         <Route path="/activities" component={Activities} />
                         <Route path="/goals" component={Goals} />
+                        <Route path="/team" component={Team} />
                     </Switch>
                 </Page>
             </Container>

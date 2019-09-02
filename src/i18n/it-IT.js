@@ -6,12 +6,16 @@ export default {
     "general.description": "Descrizione",
     "general.name": "Nome",
     "general.enabled": "Abilitata",
+    "general.error": "Errore",
     "general.delete": "Elimina",
+    "general.form.email-required": "Il valore inserito non è una mail",
     "general.form.field-required": "Campo obbligatorio",
     "general.reject": "Annulla",
     "general.done": "Fatto",
     "general.previous": "Indietro",
     "general.next": "Avanti",
+    "general.send": "invia",
+    "general.email": "Email",
 
     //Components
     "c-companyForm.logo": "Logo",
@@ -19,6 +23,8 @@ export default {
 
     "c-companyTeam.title": "La tua squadra",
     "c-companyTeam.invite": "Invita i tuoi colleghi",
+
+    "c-inviteForm.title": "Invita un tuo collega",
 
     "c-splugaCard.employee": "Dipendente",
     "c-splugaCard.company": "Azienda",
@@ -67,5 +73,7 @@ export default {
 
     "v-goals.create": "Crea un goal",
     "v-goals.create.new": "Nuovo goal creato",
-    "v-goals.uom": "Unità di Misura"
+    "v-goals.uom": "Unità di Misura",
+
+    "v-team.invalidInviation": "Link non valido o scaduto"
 };

@@ -14,6 +14,7 @@
     "@mondora/arc": "4.4.0",
     "@mondora/conv-redux-form": "^1.4.1",
     "antd": "^3.18.1",
+    "commons-validator-js": "^1.0.1227",
     "mongodb-stitch-browser-sdk": "^4.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
@@ -27,7 +28,8 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "use-query-params": "^0.3.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,19 +6,25 @@ export default {
     "general.description": "Decscription",
     "general.name": "Name",
     "general.enabled": "Enabled",
+    "general.error": "Error",
     "general.delete": "Delete",
+    "general.form.email-required": "Email required",
     "general.form.field-required": "Mandatory field",
     "general.reject": "Reject",
     "general.done": "Done",
     "general.previous": "Previous",
     "general.next": "Next",
+    "general.send": "Send",
+    "general.email": "Email",
 
     //Components
     "c-companyForm.logo": "Logo",
     "c-companyForm.title": "Create company",
 
     "c-companyTeam.title": "Your team",
-    "c-companyTeam.invite": "Add new people",
+    "c-companyTeam.invite": "Invite your colleagues",
+
+    "c-inviteForm.title": "Invite a colleague",
 
     "c-splugaCard.employee": "Employee",
     "c-splugaCard.company": "Company",
@@ -67,5 +73,7 @@ export default {
 
     "v-goals.create": "Create goal",
     "v-goals.create.new": "New goal created",
-    "v-goals.uom": "Unit of measure"
+    "v-goals.uom": "Unit of measure",
+
+    "v-team.invalidInviation": "Invalid or expired link"
 };

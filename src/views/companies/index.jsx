@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
+import { addInvitation } from "../../actions/team";
 import { connect } from "react-redux";
 
 import { Spin } from "antd";
@@ -11,9 +12,17 @@ import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
 import CompanyTeam from "../../components/companyTeam";
 
-export const Companies = ({ company, getCompany, addCompany, auth, getCompanyStatus, addCompanyStatus }) => {
+export const Companies = ({
+    company,
+    getCompany,
+    addCompany,
+    auth,
+    getCompanyStatus,
+    addCompanyStatus,
+    addInvitation
+}) => {
     const [loading, setLoading] = useState(true);
-    const [companyCreated, setCompanyCreated] = useState(false);
+    const [companyCreated, setCompanyCreated] = useState(false); //TODO: Serve???
     const [selectedFile, setSelectedFile] = useState("");
     useEffect(() => {
         getCompany({});
@@ -40,7 +49,13 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
         const ownerId = auth.currentUser.id;
         addCompany(data, ownerId);
     };
-    const serverError = null; //TODO: manage
+
+    const handleInvite = data => {
+        const ownerId = auth.currentUser.id;
+        addInvitation(data.email, ownerId, company.companies[0]._id);
+    };
+
+    //const serverError = null; //TODO: manage
     const companyExist = company && company.companies && company.companies.length > 0;
     return !loading && !getCompanyStatus.started ? (
         companyExist ? (
@@ -49,7 +64,7 @@ export const Companies = ({ company, getCompany, addCompany, auth, getCompanySta
                     <SplugaCard auth={auth} company={company.companies[0]} type={"company"} />
                 </FieldLeft>
                 <FieldRight>
-                    <CompanyTeam />
+                    <CompanyTeam onInvite={handleInvite} />
                 </FieldRight>
             </PageContainer>
         ) : (
@@ -72,7 +87,8 @@ Companies.propTypes = {
     getCompany: PropTypes.func,
     addCompany: PropTypes.func,
     getCompanyStatus: PropTypes.object,
-    addCompanyStatus: PropTypes.object
+    addCompanyStatus: PropTypes.object,
+    addInvitation: PropTypes.func
 };
 
 const mapStateToProps = state => ({
@@ -86,7 +102,7 @@ const mapStateToProps = state => ({
 const composedHoc = compose(
     connect(
         mapStateToProps,
-        { getCompany, addCompany }
+        { getCompany, addCompany, addInvitation }
     )
 );
 
