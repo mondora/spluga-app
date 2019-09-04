@@ -6,11 +6,10 @@ import { PageContainer, SpinContainer } from "./styled";
 
 import { Spin, Alert } from "antd";
 
-import { compose } from "redux";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
-export const Team = ({ invitation, getPendingInvitation, acceptInvitation }) => {
+export const Team = ({ auth, invitation, getPendingInvitation, acceptInvitation }) => {
     const [urlId] = useQueryParam("id", StringParam);
 
     useEffect(() => {
@@ -19,11 +18,11 @@ export const Team = ({ invitation, getPendingInvitation, acceptInvitation }) => 
 
     useEffect(() => {
         if (invitation && invitation.result) {
-            acceptInvitation(invitation.result);
+            acceptInvitation(invitation.result, auth.currentUser);
         }
-    }, [acceptInvitation, invitation]);
+    }, [auth, acceptInvitation, invitation]);
     const status = invitation && invitation.status ? invitation.status : { started: true };
-    console.log(status);
+
     return !status.started ? (
         invitation && invitation.result ? (
             <PageContainer>{invitation.result.toString()}</PageContainer>
@@ -45,20 +44,18 @@ export const Team = ({ invitation, getPendingInvitation, acceptInvitation }) => 
 };
 
 Team.propTypes = {
+    auth: PropTypes.object.isRequired,
     id: PropTypes.object,
     getPendingInvitation: PropTypes.func,
     acceptInvitation: PropTypes.func
 };
 
 const mapStateToProps = state => ({
+    auth: state.auth,
     invitation: state.getPendingInvitation
 });
 
-const composedHoc = compose(
-    connect(
-        mapStateToProps,
-        { getPendingInvitation, acceptInvitation }
-    )
-);
-
-export default composedHoc(Team);
+export default connect(
+    mapStateToProps,
+    { getPendingInvitation, acceptInvitation }
+)(Team);

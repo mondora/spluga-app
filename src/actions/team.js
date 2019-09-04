@@ -85,14 +85,23 @@ export const ACCEPT_INVITATION_START = "ACCEPT_INVITATION_START";
 export const ACCEPT_INVITATION_SUCCESS = "ACCEPT_INVITATION_SUCCESS";
 export const ACCEPT_INVITATION_ERROR = "ACCEPT_INVITATION_ERROR";
 
-export function acceptInvitation(invitation) {
+export function acceptInvitation(invitation, currentUser) {
     return async dispatch => {
         dispatch({
             type: ACCEPT_INVITATION_START
         });
+        const { profile, id } = currentUser;
+        const email = profile.data.email;
+
+        if (email !== invitation.email) {
+            dispatch({
+                type: ACCEPT_INVITATION_ERROR,
+                error: "invalid Email"
+            });
+        }
 
         const invitations = mongodb.db(MONGO_DB_NAME).collection("invitations");
-        //const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
+        const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
 
         try {
             await invitations.updateOne(
@@ -100,10 +109,10 @@ export function acceptInvitation(invitation) {
                 { ...invitation, accepted: true, acceptedAt: new Date() }
             );
             //TODO: update companies
-            /*await companies.updateOne(
+            await companies.updateOne(
                 { _id: invitation.companyId },
-                { ...invitation, accepted: true, acceptedAt: new Date() }
-            );*/
+                { $push: { team: { _id: id, status: "active", profile: profile } } }
+            );
 
             dispatch({
                 type: ACCEPT_INVITATION_SUCCESS

@@ -24,8 +24,7 @@ export const Companies = ({ company, companyCreated, getCompany, addCompany, aut
 
     const handleSubmit = data => {
         data.logo = selectedFile;
-        const ownerId = auth.currentUser.id;
-        addCompany(data, ownerId);
+        addCompany(data, auth.currentUser);
     };
 
     const handleInvite = data => {
