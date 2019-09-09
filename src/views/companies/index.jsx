@@ -28,9 +28,8 @@ export const Companies = ({ company, companyCreated, getCompany, addCompany, aut
     };
 
     const handleInvite = data => {
-        const ownerId = auth.currentUser.id;
         const companyId = company && company.result ? company.result._id : null;
-        addInvitation(data.email, ownerId, companyId);
+        addInvitation(data.email, companyId);
     };
 
     //const serverError = null; //TODO: manage

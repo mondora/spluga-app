@@ -54,15 +54,23 @@ export const ADD_COMPANY_ERROR = "ADD_COMPANY_ERROR";
 
 export function addCompany(data, currentUser) {
     const { profile, id } = currentUser;
+    const { picture, name, email } = profile.data;
+
     return async dispatch => {
         dispatch({
             type: ADD_COMPANY_START
         });
 
         const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
+        const createdAt = new Date();
 
+        const company = {
+            ...data,
+            team: [{ id, role: "O", picture, name, email, status: "active", createdAt }],
+            createdAt
+        };
         try {
-            const objectId = await collection.insertOne({ ownerId: id, ownerProfile: profile, ...data });
+            const objectId = await collection.insertOne(company);
 
             dispatch({
                 type: ADD_COMPANY_SUCCESS,

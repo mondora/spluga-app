@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Targets view", () => {
     var propTypes = {
         auth: {},
-        invitation: {}
+        acceptInvitationStatus: { started: true }
     };
 
     it("Render view loading", () => {
@@ -18,7 +18,7 @@ describe("Targets view", () => {
     });
 
     it("Render view Alert", () => {
-        propTypes.invitation = { status: { started: false } };
+        propTypes.acceptInvitationStatus = { started: false, ended: true, error: true };
         const view = shallow(<Team {...propTypes} />);
         expect(view.find("Alert").length).toBe(1);
     });

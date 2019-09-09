@@ -2,9 +2,6 @@ import {
     ADD_INVITATION_START,
     ADD_INVITATION_SUCCESS,
     ADD_INVITATION_ERROR,
-    GET_PENDING_INVITATION_ERROR,
-    GET_PENDING_INVITATION_START,
-    GET_PENDING_INVITATION_SUCCESS,
     ACCEPT_INVITATION_ERROR,
     ACCEPT_INVITATION_START,
     ACCEPT_INVITATION_SUCCESS
@@ -65,46 +62,6 @@ describe("addInvitation", () => {
 
     it("set status to default", () => {
         stateRes = addInvitation(defaultState, { type: null });
-        expect(stateRes).toEqual(defaultState);
-    });
-});
-
-describe("getPendingInvitation", () => {
-    it("set status to GET_PENDING_INVITATION_START", () => {
-        stateRes = getPendingInvitation(state, {
-            type: GET_PENDING_INVITATION_START
-        });
-        expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
-    });
-
-    it("set status to GET_PENDING_INVITATION_SUCCESS", () => {
-        stateRes = getPendingInvitation(state, {
-            type: GET_PENDING_INVITATION_SUCCESS,
-            payload,
-            error
-        });
-
-        expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
-        expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
-    });
-
-    it("set status to GET_PENDING_INVITATION_ERROR", () => {
-        stateRes = getPendingInvitation(state, {
-            type: GET_PENDING_INVITATION_ERROR,
-            payload,
-            error
-        });
-
-        expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
-    });
-
-    it("set status to default", () => {
-        stateRes = getPendingInvitation(defaultState, { type: null });
         expect(stateRes).toEqual(defaultState);
     });
 });

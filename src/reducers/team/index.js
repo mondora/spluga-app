@@ -2,9 +2,6 @@ import {
     ADD_INVITATION_START,
     ADD_INVITATION_SUCCESS,
     ADD_INVITATION_ERROR,
-    GET_PENDING_INVITATION_START,
-    GET_PENDING_INVITATION_ERROR,
-    GET_PENDING_INVITATION_SUCCESS,
     ACCEPT_INVITATION_ERROR,
     ACCEPT_INVITATION_START,
     ACCEPT_INVITATION_SUCCESS
@@ -42,40 +39,6 @@ export function addInvitation(state = defaultState, { type, payload, error }) {
                 ...payload
             };
         case ADD_INVITATION_ERROR:
-            return {
-                ...state,
-                status: {
-                    started: false,
-                    error: true,
-                    ended: false,
-                    errorInfo: error
-                }
-            };
-        default:
-            return state;
-    }
-}
-
-export function getPendingInvitation(state = defaultState, { type, payload, error }) {
-    switch (type) {
-        case GET_PENDING_INVITATION_START:
-            return {
-                status: {
-                    started: true,
-                    error: false,
-                    ended: false
-                }
-            };
-        case GET_PENDING_INVITATION_SUCCESS:
-            return {
-                status: {
-                    started: false,
-                    error: false,
-                    ended: true
-                },
-                ...payload
-            };
-        case GET_PENDING_INVITATION_ERROR:
             return {
                 ...state,
                 status: {

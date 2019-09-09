@@ -21,24 +21,23 @@ with object mongodb i can get the collection handle
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
-export function addInvitation(email, ownerId, companyId) {
+export function addInvitation(email, companyId) {
     return async dispatch => {
         dispatch({
             type: ADD_INVITATION_START
         });
 
         try {
-            const collection = mongodb.db(MONGO_DB_NAME).collection("invitations");
-            const objectId = await collection.insertOne({
-                ownerId,
-                email,
-                companyId,
-                accepted: false,
-                createAt: new Date()
-            });
-            console.log(objectId.insertedId.toHexString());
+            const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
+            const tempId = new BSON.ObjectId().toHexString();
+            await companies.updateOne(
+                { _id: companyId },
+                { $push: { team: { tempId, email, status: "invited", createdAt: new Date() } } }
+            );
 
             //TODO: send email with id
+            console.log(tempId);
+
             dispatch({
                 type: ADD_INVITATION_SUCCESS
             });
@@ -52,71 +51,37 @@ export function addInvitation(email, ownerId, companyId) {
     };
 }
 
-export const GET_PENDING_INVITATION_START = "GET_PENDING_INVITATION_START";
-export const GET_PENDING_INVITATION_SUCCESS = "GET_PENDING_INVITATION_SUCCESS";
-export const GET_PENDING_INVITATION_ERROR = "GET_PENDING_INVITATION_ERROR";
-
-export function getPendingInvitation(id) {
-    return async dispatch => {
-        dispatch({
-            type: GET_PENDING_INVITATION_START
-        });
-
-        const collection = mongodb.db(MONGO_DB_NAME).collection("invitations");
-
-        try {
-            const query = { _id: new BSON.ObjectId(id), accepted: false };
-            const result = await collection.find(query).first();
-            dispatch({
-                type: GET_PENDING_INVITATION_SUCCESS,
-                payload: { result }
-            });
-        } catch (error) {
-            dispatch({
-                type: GET_PENDING_INVITATION_ERROR,
-                error: error,
-                errorInfo: error
-            });
-        }
-    };
-}
-
 export const ACCEPT_INVITATION_START = "ACCEPT_INVITATION_START";
 export const ACCEPT_INVITATION_SUCCESS = "ACCEPT_INVITATION_SUCCESS";
 export const ACCEPT_INVITATION_ERROR = "ACCEPT_INVITATION_ERROR";
 
-export function acceptInvitation(invitation, currentUser) {
+export function acceptInvitation(tempId, currentUser) {
+    const { profile, id } = currentUser;
+    const { picture, name, email } = profile.data;
     return async dispatch => {
         dispatch({
             type: ACCEPT_INVITATION_START
         });
-        const { profile, id } = currentUser;
-        const email = profile.data.email;
 
-        if (email !== invitation.email) {
-            dispatch({
-                type: ACCEPT_INVITATION_ERROR,
-                error: "invalid Email"
-            });
-        }
-
-        const invitations = mongodb.db(MONGO_DB_NAME).collection("invitations");
         const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
-
+        const createdAt = new Date();
         try {
-            await invitations.updateOne(
-                { _id: invitation._id },
-                { ...invitation, accepted: true, acceptedAt: new Date() }
-            );
-            //TODO: update companies
-            await companies.updateOne(
-                { _id: invitation.companyId },
-                { $push: { team: { _id: id, status: "active", profile: profile } } }
+            const result = await companies.updateOne(
+                { team: { $elemMatch: { tempId: tempId, status: "invited", email } } },
+                { $push: { team: { id, role: "O", picture, name, email, status: "active", createdAt } } }
             );
 
-            dispatch({
-                type: ACCEPT_INVITATION_SUCCESS
-            });
+            if (result.modifiedCount !== 1) {
+                dispatch({
+                    type: ACCEPT_INVITATION_ERROR,
+                    error: "invalid link",
+                    errorInfo: "invalid link"
+                });
+            } else {
+                dispatch({
+                    type: ACCEPT_INVITATION_SUCCESS
+                });
+            }
         } catch (error) {
             dispatch({
                 type: ACCEPT_INVITATION_ERROR,
