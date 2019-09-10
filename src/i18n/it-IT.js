@@ -75,7 +75,7 @@ export default {
     "v-goals.create.new": "Nuovo goal creato",
     "v-goals.uom": "Unità di Misura",
 
-    "v-team.invalidInviation": "Link non valido o scaduto",
+    "v-team.invitation.error.400.invalid": "Link non valido o scaduto",
     "v-team.invitation.error.400.duplicate": "Utente gia invitato",
     "v-team.invitation.success": "Invito inviato correttamente"
 };

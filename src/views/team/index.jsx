@@ -16,15 +16,16 @@ export const Team = ({ auth, acceptInvitation, acceptInvitationStatus }) => {
         acceptInvitation(urlId, auth.currentUser);
     }, [auth, urlId, acceptInvitation]);
     const status = acceptInvitationStatus ? acceptInvitationStatus : { started: true };
-
-    return !status.started ? (
-        status.ended && !status.error ? (
+    const { started, error, errorInfo } = status;
+    const errorId = errorInfo && errorInfo.message ? errorInfo.message : "general.error";
+    return !started ? (
+        !error ? (
             <PageContainer>{}</PageContainer>
         ) : (
             <PageContainer>
                 <Alert
                     message={<FormattedMessage id="general.error" />}
-                    description={<FormattedMessage id="v-team.invalidInviation" />}
+                    description={<FormattedMessage id={errorId} />}
                     type="error"
                     showIcon
                 />

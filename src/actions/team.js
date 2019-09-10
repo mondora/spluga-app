@@ -23,7 +23,7 @@ const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atla
 
 const actionError = {
     duplicate: { code: 400, message: "v-team.invitation.error.400.duplicate" },
-    invalidLink: { code: 400, message: "invalid link" }
+    invalidLink: { code: 400, message: "v-team.invitation.error.400.invalid" }
 };
 
 export function addInvitation(email, companyId) {

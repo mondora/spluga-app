@@ -53,7 +53,7 @@ export function addInvitation(state = defaultState, { type, payload, errorInfo }
     }
 }
 
-export function acceptInvitation(state = defaultState, { type, payload, error }) {
+export function acceptInvitation(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case ACCEPT_INVITATION_START:
             return {
@@ -79,7 +79,7 @@ export function acceptInvitation(state = defaultState, { type, payload, error })
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:

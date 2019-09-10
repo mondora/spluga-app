@@ -97,7 +97,8 @@ describe("acceptInvitation", () => {
         stateRes = acceptInvitation(state, {
             type: ACCEPT_INVITATION_ERROR,
             payload,
-            error
+            error,
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
