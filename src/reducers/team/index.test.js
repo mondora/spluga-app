@@ -52,10 +52,15 @@ describe("addInvitation", () => {
         stateRes = addInvitation(state, {
             type: ADD_INVITATION_ERROR,
             payload,
-            error
+            errorInfo: { code: 400, message: "error" }
         });
 
-        expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
+        expect(stateRes.status).toEqual({
+            started: false,
+            error: true,
+            ended: false,
+            errorInfo: { code: 400, message: "error" }
+        });
         expect(stateRes.payload).toEqual(undefined);
         expect(stateRes.error).toEqual(undefined);
     });

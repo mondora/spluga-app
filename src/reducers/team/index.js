@@ -19,7 +19,7 @@ const defaultState = {
     }
 };
 
-export function addInvitation(state = defaultState, { type, payload, error }) {
+export function addInvitation(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case ADD_INVITATION_START:
             return {
@@ -45,7 +45,7 @@ export function addInvitation(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:

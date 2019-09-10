@@ -35,7 +35,7 @@ describe("Companies", () => {
         expect(view.find("Spin").length).toBe(1);
     });
 
-    it("Render view company data", () => {
+    it("Render view company data and simulate invitation", () => {
         propTypes.company.status = { started: false };
         propTypes.company.result = {};
         const view = shallow(<Companies {...propTypes} />);
@@ -45,5 +45,18 @@ describe("Companies", () => {
 
         view.find("CompanyTeam").simulate("invite", { preventDefault: () => {} });
         expect(propTypes.addInvitation).toHaveBeenCalledTimes(1);
+    });
+
+    it("Render view with notification error", () => {
+        propTypes.company.status = { started: false };
+        propTypes.company.result = {};
+        propTypes.invitation = {
+            error: true,
+            errorInfo: { code: 400, message: "v-team.invitation.error.400.duplicate" }
+        };
+        const view = shallow(<Companies {...propTypes} />);
+
+        expect(view.find("SplugaCard").length).toBe(1);
+        expect(view.find("CompanyTeam").length).toBe(1);
     });
 });

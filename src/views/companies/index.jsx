@@ -5,18 +5,38 @@ import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { addInvitation } from "../../actions/team";
 import { connect } from "react-redux";
+import { injectIntl } from "react-intl";
 
-import { Spin } from "antd";
+import { Spin, notification } from "antd";
 
 import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
 import CompanyTeam from "../../components/companyTeam";
 
-export const Companies = ({ company, companyCreated, getCompany, addCompany, auth, addInvitation }) => {
+export const Companies = ({
+    auth,
+    company,
+    companyCreated,
+    getCompany,
+    addCompany,
+    addInvitation,
+    invitation,
+    intl
+}) => {
     const [selectedFile, setSelectedFile] = useState("");
     useEffect(() => {
         getCompany({});
     }, [getCompany, companyCreated]);
+
+    useEffect(() => {
+        const { ended, error, errorInfo } = invitation;
+        if (ended || error) {
+            const type = error ? "error" : "info";
+            var id = error ? errorInfo.message : "v-team.invitation.success";
+            const message = intl.formatMessage({ id, defaultMessage: id });
+            notify(type, message);
+        }
+    }, [invitation, intl]);
 
     const handleSelectFile = base64 => {
         setSelectedFile(base64);
@@ -30,6 +50,13 @@ export const Companies = ({ company, companyCreated, getCompany, addCompany, aut
     const handleInvite = data => {
         const companyId = company && company.result ? company.result._id : null;
         addInvitation(data.email, companyId);
+    };
+
+    const notify = (type, message) => {
+        notification[type]({
+            message: type,
+            description: message
+        });
     };
 
     //const serverError = null; //TODO: manage
@@ -69,13 +96,15 @@ Companies.propTypes = {
     companyCreated: PropTypes.object,
     getCompany: PropTypes.func,
     addCompany: PropTypes.func,
-    addInvitation: PropTypes.func
+    addInvitation: PropTypes.func,
+    invitation: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     company: state.getCompany,
-    companyCreated: state.addCompany
+    companyCreated: state.addCompany,
+    invitation: state.addInvitation.status
 });
 
 const composedHoc = compose(
@@ -85,4 +114,4 @@ const composedHoc = compose(
     )
 );
 
-export default composedHoc(Companies);
+export default injectIntl(composedHoc(Companies));

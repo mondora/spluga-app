@@ -21,6 +21,11 @@ with object mongodb i can get the collection handle
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
+const actionError = {
+    duplicate: { code: 400, message: "v-team.invitation.error.400.duplicate" },
+    invalidLink: { code: 400, message: "invalid link" }
+};
+
 export function addInvitation(email, companyId) {
     return async dispatch => {
         dispatch({
@@ -29,6 +34,22 @@ export function addInvitation(email, companyId) {
 
         try {
             const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
+            const company = await companies.findOne({ _id: companyId });
+            const team = company.team;
+
+            const alreadyExist = team.filter(x => {
+                return x.email === email;
+            });
+
+            if (alreadyExist.length > 0) {
+                dispatch({
+                    type: ADD_INVITATION_ERROR,
+                    error: true,
+                    errorInfo: actionError.duplicate
+                });
+                return;
+            }
+
             const tempId = new BSON.ObjectId().toHexString();
             await companies.updateOne(
                 { _id: companyId },
@@ -44,8 +65,8 @@ export function addInvitation(email, companyId) {
         } catch (error) {
             dispatch({
                 type: ADD_INVITATION_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };
@@ -74,8 +95,8 @@ export function acceptInvitation(tempId, currentUser) {
             if (result.modifiedCount !== 1) {
                 dispatch({
                     type: ACCEPT_INVITATION_ERROR,
-                    error: "invalid link",
-                    errorInfo: "invalid link"
+                    error: true,
+                    errorInfo: actionError.invalidLink
                 });
             } else {
                 dispatch({
@@ -85,8 +106,8 @@ export function acceptInvitation(tempId, currentUser) {
         } catch (error) {
             dispatch({
                 type: ACCEPT_INVITATION_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };
