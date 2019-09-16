@@ -5,7 +5,7 @@ export const TargetContainer = styled.div`
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto auto auto auto auto;
     justify-items: stretch;
-    padding: 10px;
+    padding: 5px;
     border: 3px solid #bfbccb;
     border-radius: 8px;
     height: 100%;
@@ -21,10 +21,9 @@ export const AvatarStyle = styled.div`
 export const FieldLeft = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
     grid-column-start: 1;
     grid-column-end: 5;
-    margin: 10px;
+    margin: 5px;
 `;
 
 export const FieldRight = styled.div`
@@ -35,6 +34,6 @@ export const FieldRight = styled.div`
     grid-column-end: 5;
     grid-row-start: 5;
     grid-row-end: 5;
-    margin: 10px;
+    margin: 5px;
     text-align: right;
 `;

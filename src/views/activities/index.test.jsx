@@ -8,8 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("Activities", () => {
     it("Render view without error", () => {
-        const view = shallow(<Activities />);
-
-        console.log(view.debug());
+        shallow(<Activities />);
     });
 });

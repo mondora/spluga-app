@@ -22,7 +22,7 @@ export default {
     "c-companyForm.title": "Create company",
 
     "c-companyTeam.title": "Your team",
-    "c-companyTeam.invite": "Invite your colleagues",
+    "c-companyTeam.invite": "Invite",
 
     "c-inviteForm.title": "Invite a colleague",
 
@@ -62,7 +62,7 @@ export default {
     "c-splugaNewTarget.type.limit": "Limit",
     "c-splugaNewTarget.type.value": "Value",
 
-    "c-splugsTarget.cardTitle": "Your Target's trend",
+    "c-splugaTarget.cardTitle": "Your Target's trend",
 
     //Views
     "v-apps.message":

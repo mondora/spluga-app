@@ -60,9 +60,11 @@ export const CompanyTarget = target => {
 
     return (
         <TargetContainer>
-            <Title>
-                <FormattedMessage id="c-splugsTarget.cardTitle" />
-            </Title>
+            <FieldLeft>
+                <Title>
+                    <FormattedMessage id="c-splugaTarget.cardTitle" />
+                </Title>
+            </FieldLeft>
 
             {done ? (
                 <FieldLeft>

@@ -73,7 +73,7 @@ export const Companies = ({
                     <SplugaCard auth={auth} company={selectedCompany} type={"company"} />
                 </FieldLeft>
                 <FieldRight>
-                    <CompanyTeam onInvite={handleInvite} />
+                    <CompanyTeam onInvite={handleInvite} team={selectedCompany.team} />
                 </FieldRight>
             </PageContainer>
         ) : (

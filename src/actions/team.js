@@ -57,7 +57,7 @@ export function addInvitation(email, companyId) {
             );
 
             //TODO: send email with id
-            console.log(tempId);
+            console.log("https://dev.spluga.io/team?id=" + tempId);
 
             dispatch({
                 type: ADD_INVITATION_SUCCESS

@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
-import { CompanyTeamContainer, Title, FieldLeft, FieldRight } from "./styled";
+import { CompanyTeamContainer, Title, FieldRight, FieldGrid } from "./styled";
 import { FormattedMessage } from "react-intl";
 import { Icon, Button, Modal } from "antd";
 import InviteForm from "../inviteForm";
+import UserTeam from "../userTeam";
 
-export const CompanyTeam = ({ onInvite }) => {
+export const CompanyTeam = ({ team, onInvite }) => {
     const [visible, setVisible] = useState(false);
 
     const showModal = () => {
@@ -16,35 +17,42 @@ export const CompanyTeam = ({ onInvite }) => {
         setVisible(false);
         onInvite(data);
     };
+    team = team
+        ? team.filter(user => {
+              return user.id;
+          })
+        : null;
 
     return (
         <Fragment>
             <CompanyTeamContainer>
-                <FieldLeft>
-                    <Title>
-                        <FormattedMessage id="c-companyTeam.title" />
-                    </Title>
-                </FieldLeft>
+                <Title>
+                    <FormattedMessage id="c-companyTeam.title" />
+                </Title>
                 <FieldRight>
                     <Button type="link" size="large" onClick={showModal}>
                         <Icon type="team" />
                         <FormattedMessage id="c-companyTeam.invite" />
                     </Button>
                 </FieldRight>
-                <Modal
-                    title={<FormattedMessage id="c-inviteForm.title" />}
-                    visible={visible}
-                    footer={null}
-                    onCancel={() => setVisible(false)}
-                >
-                    <InviteForm onSubmit={handleSubmit} />
-                </Modal>
+                <FieldGrid>
+                    {team ? team.map(user => <UserTeam user={user} key={user.id} id={user.id} />) : null}
+                </FieldGrid>
             </CompanyTeamContainer>
+            <Modal
+                title={<FormattedMessage id="c-inviteForm.title" />}
+                visible={visible}
+                footer={null}
+                onCancel={() => setVisible(false)}
+            >
+                <InviteForm onSubmit={handleSubmit} />
+            </Modal>
         </Fragment>
     );
 };
 
 CompanyTeam.propTypes = {
+    team: PropTypes.array,
     onInvite: PropTypes.func.isRequired
 };
 
