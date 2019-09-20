@@ -89,7 +89,7 @@ export function acceptInvitation(tempId, currentUser) {
         try {
             const result = await companies.updateOne(
                 { team: { $elemMatch: { tempId: tempId, status: "invited", email } } },
-                { $push: { team: { id, role: "O", picture, name, email, status: "active", createdAt } } }
+                { $push: { team: { id, role: "U", picture, name, email, status: "active", createdAt } } }
             );
 
             if (result.modifiedCount !== 1) {
