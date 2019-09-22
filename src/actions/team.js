@@ -1,5 +1,5 @@
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
-import { STITCH_APP_ID, MONGO_DB_NAME } from "../config";
+import { STITCH_APP_ID, MONGO_DB_NAME, PUBLISHED_HOSTNAME } from "../config";
 
 export const ADD_INVITATION_START = "ADD_INVITATION_START";
 export const ADD_INVITATION_SUCCESS = "ADD_INVITATION_SUCCESS";
@@ -26,7 +26,7 @@ const actionError = {
     invalidLink: { code: 400, message: "v-team.invitation.error.400.invalid" }
 };
 
-export function addInvitation(email, companyId) {
+export function addInvitation(email, companyId, user) {
     return async dispatch => {
         dispatch({
             type: ADD_INVITATION_START
@@ -49,6 +49,8 @@ export function addInvitation(email, companyId) {
                 });
                 return;
             }
+
+            client.callFunction("sendMail", [email, PUBLISHED_HOSTNAME]);
 
             await companies.updateOne(
                 { _id: companyId },

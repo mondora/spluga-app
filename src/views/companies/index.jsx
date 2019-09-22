@@ -49,7 +49,8 @@ export const Companies = ({
 
     const handleInvite = data => {
         const companyId = company && company.result ? company.result._id : null;
-        addInvitation(data.email, companyId);
+        const user = auth.currentUser.name;
+        addInvitation(data.email, companyId, user);
     };
 
     const notify = (type, message) => {
