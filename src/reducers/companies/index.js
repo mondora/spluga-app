@@ -22,7 +22,7 @@ const defaultState = {
     }
 };
 
-export function removeCompany(state = defaultState, { type, payload, error }) {
+export function removeCompany(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case REMOVE_COMPANY_START:
             return {
@@ -48,7 +48,7 @@ export function removeCompany(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -56,7 +56,7 @@ export function removeCompany(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function getCompany(state = defaultState, { type, payload, error }) {
+export function getCompany(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case GET_COMPANY_START:
             return {
@@ -82,7 +82,7 @@ export function getCompany(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -90,7 +90,7 @@ export function getCompany(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function addCompany(state = defaultState, { type, payload, error }) {
+export function addCompany(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case ADD_COMPANY_START:
             return {
@@ -116,7 +116,7 @@ export function addCompany(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:

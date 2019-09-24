@@ -28,7 +28,7 @@ const defaultState = {
     }
 };
 
-export function addApp(state = defaultState, { type, payload, error }) {
+export function addApp(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case ADD_APP_START:
             return {
@@ -54,7 +54,7 @@ export function addApp(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -62,7 +62,7 @@ export function addApp(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function getApps(state = defaultState, { type, payload, error }) {
+export function getApps(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case GET_APPS_START:
             return {
@@ -88,7 +88,7 @@ export function getApps(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -96,7 +96,7 @@ export function getApps(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function enableApp(state = defaultState, { type, payload, error }) {
+export function enableApp(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case ENABLE_APP_START:
             return {
@@ -122,7 +122,7 @@ export function enableApp(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -130,7 +130,7 @@ export function enableApp(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function disableApp(state = defaultState, { type, payload, error }) {
+export function disableApp(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case DISABLE_APP_START:
             return {
@@ -156,7 +156,7 @@ export function disableApp(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -164,7 +164,7 @@ export function disableApp(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function deleteApp(state = defaultState, { type, payload, error }) {
+export function deleteApp(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case DELETE_APP_START:
             return {
@@ -190,7 +190,7 @@ export function deleteApp(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:

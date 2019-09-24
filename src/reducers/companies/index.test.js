@@ -35,8 +35,6 @@ describe("removeCompany", () => {
             type: REMOVE_COMPANY_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to REMOVE_COMPANY_SUCCESS", () => {
@@ -48,19 +46,17 @@ describe("removeCompany", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to REMOVE_COMPANY_ERROR", () => {
         stateRes = removeCompany(state, {
             type: REMOVE_COMPANY_ERROR,
             payload,
-            error
+            error,
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -75,8 +71,6 @@ describe("getCompany", () => {
             type: GET_COMPANY_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to GET_COMPANY_SUCCESS", () => {
@@ -88,19 +82,17 @@ describe("getCompany", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to GET_COMPANY_ERROR", () => {
         stateRes = getCompany(state, {
             type: GET_COMPANY_ERROR,
             payload,
-            error
+            error,
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -115,8 +107,6 @@ describe("addCompany", () => {
             type: ADD_COMPANY_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ADD_COMPANY_SUCCESS", () => {
@@ -128,19 +118,17 @@ describe("addCompany", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ADD_COMPANY_ERROR", () => {
         stateRes = addCompany(state, {
             type: ADD_COMPANY_ERROR,
             payload,
-            error
+            error,
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {

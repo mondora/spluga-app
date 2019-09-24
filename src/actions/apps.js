@@ -36,8 +36,8 @@ export function addApp(appName) {
             .catch(error => {
                 dispatch({
                     type: ADD_APP_ERROR,
-                    error: error,
-                    errorInfo: error
+                    error: true,
+                    errorInfo: { code: 500, message: error }
                 });
             });
     };
@@ -66,8 +66,8 @@ export function getApps() {
             .catch(error => {
                 dispatch({
                     type: GET_APPS_ERROR,
-                    error: error,
-                    errorInfo: error
+                    error: true,
+                    errorInfo: { code: 500, message: error }
                 });
             });
     };
@@ -95,8 +95,8 @@ export function enableApp(appId) {
             .catch(error => {
                 dispatch({
                     type: ENABLE_APP_ERROR,
-                    error: error,
-                    errorInfo: error
+                    error: true,
+                    errorInfo: { code: 500, message: error }
                 });
             });
     };
@@ -124,8 +124,8 @@ export function disableApp(appId) {
             .catch(error => {
                 dispatch({
                     type: DISABLE_APP_ERROR,
-                    error: error,
-                    errorInfo: error
+                    error: true,
+                    errorInfo: { code: 500, message: error }
                 });
             });
     };
@@ -153,8 +153,8 @@ export function deleteApp(appId) {
             .catch(error => {
                 dispatch({
                     type: DELETE_APP_SUCCESS,
-                    error: error,
-                    errorInfo: error
+                    error: true,
+                    errorInfo: { code: 500, message: error }
                 });
             });
     };

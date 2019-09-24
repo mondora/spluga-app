@@ -39,8 +39,8 @@ export function getTargets(query) {
         } catch (error) {
             dispatch({
                 type: GET_TARGETS_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };
@@ -67,8 +67,8 @@ export function addTarget(ownerId, data) {
         } catch (error) {
             dispatch({
                 type: ADD_TARGET_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };

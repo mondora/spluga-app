@@ -32,8 +32,6 @@ describe("getTargets", () => {
             type: GET_TARGETS_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to GET_TARGETS_SUCCESS", () => {
@@ -45,19 +43,17 @@ describe("getTargets", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to GET_TARGETS_ERROR", () => {
         stateRes = getTargets(state, {
             type: GET_TARGETS_ERROR,
             payload,
-            error
+            error,
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -92,12 +88,11 @@ describe("addTarget", () => {
         stateRes = addTarget(state, {
             type: ADD_TARGET_ERROR,
             payload,
-            error
+            error,
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {

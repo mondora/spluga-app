@@ -19,7 +19,7 @@ const defaultState = {
     }
 };
 
-export function getTargets(state = defaultState, { type, payload, error }) {
+export function getTargets(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case GET_TARGETS_START:
             return {
@@ -45,7 +45,7 @@ export function getTargets(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:
@@ -53,7 +53,7 @@ export function getTargets(state = defaultState, { type, payload, error }) {
     }
 }
 
-export function addTarget(state = defaultState, { type, payload, error }) {
+export function addTarget(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
         case ADD_TARGET_START:
             return {
@@ -79,7 +79,7 @@ export function addTarget(state = defaultState, { type, payload, error }) {
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo: error
+                    errorInfo
                 }
             };
         default:

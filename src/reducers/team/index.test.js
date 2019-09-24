@@ -7,7 +7,7 @@ import {
     ACCEPT_INVITATION_SUCCESS
 } from "../../actions/team";
 
-import { addInvitation, getPendingInvitation, acceptInvitation } from "../team";
+import { addInvitation, acceptInvitation } from "../team";
 
 const defaultState = {
     status: {
@@ -32,20 +32,16 @@ describe("addInvitation", () => {
             type: ADD_INVITATION_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ADD_INVITATION_SUCCESS", () => {
         stateRes = addInvitation(state, {
             type: ADD_INVITATION_SUCCESS,
-            payload,
-            error
+            payload
         });
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ADD_INVITATION_ERROR", () => {
@@ -61,8 +57,6 @@ describe("addInvitation", () => {
             ended: false,
             errorInfo: { code: 400, message: "error" }
         });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -77,8 +71,6 @@ describe("acceptInvitation", () => {
             type: ACCEPT_INVITATION_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ACCEPT_INVITATION_SUCCESS", () => {
@@ -90,7 +82,6 @@ describe("acceptInvitation", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ACCEPT_INVITATION_ERROR", () => {
@@ -102,8 +93,6 @@ describe("acceptInvitation", () => {
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {

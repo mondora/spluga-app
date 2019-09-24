@@ -39,36 +39,8 @@ export function getGoals(query) {
         } catch (error) {
             dispatch({
                 type: GET_GOALS_ERROR,
-                error: error,
-                errorInfo: error
-            });
-        }
-    };
-}
-
-export const ADD_GOAL_START = "ADD_GOAL_START";
-export const ADD_GOAL_SUCCESS = "ADD_GOAL_SUCCESS";
-export const ADD_GOAL_ERROR = "ADD_GOAL_ERROR";
-export function addGoal(ownerId, data) {
-    return async dispatch => {
-        dispatch({
-            type: ADD_GOAL_START
-        });
-
-        const collection = mongodb.db(MONGO_DB_NAME).collection("goals");
-
-        try {
-            const result = await collection.insertOne({ ownerId, ...data });
-
-            dispatch({
-                type: ADD_GOAL_SUCCESS,
-                payload: { goal: result }
-            });
-        } catch (error) {
-            dispatch({
-                type: ADD_GOAL_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };

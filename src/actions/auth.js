@@ -51,11 +51,11 @@ export function login() {
                     }
                 });
             }
-        } catch (e) {
+        } catch (error) {
             dispatch({
                 type: LOGIN_ERROR,
-                error: e,
-                errorInfo: e
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };

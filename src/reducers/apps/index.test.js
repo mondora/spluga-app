@@ -40,32 +40,26 @@ describe("addApp", () => {
             type: ADD_APP_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ADD_APP_SUCCESS", () => {
         stateRes = addApp(state, {
             type: ADD_APP_SUCCESS,
-            payload,
-            error
+            payload
         });
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ADD_APP_ERROR", () => {
         stateRes = addApp(state, {
             type: ADD_APP_ERROR,
             payload,
-            error
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -80,8 +74,6 @@ describe("getApps", () => {
             type: GET_APPS_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to GET_APPS_SUCCESS", () => {
@@ -93,19 +85,16 @@ describe("getApps", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to GET_APPS_ERROR", () => {
         stateRes = getApps(state, {
             type: GET_APPS_ERROR,
             payload,
-            error
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -120,8 +109,6 @@ describe("enableApp", () => {
             type: ENABLE_APP_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ENABLE_APP_SUCCESS", () => {
@@ -133,19 +120,16 @@ describe("enableApp", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to ENABLE_APP_ERROR", () => {
         stateRes = enableApp(state, {
             type: ENABLE_APP_ERROR,
             payload,
-            error
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -160,8 +144,6 @@ describe("disableApp", () => {
             type: DISABLE_APP_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to DISABLE_APP_SUCCESS", () => {
@@ -173,19 +155,16 @@ describe("disableApp", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to DISABLE_APP_ERROR", () => {
         stateRes = disableApp(state, {
             type: DISABLE_APP_ERROR,
             payload,
-            error
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {
@@ -200,8 +179,6 @@ describe("deleteApp", () => {
             type: DELETE_APP_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to DELETE_APP_SUCCESS", () => {
@@ -213,19 +190,16 @@ describe("deleteApp", () => {
 
         expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
         expect(stateRes.payload).toEqual(payload.payload);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to DELETE_APP_ERROR", () => {
         stateRes = deleteApp(state, {
             type: DELETE_APP_ERROR,
             payload,
-            error
+            errorInfo: "error"
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-        expect(stateRes.payload).toEqual(undefined);
-        expect(stateRes.error).toEqual(undefined);
     });
 
     it("set status to default", () => {

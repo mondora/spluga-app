@@ -41,8 +41,8 @@ export function getCompany(query) {
         } catch (error) {
             dispatch({
                 type: GET_COMPANY_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };
@@ -79,8 +79,8 @@ export function addCompany(data, currentUser) {
         } catch (error) {
             dispatch({
                 type: ADD_COMPANY_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };
@@ -106,8 +106,8 @@ export function removeCompany(query) {
         } catch (error) {
             dispatch({
                 type: REMOVE_COMPANY_ERROR,
-                error: error,
-                errorInfo: error
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
         }
     };
