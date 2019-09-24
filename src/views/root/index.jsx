@@ -7,8 +7,6 @@ import { Route } from "react-router-dom";
 
 import Profile from "../profile";
 import Companies from "../companies";
-import Targets from "../targets";
-import Goals from "../goals";
 import Apps from "../apps";
 import Team from "../team";
 import { connect } from "react-redux";
@@ -29,9 +27,7 @@ export const Root = ({ match, auth }) => {
                         <Route exact path="/" component={Profile} />
                         <Route path="/apps" component={Apps} />
                         <Route path="/companies" component={Companies} />
-                        <Route path="/targets" component={Targets} />
                         <Route path="/activities" component={Activities} />
-                        <Route path="/goals" component={Goals} />
                         <Route path="/team" component={Team} />
                     </Switch>
                 </Page>
