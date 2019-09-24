@@ -10,6 +10,6 @@ describe("CompanyForm", () => {
     const onSubmit = jest.fn();
     const onSelect = jest.fn();
     it("Render component without error", () => {
-        shallow(<CompanyForm onSubmit={onSubmit} onSelectFile={onSelect} />);
+        shallow(<CompanyForm handleSubmit={onSubmit} onSelectFile={onSelect} />);
     });
 });

@@ -9,6 +9,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("InviteForm", () => {
     const onSubmit = jest.fn();
     it("Render component without error", () => {
-        shallow(<InviteForm onSubmit={onSubmit} />);
+        shallow(<InviteForm handleSubmit={onSubmit} />);
     });
 });

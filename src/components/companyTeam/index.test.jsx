@@ -11,7 +11,7 @@ describe("CompanyTeam", () => {
     const onSubmit = jest.fn();
 
     it("Render component without data", () => {
-        const component = shallow(<CompanyTeam />);
+        const component = shallow(<CompanyTeam onInvite={onSubmit} />);
 
         expect(component.find("Fragment").length).toBe(1);
         expect(component.find("Button").length).toBe(1);

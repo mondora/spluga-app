@@ -35,7 +35,7 @@ export default {
     "c-navbar.app": "App",
     "c-navbar.activities": "Attività",
 
-    "c-splugaNewTarget.create": "Crea un nuovo target",
+    "c-splugaNewTarget.create": "Crea un nuovo obiettivo",
     "c-splugaNewTarget.info.name": "Inserisci il nome del target",
     "c-splugaNewTarget.info.description": "Inserisci la descrizione del target",
     "c-splugaNewTarget.message.success": "Lavoro completato! Il tuo target è stato salvato",

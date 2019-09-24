@@ -30,7 +30,7 @@ describe("Targets view", () => {
     });
 
     it("Render view no status", () => {
-        propTypes.acceptInvitationStatus = false;
+        propTypes.acceptInvitationStatus = null;
         const view = shallow(<Team {...propTypes} />);
         expect(view.find("Spin").length).toBe(1);
     });
