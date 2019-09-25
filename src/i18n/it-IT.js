@@ -64,6 +64,19 @@ export default {
 
     "c-splugaTarget.cardTitle": "Come vanno i tuoi obiettivi",
 
+    "c-splugaTips.title.company": "ECCO COSA POTETE FARE INSIEME",
+    "c-splugaTips.title.user": "SUPERA TE STESSO",
+    "c-splugaTips.subtitle":
+        "Scopri come migliorare ogni giorno l'impatto ambientale del tuo business, crea valore nella tua comunità e diffondilo!",
+    "c-splugaTips.tip1":
+        "Non tutta la plastica è riciclabile! Perché non rifiutare gli articoli confezionati in plastica monouso? Spesso puoi scegliere alternative più sostenibili ... pensa allo shopping intelligente!",
+    "c-splugaTips.tip2":
+        "Tieni una bottiglia d'acqua riutilizzabile nella borsa e ricaricala per tutto il giorno. Niente più bottiglie di plastica monouso! Il pianeta ti ringrazierà per questo.",
+    "c-splugaTips.tip3":
+        "Sei sicuro di dover stampare questo? Sapevi che puoi invece salvare una versione PDF del documento? È davvero utile perché puoi accedervi da qualsiasi dispositivo, ovunque tu sia!",
+    "c-splugaTips.tip4":
+        "Diventa green e vai in bici al lavoro! Sapevi che puoi acquistare piccole luci e dispositivi riflettenti in modo da poter guidare in sicurezza?",
+
     //Views
     "v-apps.message":
         "Assicurati di copiare il valore della chiave in un punto sicuro, altrimenti dovrai generare una nuova chiave.",

@@ -7,6 +7,7 @@ import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
 import { Spin } from "antd";
 import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
+import { SplugaTips } from "../../components/splugaTips";
 
 export const Profile = ({ auth, getCompany, company }) => {
     useEffect(() => {
@@ -23,6 +24,7 @@ export const Profile = ({ auth, getCompany, company }) => {
             <FieldRight>
                 <CompanyTarget />
             </FieldRight>
+            <SplugaTips isCompany={false} />
         </PageContainer>
     ) : (
         <SpinContainer>
