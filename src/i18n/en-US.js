@@ -64,6 +64,19 @@ export default {
 
     "c-splugaTarget.cardTitle": "Your Target's trend",
 
+    "c-splugaTips.title.company": "HERE'S WHAT YOU CAN DO TOGETHER",
+    "c-splugaTips.title.user": "EXCEEDS YOURSELF",
+    "c-splugaTips.subtitle":
+        "Find out how to improve the environmental impact of your business every day, create value in your community and spread it!",
+    "c-splugaTips.tip1":
+        "Not all plastic is recyclable! Why not refuse single use plastic packaged items? You can often choose more sustainable alternatives... think smart shopping!",
+    "c-splugaTips.tip2":
+        "Keep a reusable water bottle in your bag and refill throughout the day. No more single use plastic bottles! The planet will thank you for this.",
+    "c-splugaTips.tip3":
+        "Are you sure you need to print this? Did you know that you can save a PDF version of the document instead? It's really useful because you can access it from any device, wherever you are!",
+    "c-splugaTips.tip4":
+        "Go green and cycle to work! Did you know you can buy small lights and reflective gear so you can ride safely?",
+
     //Views
     "v-apps.message":
         "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",

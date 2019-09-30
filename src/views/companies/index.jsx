@@ -12,6 +12,7 @@ import { Spin, notification } from "antd";
 import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
 import CompanyTeam from "../../components/companyTeam";
+import SplugaTips from "../../components/splugaTips";
 
 export const Companies = ({
     auth,
@@ -76,6 +77,7 @@ export const Companies = ({
                 <FieldRight>
                     <CompanyTeam onInvite={handleInvite} team={selectedCompany.team} />
                 </FieldRight>
+                <SplugaTips isCompany />
             </PageContainer>
         ) : (
             <PageContainer>
