@@ -16,13 +16,8 @@ export const targetFormSchema = {
         },
         stakeholder: { type: "string" },
         goal: { type: "string" },
-        type: {
-            type: "object",
-            properties: {
-                name: { type: "string" },
-                value: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) }
-            }
-        },
+        value: { type: "number", validate: fieldRequired(translateMessage("general.form.field-required")) },
+
         date: {
             type: "object",
             properties: {

@@ -1,59 +1,52 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
 
 import TextField from "@mondora/arc/antd/TextField";
 import TextAreaField from "@mondora/arc/antd/TextAreaField";
+
 import { StepAction } from "../styled";
 import { translateMessage } from "../../../i18n";
-import { FormattedMessage } from "react-intl";
 
-//export class for testing pourpose
-export const StepInfo = ({ onNameChange, onDescriptionChange, name, description }) => {
-    const handleNameChange = (e, value, ...name) => {
-        console.log("nome: ", value);
-        onNameChange(value);
+export const StepInfo = ({ onChange, target }) => {
+    const handleChangeName = (e, value) => {
+        target.name = value;
+        onChange(target);
     };
 
-    const handleDescriptionChange = (e, value, ...name) => {
-        console.log("description: ", value);
-        onDescriptionChange(value);
+    const handleChangeDescription = (e, value) => {
+        target.description = value;
+        onChange(target);
     };
 
     return (
         <StepAction>
-            <label htmlFor="name">
-                <FormattedMessage id="general.name" />
-            </label>
+            <FormattedMessage id="general.name" />
             <TextField
                 id="name"
                 name="info.name"
                 type="text"
                 placeholder={translateMessage("c-splugaNewTarget.info.name")}
-                value={name}
-                onChange={handleNameChange}
+                value={target.name}
+                onChange={handleChangeName}
             />
-            <div>
-                <label htmlFor="description">
-                    <FormattedMessage id="general.description" />
-                </label>
-                <TextAreaField
-                    id="description"
-                    name="info.description"
-                    type="text"
-                    placeholder={translateMessage("c-splugaNewTarget.info.description")}
-                    value={description}
-                    onChange={handleDescriptionChange}
-                />
-            </div>
+
+            <FormattedMessage id="general.description" />
+            <TextAreaField
+                id="description"
+                name="info.description"
+                type="text"
+                placeholder={translateMessage("c-splugaNewTarget.info.description")}
+                value={target.description}
+                onChange={handleChangeDescription}
+            />
         </StepAction>
     );
 };
 
 StepInfo.propTypes = {
-    onNameChange: PropTypes.func,
-    onDescriptionChange: PropTypes.func,
-    name: PropTypes.string,
-    description: PropTypes.string
+    onChange: PropTypes.func,
+    target: PropTypes.object
 };
 
 export default StepInfo;

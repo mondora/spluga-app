@@ -41,7 +41,7 @@ describe("SplugaNewTarget", () => {
                 .simulate("click");
         }
         expect(element.find("Button").length).toBe(3);
-        expect(element.find("Steps").props().current).toEqual(5);
+        expect(element.find("Steps").props().current).toEqual(4);
         element
             .find("Button")
             .at(1)

@@ -1,40 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import { StepAction } from "../styled";
 import { FormattedMessage } from "react-intl";
+
 import ISO8601DayField from "@mondora/arc/antd/ISO8601DayField";
 
-//export function for testing pourpose
-export const StepPeriod = ({ onStartDateChange, onEndDateChange }) => {
-    const handleChangeStartDate = (e, date, ...name) => {
-        const startDate = Object.values(date);
+import { StepAction } from "../styled";
 
-        onStartDateChange(startDate.join(""));
+export const StepPeriod = ({ onChange, target }) => {
+    const handleChangeStartDate = (e, value) => {
+        target.startDate = value;
+        onChange(target);
     };
 
-    const handleChangeEndDate = (e, date, ...name) => {
-        const startDate = Object.values(date);
-        onEndDateChange(startDate.join(""));
+    const handleChangeEndDate = (e, value) => {
+        target.endDate = value;
+        onChange(target);
     };
 
     return (
         <StepAction>
-            <div style={{ marginBottom: 20 }}>
-                <FormattedMessage id="c-splugaNewTarget.period" />
-            </div>
             <FormattedMessage id="c-splugaNewTarget.startDate" />
-            <ISO8601DayField name="date.startDate" onChange={handleChangeStartDate} />
+            <ISO8601DayField name="date.startDate" onChange={handleChangeStartDate} value={target.startDate} />
 
             <FormattedMessage id="c-splugaNewTarget.endDate" />
-            <ISO8601DayField name="date.endDate" onChange={handleChangeEndDate} />
+            <ISO8601DayField name="date.endDate" onChange={handleChangeEndDate} value={target.endDate} />
         </StepAction>
     );
 };
 
 StepPeriod.propTypes = {
-    onStartDateChange: PropTypes.func,
-    onEndDateChange: PropTypes.func
+    onChange: PropTypes.func,
+    target: PropTypes.object
 };
 
 export default StepPeriod;

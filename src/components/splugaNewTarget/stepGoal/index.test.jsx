@@ -5,22 +5,30 @@ import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
+const onChange = jest.fn(() => {});
+var targetObject = {};
+
 describe("StepGoal", () => {
     it("Render component without error", () => {
-        const element = shallow(<StepGoal />);
+        const element = shallow(<StepGoal target={targetObject} />);
 
         expect(element.find("WrappedField").exists()).toBe(true);
-        expect(element.find("label").length).toBe(1);
-    });
-    /*
-    it("Render component passing props", () => {
-        const onGoalChange = jest.fn();
-        const element = shallow(<StepGoal onGoalChange={onGoalChange} goal={"test-goal"} />);
-
-        expect(element.find("WrappedField").props().value).toBe("test-goal");
-        element.find("WrappedField").simulate("change");
-        expect(onGoalChange).toHaveBeenCalled();
     });
 
-    */
+    it("Render component and change value", () => {
+        targetObject = { value: 0, goal: "test-goal" };
+
+        const element = shallow(<StepGoal onChange={onChange} target={targetObject} />);
+        const wrappedFields = element.find("WrappedField");
+        const elementGoal = wrappedFields.at(0);
+        const elementValue = wrappedFields.at(1);
+
+        expect(elementGoal.props().value).toBe("test-goal");
+        expect(elementValue.props().value).toBe(0);
+
+        elementGoal.prop("onChange")(null, "test-goal2");
+        elementValue.prop("onChange")(null, 6);
+
+        expect(onChange).toHaveBeenCalledTimes(2);
+    });
 });

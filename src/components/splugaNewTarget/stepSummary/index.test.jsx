@@ -7,30 +7,18 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("StepSummary", () => {
     it("Render component without error", () => {
-        const element = shallow(<StepSummary />);
-        expect(element.find("Descriptions").exists()).toBe(true);
-    });
-
-    it("Render component passing props", () => {
         const propTypes = {
-            name: "test-name",
-            description: "test-description",
-            stakeholder: "test-stakeholder",
-            goal: "test-goal",
-            value: "46",
-            startDate: "01-01-2018",
-            endDate: "30-04-2019"
+            target: {
+                name: "test-name",
+                description: "test-description",
+                stakeholder: "test-stakeholder",
+                goal: "test-goal",
+                value: 46,
+                startDate: "01-01-2018",
+                endDate: "30-04-2019"
+            }
         };
 
-        const element = shallow(<StepSummary {...propTypes} />);
-        const descriptions = element.find("Descriptions");
-
-        expect(descriptions.childAt(0).prop("children")).toBe(propTypes.name);
-        expect(descriptions.childAt(1).prop("children")).toBe(propTypes.description);
-        expect(descriptions.childAt(2).prop("children")).toBe(propTypes.stakeholder);
-        expect(descriptions.childAt(3).prop("children")).toBe(propTypes.goal);
-        expect(descriptions.childAt(4).prop("children")).toBe(propTypes.value);
-        expect(descriptions.childAt(5).prop("children")).toBe(propTypes.startDate);
-        expect(descriptions.childAt(6).prop("children")).toBe(propTypes.endDate);
+        shallow(<StepSummary {...propTypes} />);
     });
 });

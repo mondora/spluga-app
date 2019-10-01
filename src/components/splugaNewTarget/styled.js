@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const StepContent = styled.div`
-    margin: 16px;
-    border: 1px dashed #e9e9e9;
-    border-radius: 6px;
-    height: 400px;
-    text-align: justify;
-    padding-top: 80px;
+    display: grid;
+    border: 3px solid #bfbccb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 5px;
 `;
 
 export const StepAction = styled.div`
-    margin: 16px;
+    padding: 16px;
 `;

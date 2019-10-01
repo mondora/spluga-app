@@ -17,6 +17,8 @@ export default {
     "general.send": "invia",
     "general.email": "Email",
 
+    "general.stakeholder": "Stakeholder",
+
     //Components
     "c-companyForm.logo": "Logo",
     "c-companyForm.title": "Crea azienda",
@@ -41,25 +43,18 @@ export default {
     "c-splugaNewTarget.message.success": "Lavoro completato! Il tuo target è stato salvato",
     "c-splugaNewTarget.message.error":
         "per creare il target è necessario riempire tutti i campi, per favore clicca su annulla e torna al primo step",
-    "c-splugaNewTarget.period": "Inserisci la durata del target:",
-    "c-splugaNewTarget.startDate": "Data di inizio",
-    "c-splugaNewTarget.endDate": "Data di fine",
-    "c-splugaNewTarget.stakeholder": "Beneficiario",
+    "c-splugaNewTarget.startDate": "Data inizio",
+    "c-splugaNewTarget.endDate": "Data fine",
     "c-splugaNewTarget.stakeholder.environment": "Ambiente",
     "c-splugaNewTarget.stakeholder.governance": "Governo",
     "c-splugaNewTarget.stakeholder.community": "Comunità",
     "c-splugaNewTarget.stakeholder.customer": "Cliente",
     "c-splugaNewTarget.stakeholder.workers": "Lavoratori",
     "c-splugaNewTarget.summary.title": "Riepilogo creazione del target",
-    "c-splugaNewTarget.summary.name": "nome",
-    "c-splugaNewTarget.summary.description": "descrizione",
-    "c-splugaNewTarget.summary.stakeholder": "stakeholder",
     "c-splugaNewTarget.summary.goal": "goal",
-    "c-splugaNewTarget.summary.target": "limite/target",
     "c-splugaNewTarget.summary.startDate": "data di inizio",
     "c-splugaNewTarget.summary.endDate": "data di fine",
     "c-splugaNewTarget.type": "Tipologia",
-    "c-splugaNewTarget.type.limit": "Limite",
     "c-splugaNewTarget.type.value": "Valore",
 
     "c-splugaTarget.cardTitle": "Come vanno i tuoi obiettivi",

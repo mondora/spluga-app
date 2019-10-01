@@ -1,51 +1,54 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Descriptions } from "antd";
 import { StepAction } from "../styled";
 import { FormattedMessage } from "react-intl";
 
 //export function for testing pourpose
-export const StepSummary = ({ name, description, stakeholder, goal, value, startDate, endDate }) => {
+export const StepSummary = ({ target }) => {
+    const { name, description, stakeholder, goal, value, startDate, endDate } = target;
     return (
-        <React.Fragment>
-            <StepAction>
-                <Descriptions title={<FormattedMessage id="c-splugaNewTarget.summary.title" />}>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.name" />}>
-                        {name}
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.description" />}>
-                        {description}
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.stakeholder" />}>
-                        {stakeholder}
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.goal" />}>
-                        {goal}
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.target" />}>
-                        {value}
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.startDate" />}>
-                        {startDate}
-                    </Descriptions.Item>
-                    <Descriptions.Item label={<FormattedMessage id="c-splugaNewTarget.summary.endDate" />}>
-                        {endDate}
-                    </Descriptions.Item>
-                </Descriptions>
-            </StepAction>
-        </React.Fragment>
+        <StepAction>
+            <b>
+                <FormattedMessage id="general.name" />:
+            </b>
+            {name}
+            <br />
+            <b>
+                <FormattedMessage id="general.description" />:
+            </b>
+            {description}
+            <br />
+            <b>
+                <FormattedMessage id="general.stakeholder" />:
+            </b>
+            {stakeholder}
+            <br />
+            <b>
+                <FormattedMessage id="c-splugaNewTarget.summary.goal" />:
+            </b>
+            {goal}
+            <br />
+            <b>
+                <FormattedMessage id="c-splugaNewTarget.type.value" />
+            </b>
+            :{value}
+            <br />
+            <b>
+                <FormattedMessage id="c-splugaNewTarget.summary.startDate" />:
+            </b>
+            {startDate}
+            <br />
+            <b>
+                <FormattedMessage id="c-splugaNewTarget.summary.endDate" />:
+            </b>
+            {endDate}
+        </StepAction>
     );
 };
 
 StepSummary.propTypes = {
-    name: PropTypes.string,
-    description: PropTypes.string,
-    stakeholder: PropTypes.string,
-    goal: PropTypes.string,
-    value: PropTypes.number,
-    startDate: PropTypes.string,
-    endDate: PropTypes.string
+    target: PropTypes.object.isRequired
 };
 
 export default StepSummary;
