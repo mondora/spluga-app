@@ -39,8 +39,8 @@ export default {
 
     "c-splugaNewTarget.create": "Create new target",
 
-    "c-splugaNewTarget.info.name": "Enter target's name",
-    "c-splugaNewTarget.info.description": "Enter target's description",
+    "c-splugaNewTarget.placeholder.name": "Enter target's name",
+    "c-splugaNewTarget.placeholder.description": "Enter target's description",
     "c-splugaNewTarget.message.success": "Processing complete! Your target has been saved",
     "c-splugaNewTarget.message.error":
         "to create target you need fill all data, please click on reject to go back at step one",
@@ -86,5 +86,7 @@ export default {
 
     "v-team.invitation.error.400.invalid": "Invalid or expired link",
     "v-team.invitation.error.400.duplicate": "User already invited",
-    "v-team.invitation.success": "Invitation sent"
+    "v-team.invitation.success": "Invitation sent",
+
+    "v-companies.target.success": "Target created"
 };

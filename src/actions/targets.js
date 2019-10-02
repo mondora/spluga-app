@@ -20,7 +20,6 @@ with object mongodb i can get the collection handle: one instance for get/add/re
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
-//DEFINE ACTION CREATORS
 export function getTargets(query) {
     return async dispatch => {
         dispatch({
@@ -29,7 +28,6 @@ export function getTargets(query) {
         const collection = mongodb.db(MONGO_DB_NAME).collection("targets");
 
         try {
-            //only ownerId data
             const result = await collection.find(query).toArray();
 
             dispatch({
@@ -49,20 +47,24 @@ export function getTargets(query) {
 export const ADD_TARGET_START = "ADD_TARGET_START";
 export const ADD_TARGET_SUCCESS = "ADD_TARGET_SUCCESS";
 export const ADD_TARGET_ERROR = "ADD_TARGET_ERROR";
-export function addTarget(ownerId, data) {
+export function addTarget(data, currentUser, companyId) {
+    const { id } = currentUser;
     return async dispatch => {
         dispatch({
             type: ADD_TARGET_START
         });
 
-        const collection = mongodb.db(MONGO_DB_NAME).collection("targets");
-
         try {
-            const result = await collection.insertOne({ ownerId, ...data });
+            const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
+            data.startDate = new Date(data.startDate);
+            data.endDate = new Date(data.endDate);
+            await companies.updateOne(
+                { _id: companyId },
+                { $push: { targets: { ...data, actual: 0, createdAt: new Date(), cretedBy: id } } }
+            );
 
             dispatch({
-                type: ADD_TARGET_SUCCESS,
-                payload: { target: result }
+                type: ADD_TARGET_SUCCESS
             });
         } catch (error) {
             dispatch({

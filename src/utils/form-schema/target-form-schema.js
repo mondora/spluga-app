@@ -4,26 +4,18 @@ import { translateMessage } from "../../i18n";
 export const targetFormSchema = {
     type: "object",
     properties: {
-        info: {
-            type: "object",
-            properties: {
-                name: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) },
-                description: {
-                    type: "string",
-                    validate: fieldRequired(translateMessage("general.form.field-required"))
-                }
-            }
-        },
+        name: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) },
+        description: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) },
         stakeholder: { type: "string" },
         goal: { type: "string" },
         value: { type: "number", validate: fieldRequired(translateMessage("general.form.field-required")) },
-
-        date: {
-            type: "object",
-            properties: {
-                startDate: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) },
-                endDate: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) }
-            }
+        startDate: {
+            type: "string",
+            validate: fieldRequired(translateMessage("general.form.field-required"))
+        },
+        endDate: {
+            type: "string",
+            validate: fieldRequired(translateMessage("general.form.field-required"))
         }
     }
 };

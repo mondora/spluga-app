@@ -15,6 +15,7 @@
     "@mondora/conv-redux-form": "^1.4.1",
     "antd": "^3.18.1",
     "commons-validator-js": "^1.0.1227",
+    "moment": "^2.24.0",
     "mongodb-stitch-browser-sdk": "^4.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",

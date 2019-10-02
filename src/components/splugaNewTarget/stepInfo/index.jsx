@@ -24,9 +24,9 @@ export const StepInfo = ({ onChange, target }) => {
             <FormattedMessage id="general.name" />
             <TextField
                 id="name"
-                name="info.name"
+                name="name"
                 type="text"
-                placeholder={translateMessage("c-splugaNewTarget.info.name")}
+                placeholder={translateMessage("c-splugaNewTarget.placeholder.name")}
                 value={target.name}
                 onChange={handleChangeName}
             />
@@ -34,9 +34,9 @@ export const StepInfo = ({ onChange, target }) => {
             <FormattedMessage id="general.description" />
             <TextAreaField
                 id="description"
-                name="info.description"
+                name="description"
                 type="text"
-                placeholder={translateMessage("c-splugaNewTarget.info.description")}
+                placeholder={translateMessage("c-splugaNewTarget.placeholder.description")}
                 value={target.description}
                 onChange={handleChangeDescription}
             />

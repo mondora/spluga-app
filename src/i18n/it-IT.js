@@ -38,8 +38,8 @@ export default {
     "c-navbar.activities": "Attività",
 
     "c-splugaNewTarget.create": "Crea un nuovo obiettivo",
-    "c-splugaNewTarget.info.name": "Inserisci il nome del target",
-    "c-splugaNewTarget.info.description": "Inserisci la descrizione del target",
+    "c-splugaNewTarget.placeholder.name": "Inserisci il nome del target",
+    "c-splugaNewTarget.placeholder.description": "Inserisci la descrizione del target",
     "c-splugaNewTarget.message.success": "Lavoro completato! Il tuo target è stato salvato",
     "c-splugaNewTarget.message.error":
         "per creare il target è necessario riempire tutti i campi, per favore clicca su annulla e torna al primo step",
@@ -85,5 +85,7 @@ export default {
 
     "v-team.invitation.error.400.invalid": "Link non valido o scaduto",
     "v-team.invitation.error.400.duplicate": "Utente gia invitato",
-    "v-team.invitation.success": "Invito inviato correttamente"
+    "v-team.invitation.success": "Invito inviato correttamente",
+
+    "v-companies.target.success": "Obbiettivo creato"
 };

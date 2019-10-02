@@ -22,6 +22,7 @@ export const FieldRight = styled.div`
     grid-column-start: 2;
     grid-column-end: 3;
     text-align: right;
+    font-weight: bolder;
 `;
 
 export const FieldGrid = styled.div`

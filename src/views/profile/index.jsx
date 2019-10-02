@@ -1,28 +1,54 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { compose } from "redux";
+import { injectIntl } from "react-intl";
 import { getCompany } from "../../actions/companies";
 
 import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
-import { Spin } from "antd";
+import { Spin, notification } from "antd";
 import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
 import { SplugaTips } from "../../components/splugaTips";
+import { addTarget } from "../../actions/targets";
 
-export const Profile = ({ auth, getCompany, company }) => {
+export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) => {
     useEffect(() => {
         getCompany({});
     }, [getCompany]);
 
+    useEffect(() => {
+        const { ended, error, errorInfo } = target;
+        if (ended || error) {
+            const type = error ? "error" : "info";
+            var id = error ? errorInfo.message : "v-companies.target.success";
+            const message = intl.formatMessage({ id, defaultMessage: id });
+            notify(type, message);
+        }
+    }, [target, intl]);
+
+    const handleAddTarget = data => {
+        const companyId = company && company.result ? company.result._id : null;
+        addTarget(data, auth.currentUser, companyId);
+    };
+
+    const notify = (type, message) => {
+        notification[type]({
+            message: type,
+            description: message
+        });
+    };
+
     const loading = company && company.status ? company.status.started : true;
     const selectedCompany = company && company.result ? company.result : null;
+
     return !loading ? (
         <PageContainer>
             <FieldLeft>
                 <SplugaCard auth={auth} company={selectedCompany} type={"user"} />
             </FieldLeft>
             <FieldRight>
-                <CompanyTarget />
+                <CompanyTarget onAddTarget={handleAddTarget} />
             </FieldRight>
             <SplugaTips isCompany={false} />
         </PageContainer>
@@ -35,15 +61,22 @@ export const Profile = ({ auth, getCompany, company }) => {
 Profile.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
-    getCompany: PropTypes.func
+    target: PropTypes.object,
+    getCompany: PropTypes.func,
+    addTarget: PropTypes.func
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    company: state.getCompany
+    company: state.getCompany,
+    target: state.addTarget.status
 });
 
-export default connect(
-    mapStateToProps,
-    { getCompany }
-)(Profile);
+const composedHoc = compose(
+    connect(
+        mapStateToProps,
+        { getCompany, addTarget }
+    )
+);
+
+export default injectIntl(composedHoc(Profile));

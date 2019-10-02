@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TargetContainer = styled.div`
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: 15% auto;
     justify-items: stretch;
     padding: 5px;
     border: 3px solid #bfbccb;
@@ -12,28 +12,16 @@ export const TargetContainer = styled.div`
 `;
 
 export const Title = styled.div`
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 1;
     font-weight: bolder;
     font-size: 20px;
 `;
-export const AvatarStyle = styled.div`
-    margin-right: 10px;
-`;
-export const FieldLeft = styled.div`
-    display: flex;
-    flex-direction: row;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    margin: 5px;
-`;
 
 export const FieldRight = styled.div`
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    grid-column-start: 5;
+    grid-column-start: 4;
     grid-column-end: 5;
-    grid-row-start: 5;
-    grid-row-end: 5;
-    margin: 5px;
     text-align: right;
+    font-weight: bolder;
 `;
