@@ -35,8 +35,8 @@ export default {
     "c-navbar.profile": "Profile",
     "c-navbar.company": "Company",
     "c-navbar.app": "App",
+    "c-navbar.targets": "Explore your targets",
     "c-navbar.activities": "Activities",
-
     "c-splugaNewTarget.create": "Create new target",
 
     "c-splugaNewTarget.placeholder.name": "Enter target's name",

@@ -17,6 +17,6 @@ describe("Root view", () => {
         expect(element.find("Header").length).toBe(1);
         expect(element.find("NavBar").length).toBe(1);
         expect(element.find("Switch").length).toBe(1);
-        expect(element.find("Route").length).toBe(5);
+        expect(element.find("Route").length).toBe(6);
     });
 });

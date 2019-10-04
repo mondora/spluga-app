@@ -2,9 +2,10 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import NavBar from "../../components/navbar";
 import Header from "../../components/header";
-import Activities from "../activities";
+import Targets from "../targets";
 import { Route } from "react-router-dom";
 
+import Activities from "../activities";
 import Profile from "../profile";
 import Companies from "../companies";
 import Apps from "../apps";
@@ -27,8 +28,9 @@ export const Root = ({ match, auth }) => {
                         <Route exact path="/" component={Profile} />
                         <Route path="/apps" component={Apps} />
                         <Route path="/companies" component={Companies} />
-                        <Route path="/activities" component={Activities} />
+                        <Route path="/targets" component={Targets} />
                         <Route path="/team" component={Team} />
+                        <Route path="/activities" component={Activities} />
                     </Switch>
                 </Page>
             </Container>
