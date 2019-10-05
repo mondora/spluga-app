@@ -16,34 +16,39 @@ export const NavBar = ({ currentPage }) => {
                         <FormattedMessage id="c-navbar.profile" />
                     </Link>
                 </Menu.Item>
+
                 <Menu.Item key="companies">
                     <Link to="/companies">
                         <Icon type="team" />
                         <FormattedMessage id="c-navbar.company" />
                     </Link>
                 </Menu.Item>
+
+                <Menu.Item key="targets">
+                    <Link to="/targets">
+                        <Icon type="compass" />
+                        <FormattedMessage id="c-navbar.targets" />
+                    </Link>
+                </Menu.Item>
+
+                <Menu.Item key="activities">
+                    <Link to="/activities">
+                        <Icon type="line-chart" />
+                        <FormattedMessage id="c-navbar.activities" />
+                    </Link>
+                </Menu.Item>
+
                 <Menu.Item key="apps">
                     <Link to="/apps">
                         <Icon type="api" />
                         <FormattedMessage id="c-navbar.app" />
                     </Link>
                 </Menu.Item>
+
                 <Menu.Item key="goals">
                     <Link to="/goals">
                         <Icon type="heart" />
                         Goals
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="targets">
-                    <Link to="/targets">
-                        <Icon type="line-chart" />
-                        Targets
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="activities">
-                    <Link to="/activities">
-                        <Icon type="rise" />
-                        <FormattedMessage id="c-navbar.activities" />
                     </Link>
                 </Menu.Item>
             </Menu>
