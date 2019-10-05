@@ -51,6 +51,8 @@ export const CompanyTarget = ({ onAddTarget, targets }) => {
                 </Link>
             </FieldRight>
             <Modal
+                centered
+                destroyOnClose
                 title={<FormattedMessage id="c-splugaNewTarget.create" />}
                 visible={visible}
                 footer={null}

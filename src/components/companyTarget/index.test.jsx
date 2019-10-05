@@ -11,7 +11,7 @@ describe("CompanyTarget", () => {
     it("Render component without data", () => {
         const component = shallow(<CompanyTarget onAddTarget={onSubmit} targets={targets} />);
         expect(component.find("ReduxForm").length).toBe(1);
-        expect(component.find("Modal").exists()).toBe(true);
+        expect(component.find("Modal").length).toBe(1);
         expect(component.find("Link").length).toBe(2);
         expect(component.find("FormattedMessage").length).toBe(3);
 
@@ -22,5 +22,10 @@ describe("CompanyTarget", () => {
 
         component.find("ReduxForm").simulate("submit");
         expect(onSubmit).toHaveBeenCalledTimes(1);
+
+        component
+            .find("Modal")
+            .at(0)
+            .simulate("cancel");
     });
 });

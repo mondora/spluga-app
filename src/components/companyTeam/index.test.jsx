@@ -14,7 +14,7 @@ describe("CompanyTeam", () => {
         const component = shallow(<CompanyTeam onInvite={onSubmit} />);
 
         expect(component.find("Fragment").length).toBe(1);
-        expect(component.find("Button").length).toBe(1);
+        expect(component.find("Link").length).toBe(1);
         expect(component.find("Modal").length).toBe(1);
         expect(component.find("FormattedMessage").length).toBe(2);
     });
@@ -23,7 +23,7 @@ describe("CompanyTeam", () => {
         const component = shallow(<CompanyTeam team={team} onInvite={onSubmit} />);
 
         expect(component.find("Fragment").length).toBe(1);
-        expect(component.find("Button").length).toBe(1);
+        expect(component.find("Link").length).toBe(1);
         expect(component.find("Modal").length).toBe(1);
         expect(component.find("UserTeam").length).toBe(1);
         expect(component.find("ReduxForm").length).toBe(1);
@@ -32,6 +32,10 @@ describe("CompanyTeam", () => {
         component.find("ReduxForm").simulate("submit");
         expect(onSubmit).toHaveBeenCalledTimes(1);
 
-        component.find("Button").simulate("click");
+        component.find("Link").simulate("click");
+        component
+            .find("Modal")
+            .at(0)
+            .simulate("cancel");
     });
 });

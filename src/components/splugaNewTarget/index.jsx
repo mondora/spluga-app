@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { Button, Steps } from "antd";
+import { Button, Icon, Steps } from "antd";
 import { targetFormSchema } from "../../utils/form-schema/target-form-schema";
 import { form } from "@mondora/conv-redux-form";
 
@@ -10,7 +10,7 @@ import StepStakeholder from "./stepStakeholder";
 import StepGoal from "./stepGoal";
 import StepPeriod from "./stepPeriod";
 import StepSummary from "./stepSummary";
-import { StepContent, StepAction } from "./styled";
+import { FormContainer, StepActionButton } from "./styled";
 import { FormattedMessage } from "react-intl";
 
 const { Step } = Steps;
@@ -18,6 +18,7 @@ const { Step } = Steps;
 export const SplugaNewTarget = ({ handleSubmit }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [target, setTarget] = useState({});
+    const ButtonGroup = Button.Group;
 
     const steps = [
         {
@@ -46,6 +47,8 @@ export const SplugaNewTarget = ({ handleSubmit }) => {
         }
     ];
 
+    const isLastStep = currentStep === steps.length - 1;
+
     const _next = () => {
         currentStep >= 3 ? setCurrentStep(4) : setCurrentStep(currentStep + 1);
     };
@@ -56,46 +59,36 @@ export const SplugaNewTarget = ({ handleSubmit }) => {
 
     const createTarget = target => {
         handleSubmit(target);
-        setCurrentStep(0);
-        setTarget({});
     };
 
     return (
-        <React.Fragment>
-            <form name="targetForm" onSubmit={createTarget}>
-                <Steps current={currentStep}>
-                    {steps.map(item => (
-                        <Step key={item.key} title={item.title} />
-                    ))}
-                </Steps>
-                <StepContent>
-                    {" "}
-                    {steps[currentStep].content}
-                    <StepAction>
-                        {currentStep < steps.length - 1 && (
-                            <Button type="primary" onClick={_next} disabled={steps[currentStep].nextDisabled}>
-                                <FormattedMessage id="general.next" />
-                            </Button>
-                        )}
-                        {currentStep === steps.length - 1 && (
-                            <Button.Group>
-                                <Button type="primary" htmlType="submit">
-                                    <FormattedMessage id="general.done" />
-                                </Button>
-                                <Button type="danger" onClick={() => setCurrentStep(0)}>
-                                    <FormattedMessage id="general.reject" />
-                                </Button>
-                            </Button.Group>
-                        )}
-                        {currentStep > 0 && (
-                            <Button style={{ marginLeft: 8 }} onClick={_prev}>
-                                <FormattedMessage id="general.previous" />
-                            </Button>
-                        )}
-                    </StepAction>
-                </StepContent>
-            </form>
-        </React.Fragment>
+        <FormContainer>
+            <Steps current={currentStep}>
+                {steps.map(item => (
+                    <Step key={item.key} title={item.title} />
+                ))}
+            </Steps>
+
+            {steps[currentStep].content}
+            <StepActionButton>
+                <ButtonGroup>
+                    <Button type="primary" onClick={_prev} disabled={currentStep === 0}>
+                        <Icon type="left" />
+                        <FormattedMessage id="general.previous" />
+                    </Button>
+                    {isLastStep ? (
+                        <Button type="primary" onClick={createTarget}>
+                            <FormattedMessage id="general.done" />
+                        </Button>
+                    ) : (
+                        <Button type="primary" onClick={_next} disabled={steps[currentStep].nextDisabled}>
+                            <FormattedMessage id="general.next" />
+                            <Icon type="right" />
+                        </Button>
+                    )}
+                </ButtonGroup>
+            </StepActionButton>
+        </FormContainer>
     );
 };
 
