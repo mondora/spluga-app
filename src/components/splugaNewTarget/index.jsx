@@ -54,9 +54,15 @@ export const SplugaNewTarget = ({ handleSubmit }) => {
         currentStep <= 0 ? setCurrentStep(0) : setCurrentStep(currentStep - 1);
     };
 
+    const createTarget = target => {
+        handleSubmit(target);
+        setCurrentStep(0);
+        setTarget({});
+    };
+
     return (
         <React.Fragment>
-            <form name="targetForm" onSubmit={handleSubmit}>
+            <form name="targetForm" onSubmit={createTarget}>
                 <Steps current={currentStep}>
                     {steps.map(item => (
                         <Step key={item.key} title={item.title} />

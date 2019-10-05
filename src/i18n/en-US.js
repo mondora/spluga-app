@@ -59,6 +59,7 @@ export default {
     "c-splugaNewTarget.type.value": "Value",
 
     "c-splugaTarget.cardTitle": "Your Target's trend",
+    "c-splugaTarget.view": "View all your targets",
 
     "c-splugaTips.title.company": "HERE'S WHAT YOU CAN DO TOGETHER",
     "c-splugaTips.title.user": "EXCEEDS YOURSELF",

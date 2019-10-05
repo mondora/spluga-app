@@ -41,6 +41,7 @@ export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) 
 
     const loading = company && company.status ? company.status.started : true;
     const selectedCompany = company && company.result ? company.result : null;
+    const targets = selectedCompany ? selectedCompany.targets : [];
 
     return !loading ? (
         <PageContainer>
@@ -48,7 +49,7 @@ export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) 
                 <SplugaCard auth={auth} company={selectedCompany} type={"user"} />
             </FieldLeft>
             <FieldRight>
-                <CompanyTarget onAddTarget={handleAddTarget} />
+                <CompanyTarget onAddTarget={handleAddTarget} targets={targets} />
             </FieldRight>
             <SplugaTips isCompany={false} />
         </PageContainer>

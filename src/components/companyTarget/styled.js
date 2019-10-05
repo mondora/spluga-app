@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const TargetContainer = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 15% auto;
+    grid-template-columns: auto auto;
+    grid-template-rows: 10% auto 10%;
     justify-items: stretch;
     padding: 5px;
     border: 3px solid #bfbccb;
@@ -20,8 +20,17 @@ export const Title = styled.div`
 `;
 
 export const FieldRight = styled.div`
-    grid-column-start: 4;
-    grid-column-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 3;
     text-align: right;
     font-weight: bolder;
+`;
+
+export const FieldGrid = styled.div`
+    margin: 5px;
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-columns: auto;
+    height: calc(30vh - 10px);
 `;

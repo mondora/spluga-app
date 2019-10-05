@@ -58,6 +58,7 @@ export default {
     "c-splugaNewTarget.type.value": "Valore",
 
     "c-splugaTarget.cardTitle": "Come vanno i tuoi obiettivi",
+    "c-splugaTarget.view": "Visualizza tutti i tuoi obbiettivi",
 
     "c-splugaTips.title.company": "ECCO COSA POTETE FARE INSIEME",
     "c-splugaTips.title.user": "SUPERA TE STESSO",

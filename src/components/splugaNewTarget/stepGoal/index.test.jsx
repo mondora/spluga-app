@@ -17,8 +17,9 @@ describe("StepGoal", () => {
 
     it("Render component and change value", () => {
         targetObject = { value: 0, goal: "test-goal" };
+        const goals = [{ key: "goal" }];
 
-        const element = shallow(<StepGoal onChange={onChange} target={targetObject} />);
+        const element = shallow(<StepGoal onChange={onChange} target={targetObject} goals={goals} />);
         const wrappedFields = element.find("WrappedField");
         const elementGoal = wrappedFields.at(0);
         const elementValue = wrappedFields.at(1);

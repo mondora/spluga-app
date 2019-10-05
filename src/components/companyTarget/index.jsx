@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
-import { TargetContainer, Title, FieldRight } from "./styled";
+import { TargetContainer, Title, FieldRight, FieldGrid } from "./styled";
 import SplugaNewTarget from "../splugaNewTarget";
-import { Button, Modal, Icon } from "antd";
+import TargetStatus from "../targetStatus";
+import { Modal, Icon } from "antd";
 import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
-export const CompanyTarget = ({ onAddTarget }) => {
+export const CompanyTarget = ({ onAddTarget, targets }) => {
     const [visible, setVisible] = useState(false);
 
     const showModal = () => {
@@ -18,6 +20,13 @@ export const CompanyTarget = ({ onAddTarget }) => {
         onAddTarget(target);
     };
 
+    const filteredTargets = targets
+        ? targets
+              .filter(target => {
+                  return moment().diff(target.endDate, "days") < 0;
+              })
+              .slice(0, 4)
+        : null;
     return (
         <TargetContainer>
             <Title>
@@ -25,12 +34,22 @@ export const CompanyTarget = ({ onAddTarget }) => {
             </Title>
 
             <FieldRight>
-                <Button type="link" size="large" onClick={showModal}>
+                <Link to="#" onClick={showModal}>
                     <Icon type="file-add" />
                     <FormattedMessage id="general.add" />
-                </Button>
+                </Link>
             </FieldRight>
-
+            <FieldGrid>
+                {filteredTargets
+                    ? filteredTargets.map(target => <TargetStatus target={target} key={target.name} />)
+                    : null}
+            </FieldGrid>
+            <FieldRight>
+                <Link to="/targets">
+                    <Icon type="arrow-right" />
+                    <FormattedMessage id="c-splugaTarget.view" />
+                </Link>
+            </FieldRight>
             <Modal
                 title={<FormattedMessage id="c-splugaNewTarget.create" />}
                 visible={visible}
@@ -49,7 +68,7 @@ CompanyTarget.defaultProps = {
 
 CompanyTarget.propTypes = {
     auth: PropTypes.object,
-    target: PropTypes.object,
+    targets: PropTypes.array,
     onAddTarget: PropTypes.func.isRequired
 };
 
