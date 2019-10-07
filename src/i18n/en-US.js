@@ -16,6 +16,11 @@ export default {
     "general.next": "Next",
     "general.send": "Send",
     "general.email": "Email",
+    "general.whatIs": "What is Spluga?",
+    "general.valueYourBusiness": "Value your business",
+    "general.howDoesItWork": "How does it work?",
+    "general.joinUs": "Join us!",
+    "general.login": "Login",
 
     "general.stakeholder": "Stakeholder",
 
@@ -73,6 +78,26 @@ export default {
         "Are you sure you need to print this? Did you know that you can save a PDF version of the document instead? It's really useful because you can access it from any device, wherever you are!",
     "c-splugaTips.tip4":
         "Go green and cycle to work! Did you know you can buy small lights and reflective gear so you can ride safely?",
+
+    "c-landingHeader.desc": "Define your targets, <br> play the game, <br> improve your impact.",
+
+    "c-landingWhatIs.desc":
+        "Spluga is a software platform that allows you to set targets and goals, measure your progress over time and improve your social and environmental impact. Whether you are focusing on the environment, the community or your workers, Spluga will help you define Objectives and Key results, meter and analyse team progress over time, suggest ways to improve your impact and gear you towards reaching your target results.",
+    "c-landingWhatIs.subTitle":
+        "Spluga is the place to be for companies looking to enhance their social and environmental responsibility.",
+    "c-landingWhatIs.subTitle2": "The platform can help you:",
+
+    "c-landingWhatIs.action1": "Define and customise objectives and key results for your company.",
+    "c-landingWhatIs.action2": "Measure and track progress towards your set goals.",
+    "c-landingWhatIs.action3": "MEasure and track positive impact for your app or service using api",
+    "c-landingWhatIs.action4": "Work in teams, assign objectives and manage player performance.",
+    "c-landingWhatIs.action5": "Gain valuable insights into your company’s impact creation.",
+    "c-landingWhatIs.action6": "Easily create an Impact Report and share it with your Stakeholders",
+
+    "c-landingHowDoesItWork.setYourTraget": "Set your Target",
+    "c-landingHowDoesItWork.collectActivity": "Collect activity",
+    "c-landingHowDoesItWork.monitorYourProgress": "Monitor your progress",
+    "general.producePositiveImpact": "Produce positive impact",
 
     //Views
     "v-apps.message":

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { IntlProvider } from "react-intl";
@@ -7,41 +7,29 @@ import { Route } from "react-router-dom";
 import { getMessagesLocale, getUserLocale } from "../i18n";
 import Root from "./root";
 import PropTypes from "prop-types";
-import { login } from "../actions/auth";
+import Landing from "./landing";
 
-export const Routes = ({ auth, login }) => {
-    useEffect(() => {
-        if (!auth.currentUser) {
-            login();
-        }
-    }, [auth.currentUser, login]);
-
+export const Routes = ({ auth }) => {
     const locale = getUserLocale();
     const messages = getMessagesLocale();
+
+    const component = !auth.currentUser ? Landing : Root;
 
     return (
         <IntlProvider locale={locale} messages={messages}>
             <BrowserRouter>
-                <Route path="/:page?" component={Root} />
+                <Route path="/:page?" component={component} />
             </BrowserRouter>
         </IntlProvider>
     );
 };
 
 Routes.propTypes = {
-    auth: PropTypes.object.isRequired,
-    login: PropTypes.func
-};
-
-const actions = {
-    login
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(
-    mapStateToProps,
-    actions
-)(Routes);
+export default connect(mapStateToProps)(Routes);

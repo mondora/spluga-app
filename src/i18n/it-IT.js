@@ -16,6 +16,11 @@ export default {
     "general.next": "Avanti",
     "general.send": "invia",
     "general.email": "Email",
+    "general.whatIs": "Che cos'è Spluga?",
+    "general.valueYourBusiness": "Value your business",
+    "general.howDoesItWork": "Come funziona?",
+    "general.joinUs": "Pertecipa!",
+    "general.login": "Login",
 
     "general.stakeholder": "Stakeholder",
 
@@ -72,6 +77,28 @@ export default {
         "Sei sicuro di dover stampare questo? Sapevi che puoi invece salvare una versione PDF del documento? È davvero utile perché puoi accedervi da qualsiasi dispositivo, ovunque tu sia!",
     "c-splugaTips.tip4":
         "Diventa green e vai in bici al lavoro! Sapevi che puoi acquistare piccole luci e dispositivi riflettenti in modo da poter guidare in sicurezza?",
+
+    "c-landingHeader.desc":
+        "Definisci i tuoi obbiettivi, <br /> completa le tue attività, <br /> migliora il tuo impatto positivo.",
+
+    "c-landingWhatIs.desc":
+        "Spluga è un software che ti permette di settare obbiettivi, misiurare i tuoi progressi nel tempo e migliorare il tuo impatto sociale e ambientale. Se ti stai concentrando sull'ambiente, sulla comunità o sui tuoi lavoratori, Spluga ti aiuta a definire i tuoi obbiettivi e ti consiglia su come migliorere il tuo impatto positivo.",
+    "c-landingWhatIs.subTitle":
+        "Spluga è il luogo ideale per le aziende che desiderano migliorare la propria responsabilità sociale e ambientale.",
+    "c-landingWhatIs.subTitle2": "Spluga ti aiuterà a:",
+
+    "c-landingWhatIs.action1": "Definire e gestire gli obbiettivi per la tua azienda",
+    "c-landingWhatIs.action2": "Misurare i tuoi progressi",
+    "c-landingWhatIs.action3": "Misurare l'impatto positivo della tua app o servizio automaticamente tramite api",
+    "c-landingWhatIs.action4": "Lavorare in team assegnare obbiettivi e monitorare l'andamento del gruppo.",
+    "c-landingWhatIs.action5":
+        "Ottieni informazioni e suggerimenti preziosi per migliorare l'imnpatto della tua azienda",
+    "c-landingWhatIs.action6": "Creare facilmente report di impatto da condividere",
+
+    "c-landingHowDoesItWork.setYourTraget": "Setta gli obbiettivi",
+    "c-landingHowDoesItWork.collectActivity": "Salva le tue attività",
+    "c-landingHowDoesItWork.monitorYourProgress": "Controlla i tuoi progressi",
+    "general.producePositiveImpact": "Produci impatto positivo",
 
     //Views
     "v-apps.message":

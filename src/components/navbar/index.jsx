@@ -1,4 +1,3 @@
-//utilizzo menu antd con le 4 opzioni che mi rendeizzano ai 4 componenti 1 view root
 import React from "react";
 import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
