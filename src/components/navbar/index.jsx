@@ -43,13 +43,6 @@ export const NavBar = ({ currentPage }) => {
                         <FormattedMessage id="c-navbar.app" />
                     </Link>
                 </Menu.Item>
-
-                <Menu.Item key="goals">
-                    <Link to="/goals">
-                        <Icon type="heart" />
-                        Goals
-                    </Link>
-                </Menu.Item>
             </Menu>
         </PageContainer>
     );

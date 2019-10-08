@@ -11,8 +11,8 @@ describe("NavBar", () => {
         const element = shallow(<NavBar />);
 
         expect(element.find("Menu").length).toBe(1);
-        expect(element.find("MenuItem").length).toBe(6);
-        expect(element.find("Link").length).toBe(6);
-        expect(element.find("Icon").length).toBe(6);
+        expect(element.find("MenuItem").length).toBe(5);
+        expect(element.find("Link").length).toBe(5);
+        expect(element.find("Icon").length).toBe(5);
     });
 });

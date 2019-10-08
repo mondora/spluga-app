@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { addApp, getApps, deleteApp, disableApp, enableApp } from "../../actions/apps";
 
 import SplugaTable from "../../components/splugaTable";
-import AppsForm from "../../components/appsForm";
+import AppForm from "../../components/appForm";
 import SplugaResult from "../../components/splugaResult";
 
 import { PageContainer, Title } from "./styled";
@@ -70,7 +70,7 @@ export const Apps = ({
                 onChange={x => onChange(x)}
                 loadingStatus={getAppsStatus}
             />
-            <AppsForm serverError={serverError} onSubmit={x => onSubmit(x)} />
+            <AppForm serverError={serverError} onSubmit={x => onSubmit(x)} />
         </PageContainer>
     );
 };

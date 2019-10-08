@@ -38,7 +38,7 @@ export default {
 
     "c-navbar.profile": "Profile",
     "c-navbar.company": "Company",
-    "c-navbar.app": "App",
+    "c-navbar.app": "Apps",
     "c-navbar.targets": "Explore your targets",
     "c-navbar.activities": "Activities",
     "c-splugaNewTarget.create": "Create new target",
@@ -102,11 +102,10 @@ export default {
         "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets.",
 
     //Views
-    "v-apps.message":
-        "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",
-    "v-apps.create": "New app {appName} created",
-    "v-apps.create.title": "Create a new app",
-    "v-apps.name": "App name",
+    "v-app.message": "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",
+    "v-app.create": "New app {appName} created",
+    "v-app.create.title": "Create a new app",
+    "v-app.name": "App name",
 
     "v-goals.create": "Create goal",
     "v-goals.create.new": "New goal created",
@@ -116,5 +115,7 @@ export default {
     "v-team.invitation.error.400.duplicate": "User already invited",
     "v-team.invitation.success": "Invitation sent",
 
-    "v-companies.target.success": "Target created"
+    "v-companies.target.success": "Target created",
+
+    "v-activities.title": "Add your activities"
 };
