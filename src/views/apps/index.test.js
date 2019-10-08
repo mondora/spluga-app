@@ -20,13 +20,13 @@ describe("Apps view", () => {
         const view = shallow(<Apps {...propTypes} />);
 
         expect(view.find("SplugaTable").length).toBe(1);
-        expect(view.find("SplugaForm").length).toBe(1);
+        expect(view.find("ReduxForm").length).toBe(1);
     });
 
     it("Render view without error and create app", () => {
         const view = shallow(<Apps {...propTypes} />);
 
-        view.find("SplugaForm").simulate("submit", { preventDefault: () => {} });
+        view.find("ReduxForm").simulate("submit", { preventDefault: () => {} });
         expect(propTypes.addApp).toHaveBeenCalledTimes(1);
     });
 
@@ -68,6 +68,6 @@ describe("Apps view", () => {
         const view = shallow(<Apps {...propTypes} />);
 
         expect(view.find("SplugaTable").length).toBe(1);
-        expect(view.find("SplugaForm").length).toBe(1);
+        expect(view.find("ReduxForm").length).toBe(1);
     });
 });

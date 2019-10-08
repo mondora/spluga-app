@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { addApp, getApps, deleteApp, disableApp, enableApp } from "../../actions/apps";
 
 import SplugaTable from "../../components/splugaTable";
-import SplugaForm from "../../components/splugaForm";
+import AppsForm from "../../components/appsForm";
 import SplugaResult from "../../components/splugaResult";
 
 import { PageContainer, Title } from "./styled";
@@ -56,20 +56,6 @@ export const Apps = ({
     const resultTitle = app ? <FormattedMessage id="v-app.create" values={{ appName: `${app.name}` }} /> : null;
     const resultSubTitle = app ? <FormattedMessage id="v-apps.message" /> : null;
 
-    const fields = [
-        {
-            name: "appName",
-            description: <FormattedMessage id="v-apps.name" />,
-            ref: {
-                required: "this is required",
-                minLength: {
-                    value: 2,
-                    message: "Min length is 2"
-                }
-            }
-        }
-    ];
-
     return app ? (
         <PageContainer>
             <Title>Apps</Title>
@@ -84,12 +70,7 @@ export const Apps = ({
                 onChange={x => onChange(x)}
                 loadingStatus={getAppsStatus}
             />
-            <SplugaForm
-                title={<FormattedMessage id={"v-apps.create.title"} />}
-                fields={fields}
-                serverError={serverError}
-                onSubmit={x => onSubmit(x)}
-            />
+            <AppsForm serverError={serverError} onSubmit={x => onSubmit(x)} />
         </PageContainer>
     );
 };
