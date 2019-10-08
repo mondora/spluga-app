@@ -17,11 +17,10 @@ export default {
     "general.send": "invia",
     "general.email": "Email",
     "general.whatIs": "Che cos'è Spluga?",
-    "general.valueYourBusiness": "Value your business",
     "general.howDoesItWork": "Come funziona?",
     "general.joinUs": "Pertecipa!",
     "general.login": "Login",
-
+    "general.producePositiveImpact": "Produci impatto positivo",
     "general.stakeholder": "Stakeholder",
 
     //Components
@@ -98,7 +97,11 @@ export default {
     "c-landingHowDoesItWork.setYourTraget": "Setta gli obbiettivi",
     "c-landingHowDoesItWork.collectActivity": "Salva le tue attività",
     "c-landingHowDoesItWork.monitorYourProgress": "Controlla i tuoi progressi",
-    "general.producePositiveImpact": "Produci impatto positivo",
+
+    "c-landingThanks.message": "Grazie per esserti unito a Spluga ed essere parte del cambiamento!",
+
+    "c-landingJoinUs.desc":
+        "Stiamo cercando  utenti per la nostra versione beta di Spluga. Se desideri testare la piattaforma e iniziare a misurare l'impatto e raggiungere gli obiettivi lascia il tuo indirizzo email",
 
     //Views
     "v-apps.message":

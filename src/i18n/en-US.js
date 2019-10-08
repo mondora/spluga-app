@@ -17,11 +17,10 @@ export default {
     "general.send": "Send",
     "general.email": "Email",
     "general.whatIs": "What is Spluga?",
-    "general.valueYourBusiness": "Value your business",
     "general.howDoesItWork": "How does it work?",
     "general.joinUs": "Join us!",
     "general.login": "Login",
-
+    "general.producePositiveImpact": "Produce positive impact",
     "general.stakeholder": "Stakeholder",
 
     //Components
@@ -89,7 +88,7 @@ export default {
 
     "c-landingWhatIs.action1": "Define and customise objectives and key results for your company.",
     "c-landingWhatIs.action2": "Measure and track progress towards your set goals.",
-    "c-landingWhatIs.action3": "MEasure and track positive impact for your app or service using api",
+    "c-landingWhatIs.action3": "Measure and track positive impact for your app or service using api",
     "c-landingWhatIs.action4": "Work in teams, assign objectives and manage player performance.",
     "c-landingWhatIs.action5": "Gain valuable insights into your company’s impact creation.",
     "c-landingWhatIs.action6": "Easily create an Impact Report and share it with your Stakeholders",
@@ -97,7 +96,10 @@ export default {
     "c-landingHowDoesItWork.setYourTraget": "Set your Target",
     "c-landingHowDoesItWork.collectActivity": "Collect activity",
     "c-landingHowDoesItWork.monitorYourProgress": "Monitor your progress",
-    "general.producePositiveImpact": "Produce positive impact",
+
+    "c-landingThanks.message": "Thank you for joining Spluga and being part of the change!",
+    "c-landingJoinUs.desc":
+        "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets.",
 
     //Views
     "v-apps.message":

@@ -10,9 +10,6 @@ export const LandingNav = ({ onLogin }) => {
                 <LinkContainer to="what-is-spluga" smooth={true} duration={1500}>
                     <FormattedMessage id="general.whatIs" />
                 </LinkContainer>
-                <LinkContainer to="value-your-business" smooth={true} duration={1500}>
-                    <FormattedMessage id="general.valueYourBusiness" />
-                </LinkContainer>
                 <LinkContainer to="how-does-it-work" smooth={true} duration={1500}>
                     <FormattedMessage id="general.howDoesItWork" />
                 </LinkContainer>
@@ -21,7 +18,7 @@ export const LandingNav = ({ onLogin }) => {
                 </LinkContainer>
             </LinkGroupContainer>
             <LinkLoginContainer>
-                <LinkContainer onClick={onLogin}>
+                <LinkContainer to="#" onClick={onLogin}>
                     <FormattedMessage id="general.login" />
                 </LinkContainer>
             </LinkLoginContainer>

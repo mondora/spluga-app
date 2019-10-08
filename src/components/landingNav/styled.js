@@ -3,7 +3,7 @@ import * as Scroll from "react-scroll";
 let Link = Scroll.Link;
 
 export const PageContainer = styled.div`
-    background-color: transparent;
+    background-color: #fff;
     font-weight: 200;
     letter-spacing: 1px;
     font-size: 14px;
