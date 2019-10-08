@@ -77,30 +77,30 @@ export default {
     "c-splugaTips.tip4":
         "Diventa green e vai in bici al lavoro! Sapevi che puoi acquistare piccole luci e dispositivi riflettenti in modo da poter guidare in sicurezza?",
 
-    "c-landingHeader.desc":
+    "c-landing-header.desc":
         "Definisci i tuoi obbiettivi, <br /> completa le tue attività, <br /> migliora il tuo impatto positivo.",
 
-    "c-landingWhatIs.desc":
+    "c-landing-whatIs.desc":
         "Spluga è un software che ti permette di settare obbiettivi, misiurare i tuoi progressi nel tempo e migliorare il tuo impatto sociale e ambientale. Se ti stai concentrando sull'ambiente, sulla comunità o sui tuoi lavoratori, Spluga ti aiuta a definire i tuoi obbiettivi e ti consiglia su come migliorere il tuo impatto positivo.",
-    "c-landingWhatIs.subTitle":
+    "c-landing-whatIs.subTitle":
         "Spluga è il luogo ideale per le aziende che desiderano migliorare la propria responsabilità sociale e ambientale.",
-    "c-landingWhatIs.subTitle2": "Spluga ti aiuterà a:",
+    "c-landing-whatIs.subTitle2": "Spluga ti aiuterà a:",
 
-    "c-landingWhatIs.action1": "Definire e gestire gli obbiettivi per la tua azienda",
-    "c-landingWhatIs.action2": "Misurare i tuoi progressi",
-    "c-landingWhatIs.action3": "Misurare l'impatto positivo della tua app o servizio automaticamente tramite api",
-    "c-landingWhatIs.action4": "Lavorare in team assegnare obbiettivi e monitorare l'andamento del gruppo.",
-    "c-landingWhatIs.action5":
+    "c-landing-whatIs.action1": "Definire e gestire gli obbiettivi per la tua azienda",
+    "c-landing-whatIs.action2": "Misurare i tuoi progressi",
+    "c-landing-whatIs.action3": "Misurare l'impatto positivo della tua app o servizio automaticamente tramite api",
+    "c-landing-whatIs.action4": "Lavorare in team assegnare obbiettivi e monitorare l'andamento del gruppo.",
+    "c-landing-whatIs.action5":
         "Ottieni informazioni e suggerimenti preziosi per migliorare l'imnpatto della tua azienda",
-    "c-landingWhatIs.action6": "Creare facilmente report di impatto da condividere",
+    "c-landing-whatIs.action6": "Creare facilmente report di impatto da condividere",
 
-    "c-landingHowDoesItWork.setYourTraget": "Setta gli obbiettivi",
-    "c-landingHowDoesItWork.collectActivity": "Salva le tue attività",
-    "c-landingHowDoesItWork.monitorYourProgress": "Controlla i tuoi progressi",
+    "c-landing-howDoesItWork.setYourTraget": "Setta gli obbiettivi",
+    "c-landing-howDoesItWork.collectActivity": "Salva le tue attività",
+    "c-landing-howDoesItWork.monitorYourProgress": "Controlla i tuoi progressi",
 
-    "c-landingThanks.message": "Grazie per esserti unito a Spluga ed essere parte del cambiamento!",
+    "c-landing-thanks.message": "Grazie per esserti unito a Spluga ed essere parte del cambiamento!",
 
-    "c-landingJoinUs.desc":
+    "c-landing-joinUs.desc":
         "Stiamo cercando  utenti per la nostra versione beta di Spluga. Se desideri testare la piattaforma e iniziare a misurare l'impatto e raggiungere gli obiettivi lascia il tuo indirizzo email",
 
     //Views

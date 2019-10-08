@@ -2,12 +2,12 @@ import React from "react";
 import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
 import { PageContainer, RowContainer, ImageContainer, RowText, RowLink, LinkContainer, Img } from "./styled";
 
-export const LandingHeader = () => {
+export const Header = () => {
     return (
         <PageContainer>
             <RowContainer>
                 <RowText>
-                    <FormattedHTMLMessage id="c-landingHeader.desc" />
+                    <FormattedHTMLMessage id="c-landing-header.desc" />
                 </RowText>
                 <RowLink>
                     <LinkContainer to="what-is-spluga" smooth={true} duration={1500}>
@@ -22,4 +22,4 @@ export const LandingHeader = () => {
     );
 };
 
-export default LandingHeader;
+export default Header;

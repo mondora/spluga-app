@@ -1,14 +1,13 @@
 import React from "react";
-import { LandingNav } from ".";
+import { Footer } from ".";
 import Enzyme from "enzyme";
 import { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("LandingNav", () => {
+describe("Footer", () => {
     it("Render component with data", () => {
-        const element = shallow(<LandingNav />);
-        expect(element.find("FormattedMessage").length).toBe(4);
+        shallow(<Footer />);
     });
 });

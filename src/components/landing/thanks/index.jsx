@@ -2,17 +2,17 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { PageContainer, ImageContainer, Img, Desc } from "./styled";
 
-export const LandingThanks = () => {
+export const Thanks = () => {
     return (
         <PageContainer>
             <ImageContainer>
                 <Img src="img/spluga-logo-white-02.png" alt="spluga-logo" />
             </ImageContainer>
             <Desc>
-                <FormattedMessage id="c-landingThanks.message" />
+                <FormattedMessage id="c-landing-thanks.message" />
             </Desc>
         </PageContainer>
     );
 };
 
-export default LandingThanks;
+export default Thanks;

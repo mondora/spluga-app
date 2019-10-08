@@ -5,8 +5,8 @@ import { form } from "@mondora/conv-redux-form";
 import { PageContainer, Title, Desc, FormContainer } from "./styled";
 import TextField from "@mondora/arc/antd/TextField";
 import { Button } from "antd";
-import { joinUsFormSchema } from "../../utils/form-schema/join-us-form-schema";
-export const LandingJoinUs = ({ handleSubmit }) => {
+import { joinUsFormSchema } from "../../../utils/form-schema/join-us-form-schema";
+export const JoinUs = ({ handleSubmit }) => {
     return (
         <Fragment>
             <PageContainer>
@@ -14,7 +14,7 @@ export const LandingJoinUs = ({ handleSubmit }) => {
                     <FormattedMessage id="general.joinUs" />
                 </Title>
                 <Desc>
-                    <FormattedMessage id="c-landingJoinUs.desc" />
+                    <FormattedMessage id="c-landing-joinUs.desc" />
                 </Desc>
                 <FormContainer>
                     <TextField name={"email"} />
@@ -29,7 +29,7 @@ export const LandingJoinUs = ({ handleSubmit }) => {
     );
 };
 
-LandingJoinUs.propTypes = {
+JoinUs.propTypes = {
     handleSubmit: PropTypes.func
 };
 
@@ -38,4 +38,4 @@ const formDefinition = {
     schema: joinUsFormSchema
 };
 
-export default form(formDefinition)(LandingJoinUs);
+export default form(formDefinition)(JoinUs);

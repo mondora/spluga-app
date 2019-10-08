@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { PageContainer, LinkGroupContainer, LinkContainer, LinkLoginContainer } from "./styled";
 
-export const LandingNav = ({ onLogin }) => {
+export const NavBar = ({ onLogin }) => {
     return (
         <PageContainer>
             <LinkGroupContainer>
@@ -26,8 +26,8 @@ export const LandingNav = ({ onLogin }) => {
     );
 };
 
-LandingNav.propTypes = {
+NavBar.propTypes = {
     onLogin: PropTypes.func
 };
 
-export default LandingNav;
+export default NavBar;

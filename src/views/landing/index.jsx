@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
-import LandingNav from "../../components/landingNav";
-import LandingHeader from "../../components/landingHeader";
-import LandingWhatIs from "../../components/landingWhatIs";
-import LandingJoinUs from "../../components/landingJoinUs";
-import LandingHowDoesItWorks from "../../components/landingHowDoesItWorks";
-import LandingThanks from "../../components/landingThanks";
-import LandingFooter from "../../components/landingFooter";
+import NavBar from "../../components/landing/navbar";
+import Header from "../../components/landing/header";
+import WhatIs from "../../components/landing/whatIs";
+import JoinUs from "../../components/landing/joinUs";
+import HowDoesItWorks from "../../components/landing/howDoesItWorks";
+import Thanks from "../../components/landing/thanks";
+import Footer from "../../components/landing/footer";
 import { PageContainer } from "./styled.js";
 
 import * as Scroll from "react-scroll";
@@ -16,18 +16,18 @@ var Element = Scroll.Element;
 export const Landing = ({ login }) => {
     return (
         <PageContainer>
-            <LandingNav onLogin={login} />
-            <LandingHeader />
+            <NavBar onLogin={login} />
+            <Header />
             <Element name="what-is-spluga" className="element">
-                <LandingWhatIs />
+                <WhatIs />
             </Element>
             <Element name="how-does-it-work" className="element">
-                <LandingHowDoesItWorks />
+                <HowDoesItWorks />
             </Element>
             <Element name="contact" className="element">
-                <LandingJoinUs />
-                <LandingThanks />
-                <LandingFooter></LandingFooter>
+                <JoinUs />
+                <Thanks />
+                <Footer />
             </Element>
         </PageContainer>
     );

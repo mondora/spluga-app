@@ -2,20 +2,20 @@ import React from "react";
 import { Icon } from "antd";
 import { PageContainer, Title, Desc, SubTitle, WhatIsGrid, WhatIsIcon, List } from "./styled";
 import { FormattedMessage } from "react-intl";
-export const LandingWhatIs = () => {
+export const WhatIs = () => {
     return (
         <PageContainer>
             <Title>
                 <FormattedMessage id="general.whatIs" />
             </Title>
             <Desc>
-                <FormattedMessage id="c-landingWhatIs.desc" />
+                <FormattedMessage id="c-landing-whatIs.desc" />
             </Desc>
             <SubTitle>
-                <FormattedMessage id="c-landingWhatIs.subTitle" />
+                <FormattedMessage id="c-landing-whatIs.subTitle" />
             </SubTitle>
             <SubTitle>
-                <FormattedMessage id="c-landingWhatIs.subTitle2" />
+                <FormattedMessage id="c-landing-whatIs.subTitle2" />
             </SubTitle>
             <WhatIsGrid>
                 <WhatIsIcon>
@@ -29,26 +29,26 @@ export const LandingWhatIs = () => {
                 </WhatIsIcon>
                 <List>
                     <li>
-                        <FormattedMessage id="c-landingWhatIs.action1" />
+                        <FormattedMessage id="c-landing-whatIs.action1" />
                     </li>
                     <li>
-                        <FormattedMessage id="c-landingWhatIs.action2" />
-                    </li>
-                </List>
-                <List>
-                    <li>
-                        <FormattedMessage id="c-landingWhatIs.action3" />
-                    </li>
-                    <li>
-                        <FormattedMessage id="c-landingWhatIs.action4" />
+                        <FormattedMessage id="c-landing-whatIs.action2" />
                     </li>
                 </List>
                 <List>
                     <li>
-                        <FormattedMessage id="c-landingWhatIs.action5" />
+                        <FormattedMessage id="c-landing-whatIs.action3" />
                     </li>
                     <li>
-                        <FormattedMessage id="c-landingWhatIs.action6" />
+                        <FormattedMessage id="c-landing-whatIs.action4" />
+                    </li>
+                </List>
+                <List>
+                    <li>
+                        <FormattedMessage id="c-landing-whatIs.action5" />
+                    </li>
+                    <li>
+                        <FormattedMessage id="c-landing-whatIs.action6" />
                     </li>
                 </List>
             </WhatIsGrid>
@@ -56,4 +56,4 @@ export const LandingWhatIs = () => {
     );
 };
 
-export default LandingWhatIs;
+export default WhatIs;

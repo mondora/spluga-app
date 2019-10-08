@@ -78,27 +78,27 @@ export default {
     "c-splugaTips.tip4":
         "Go green and cycle to work! Did you know you can buy small lights and reflective gear so you can ride safely?",
 
-    "c-landingHeader.desc": "Define your targets, <br> play the game, <br> improve your impact.",
+    "c-landing-header.desc": "Define your targets, <br> play the game, <br> improve your impact.",
 
-    "c-landingWhatIs.desc":
+    "c-landing-whatIs.desc":
         "Spluga is a software platform that allows you to set targets and goals, measure your progress over time and improve your social and environmental impact. Whether you are focusing on the environment, the community or your workers, Spluga will help you define Objectives and Key results, meter and analyse team progress over time, suggest ways to improve your impact and gear you towards reaching your target results.",
-    "c-landingWhatIs.subTitle":
+    "c-landing-whatIs.subTitle":
         "Spluga is the place to be for companies looking to enhance their social and environmental responsibility.",
-    "c-landingWhatIs.subTitle2": "The platform can help you:",
+    "c-landing-whatIs.subTitle2": "The platform can help you:",
 
-    "c-landingWhatIs.action1": "Define and customise objectives and key results for your company.",
-    "c-landingWhatIs.action2": "Measure and track progress towards your set goals.",
-    "c-landingWhatIs.action3": "Measure and track positive impact for your app or service using api",
-    "c-landingWhatIs.action4": "Work in teams, assign objectives and manage player performance.",
-    "c-landingWhatIs.action5": "Gain valuable insights into your company’s impact creation.",
-    "c-landingWhatIs.action6": "Easily create an Impact Report and share it with your Stakeholders",
+    "c-landing-whatIs.action1": "Define and customise objectives and key results for your company.",
+    "c-landing-whatIs.action2": "Measure and track progress towards your set goals.",
+    "c-landing-whatIs.action3": "Measure and track positive impact for your app or service using api",
+    "c-landing-whatIs.action4": "Work in teams, assign objectives and manage player performance.",
+    "c-landing-whatIs.action5": "Gain valuable insights into your company’s impact creation.",
+    "c-landing-whatIs.action6": "Easily create an Impact Report and share it with your Stakeholders",
 
-    "c-landingHowDoesItWork.setYourTraget": "Set your Target",
-    "c-landingHowDoesItWork.collectActivity": "Collect activity",
-    "c-landingHowDoesItWork.monitorYourProgress": "Monitor your progress",
+    "c-landing-howDoesItWork.setYourTraget": "Set your Target",
+    "c-landing-howDoesItWork.collectActivity": "Collect activity",
+    "c-landing-howDoesItWork.monitorYourProgress": "Monitor your progress",
 
-    "c-landingThanks.message": "Thank you for joining Spluga and being part of the change!",
-    "c-landingJoinUs.desc":
+    "c-landing-thanks.message": "Thank you for joining Spluga and being part of the change!",
+    "c-landing-joinUs.desc":
         "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets.",
 
     //Views

@@ -3,7 +3,7 @@ import { Icon } from "antd";
 import { FormattedMessage } from "react-intl";
 import { PageContainer, Title, StepsContainer, Col } from "./styled";
 
-export const LandingHowDoesItWorks = () => {
+export const HowDoesItWorks = () => {
     return (
         <PageContainer>
             <Title>
@@ -15,13 +15,13 @@ export const LandingHowDoesItWorks = () => {
                 <Icon type="line-chart" />
                 <Icon type="smile" />
                 <Col>
-                    <FormattedMessage id="c-landingHowDoesItWork.setYourTraget" />
+                    <FormattedMessage id="c-landing-howDoesItWork.setYourTraget" />
                 </Col>
                 <Col>
-                    <FormattedMessage id="c-landingHowDoesItWork.collectActivity" />
+                    <FormattedMessage id="c-landing-howDoesItWork.collectActivity" />
                 </Col>
                 <Col>
-                    <FormattedMessage id="c-landingHowDoesItWork.monitorYourProgress" />
+                    <FormattedMessage id="c-landing-howDoesItWork.monitorYourProgress" />
                 </Col>
                 <Col>
                     <FormattedMessage id="general.producePositiveImpact" />
@@ -31,4 +31,4 @@ export const LandingHowDoesItWorks = () => {
     );
 };
 
-export default LandingHowDoesItWorks;
+export default HowDoesItWorks;

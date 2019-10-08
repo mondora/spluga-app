@@ -1,7 +1,7 @@
 import React from "react";
 import { PageContainer } from "./styled";
 
-export const LandingFooter = () => {
+export const Footer = () => {
     return (
         <PageContainer>
             Copyright © 2018 mondora. All Rights Reserved. mondora s.r.l. S.B. - Via Uberto Visconti di Modrone 33 -
@@ -12,4 +12,4 @@ export const LandingFooter = () => {
     );
 };
 
-export default LandingFooter;
+export default Footer;

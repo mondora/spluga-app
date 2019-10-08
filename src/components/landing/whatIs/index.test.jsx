@@ -1,13 +1,15 @@
 import React from "react";
-import { LandingFooter } from ".";
+import { WhatIs } from ".";
 import Enzyme from "enzyme";
 import { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("LandingFooter", () => {
+describe("NavBar", () => {
     it("Render component with data", () => {
-        shallow(<LandingFooter />);
+        const element = shallow(<WhatIs />);
+        expect(element.find("FormattedMessage").length).toBe(10);
+        expect(element.find("li").length).toBe(6);
     });
 });
