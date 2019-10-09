@@ -26,7 +26,7 @@ export const StepGoal = ({ onChange, target, getGoals, goals }) => {
     var options = [];
     if (goals) {
         goals.forEach(goal => {
-            options.push({ value: goal.key, label: goal.key });
+            options.push({ value: goal.key, label: goal.key + " (" + goal.unit + ")" });
         });
     }
     const value = target.value || 0;
@@ -48,8 +48,7 @@ StepGoal.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    goals: state.getGoals.goals,
-    getGoalsStatus: state.getApps.status
+    goals: state.getGoals.goals
 });
 
 export default connect(

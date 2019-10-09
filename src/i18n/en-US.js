@@ -22,6 +22,7 @@ export default {
     "general.login": "Login",
     "general.producePositiveImpact": "Produce positive impact",
     "general.stakeholder": "Stakeholder",
+    "general.date": "Date",
 
     //Components
     "c-companyForm.logo": "Logo",
@@ -101,6 +102,11 @@ export default {
     "c-landing-joinUs.desc":
         "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets.",
 
+    "c-activityForm.title": "Add your activities",
+    "c-activityForm.desc": "Here you can save your daily activities....",
+    "c-activityForm.desc2":
+        "If you want to automatically monitor your app activity, you can follow the istruction below:",
+
     //Views
     "v-app.message": "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",
     "v-app.create": "New app {appName} created",
@@ -115,7 +121,5 @@ export default {
     "v-team.invitation.error.400.duplicate": "User already invited",
     "v-team.invitation.success": "Invitation sent",
 
-    "v-companies.target.success": "Target created",
-
-    "v-activities.title": "Add your activities"
+    "v-companies.target.success": "Target created"
 };

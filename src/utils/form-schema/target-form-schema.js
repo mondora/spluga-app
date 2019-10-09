@@ -1,4 +1,4 @@
-import { fieldRequired } from "@mondora/agyo-validations";
+import { fieldRequired, isInteger } from "@mondora/agyo-validations";
 import { translateMessage } from "../../i18n";
 
 export const targetFormSchema = {
@@ -8,7 +8,7 @@ export const targetFormSchema = {
         description: { type: "string", validate: fieldRequired(translateMessage("general.form.field-required")) },
         stakeholder: { type: "string" },
         goal: { type: "string" },
-        value: { type: "number", validate: fieldRequired(translateMessage("general.form.field-required")) },
+        value: { type: "number", validate: isInteger(translateMessage("general.form.field-required")) },
         startDate: {
             type: "string",
             validate: fieldRequired(translateMessage("general.form.field-required"))
