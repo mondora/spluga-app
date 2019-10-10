@@ -4,10 +4,7 @@ import {
     GET_COMPANY_ERROR,
     ADD_COMPANY_START,
     ADD_COMPANY_SUCCESS,
-    ADD_COMPANY_ERROR,
-    REMOVE_COMPANY_START,
-    REMOVE_COMPANY_SUCCESS,
-    REMOVE_COMPANY_ERROR
+    ADD_COMPANY_ERROR
 } from "../../actions/companies";
 
 const defaultState = {
@@ -21,40 +18,6 @@ const defaultState = {
         }
     }
 };
-
-export function removeCompany(state = defaultState, { type, payload, errorInfo }) {
-    switch (type) {
-        case REMOVE_COMPANY_START:
-            return {
-                status: {
-                    started: true,
-                    error: false,
-                    ended: false
-                }
-            };
-        case REMOVE_COMPANY_SUCCESS:
-            return {
-                status: {
-                    started: false,
-                    error: false,
-                    ended: true
-                },
-                ...payload
-            };
-        case REMOVE_COMPANY_ERROR:
-            return {
-                ...state,
-                status: {
-                    started: false,
-                    error: true,
-                    ended: false,
-                    errorInfo
-                }
-            };
-        default:
-            return state;
-    }
-}
 
 export function getCompany(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {

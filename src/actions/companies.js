@@ -85,30 +85,3 @@ export function addCompany(data, currentUser) {
         }
     };
 }
-
-export const REMOVE_COMPANY_START = "REMOVE_COMPANY_START";
-export const REMOVE_COMPANY_SUCCESS = "REMOVE_COMPANY_SUCCESS";
-export const REMOVE_COMPANY_ERROR = "REMOVE_COMPANY_ERROR";
-
-export function removeCompany(query) {
-    return async dispatch => {
-        dispatch({ type: REMOVE_COMPANY_START });
-
-        const collection = mongodb.db(MONGO_DB_NAME).collection("companies");
-
-        try {
-            const result = await collection.deleteOne(query);
-
-            dispatch({
-                type: REMOVE_COMPANY_SUCCESS,
-                payload: { companies: result }
-            });
-        } catch (error) {
-            dispatch({
-                type: REMOVE_COMPANY_ERROR,
-                error: true,
-                errorInfo: { code: 500, message: error }
-            });
-        }
-    };
-}

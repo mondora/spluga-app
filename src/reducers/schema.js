@@ -1,5 +1,5 @@
 import { auth } from "./auth";
-import { getCompany, addCompany, removeCompany } from "./companies";
+import { getCompany, addCompany } from "./companies";
 import { getUser, addUser } from "./users";
 import { reducer as formReducer } from "redux-form";
 import { addActivity } from "./activities";
@@ -15,7 +15,6 @@ export default {
     form: formReducer,
     addCompany,
     getGoals,
-    removeCompany,
     addApp,
     getApps,
     enableApp,
