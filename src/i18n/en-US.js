@@ -23,6 +23,7 @@ export default {
     "general.producePositiveImpact": "Produce positive impact",
     "general.stakeholder": "Stakeholder",
     "general.date": "Date",
+    "general.value": "Value",
 
     //Components
     "c-companyForm.logo": "Logo",
@@ -106,6 +107,8 @@ export default {
     "c-activityForm.desc": "Here you can save your daily activities....",
     "c-activityForm.desc2":
         "If you want to automatically monitor your app activity, you can follow the istruction below:",
+    "c-activityForm.createAppDesc": "Create an App to use in your code ",
+    "c-activityForm.useAppDesc": "Use your App to create a new activity.",
 
     //Views
     "v-app.message": "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",

@@ -23,7 +23,7 @@ export const CompanyTarget = ({ onAddTarget, targets }) => {
     const filteredTargets = targets
         ? targets
               .filter(target => {
-                  return moment().diff(target.endDate, "days") < 0;
+                  return moment().diff(target.endDate, "days") < 0 && target.actual < target.value;
               })
               .slice(0, 4)
         : null;
