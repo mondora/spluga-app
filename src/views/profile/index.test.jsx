@@ -7,22 +7,31 @@ import { Profile } from ".";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Profile", () => {
-    const propTypes = {
+    var propTypes = {
         auth: {
             currentUser: { profile: { data: { name: "name" } } }
         },
         getCompanyStatus: {},
         company: {},
-        getCompany: () => {}
+        user: { status: {} },
+        target: {},
+        getCompany: () => {},
+        addUser: () => {}
     };
-
-    it("Render view with only required data", () => {
-        const view = shallow(<Profile auth={propTypes.auth} />);
-        expect(view.find("Spin").length).toBe(1);
-    });
 
     it("Render view with all props not defined", () => {
         const view = shallow(<Profile {...propTypes} />);
         expect(view.find("Spin").length).toBe(1);
+    });
+
+    it("Render view with no user", () => {
+        propTypes.company = { status: { started: false } };
+        propTypes.user = { status: { started: true } };
+        const view = shallow(<Profile {...propTypes} />);
+
+        expect(view.find("SplugaCard").length).toBe(1);
+        expect(view.find("CompanyTarget").length).toBe(1);
+        expect(view.find("ActivityResult").length).toBe(1);
+        expect(view.find("SplugaTips").length).toBe(1);
     });
 });

@@ -35,7 +35,7 @@ export const Activities = ({ auth, company, getCompany, getGoals, addActivity, g
 };
 
 Activities.propTypes = {
-    auth: PropTypes.object.isRequired,
+    auth: PropTypes.object,
     getGoals: PropTypes.func,
     getCompany: PropTypes.func
 };

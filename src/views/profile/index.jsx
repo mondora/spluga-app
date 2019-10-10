@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { compose } from "redux";
 import { injectIntl } from "react-intl";
 import { getCompany } from "../../actions/companies";
+import { getUser, addUser } from "../../actions/users";
 
 import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
@@ -13,10 +14,14 @@ import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
 import { addTarget } from "../../actions/targets";
 
-export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) => {
+export const Profile = ({ auth, getCompany, addTarget, getUser, addUser, user, company, target, intl }) => {
     useEffect(() => {
         getCompany({});
     }, [getCompany]);
+
+    useEffect(() => {
+        getUser({});
+    }, [getUser]);
 
     useEffect(() => {
         const { ended, error, errorInfo } = target;
@@ -39,6 +44,13 @@ export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) 
             description: message
         });
     };
+
+    const selectedUser = user ? user.result : null;
+    const status = user ? user.status : { ended: true };
+
+    if (status.ended && !selectedUser) {
+        addUser(auth.currentUser);
+    }
 
     const loading = company && company.status ? company.status.started : true;
     const selectedCompany = company && company.result ? company.result : null;
@@ -67,21 +79,25 @@ export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) 
 Profile.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
+    user: PropTypes.object,
     target: PropTypes.object,
     getCompany: PropTypes.func,
+    getUser: PropTypes.func,
+    addUser: PropTypes.func,
     addTarget: PropTypes.func
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     company: state.getCompany,
+    user: state.getUser,
     target: state.addTarget.status
 });
 
 const composedHoc = compose(
     connect(
         mapStateToProps,
-        { getCompany, addTarget }
+        { getCompany, addTarget, getUser, addUser }
     )
 );
 
