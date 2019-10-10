@@ -8,8 +8,9 @@ import { getCompany } from "../../actions/companies";
 import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
 import { Spin, notification } from "antd";
-import { PageContainer, SpinContainer, FieldLeft, FieldRight } from "./styled";
+import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
 import { SplugaTips } from "../../components/splugaTips";
+import { ActivityResult } from "../../components/activityResult";
 import { addTarget } from "../../actions/targets";
 
 export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) => {
@@ -51,6 +52,10 @@ export const Profile = ({ auth, getCompany, addTarget, company, target, intl }) 
             <FieldRight>
                 <CompanyTarget onAddTarget={handleAddTarget} targets={targets} />
             </FieldRight>
+            <FieldCenter>
+                <ActivityResult />
+            </FieldCenter>
+
             <SplugaTips isCompany={false} />
         </PageContainer>
     ) : (

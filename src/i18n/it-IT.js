@@ -112,6 +112,8 @@ export default {
     "c-activityForm.createAppDesc": "Create un App da usare nel tuo software ",
     "c-activityForm.useAppDesc": "Utilizza l'app per creare una nuova attività",
 
+    "c-activityResult.title": "I tuoi risultati",
+
     //Views
     "v-app.message":
         "Assicurati di copiare il valore della chiave in un punto sicuro, altrimenti dovrai generare una nuova chiave.",

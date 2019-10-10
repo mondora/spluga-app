@@ -110,6 +110,8 @@ export default {
     "c-activityForm.createAppDesc": "Create an App to use in your code ",
     "c-activityForm.useAppDesc": "Use your App to create a new activity.",
 
+    "c-activityResult.title": "Your result",
+
     //Views
     "v-app.message": "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",
     "v-app.create": "New app {appName} created",
