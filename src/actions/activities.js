@@ -1,5 +1,5 @@
-import moment from "moment";
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
+import moment from "moment";
 import { STITCH_APP_ID, MONGO_DB_NAME } from "../config";
 
 function getClient() {
@@ -14,43 +14,63 @@ const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atla
 export const ADD_ACTIVITY_START = "ADD_ACTIVITY_START";
 export const ADD_ACTIVITY_SUCCESS = "ADD_ACTIVITY_SUCCESS";
 export const ADD_ACTIVITY_ERROR = "ADD_ACTIVITY_ERROR";
+
+async function upsertActivity(data, id, collectionName) {
+    const collection = mongodb.db(MONGO_DB_NAME).collection(collectionName);
+    const { goal, description, date, companyId, userId, value } = data;
+
+    const result = await collection.updateOne(
+        {
+            _id: id,
+            activities: {
+                $elemMatch: {
+                    goal: goal,
+                    description: description,
+                    date: date,
+                    userId: userId,
+                    companyId: companyId
+                }
+            }
+        },
+        { $inc: { "activities.$.value": value } }
+    );
+
+    if (result.modifiedCount === 0) {
+        await collection.updateOne({ _id: id }, { $push: { activities: data } });
+    }
+}
+
 export function addActivityUser(data, currentUser, companyId, impact) {
-    const { id } = currentUser;
     return async dispatch => {
         dispatch({
             type: ADD_ACTIVITY_START
         });
 
         try {
-            const users = mongodb.db(MONGO_DB_NAME).collection("users");
+            const { id } = currentUser;
 
-            let activities = [
-                {
-                    ...data,
-                    companyId
-                }
-            ];
-
-            data.date = moment(data.date).toDate();
+            await upsertActivity({ ...data, companyId }, id, "users");
 
             //impact
             if (impact) {
-                await impact.forEach(goal => {
+                impact.forEach(async goal => {
                     const { key, quantity } = goal;
-                    const { value, date, description } = data;
-                    const impactActivity = {
-                        goal: key,
-                        value: quantity * value,
-                        companyId,
-                        date,
-                        description
-                    };
+                    const { date, description } = data;
+                    const value = data.value * quantity;
 
-                    activities.push(impactActivity);
+                    await upsertActivity(
+                        {
+                            description,
+                            date,
+                            goal: key,
+                            companyId,
+                            value
+                        },
+                        id,
+                        "users"
+                    );
                 });
             }
-
-            await users.updateOne({ _id: id }, { $push: { activities: { $each: activities } } });
 
             dispatch({
                 type: ADD_ACTIVITY_SUCCESS
@@ -66,7 +86,6 @@ export function addActivityUser(data, currentUser, companyId, impact) {
 }
 
 export function addActivityCompany(data, currentUser, companyId, impact) {
-    const { id } = currentUser;
     return async dispatch => {
         dispatch({
             type: ADD_ACTIVITY_START
@@ -74,24 +93,24 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
 
         try {
             const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
-            let activities = [
-                {
-                    ...data,
-                    userId: id
-                }
-            ];
 
-            data.date = moment(data.date).toDate();
+            const { goal, date, value } = data;
 
-            const { goal, date } = data;
+            await upsertActivity({ ...data, userId: currentUser.id }, companyId, "companies");
 
             //increment target actual
             await companies.updateOne(
                 {
                     _id: companyId,
-                    targets: { $elemMatch: { goal: goal, startDate: { $lte: date }, endDate: { $gte: date } } }
+                    targets: {
+                        $elemMatch: {
+                            goal: goal,
+                            startDate: { $lte: moment(date).toDate() },
+                            endDate: { $gte: moment(date).toDate() }
+                        }
+                    }
                 },
-                { $inc: { "targets.$.actual": data.value } }
+                { $inc: { "targets.$.actual": value } }
             );
 
             //increment target actual impact
@@ -99,27 +118,35 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
                 await impact.forEach(goal => {
                     const { key, quantity } = goal;
                     const { value, date, description } = data;
-                    const impactActivity = {
-                        goal: key,
-                        value: quantity * value,
-                        userId: id,
-                        date,
-                        description
-                    };
-                    activities.push(impactActivity);
+                    const impactValue = quantity * value;
+
+                    upsertActivity(
+                        {
+                            description,
+                            date,
+                            goal: key,
+                            userId: currentUser.id,
+                            value: impactValue
+                        },
+                        companyId,
+                        "companies"
+                    );
 
                     companies.updateOne(
                         {
                             _id: companyId,
-                            targets: { $elemMatch: { goal: key, startDate: { $lte: date }, endDate: { $gte: date } } }
+                            targets: {
+                                $elemMatch: {
+                                    goal: key,
+                                    startDate: { $lte: moment(date).toDate() },
+                                    endDate: { $gte: moment(date).toDate() }
+                                }
+                            }
                         },
-                        { $inc: { "targets.$.actual": impactActivity.value } }
+                        { $inc: { "targets.$.actual": impactValue } }
                     );
                 });
             }
-
-            //add company activity
-            await companies.updateOne({ _id: companyId }, { $push: { activities: { $each: activities } } });
 
             dispatch({
                 type: ADD_ACTIVITY_SUCCESS
