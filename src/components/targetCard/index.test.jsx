@@ -9,9 +9,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("SplugaCard", () => {
     it("Renders component", () => {
         const component = shallow(<TargetCard />);
-
-        console.log("sjhaksj", component.debug());
-
         expect(component.find("Progress").exists).toBeTruthy();
         expect(component.find("div").exists).toBeTruthy();
     });
@@ -19,7 +16,6 @@ describe("SplugaCard", () => {
     it("Render component with prop", () => {
         const target = { name: "name", description: "description", acutal: 2, value: 100 };
         const component = mount(<TargetCard target={target} />);
-        console.log("sjhaksj", component.debug());
         expect(component.prop("target")).toEqual(target);
     });
 });
