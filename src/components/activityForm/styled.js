@@ -20,6 +20,20 @@ export const Desc = styled.div`
     padding-top: 20px;
     font-size: 15px;
     grid-column-start: 1;
+    grid-column-end: 2;
+`;
+
+export const Result = styled.div`
+    padding-top: 20px;
+    font-size: 15px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+`;
+
+export const AppTutprial = styled.div`
+    padding-top: 20px;
+    font-size: 15px;
+    grid-column-start: 1;
     grid-column-end: 3;
 `;
 

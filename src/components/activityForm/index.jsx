@@ -4,7 +4,17 @@ import moment from "moment";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-import { FormContainer, ButtonContainer, Title, FieldContainer, Desc, Unordered, Element } from "./styled";
+import {
+    FormContainer,
+    ButtonContainer,
+    Title,
+    FieldContainer,
+    Desc,
+    Unordered,
+    Element,
+    AppTutprial,
+    Result
+} from "./styled";
 import { form } from "@mondora/conv-redux-form";
 import { FormattedMessage } from "react-intl";
 import { Button } from "antd";
@@ -50,7 +60,8 @@ export const ActivityForm = ({ handleSubmit, goals }) => {
                     <FormattedMessage id="general.save" />
                 </Button>
             </ButtonContainer>
-            <Desc>
+            <Result></Result>
+            <AppTutprial>
                 <FormattedMessage id="c-activityForm.desc2" />
                 <Unordered>
                     <Element>
@@ -63,7 +74,7 @@ export const ActivityForm = ({ handleSubmit, goals }) => {
                         </SyntaxHighlighter>
                     </Element>
                 </Unordered>
-            </Desc>
+            </AppTutprial>
         </FormContainer>
     );
 };
