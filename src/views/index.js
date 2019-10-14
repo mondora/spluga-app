@@ -1,15 +1,21 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { IntlProvider } from "react-intl";
+import { checkLogin } from "../actions/auth";
+import { compose } from "redux";
 
-import { Route } from "react-router-dom";
 import { getMessagesLocale, getUserLocale } from "../i18n";
+
 import Root from "./root";
 import PropTypes from "prop-types";
 import Landing from "./landing";
 
-export const Routes = ({ auth }) => {
+export const Routes = ({ auth, checkLogin }) => {
+    useEffect(() => {
+        checkLogin({});
+    }, [checkLogin]);
+
     const locale = getUserLocale();
     const messages = getMessagesLocale();
 
@@ -25,11 +31,19 @@ export const Routes = ({ auth }) => {
 };
 
 Routes.propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    checkLogin: PropTypes.func
 };
 
 const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps)(Routes);
+const composedHoc = compose(
+    connect(
+        mapStateToProps,
+        { checkLogin }
+    )
+);
+
+export default composedHoc(Routes);

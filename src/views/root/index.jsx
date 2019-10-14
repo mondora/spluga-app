@@ -1,20 +1,19 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
+
 import NavBar from "../../components/navbar";
 import Header from "../../components/header";
 import Targets from "../targets";
-import { Route } from "react-router-dom";
-
 import Activities from "../activities";
 import Profile from "../profile";
 import Companies from "../companies";
 import Apps from "../apps";
 import Team from "../team";
-import { connect } from "react-redux";
-import { Container, Menu, Page, PageContainer } from "./styled.js";
-import { PropTypes } from "prop-types";
 
-//auth mappa l'oggetto dello store alla Root
+import { Container, Menu, Page, PageContainer } from "./styled.js";
+
 export const Root = ({ match, auth }) => {
     return (
         <PageContainer>

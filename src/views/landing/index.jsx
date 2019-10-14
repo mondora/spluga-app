@@ -35,7 +35,5 @@ export const Landing = ({ login }) => {
 
 export default connect(
     null,
-    {
-        login
-    }
+    { login }
 )(Landing);

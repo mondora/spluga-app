@@ -15,6 +15,7 @@ export const Team = ({ auth, acceptInvitation, acceptInvitationStatus }) => {
             acceptInvitation(auth.currentUser);
         }
     }, [auth, acceptInvitation]);
+
     const status = acceptInvitationStatus ? acceptInvitationStatus : { started: true };
     const { error, ended } = status;
     return ended ? (

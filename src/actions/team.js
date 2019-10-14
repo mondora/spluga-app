@@ -5,18 +5,11 @@ export const ADD_INVITATION_START = "ADD_INVITATION_START";
 export const ADD_INVITATION_SUCCESS = "ADD_INVITATION_SUCCESS";
 export const ADD_INVITATION_ERROR = "ADD_INVITATION_ERROR";
 
-// Get a client for your Stitch app, or instantiate a new one
 function getClient() {
     return Stitch.hasAppClient(STITCH_APP_ID)
         ? Stitch.getAppClient(STITCH_APP_ID)
         : Stitch.initializeAppClient(STITCH_APP_ID);
 }
-
-/*
-instantiate a mongoDb service client in mongodb variable for stitch service, 
-with object mongodb i can get the collection handle
-(one instance for get/add/remove)
-*/
 
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");

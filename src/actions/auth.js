@@ -13,44 +13,46 @@ export function login() {
         });
 
         try {
-            //copy the name of your google-auth enabled stitch application here
-            //the name of the app will typically be the stitch application name
-            //with a "-"" + random string appended
+            const appId = STITCH_APP_ID;
+            const client = Stitch.hasAppClient(appId) ? Stitch.getAppClient(appId) : Stitch.initializeAppClient(appId);
+            const credential = new GoogleRedirectCredential();
+
+            client.auth.loginWithRedirect(credential);
+        } catch (error) {
+            dispatch({
+                type: LOGIN_ERROR,
+                error: true,
+                errorInfo: { code: 500, message: error }
+            });
+        }
+    };
+}
+
+export function checkLogin() {
+    return async dispatch => {
+        dispatch({
+            type: LOGIN_START
+        });
+
+        try {
             var currentUser = null;
             const appId = STITCH_APP_ID;
-
-            // Get a client for your Stitch app, or instantiate a new one
             const client = Stitch.hasAppClient(appId) ? Stitch.getAppClient(appId) : Stitch.initializeAppClient(appId);
 
-            //manage user authentication state
-
-            // Check if this user has already authenticated and we're here
-            // from the redirect. If so, process the redirect to finish login.
             if (client.auth.hasRedirectResult()) {
                 await client.auth.handleRedirectResult();
-                console.log("Processed redirect result.");
             }
 
             if (client.auth.isLoggedIn) {
-                // The user is logged in. Add their user object to component state.
-                currentUser = client.auth.user;
-            } else {
-                // The user has not yet authenticated. Begin the Google login flow.
-                const credential = new GoogleRedirectCredential();
-                client.auth.loginWithRedirect(credential);
+                currentUser = { id: client.auth.user.id, profile: client.auth.user.profile };
             }
 
-            if (currentUser) {
-                dispatch({
-                    type: LOGIN_SUCCESS,
-                    payload: {
-                        currentUser: {
-                            id: currentUser.id,
-                            profile: currentUser.profile
-                        }
-                    }
-                });
-            }
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: {
+                    currentUser
+                }
+            });
         } catch (error) {
             dispatch({
                 type: LOGIN_ERROR,
