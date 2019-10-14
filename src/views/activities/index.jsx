@@ -8,7 +8,16 @@ import { getGoals } from "../../actions/goals";
 import { addActivityUser, addActivityCompany } from "../../actions/activities";
 import { getCompany } from "../../actions/companies";
 
-export const Activities = ({ auth, company, getCompany, getGoals, addActivityUser, addActivityCompany, goals }) => {
+export const Activities = ({
+    auth,
+    company,
+    getCompany,
+    getGoals,
+    addActivityUser,
+    addActivityCompany,
+    goals,
+    activities
+}) => {
     useEffect(() => {
         if (!getGoals.started) {
             getGoals({});
@@ -40,13 +49,15 @@ export const Activities = ({ auth, company, getCompany, getGoals, addActivityUse
 Activities.propTypes = {
     auth: PropTypes.object,
     getGoals: PropTypes.func,
-    getCompany: PropTypes.func
+    getCompany: PropTypes.func,
+    activities: PropTypes.array
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     goals: state.getGoals.goals,
-    company: state.getCompany
+    company: state.getCompany,
+    activities: state.addActivityUser || state.addActivityCompany
 });
 
 export default connect(

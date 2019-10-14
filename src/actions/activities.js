@@ -48,7 +48,7 @@ export function addActivityUser(data, currentUser, companyId, impact) {
 
         try {
             const { id } = currentUser;
-
+            let result = [data];
             await upsertActivity({ ...data, companyId }, id, "users");
 
             //impact
@@ -57,23 +57,21 @@ export function addActivityUser(data, currentUser, companyId, impact) {
                     const { key, quantity } = goal;
                     const { date, description } = data;
                     const value = data.value * quantity;
-
-                    await upsertActivity(
-                        {
-                            description,
-                            date,
-                            goal: key,
-                            companyId,
-                            value
-                        },
-                        id,
-                        "users"
-                    );
+                    const activityImpact = {
+                        description,
+                        date,
+                        goal: key,
+                        companyId,
+                        value
+                    };
+                    result.push(activityImpact);
+                    await upsertActivity(activityImpact, id, "users");
                 });
             }
 
             dispatch({
-                type: ADD_ACTIVITY_SUCCESS
+                type: ADD_ACTIVITY_SUCCESS,
+                payload: { result: result }
             });
         } catch (error) {
             dispatch({
@@ -93,8 +91,8 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
 
         try {
             const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
-
             const { goal, date, value } = data;
+            let result = [data];
 
             await upsertActivity({ ...data, userId: currentUser.id }, companyId, "companies");
 
@@ -119,18 +117,15 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
                     const { key, quantity } = goal;
                     const { value, date, description } = data;
                     const impactValue = quantity * value;
-
-                    upsertActivity(
-                        {
-                            description,
-                            date,
-                            goal: key,
-                            userId: currentUser.id,
-                            value: impactValue
-                        },
-                        companyId,
-                        "companies"
-                    );
+                    const activityImpact = {
+                        description,
+                        date,
+                        goal: key,
+                        userId: currentUser.id,
+                        value: impactValue
+                    };
+                    result.push(activityImpact);
+                    upsertActivity(activityImpact, companyId, "companies");
 
                     companies.updateOne(
                         {
@@ -149,7 +144,8 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
             }
 
             dispatch({
-                type: ADD_ACTIVITY_SUCCESS
+                type: ADD_ACTIVITY_SUCCESS,
+                payload: { result: result }
             });
         } catch (error) {
             dispatch({
