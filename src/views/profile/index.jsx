@@ -5,6 +5,7 @@ import { compose } from "redux";
 import { injectIntl } from "react-intl";
 import { getCompany } from "../../actions/companies";
 import { getUser, addUser } from "../../actions/users";
+import { getGoals } from "../../actions/goals";
 
 import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
@@ -14,10 +15,26 @@ import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
 import { addTarget } from "../../actions/targets";
 
-export const Profile = ({ auth, getCompany, addTarget, getUser, addUser, user, company, target, intl }) => {
+export const Profile = ({
+    auth,
+    getCompany,
+    addTarget,
+    getUser,
+    addUser,
+    user,
+    company,
+    target,
+    intl,
+    getGoals,
+    goals
+}) => {
     useEffect(() => {
         getCompany({});
     }, [getCompany]);
+
+    useEffect(() => {
+        getGoals({});
+    }, [getGoals]);
 
     useEffect(() => {
         getUser({});
@@ -55,17 +72,19 @@ export const Profile = ({ auth, getCompany, addTarget, getUser, addUser, user, c
     const loading = company && company.status ? company.status.started : true;
     const selectedCompany = company && company.result ? company.result : null;
     const targets = selectedCompany ? selectedCompany.targets : [];
+    const activities = selectedUser ? selectedUser.activities : [];
+    const goalsList = goals ? goals.goals : [];
 
     return !loading ? (
         <PageContainer>
             <FieldLeft>
-                <SplugaCard auth={auth} company={selectedCompany} type={"user"} />
+                <SplugaCard auth={auth} type={"user"} />
             </FieldLeft>
             <FieldRight>
                 <CompanyTarget onAddTarget={handleAddTarget} targets={targets} />
             </FieldRight>
             <FieldCenter>
-                <ActivityResult />
+                <ActivityResult activities={activities} goals={goalsList} />
             </FieldCenter>
 
             <SplugaTips isCompany={false} />
@@ -84,20 +103,23 @@ Profile.propTypes = {
     getCompany: PropTypes.func,
     getUser: PropTypes.func,
     addUser: PropTypes.func,
-    addTarget: PropTypes.func
+    addTarget: PropTypes.func,
+    getGoals: PropTypes.func,
+    goals: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     company: state.getCompany,
     user: state.getUser,
+    goals: state.getGoals,
     target: state.addTarget.status
 });
 
 const composedHoc = compose(
     connect(
         mapStateToProps,
-        { getCompany, addTarget, getUser, addUser }
+        { getCompany, addTarget, getUser, addUser, getGoals }
     )
 );
 

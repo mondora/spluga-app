@@ -21,8 +21,8 @@ export const FieldRight = styled.div`
 `;
 
 export const FieldCenter = styled.div`
-    grid-column-start: 2;
-    grid-column-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 6;
     margin: 10px;
 `;
 

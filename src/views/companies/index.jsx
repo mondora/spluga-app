@@ -4,6 +4,7 @@ import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { addInvitation } from "../../actions/team";
+import { getGoals } from "../../actions/goals";
 import { connect } from "react-redux";
 import { injectIntl } from "react-intl";
 
@@ -13,6 +14,7 @@ import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
 import CompanyTeam from "../../components/companyTeam";
 import SplugaTips from "../../components/splugaTips";
+import ActivityResult from "../../components/activityResult";
 
 export const Companies = ({
     auth,
@@ -22,9 +24,15 @@ export const Companies = ({
     addCompany,
     addInvitation,
     invitation,
+    getGoals,
+    goals,
     intl
 }) => {
     const [selectedFile, setSelectedFile] = useState("");
+    useEffect(() => {
+        getGoals({});
+    }, [getGoals]);
+
     useEffect(() => {
         getCompany({});
     }, [getCompany, companyCreated]);
@@ -68,6 +76,9 @@ export const Companies = ({
     const loading =
         getCompanyStatus && createCompanyStatus ? getCompanyStatus.started || createCompanyStatus.started : true;
 
+    const activities = selectedCompany ? selectedCompany.activities : [];
+    const goalsList = goals ? goals.goals : [];
+
     return !loading ? (
         selectedCompany ? (
             <PageContainer>
@@ -77,6 +88,9 @@ export const Companies = ({
                 <FieldRight>
                     <CompanyTeam onInvite={handleInvite} team={selectedCompany.team} />
                 </FieldRight>
+                <FieldCenter>
+                    <ActivityResult activities={activities} goals={goalsList} />
+                </FieldCenter>
                 <SplugaTips isCompany />
             </PageContainer>
         ) : (
@@ -100,20 +114,23 @@ Companies.propTypes = {
     getCompany: PropTypes.func,
     addCompany: PropTypes.func,
     addInvitation: PropTypes.func,
-    invitation: PropTypes.object
+    invitation: PropTypes.object,
+    getGoals: PropTypes.func,
+    goals: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     company: state.getCompany,
     companyCreated: state.addCompany,
-    invitation: state.addInvitation.status
+    invitation: state.addInvitation.status,
+    goals: state.getGoals
 });
 
 const composedHoc = compose(
     connect(
         mapStateToProps,
-        { getCompany, addCompany, addInvitation }
+        { getCompany, addCompany, addInvitation, getGoals }
     )
 );
 
