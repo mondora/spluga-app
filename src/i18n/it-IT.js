@@ -114,6 +114,9 @@ export default {
 
     "c-activityResult.title": "I tuoi risultati",
 
+    "c-activityForm.result.congratulation": "Congratulazioni",
+    "c-activityForm.result.message": "Con il tuo contributo hai salvato:",
+
     //Views
     "v-app.message":
         "Assicurati di copiare il valore della chiave in un punto sicuro, altrimenti dovrai generare una nuova chiave.",

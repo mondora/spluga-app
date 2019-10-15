@@ -23,11 +23,20 @@ export const Desc = styled.div`
     grid-column-end: 2;
 `;
 
-export const Result = styled.div`
-    padding-top: 20px;
+export const ResultTitle = styled.div`
+    padding-left: 20px;
     font-size: 15px;
     grid-column-start: 2;
     grid-column-end: 3;
+    grid-row-start: 2;
+`;
+
+export const Result = styled.div`
+    padding-left: 20px;
+    font-size: 15px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
 `;
 
 export const AppTutprial = styled.div`

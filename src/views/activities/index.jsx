@@ -16,7 +16,7 @@ export const Activities = ({
     addActivityUser,
     addActivityCompany,
     goals,
-    activities
+    activitiesUser
 }) => {
     useEffect(() => {
         if (!getGoals.started) {
@@ -39,9 +39,11 @@ export const Activities = ({
         addActivityCompany(data, auth.currentUser, companyId, impact);
     };
 
+    const result = activitiesUser ? activitiesUser.result : null;
+
     return (
         <PageContainer>
-            <ActivityForm goals={goals} onSubmit={handleSubmit} />
+            <ActivityForm goals={goals} onSubmit={handleSubmit} result={result} />
         </PageContainer>
     );
 };
@@ -50,14 +52,14 @@ Activities.propTypes = {
     auth: PropTypes.object,
     getGoals: PropTypes.func,
     getCompany: PropTypes.func,
-    activities: PropTypes.array
+    activitiesUser: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     goals: state.getGoals.goals,
     company: state.getCompany,
-    activities: state.addActivityUser || state.addActivityCompany
+    activitiesUser: state.addActivityUser
 });
 
 export default connect(

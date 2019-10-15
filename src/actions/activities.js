@@ -11,9 +11,13 @@ function getClient() {
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
-export const ADD_ACTIVITY_START = "ADD_ACTIVITY_START";
-export const ADD_ACTIVITY_SUCCESS = "ADD_ACTIVITY_SUCCESS";
-export const ADD_ACTIVITY_ERROR = "ADD_ACTIVITY_ERROR";
+export const ADD_ACTIVITY_USER_START = "ADD_ACTIVITY_USER_START";
+export const ADD_ACTIVITY_USER_SUCCESS = "ADD_ACTIVITY_USER_SUCCESS";
+export const ADD_ACTIVITY_USER_ERROR = "ADD_ACTIVITY_USER_ERROR";
+
+export const ADD_ACTIVITY_COMPANY_START = "ADD_ACTIVITY_COMPANY_START";
+export const ADD_ACTIVITY_COMPANY_SUCCESS = "ADD_ACTIVITY_COMPANY_SUCCESS";
+export const ADD_ACTIVITY_COMPANY_ERROR = "ADD_ACTIVITY_COMPANY_ERROR";
 
 async function upsertActivity(data, id, collectionName) {
     const collection = mongodb.db(MONGO_DB_NAME).collection(collectionName);
@@ -43,7 +47,7 @@ async function upsertActivity(data, id, collectionName) {
 export function addActivityUser(data, currentUser, companyId, impact) {
     return async dispatch => {
         dispatch({
-            type: ADD_ACTIVITY_START
+            type: ADD_ACTIVITY_USER_START
         });
 
         try {
@@ -70,12 +74,12 @@ export function addActivityUser(data, currentUser, companyId, impact) {
             }
 
             dispatch({
-                type: ADD_ACTIVITY_SUCCESS,
+                type: ADD_ACTIVITY_USER_SUCCESS,
                 payload: { result: result }
             });
         } catch (error) {
             dispatch({
-                type: ADD_ACTIVITY_ERROR,
+                type: ADD_ACTIVITY_USER_ERROR,
                 error: true,
                 errorInfo: { code: 500, message: error }
             });
@@ -86,7 +90,7 @@ export function addActivityUser(data, currentUser, companyId, impact) {
 export function addActivityCompany(data, currentUser, companyId, impact) {
     return async dispatch => {
         dispatch({
-            type: ADD_ACTIVITY_START
+            type: ADD_ACTIVITY_COMPANY_START
         });
 
         try {
@@ -144,12 +148,12 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
             }
 
             dispatch({
-                type: ADD_ACTIVITY_SUCCESS,
+                type: ADD_ACTIVITY_COMPANY_SUCCESS,
                 payload: { result: result }
             });
         } catch (error) {
             dispatch({
-                type: ADD_ACTIVITY_ERROR,
+                type: ADD_ACTIVITY_COMPANY_ERROR,
                 error: true,
                 errorInfo: { code: 500, message: error }
             });

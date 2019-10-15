@@ -13,7 +13,8 @@ import {
     Unordered,
     Element,
     AppTutprial,
-    Result
+    Result,
+    ResultTitle
 } from "./styled";
 import { form } from "@mondora/conv-redux-form";
 import { FormattedMessage } from "react-intl";
@@ -25,7 +26,7 @@ import TextAreaField from "@mondora/arc/antd/TextAreaField";
 
 import { activityFormSchema } from "../../utils/form-schema/activity-form-schema";
 
-export const ActivityForm = ({ handleSubmit, goals }) => {
+export const ActivityForm = ({ handleSubmit, goals, result }) => {
     var options = [];
     if (goals) {
         goals.forEach(goal => {
@@ -36,6 +37,13 @@ export const ActivityForm = ({ handleSubmit, goals }) => {
     const disabledDate = current => {
         return current && current > moment().endOf("day");
     };
+
+    if (result) {
+        result.forEach(r => {
+            const goal = goals.find(g => g.key === r.goal);
+            r.unit = goal.unit;
+        });
+    }
 
     return (
         <FormContainer onSubmit={handleSubmit}>
@@ -60,7 +68,14 @@ export const ActivityForm = ({ handleSubmit, goals }) => {
                     <FormattedMessage id="general.save" />
                 </Button>
             </ButtonContainer>
-            <Result></Result>
+
+            <ResultTitle>{result ? <FormattedMessage id="c-activityForm.result.congratulation" /> : null}</ResultTitle>
+            <Result>
+                {result ? <FormattedMessage id="c-activityForm.result.message" /> : null}
+                <ul>
+                    {result ? result.map(r => <li key={r.goal}>{r.goal + ":" + r.value + " " + r.unit}</li>) : null}
+                </ul>
+            </Result>
             <AppTutprial>
                 <FormattedMessage id="c-activityForm.desc2" />
                 <Unordered>
@@ -80,7 +95,8 @@ export const ActivityForm = ({ handleSubmit, goals }) => {
 };
 
 ActivityForm.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    result: PropTypes.array
 };
 
 const formDefinition = {

@@ -78,7 +78,7 @@ export const ActivityResult = ({ activities, goals }) => {
                         }}
                     >
                         <XAxis allowDataOverflow dataKey="date" tickFormatter={formatXAxis} />
-                        <YAxis label={{ value: goal.unit, position: "insideLeft" }} />
+                        <YAxis label={{ value: goal.unit, position: "insideLeft" }} allowDataOverflow="true" />
                         <Tooltip />
                         <Line
                             connectNulls
