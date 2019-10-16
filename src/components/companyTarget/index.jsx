@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-export const CompanyTarget = ({ onAddTarget, targets }) => {
+export const CompanyTarget = ({ onAddTarget, targets, goals }) => {
     const [visible, setVisible] = useState(false);
 
     const showModal = () => {
@@ -58,7 +58,7 @@ export const CompanyTarget = ({ onAddTarget, targets }) => {
                 footer={null}
                 onCancel={() => setVisible(false)}
             >
-                <SplugaNewTarget onSubmit={createTarget} />
+                <SplugaNewTarget onSubmit={createTarget} goals={goals} />
             </Modal>
         </TargetContainer>
     );
@@ -71,7 +71,8 @@ CompanyTarget.defaultProps = {
 CompanyTarget.propTypes = {
     auth: PropTypes.object,
     targets: PropTypes.array,
-    onAddTarget: PropTypes.func.isRequired
+    onAddTarget: PropTypes.func.isRequired,
+    goals: PropTypes.array
 };
 
 export default CompanyTarget;

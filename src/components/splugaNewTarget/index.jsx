@@ -15,7 +15,7 @@ import { FormattedMessage } from "react-intl";
 
 const { Step } = Steps;
 
-export const SplugaNewTarget = ({ handleSubmit }) => {
+export const SplugaNewTarget = ({ handleSubmit, goals }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [target, setTarget] = useState({});
     const ButtonGroup = Button.Group;
@@ -33,7 +33,7 @@ export const SplugaNewTarget = ({ handleSubmit }) => {
         },
         {
             key: 2,
-            content: <StepGoal onChange={setTarget} target={target} />,
+            content: <StepGoal onChange={setTarget} target={target} goals={goals} />,
             nextDisabled: !target.goal || !target.value
         },
         {
@@ -93,7 +93,8 @@ export const SplugaNewTarget = ({ handleSubmit }) => {
 };
 
 SplugaNewTarget.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    goals: PropTypes.array
 };
 
 const formDefinition = {

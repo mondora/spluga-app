@@ -81,7 +81,7 @@ export const Profile = ({
                 <SplugaCard auth={auth} type={"user"} />
             </FieldLeft>
             <FieldRight>
-                <CompanyTarget onAddTarget={handleAddTarget} targets={targets} />
+                <CompanyTarget onAddTarget={handleAddTarget} targets={targets} goals={goalsList} />
             </FieldRight>
             <FieldCenter>
                 <ActivityResult activities={activities} goals={goalsList} />

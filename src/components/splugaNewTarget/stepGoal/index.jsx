@@ -1,20 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { SelectStringField } from "@mondora/arc/antd/SelectField";
 import { StepAction } from "../styled";
-import { getGoals } from "../../../actions/goals";
 import NumberField from "@mondora/arc/antd/NumberField";
 import { FormattedMessage } from "react-intl";
 
-export const StepGoal = ({ onChange, target, getGoals, goals }) => {
-    useEffect(() => {
-        if (!getGoals.started) {
-            getGoals({});
-        }
-    }, [getGoals]);
-
+export const StepGoal = ({ onChange, target, goals }) => {
     const handleGoalChange = (e, value) => {
         onChange({ ...target, goal: value });
     };
@@ -51,7 +44,4 @@ const mapStateToProps = state => ({
     goals: state.getGoals.goals
 });
 
-export default connect(
-    mapStateToProps,
-    { getGoals }
-)(StepGoal);
+export default connect(mapStateToProps)(StepGoal);
