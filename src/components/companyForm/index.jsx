@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { CompanyFormContainer, ButtonContainer, Title, UploadContainer } from "./styled";
+import { Container, ButtonContainer, Title, UploadContainer } from "./styled";
 import { form } from "@mondora/conv-redux-form";
 import { FormattedMessage } from "react-intl";
 import { Button } from "antd";
@@ -20,7 +20,7 @@ export const CompanyForm = ({ handleSubmit, onSelectFile }) => {
     };
     return (
         <Fragment>
-            <CompanyFormContainer onSubmit={handleSubmit}>
+            <Container onSubmit={handleSubmit}>
                 <Title>
                     <FormattedMessage id="c-companyForm.title" />
                 </Title>
@@ -44,7 +44,7 @@ export const CompanyForm = ({ handleSubmit, onSelectFile }) => {
                         <FormattedMessage id="general.save" />
                     </Button>
                 </ButtonContainer>
-            </CompanyFormContainer>
+            </Container>
         </Fragment>
     );
 };

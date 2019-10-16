@@ -10,12 +10,10 @@ export const Container = styled.form`
     height: 100%;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h3`
     display: flex;
     grid-column-start: 1;
     grid-column-end: 1;
-    font-weight: bolder;
-    font-size: 20px;
 `;
 
 export const FieldRight = styled.div`
@@ -28,6 +26,7 @@ export const FieldCenter = styled.div`
     grid-column-start: 1;
     grid-column-end: 4;
     height: calc(30vh - 10px);
+    font-size: 13px;
 `;
 
 export const SpinContainer = styled.div`

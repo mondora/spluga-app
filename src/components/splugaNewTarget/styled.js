@@ -17,3 +17,20 @@ export const StepAction = styled.div`
 export const StepActionButton = styled.div`
     text-align: right;
 `;
+
+export const GridRow = styled.div`
+    display: grid;
+    grid-template-columns: 20% auto auto 20%;
+    margin-bottom: 30px;
+`;
+
+export const GridTitle = styled.div`
+    font-weight: bold;
+    grid-column-start: 2;
+    grid-column-end: 3;
+`;
+export const GridValue = styled.div`
+    grid-column-start: 3;
+    grid-column-end: 4;
+    text-align: right;
+`;

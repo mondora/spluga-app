@@ -11,22 +11,20 @@ export const PageContainer = styled.form`
     padding-bottom: 5%;
 `;
 
-export const Title = styled.h2`
-    font-weight: 250;
+export const Title = styled.h1`
     text-align: center;
-    font-size: 50px;
-    color: #000;
     padding-top: 90px;
     padding-bottom: 30px;
+    font-size: 50px;
+    font-weight: 250;
 `;
 
 export const Desc = styled.div`
-    color: #000;
     display: block;
     text-align: center;
+    padding-bottom: 30px;
     font-weight: 150;
     font-size: 30px;
-    padding-bottom: 30px;
 `;
 
 export const FormContainer = styled.div`

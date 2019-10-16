@@ -10,16 +10,13 @@ export const TipsContainer = styled.div`
     margin: 10px;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h3`
     text-align: justify;
-    font-weight: bolder;
-    font-size: 20px;
     margin: 10px;
 `;
 
 export const Subtitle = styled.span`
     text-align: justify;
-    font-size: 16px;
     margin: 10px;
 `;
 

@@ -41,7 +41,7 @@ export default {
     "c-navbar.profile": "Profile",
     "c-navbar.company": "Company",
     "c-navbar.app": "Apps",
-    "c-navbar.targets": "Explore your targets",
+    "c-navbar.targets": "Targets",
     "c-navbar.activities": "Activities",
     "c-splugaNewTarget.create": "Create new target",
 
@@ -67,8 +67,8 @@ export default {
     "c-splugaTarget.cardTitle": "Your Target's trend",
     "c-splugaTarget.view": "View all your targets",
 
-    "c-splugaTips.title.company": "HERE'S WHAT YOU CAN DO TOGETHER",
-    "c-splugaTips.title.user": "EXCEEDS YOURSELF",
+    "c-splugaTips.title.company": "Here's what you can do together",
+    "c-splugaTips.title.user": "Exceds yourself",
     "c-splugaTips.subtitle":
         "Find out how to improve the environmental impact of your business every day, create value in your community and spread it!",
     "c-splugaTips.tip1":

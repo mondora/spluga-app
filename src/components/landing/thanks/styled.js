@@ -11,12 +11,12 @@ export const PageContainer = styled.div`
     padding-bottom: 5%;
 `;
 
-export const Desc = styled.div`
+export const Desc = styled.h1`
     color: #fff;
     display: block;
     text-align: center;
-    font-weight: 200;
     font-size: 50px;
+    font-weight: 250;
 `;
 
 export const ImageContainer = styled.div`

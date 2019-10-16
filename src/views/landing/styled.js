@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PageContainer = styled.div`
+export const Container = styled.div`
     display: grid;
     background: url("https://spluga.io/img/bg-pattern.png"), #986c6a;
     background: url("https://spluga.io/img/bg-pattern.png"),

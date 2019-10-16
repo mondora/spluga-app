@@ -13,28 +13,25 @@ export const PageContainer = styled.div`
     padding-bottom: 0;
 `;
 
-export const Title = styled.h2`
-    font-weight: 250;
+export const Title = styled.h1`
     text-align: center;
-    font-size: 50px;
-    color: #000;
     padding-top: 90px;
     padding-bottom: 30px;
+    font-size: 50px;
+    font-weight: 250;
 `;
 
-export const SubTitle = styled.h4`
+export const SubTitle = styled.h3`
     font-weight: 150;
     font-size: 30px;
     padding-bottom: 30px;
 `;
 
 export const Desc = styled.div`
-    font-size: 18px;
     padding-bottom: 30px;
 `;
 
 export const List = styled.ul`
-    font-size: 18px;
     padding-bottom: 30px;
     text-align: left;
 `;

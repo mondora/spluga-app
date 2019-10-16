@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { StepAction } from "../styled";
+import { StepAction, GridRow, GridTitle, GridValue } from "../styled";
 import { FormattedMessage } from "react-intl";
 
 //export function for testing pourpose
@@ -9,40 +9,42 @@ export const StepSummary = ({ target }) => {
     const { name, description, stakeholder, goal, value, startDate, endDate } = target;
     return (
         <StepAction>
-            <b>
-                <FormattedMessage id="general.name" />:
-            </b>
-            {name}
-            <br />
-            <b>
-                <FormattedMessage id="general.description" />:
-            </b>
-            {description}
-            <br />
-            <b>
-                <FormattedMessage id="general.stakeholder" />:
-            </b>
-            {stakeholder}
-            <br />
-            <b>
-                <FormattedMessage id="c-splugaNewTarget.summary.goal" />:
-            </b>
-            {goal}
-            <br />
-            <b>
-                <FormattedMessage id="c-splugaNewTarget.type.value" />
-            </b>
-            :{value}
-            <br />
-            <b>
-                <FormattedMessage id="c-splugaNewTarget.summary.startDate" />:
-            </b>
-            {startDate}
-            <br />
-            <b>
-                <FormattedMessage id="c-splugaNewTarget.summary.endDate" />:
-            </b>
-            {endDate}
+            <GridRow>
+                <GridTitle>
+                    <FormattedMessage id="general.name" />:
+                </GridTitle>
+                <GridValue>{name}</GridValue>
+
+                <GridTitle>
+                    <FormattedMessage id="general.description" />:
+                </GridTitle>
+                <GridValue>{description}</GridValue>
+
+                <GridTitle>
+                    <FormattedMessage id="general.stakeholder" />:
+                </GridTitle>
+                <GridValue>{stakeholder}</GridValue>
+
+                <GridTitle>
+                    <FormattedMessage id="c-splugaNewTarget.summary.goal" />:
+                </GridTitle>
+                <GridValue>{goal}</GridValue>
+
+                <GridTitle>
+                    <FormattedMessage id="c-splugaNewTarget.type.value" />:
+                </GridTitle>
+                <GridValue>{value}</GridValue>
+
+                <GridTitle>
+                    <FormattedMessage id="c-splugaNewTarget.summary.startDate" />:
+                </GridTitle>
+                <GridValue>{startDate}</GridValue>
+
+                <GridTitle>
+                    <FormattedMessage id="c-splugaNewTarget.summary.endDate" />:
+                </GridTitle>
+                <GridValue>{endDate}</GridValue>
+            </GridRow>
         </StepAction>
     );
 };

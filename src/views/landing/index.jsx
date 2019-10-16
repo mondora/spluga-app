@@ -8,14 +8,14 @@ import JoinUs from "../../components/landing/joinUs";
 import HowDoesItWorks from "../../components/landing/howDoesItWorks";
 import Thanks from "../../components/landing/thanks";
 import Footer from "../../components/landing/footer";
-import { PageContainer } from "./styled.js";
+import { Container } from "./styled.js";
 
 import * as Scroll from "react-scroll";
 
 var Element = Scroll.Element;
 export const Landing = ({ login }) => {
     return (
-        <PageContainer>
+        <Container>
             <NavBar onLogin={login} />
             <Header />
             <Element name="what-is-spluga" className="element">
@@ -29,7 +29,7 @@ export const Landing = ({ login }) => {
                 <Thanks />
                 <Footer />
             </Element>
-        </PageContainer>
+        </Container>
     );
 };
 

@@ -7,10 +7,7 @@ export const FormContainer = styled.form`
     padding: 15px;
 `;
 
-export const Title = styled.div`
-    font-weight: bolder;
-    font-size: 20px;
-`;
+export const Title = styled.h3``;
 
 export const Fields = styled.div`
     display: flex;
@@ -28,13 +25,11 @@ export const Input = styled.input`
 export const Error = styled.label`
     display: flex;
     color: red;
-    font-weight: bolder;
     margin-left: 5px;
     flex: 3;
 `;
 
 export const Button = styled.button`
-    color: #fff;
     background-color: #1890ff;
     border-color: #1890ff;
     border-radius: 4px;

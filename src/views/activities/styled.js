@@ -7,7 +7,4 @@ export const PageContainer = styled.div`
     padding: 10px;
 `;
 
-export const Title = styled.div`
-    font-weight: bolder;
-    font-size: 20px;
-`;
+export const Title = styled.div``;

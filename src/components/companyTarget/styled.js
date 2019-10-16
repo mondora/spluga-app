@@ -11,19 +11,16 @@ export const TargetContainer = styled.div`
     height: 100%;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h3`
     display: flex;
     grid-column-start: 1;
     grid-column-end: 1;
-    font-weight: bolder;
-    font-size: 20px;
 `;
 
 export const FieldRight = styled.div`
     grid-column-start: 2;
     grid-column-end: 3;
     text-align: right;
-    font-weight: bolder;
 `;
 
 export const FieldGrid = styled.div`

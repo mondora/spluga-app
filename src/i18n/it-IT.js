@@ -41,7 +41,7 @@ export default {
     "c-navbar.profile": "Profilo",
     "c-navbar.company": "Azienda",
     "c-navbar.app": "Apps",
-    "c-navbar.targets": "Esplora gli obiettivi",
+    "c-navbar.targets": "Obbiettivi",
     "c-navbar.activities": "Attività",
     "c-splugaNewTarget.create": "Crea un nuovo obiettivo",
     "c-splugaNewTarget.placeholder.name": "Inserisci il nome del target",
@@ -66,8 +66,8 @@ export default {
     "c-splugaTarget.cardTitle": "Come vanno i tuoi obiettivi",
     "c-splugaTarget.view": "Visualizza tutti i tuoi obbiettivi",
 
-    "c-splugaTips.title.company": "ECCO COSA POTETE FARE INSIEME",
-    "c-splugaTips.title.user": "SUPERA TE STESSO",
+    "c-splugaTips.title.company": "Ecco cosa potete fare insieme",
+    "c-splugaTips.title.user": "Supera te stesso",
     "c-splugaTips.subtitle":
         "Scopri come migliorare ogni giorno l'impatto ambientale del tuo business, crea valore nella tua comunità e diffondilo!",
     "c-splugaTips.tip1":

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
+import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter, FieldCenterFull } from "./styled";
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { addInvitation } from "../../actions/team";
@@ -88,9 +88,9 @@ export const Companies = ({
                 <FieldRight>
                     <CompanyTeam onInvite={handleInvite} team={selectedCompany.team} />
                 </FieldRight>
-                <FieldCenter>
+                <FieldCenterFull>
                     <ActivityResult activities={activities} goals={goalsList} />
-                </FieldCenter>
+                </FieldCenterFull>
                 <SplugaTips isCompany />
             </PageContainer>
         ) : (

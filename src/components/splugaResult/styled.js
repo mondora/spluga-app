@@ -15,5 +15,4 @@ export const Paragraph = styled.div`
     flex-direction: column;
     text-align: center;
     padding: 10px;
-    font-weight: bolder;
 `;

@@ -4,14 +4,13 @@ let Link = Scroll.Link;
 
 export const PageContainer = styled.div`
     background-color: #fff;
-    font-weight: 200;
     letter-spacing: 1px;
-    font-size: 14px;
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 20px;
     position: sticky;
     top: 0;
+    border-bottom: 3px solid #bfbccb;
 `;
 
 export const LinkContainer = styled(Link)`

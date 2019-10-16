@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
     margin: 20px;
 `;
 
-export const CardTitle = styled.h3`
+export const CardTitle = styled.div`
     margin-top: 20px;
 `;
 

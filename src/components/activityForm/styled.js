@@ -9,31 +9,26 @@ export const FormContainer = styled.form`
     padding: 15px;
 `;
 
-export const Title = styled.div`
-    font-weight: bolder;
-    font-size: 20px;
+export const Title = styled.h3`
     grid-column-start: 1;
     grid-column-end: 2;
 `;
 
 export const Desc = styled.div`
     padding-top: 20px;
-    font-size: 15px;
     grid-column-start: 1;
     grid-column-end: 2;
 `;
 
-export const ResultTitle = styled.div`
-    padding-left: 20px;
-    font-size: 15px;
+export const ResultTitle = styled.h3`
+    padding-left: 60px;
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
 `;
 
 export const Result = styled.div`
-    padding-left: 20px;
-    font-size: 15px;
+    padding-left: 60px;
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 3;
@@ -41,7 +36,6 @@ export const Result = styled.div`
 
 export const AppTutprial = styled.div`
     padding-top: 20px;
-    font-size: 15px;
     grid-column-start: 1;
     grid-column-end: 3;
 `;

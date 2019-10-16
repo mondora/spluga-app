@@ -1,23 +1,22 @@
 import styled from "styled-components";
 
-export const CardTitle = styled.h3`
+export const Title = styled.h3`
     margin-top: 20px;
-    margin-bottom: -10px;
 `;
 
-export const CardSubtitle = styled.h4`
+export const Subtitle = styled.h4`
     margin-top: 20px;
     text-align: center;
 `;
 
-export const CardDescription = styled.div`
+export const Description = styled.div`
     display: flex;
     justify-content: center;
     text-align: center;
     padding: 20px;
 `;
 
-export const CardContainer = styled.div`
+export const Container = styled.div`
     box-sizing: border-box;
     border-radius: 8px;
     display: flex;

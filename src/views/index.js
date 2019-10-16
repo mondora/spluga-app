@@ -6,6 +6,7 @@ import { checkLogin } from "../actions/auth";
 import { compose } from "redux";
 
 import { getMessagesLocale, getUserLocale } from "../i18n";
+import { Container } from "./styled.js";
 
 import Root from "./root";
 import PropTypes from "prop-types";
@@ -22,11 +23,13 @@ export const Routes = ({ auth, checkLogin }) => {
     const component = !auth.currentUser ? Landing : Root;
 
     return (
-        <IntlProvider locale={locale} messages={messages}>
-            <BrowserRouter>
-                <Route path="/:page?" component={component} />
-            </BrowserRouter>
-        </IntlProvider>
+        <Container>
+            <IntlProvider locale={locale} messages={messages}>
+                <BrowserRouter>
+                    <Route path="/:page?" component={component} />
+                </BrowserRouter>
+            </IntlProvider>
+        </Container>
     );
 };
 

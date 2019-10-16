@@ -15,7 +15,7 @@ export const PageContainer = styled.div`
     color: #fff;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
     font-weight: 250;
     text-align: center;
     font-size: 50px;
