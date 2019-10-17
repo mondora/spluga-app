@@ -1,28 +1,19 @@
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
-import { STITCH_APP_ID, MONGO_DB_NAME } from "../config";
+import { STITCH_APP_ID, MONGO_DB_NAME } from "../../config";
 
 export const GET_COMPANY_START = "GET_COMPANY_START";
 export const GET_COMPANY_SUCCESS = "GET_COMPANY_SUCCESS";
 export const GET_COMPANY_ERROR = "GET_COMPANY_ERROR";
 
-// Get a client for your Stitch app, or instantiate a new one
 function getClient() {
     return Stitch.hasAppClient(STITCH_APP_ID)
         ? Stitch.getAppClient(STITCH_APP_ID)
         : Stitch.initializeAppClient(STITCH_APP_ID);
 }
 
-/*
-instantiate a mongoDb service client in mongodb variable for stitch service, 
-with object mongodb i can get the collection handle
-(one instance for get/add/remove)
-*/
-
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
-//DEFINE ACTION CREATORS
-//getCompany info
 export function getCompany(query) {
     return async dispatch => {
         dispatch({
@@ -33,7 +24,6 @@ export function getCompany(query) {
 
         try {
             const result = await collection.findOne(query);
-
             dispatch({
                 type: GET_COMPANY_SUCCESS,
                 payload: { result }

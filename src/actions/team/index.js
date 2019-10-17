@@ -1,5 +1,5 @@
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
-import { STITCH_APP_ID, MONGO_DB_NAME, PUBLISHED_HOSTNAME } from "../config";
+import { STITCH_APP_ID, MONGO_DB_NAME, PUBLISHED_HOSTNAME } from "../../config";
 
 export const ADD_INVITATION_START = "ADD_INVITATION_START";
 export const ADD_INVITATION_SUCCESS = "ADD_INVITATION_SUCCESS";

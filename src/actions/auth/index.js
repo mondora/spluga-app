@@ -1,10 +1,14 @@
 import { Stitch, GoogleRedirectCredential } from "mongodb-stitch-browser-sdk";
-import { STITCH_APP_ID } from "../config";
+import { STITCH_APP_ID } from "../../config";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOGIN_RESET = "LOGIN_RESET";
+
+const client = Stitch.hasAppClient(STITCH_APP_ID)
+    ? Stitch.getAppClient(STITCH_APP_ID)
+    : Stitch.initializeAppClient(STITCH_APP_ID);
 
 export function login() {
     return async dispatch => {
@@ -13,10 +17,7 @@ export function login() {
         });
 
         try {
-            const appId = STITCH_APP_ID;
-            const client = Stitch.hasAppClient(appId) ? Stitch.getAppClient(appId) : Stitch.initializeAppClient(appId);
             const credential = new GoogleRedirectCredential();
-
             client.auth.loginWithRedirect(credential);
         } catch (error) {
             dispatch({
@@ -36,8 +37,6 @@ export function checkLogin() {
 
         try {
             var currentUser = null;
-            const appId = STITCH_APP_ID;
-            const client = Stitch.hasAppClient(appId) ? Stitch.getAppClient(appId) : Stitch.initializeAppClient(appId);
 
             if (client.auth.hasRedirectResult()) {
                 await client.auth.handleRedirectResult();
@@ -45,14 +44,13 @@ export function checkLogin() {
 
             if (client.auth.isLoggedIn) {
                 currentUser = { id: client.auth.user.id, profile: client.auth.user.profile };
+                dispatch({
+                    type: LOGIN_SUCCESS,
+                    payload: {
+                        currentUser
+                    }
+                });
             }
-
-            dispatch({
-                type: LOGIN_SUCCESS,
-                payload: {
-                    currentUser
-                }
-            });
         } catch (error) {
             dispatch({
                 type: LOGIN_ERROR,
@@ -60,11 +58,5 @@ export function checkLogin() {
                 errorInfo: { code: 500, message: error }
             });
         }
-    };
-}
-
-export function resetLogin() {
-    return {
-        type: LOGIN_RESET
     };
 }

@@ -1,5 +1,5 @@
 import { Stitch, UserApiKeyAuthProviderClient } from "mongodb-stitch-browser-sdk";
-import { STITCH_APP_ID } from "../config";
+import { STITCH_APP_ID } from "../../config";
 
 export const ADD_APP_START = "ADD_APP_START";
 export const ADD_APP_SUCCESS = "ADD_APP_SUCCESS";

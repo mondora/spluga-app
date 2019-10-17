@@ -1,6 +1,6 @@
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
 import moment from "moment";
-import { STITCH_APP_ID, MONGO_DB_NAME } from "../config";
+import { STITCH_APP_ID, MONGO_DB_NAME } from "../../config";
 
 function getClient() {
     return Stitch.hasAppClient(STITCH_APP_ID)
@@ -39,7 +39,7 @@ async function upsertActivity(data, id, collectionName) {
         { $inc: { "activities.$.value": value } }
     );
 
-    if (result.modifiedCount === 0) {
+    if (result && result.modifiedCount === 0) {
         await collection.updateOne({ _id: id }, { $push: { activities: data } });
     }
 }
