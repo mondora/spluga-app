@@ -125,6 +125,8 @@ export default {
     "v-goals.create.new": "New goal created",
     "v-goals.uom": "Unit of measure",
 
+    "v-targets.stakeholder": "All",
+
     "v-team.invitation.error.400.invalid": "Invalid or expired link",
     "v-team.invitation.error.400.duplicate": "User already invited",
     "v-team.invitation.success": "Invitation sent",
