@@ -36,7 +36,6 @@ export default {
 
     "c-splugaCard.employee": "Employee",
     "c-splugaCard.company": "Company",
-    "c-splugaCard.description": "thanks for your help, {n} trees have been saved!",
 
     "c-navbar.profile": "Profile",
     "c-navbar.company": "Company",

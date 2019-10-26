@@ -1,12 +1,11 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { Container, AvatarContainer, Title, Subtitle, Description, Avatar } from "./styled";
+import { Container, AvatarContainer, Title, Subtitle, Avatar } from "./styled";
 import { FormattedMessage } from "react-intl";
 
 export const SplugaCard = ({ auth, company, type }) => {
     const data = auth && auth.currentUser && auth.currentUser.profile ? auth.currentUser.profile.data : null;
 
-    const n = 100;
     const companyName = company ? company.name : null;
     const companyLogo = company ? company.logo : null;
 
@@ -31,9 +30,6 @@ export const SplugaCard = ({ auth, company, type }) => {
                     )}
                 </Subtitle>
             </AvatarContainer>
-            <Description>
-                <FormattedMessage id="c-splugaCard.description" values={{ n: `${n}` }} />
-            </Description>
         </Container>
     );
 };

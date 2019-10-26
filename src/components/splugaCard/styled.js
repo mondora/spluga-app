@@ -9,13 +9,6 @@ export const Subtitle = styled.h4`
     text-align: center;
 `;
 
-export const Description = styled.div`
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-`;
-
 export const Container = styled.div`
     box-sizing: border-box;
     border-radius: 8px;
@@ -24,6 +17,7 @@ export const Container = styled.div`
     align-items: center;
     background-color: white;
     border: 3px solid #bfbccb;
+    height: 100%;
 `;
 
 export const AvatarContainer = styled.div`

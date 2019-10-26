@@ -20,7 +20,7 @@ describe("SplugaCard", () => {
         const company = { name: "name" };
         const component = shallow(<SplugaCard auth={auth} company={company} />);
 
-        expect(component.find("FormattedMessage").length).toBe(2);
+        expect(component.find("FormattedMessage").length).toBe(1);
     });
 
     it("Render component with prop type not in [user, company] ", () => {
