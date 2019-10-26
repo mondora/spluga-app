@@ -1,11 +1,4 @@
-import {
-    GET_TARGETS_START,
-    GET_TARGETS_SUCCESS,
-    GET_TARGETS_ERROR,
-    ADD_TARGET_START,
-    ADD_TARGET_SUCCESS,
-    ADD_TARGET_ERROR
-} from "../../actions/targets";
+import { ADD_TARGET_START, ADD_TARGET_SUCCESS, ADD_TARGET_ERROR } from "../../actions/targets";
 
 const defaultState = {
     status: {
@@ -18,40 +11,6 @@ const defaultState = {
         }
     }
 };
-
-export function getTargets(state = defaultState, { type, payload, errorInfo }) {
-    switch (type) {
-        case GET_TARGETS_START:
-            return {
-                status: {
-                    started: true,
-                    error: false,
-                    ended: false
-                }
-            };
-        case GET_TARGETS_SUCCESS:
-            return {
-                status: {
-                    started: false,
-                    error: false,
-                    ended: true
-                },
-                ...payload
-            };
-        case GET_TARGETS_ERROR:
-            return {
-                ...state,
-                status: {
-                    started: false,
-                    error: true,
-                    ended: false,
-                    errorInfo
-                }
-            };
-        default:
-            return state;
-    }
-}
 
 export function addTarget(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
