@@ -26,7 +26,7 @@ export function addTarget(data, currentUser, companyId) {
             data.endDate = new Date(data.endDate);
             await companies.updateOne(
                 { _id: companyId },
-                { $push: { targets: { ...data, actual: 0, createdAt: new Date(), cretedBy: id } } }
+                { $push: { targets: { ...data, actual: 0, createdAt: new Date(), createdBy: id } } }
             );
 
             dispatch({

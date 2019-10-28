@@ -17,9 +17,8 @@ export const Targets = ({ company, getCompany }) => {
     }, [getCompany]);
 
     const selectedCompany = company && company.status.ended && company.result ? company.result : null;
-
-    const stakeholders = selectedCompany ? selectedCompany.targets.map(t => t.stakeholder) : [];
-
+    const targets = selectedCompany && selectedCompany.targets ? selectedCompany.targets : [];
+    const stakeholders = targets.map(t => t.stakeholder);
     const members = stakeholders ? stakeholders.filter((s, index) => stakeholders.indexOf(s) === index) : [];
 
     return selectedCompany ? (
@@ -37,8 +36,8 @@ export const Targets = ({ company, getCompany }) => {
             </Header>
             <Cards>
                 {category === "All"
-                    ? selectedCompany.targets.map((target, index) => <TargetCard key={index} target={target} />)
-                    : selectedCompany.targets
+                    ? targets.map((target, index) => <TargetCard key={index} target={target} />)
+                    : targets
                           .filter(target => target.stakeholder === category)
                           .map((target, index) => <TargetCard key={index} target={target} />)}
             </Cards>
