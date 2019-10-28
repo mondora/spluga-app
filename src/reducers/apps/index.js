@@ -2,9 +2,6 @@ import {
     ADD_APP_START,
     ADD_APP_SUCCESS,
     ADD_APP_ERROR,
-    GET_APPS_START,
-    GET_APPS_SUCCESS,
-    GET_APPS_ERROR,
     ENABLE_APP_START,
     ENABLE_APP_SUCCESS,
     ENABLE_APP_ERROR,
@@ -59,40 +56,6 @@ export function addApp(state = defaultState, { type, payload, errorInfo }) {
             };
         default:
             return defaultState;
-    }
-}
-
-export function getApps(state = defaultState, { type, payload, errorInfo }) {
-    switch (type) {
-        case GET_APPS_START:
-            return {
-                status: {
-                    started: true,
-                    error: false,
-                    ended: false
-                }
-            };
-        case GET_APPS_SUCCESS:
-            return {
-                status: {
-                    started: false,
-                    error: false,
-                    ended: true
-                },
-                ...payload
-            };
-        case GET_APPS_ERROR:
-            return {
-                ...state,
-                status: {
-                    started: false,
-                    error: true,
-                    ended: false,
-                    errorInfo
-                }
-            };
-        default:
-            return state;
     }
 }
 

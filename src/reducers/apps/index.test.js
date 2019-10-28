@@ -2,9 +2,6 @@ import {
     ADD_APP_START,
     ADD_APP_SUCCESS,
     ADD_APP_ERROR,
-    GET_APPS_START,
-    GET_APPS_SUCCESS,
-    GET_APPS_ERROR,
     ENABLE_APP_START,
     ENABLE_APP_SUCCESS,
     ENABLE_APP_ERROR,
@@ -16,7 +13,7 @@ import {
     DELETE_APP_ERROR
 } from "../../actions/apps";
 
-import { addApp, getApps, enableApp, disableApp, deleteApp } from "../apps";
+import { addApp, enableApp, disableApp, deleteApp } from "../apps";
 
 const defaultState = {
     status: {
@@ -64,41 +61,6 @@ describe("addApp", () => {
 
     it("set status to default", () => {
         stateRes = addApp(null, { type: null });
-        expect(stateRes).toEqual(defaultState);
-    });
-});
-
-describe("getApps", () => {
-    it("set status to GET_APPS_START", () => {
-        stateRes = getApps(state, {
-            type: GET_APPS_START
-        });
-        expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
-    });
-
-    it("set status to GET_APPS_SUCCESS", () => {
-        stateRes = getApps(state, {
-            type: GET_APPS_SUCCESS,
-            payload,
-            error
-        });
-
-        expect(stateRes.status).toEqual({ started: false, error: false, ended: true });
-        expect(stateRes.payload).toEqual(payload.payload);
-    });
-
-    it("set status to GET_APPS_ERROR", () => {
-        stateRes = getApps(state, {
-            type: GET_APPS_ERROR,
-            payload,
-            errorInfo: "error"
-        });
-
-        expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
-    });
-
-    it("set status to default", () => {
-        stateRes = getApps(defaultState, { type: null });
         expect(stateRes).toEqual(defaultState);
     });
 });

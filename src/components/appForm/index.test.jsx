@@ -6,9 +6,20 @@ import { AppForm } from ".";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("AppForm", () => {
+describe("CompanyForm", () => {
     const onSubmit = jest.fn();
+    const onSelect = jest.fn();
     it("Render component without error", () => {
-        shallow(<AppForm onSubmit={onSubmit} />);
+        const component = shallow(<AppForm handleSubmit={onSubmit} onSelectFile={onSelect} />);
+
+        expect(component.find("FormattedMessage").length).toBe(2);
+        expect(component.find("WrappedField").length).toBe(1);
+        expect(component.find("Upload").length).toBe(1);
+        expect(component.find("Button").length).toBe(2);
+        expect(component.find("Icon").length).toBe(1);
+        component
+            .find("Upload")
+            .at(0)
+            .simulate("remove");
     });
 });

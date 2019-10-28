@@ -1,75 +1,44 @@
-import { Stitch, UserApiKeyAuthProviderClient } from "mongodb-stitch-browser-sdk";
-import { STITCH_APP_ID } from "../../config";
+import { Stitch, UserApiKeyAuthProviderClient, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
+import { STITCH_APP_ID, MONGO_DB_NAME } from "../../config";
 
 export const ADD_APP_START = "ADD_APP_START";
 export const ADD_APP_SUCCESS = "ADD_APP_SUCCESS";
 export const ADD_APP_ERROR = "ADD_APP_ERROR";
 
-// Get a client for your Stitch app, or instantiate a new one
-function getDefaultAppClient() {
+function getClient() {
     return Stitch.hasAppClient(STITCH_APP_ID)
         ? Stitch.getAppClient(STITCH_APP_ID)
-        : Stitch.initializeDefaultAppClient(STITCH_APP_ID);
+        : Stitch.initializeAppClient(STITCH_APP_ID);
 }
 
-function getProviderClient() {
-    const defaultAppClient = getDefaultAppClient();
-    return defaultAppClient.auth.getProviderClient(UserApiKeyAuthProviderClient.factory);
-}
+const client = getClient();
+const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+const providerClient = client.auth.getProviderClient(UserApiKeyAuthProviderClient.factory);
+const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
 
-export function addApp(appName) {
+export function addApp(app, createdBy, companyId) {
     return async dispatch => {
         dispatch({
             type: ADD_APP_START
         });
+        try {
+            const result = await providerClient.createApiKey(app.name);
+            app = { ...app, disabled: false, id: result.id };
+            const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
 
-        const providerClient = getProviderClient();
+            companies.updateOne({ _id: companyId }, { $push: { apps: { ...app, createdAt: new Date(), createdBy } } });
 
-        providerClient
-            .createApiKey(appName)
-            .then(result => {
-                dispatch({
-                    type: ADD_APP_SUCCESS,
-                    payload: { app: result }
-                });
-            })
-            .catch(error => {
-                dispatch({
-                    type: ADD_APP_ERROR,
-                    error: true,
-                    errorInfo: { code: 500, message: error }
-                });
+            dispatch({
+                type: ADD_APP_SUCCESS,
+                payload: { app: result }
             });
-    };
-}
-
-export const GET_APPS_START = "GET_APPS_START";
-export const GET_APPS_SUCCESS = "GET_APPS_SUCCESS";
-export const GET_APPS_ERROR = "GET_APPS_ERROR";
-
-export function getApps() {
-    return async dispatch => {
-        dispatch({
-            type: GET_APPS_START
-        });
-
-        const providerClient = getProviderClient();
-
-        providerClient
-            .fetchApiKeys()
-            .then(result => {
-                dispatch({
-                    type: GET_APPS_SUCCESS,
-                    payload: { apps: result }
-                });
-            })
-            .catch(error => {
-                dispatch({
-                    type: GET_APPS_ERROR,
-                    error: true,
-                    errorInfo: { code: 500, message: error }
-                });
+        } catch (error) {
+            dispatch({
+                type: ADD_APP_ERROR,
+                error: true,
+                errorInfo: { code: 500, message: error }
             });
+        }
     };
 }
 
@@ -77,28 +46,34 @@ export const ENABLE_APP_START = "ENABLE_APP_START";
 export const ENABLE_APP_SUCCESS = "ENABLE_APP_SUCCESS";
 export const ENABLE_APP_ERROR = "ENABLE_APP_ERROR";
 
-export function enableApp(appId) {
+export function enableApp(appId, companyId) {
     return async dispatch => {
         dispatch({
             type: ENABLE_APP_START
         });
 
-        const providerClient = getProviderClient();
+        try {
+            await providerClient.enableApiKey(appId);
+            companies.updateOne(
+                {
+                    _id: companyId,
+                    apps: {
+                        $elemMatch: { id: appId }
+                    }
+                },
+                { $set: { "apps.$.disabled": false } }
+            );
 
-        providerClient
-            .enableApiKey(appId)
-            .then(() => {
-                dispatch({
-                    type: ENABLE_APP_SUCCESS
-                });
-            })
-            .catch(error => {
-                dispatch({
-                    type: ENABLE_APP_ERROR,
-                    error: true,
-                    errorInfo: { code: 500, message: error }
-                });
+            dispatch({
+                type: ENABLE_APP_SUCCESS
             });
+        } catch (error) {
+            dispatch({
+                type: ENABLE_APP_ERROR,
+                error: true,
+                errorInfo: { code: 500, message: error }
+            });
+        }
     };
 }
 
@@ -106,28 +81,33 @@ export const DISABLE_APP_START = "DISABLE_APP_START";
 export const DISABLE_APP_SUCCESS = "DISABLE_APP_SUCCESS";
 export const DISABLE_APP_ERROR = "DISABLE_APP_ERROR";
 
-export function disableApp(appId) {
+export function disableApp(appId, companyId) {
     return async dispatch => {
         dispatch({
             type: DISABLE_APP_START
         });
+        try {
+            await providerClient.disableApiKey(appId);
+            companies.updateOne(
+                {
+                    _id: companyId,
+                    apps: {
+                        $elemMatch: { id: appId }
+                    }
+                },
+                { $set: { "apps.$.disabled": true } }
+            );
 
-        const providerClient = getProviderClient();
-
-        providerClient
-            .disableApiKey(appId)
-            .then(() => {
-                dispatch({
-                    type: DISABLE_APP_SUCCESS
-                });
-            })
-            .catch(error => {
-                dispatch({
-                    type: DISABLE_APP_ERROR,
-                    error: true,
-                    errorInfo: { code: 500, message: error }
-                });
+            dispatch({
+                type: DISABLE_APP_SUCCESS
             });
+        } catch (error) {
+            dispatch({
+                type: DISABLE_APP_ERROR,
+                error: true,
+                errorInfo: { code: 500, message: error }
+            });
+        }
     };
 }
 
@@ -135,27 +115,25 @@ export const DELETE_APP_START = "DELETE_APP_START";
 export const DELETE_APP_SUCCESS = "DELETE_APP_SUCCESS";
 export const DELETE_APP_ERROR = "DELETE_APP_ERROR";
 
-export function deleteApp(appId) {
+export function deleteApp(appId, companyId) {
     return async dispatch => {
         dispatch({
             type: DELETE_APP_START
         });
 
-        const providerClient = getProviderClient();
+        try {
+            await providerClient.deleteApiKey(appId);
+            companies.updateOne({ _id: companyId }, { $pull: { apps: { id: appId } } });
 
-        providerClient
-            .deleteApiKey(appId)
-            .then(() => {
-                dispatch({
-                    type: DELETE_APP_SUCCESS
-                });
-            })
-            .catch(error => {
-                dispatch({
-                    type: DELETE_APP_SUCCESS,
-                    error: true,
-                    errorInfo: { code: 500, message: error }
-                });
+            dispatch({
+                type: DELETE_APP_SUCCESS
             });
+        } catch (error) {
+            dispatch({
+                type: DELETE_APP_ERROR,
+                error: true,
+                errorInfo: { code: 500, message: error }
+            });
+        }
     };
 }

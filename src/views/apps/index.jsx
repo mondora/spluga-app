@@ -1,60 +1,80 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+import { Modal, Icon, notification } from "antd";
 
-import { addApp, getApps, deleteApp, disableApp, enableApp } from "../../actions/apps";
+import { addApp, deleteApp, disableApp, enableApp } from "../../actions/apps";
+import { getCompany } from "../../actions/companies";
 
-import SplugaTable from "../../components/splugaTable";
+import AppCard from "../../components/appCard";
 import AppForm from "../../components/appForm";
 import SplugaResult from "../../components/splugaResult";
 
-import { PageContainer, Title } from "./styled";
-import { FormattedMessage } from "react-intl";
+import { PageContainer, Title, AppContainer, FieldRight } from "./styled";
 
-export const Apps = ({
-    apps,
-    app,
-    disableAppStatus,
-    enableAppStatus,
-    deleteAppStatus,
-    addAppStatus,
-    getAppsStatus,
-    addApp,
-    enableApp,
-    disableApp,
-    deleteApp,
-    getApps
-}) => {
+export const Apps = ({ auth, company, getCompany, appCreated, addApp, enableApp, disableApp, deleteApp }) => {
+    const [deleted, setDeleted] = useState(null);
+    const notify = (type, message) => {
+        notification[type]({
+            message: type,
+            description: message
+        });
+    };
+
     useEffect(() => {
-        if (!getApps.started && !disableAppStatus.started && !enableAppStatus.started && !deleteAppStatus.started) {
-            getApps();
-        }
-    }, [getApps, disableAppStatus, enableAppStatus, deleteAppStatus]);
+        getCompany({});
+    }, [getCompany]);
 
-    const serverError = addAppStatus.error ? addAppStatus.errorInfo.message : "";
+    const [selectedFile, setSelectedFile] = useState("");
+    const [visible, setVisible] = useState(false);
+
+    const selectedCompany = company && company.result ? company.result : null;
+
+    const showModal = () => {
+        setVisible(true);
+    };
+
+    useEffect(() => {
+        const { error, errorInfo } = appCreated.status;
+        if (error) {
+            notify("error", errorInfo.message.message);
+        }
+    }, [appCreated, addApp]);
 
     const onChange = data => {
         const id = data.id;
+        const companyId = selectedCompany ? selectedCompany._id : null;
         switch (data.action) {
             case "enable":
-                enableApp(id);
+                enableApp(id, companyId);
                 break;
             case "disable":
-                disableApp(id);
+                disableApp(id, companyId);
                 break;
             case "delete":
-                deleteApp(id);
+                deleteApp(id, companyId);
+                setDeleted(id);
                 break;
             default:
         }
     };
 
-    const onSubmit = data => {
-        addApp(data.appName);
+    const handleSelectFile = base64 => {
+        setSelectedFile(base64);
     };
 
+    const onSubmit = data => {
+        const companyId = selectedCompany ? selectedCompany._id : null;
+        data.logo = selectedFile;
+        addApp(data, auth.currentUser.id, companyId);
+        setVisible(false);
+    };
+    const app = appCreated ? appCreated.app : null;
     const resultTitle = app ? <FormattedMessage id="v-app.create" values={{ appName: `${app.name}` }} /> : null;
-    const resultSubTitle = app ? <FormattedMessage id="v-apps.message" /> : null;
+    const resultSubTitle = app ? <FormattedMessage id="v-app.message" /> : null;
+    const companyApps = selectedCompany ? selectedCompany.apps : null;
 
     return app ? (
         <PageContainer>
@@ -64,43 +84,63 @@ export const Apps = ({
     ) : (
         <PageContainer>
             <Title>Apps</Title>
-            <SplugaTable
-                dataSourceName="apps"
-                dataSource={apps}
-                onChange={x => onChange(x)}
-                loadingStatus={getAppsStatus}
-            />
-            <AppForm serverError={serverError} onSubmit={x => onSubmit(x)} />
+            <FieldRight>
+                <Link to="#" onClick={showModal}>
+                    <Icon type="file-add" />
+                    <FormattedMessage id="general.add" />
+                </Link>
+            </FieldRight>
+            <AppContainer>
+                {companyApps
+                    ? companyApps
+                          .filter(app => app.id !== deleted)
+                          .map(app => (
+                              <AppCard
+                                  key={app.id}
+                                  app={app}
+                                  readOnly={app.createdBy !== auth.currentUser.id}
+                                  onChange={data => onChange(data)}
+                              />
+                          ))
+                    : null}
+            </AppContainer>
+
+            <Modal
+                centered
+                destroyOnClose
+                title={<FormattedMessage id={"v-app.create.title"} />}
+                visible={visible}
+                footer={null}
+                onCancel={() => setVisible(false)}
+            >
+                <AppForm onSelectFile={handleSelectFile} onSubmit={x => onSubmit(x)} />
+            </Modal>
         </PageContainer>
     );
 };
 
 Apps.propTypes = {
+    auth: PropTypes.object,
+    getCompany: PropTypes.func,
+
     apps: PropTypes.array,
-    app: PropTypes.object,
-    disableAppStatus: PropTypes.object,
-    enableAppStatus: PropTypes.object,
-    deleteAppStatus: PropTypes.object,
-    addAppStatus: PropTypes.object,
-    getAppsStatus: PropTypes.object,
+    appCreated: PropTypes.object,
+    appDeleted: PropTypes.object,
+
     addApp: PropTypes.func,
-    getApps: PropTypes.func,
     deleteApp: PropTypes.func,
     disableApp: PropTypes.func,
     enableApp: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-    apps: state.getApps.apps,
-    app: state.addApp.app,
-    getAppsStatus: state.getApps.status,
-    addAppStatus: state.addApp.status,
-    disableAppStatus: state.disableApp.status,
-    enableAppStatus: state.enableApp.status,
-    deleteAppStatus: state.deleteApp.status
+    auth: state.auth,
+    company: state.getCompany,
+    appCreated: state.addApp,
+    appDeleted: state.deleteApp
 });
 
 export default connect(
     mapStateToProps,
-    { addApp, getApps, deleteApp, disableApp, enableApp }
+    { addApp, deleteApp, disableApp, enableApp, getCompany }
 )(Apps);
