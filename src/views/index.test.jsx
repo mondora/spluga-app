@@ -15,7 +15,6 @@ describe("Routes", () => {
 
     it("Render view with only required data", () => {
         const view = shallow(<Routes auth={propTypes.auth} />);
-        expect(view.find("IntlProvider").length).toBe(1);
         expect(view.find("BrowserRouter").length).toBe(1);
         expect(view.find("Route").length).toBe(1);
     });

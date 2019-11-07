@@ -42,3 +42,18 @@ jest.mock("mongodb-stitch-browser-sdk", () => {
         }
     };
 });
+
+jest.mock("react-intl", () => {
+    const intl = {
+        formatMessage: jest.fn(({ id }) => id),
+        formatHtmlMessage: jest.fn(({ id }) => id)
+    };
+    return {
+        FormattedMessage: ({ id }) => <span>id</span>,
+        FormattedNumber: () => <span />,
+        FormattedHTMLMessage: ({ id }) => <span>id</span>,
+        injectIntl: Component => props => <Component {...props} intl={intl} />,
+        useIntl: () => intl,
+        IntlProvider: ({ children }) => <div>{children}</div>
+    };
+});

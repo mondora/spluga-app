@@ -114,6 +114,8 @@ export default {
     "c-activityForm.result.congratulation": "Congratulation",
     "c-activityForm.result.message": "With your contribution you save:",
 
+    "c-targetStatus.daysLeft": "Days left",
+
     //Views
     "v-app.message": "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",
     "v-app.create": "New app {appName} created",

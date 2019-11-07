@@ -25,6 +25,9 @@ export const CompanyTarget = ({ onAddTarget, targets, goals }) => {
               .filter(target => {
                   return moment().diff(target.endDate, "days") < 0 && target.actual < target.value;
               })
+              .sort(function(a, b) {
+                  return new Date(a.endDate) - new Date(b.endDate);
+              })
               .slice(0, 4)
         : null;
     return (

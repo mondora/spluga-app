@@ -1,15 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Avatar, Progress, Badge } from "antd";
+import moment from "moment";
+import { useIntl } from "react-intl";
+
 import { AvatarContainer, NameContainer, UserTeamContainer, RoleContainer } from "./styled";
-import { Avatar, Progress } from "antd";
 
 export const TargetStatus = ({ target }) => {
-    const { name, value, actual } = target;
+    const { name, value, actual, endDate } = target;
     const percent = parseInt((actual / value) * 100);
+    const intl = useIntl();
+
+    const count = moment(endDate).diff(moment(), "days");
+    const style = count < 10 ? {} : { backgroundColor: "#52c41a" };
+    const title = intl.formatMessage({ id: "c-targetStatus.daysLeft" });
     return (
         <UserTeamContainer>
             <AvatarContainer>
-                <Avatar size="large" />
+                <Badge count={count} title={title} style={style}>
+                    <Avatar size="large" />
+                </Badge>
             </AvatarContainer>
             <NameContainer>{name}</NameContainer>
             <RoleContainer>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const UserTeamContainer = styled.div`
     display: grid;
     height: calc(1vh - 1px);
-    grid-template-columns: 40px auto;
+    grid-template-columns: 60px auto;
     grid-template-rows: auto auto;
 `;
 
