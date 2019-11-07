@@ -112,3 +112,13 @@ export function acceptInvitation(currentUser) {
         }
     };
 }
+
+export const ADD_INVITATION_RESET = "ADD_INVITATION_RESET";
+
+export function addInvitationReset() {
+    return dispatch => {
+        dispatch({
+            type: ADD_INVITATION_RESET
+        });
+    };
+}

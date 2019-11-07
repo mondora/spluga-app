@@ -1,4 +1,4 @@
-import { ADD_TARGET_START, ADD_TARGET_SUCCESS, ADD_TARGET_ERROR } from "../../actions/targets";
+import { ADD_TARGET_START, ADD_TARGET_RESET, ADD_TARGET_SUCCESS, ADD_TARGET_ERROR } from "../../actions/targets";
 
 const defaultState = {
     status: {
@@ -40,6 +40,10 @@ export function addTarget(state = defaultState, { type, payload, errorInfo }) {
                     ended: false,
                     errorInfo
                 }
+            };
+        case ADD_TARGET_RESET:
+            return {
+                ...defaultState
             };
         default:
             return state;

@@ -13,12 +13,13 @@ import { Spin, notification } from "antd";
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
 import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
-import { addTarget } from "../../actions/targets";
+import { addTarget, addTargetReset } from "../../actions/targets";
 
 export const Profile = ({
     auth,
     getCompany,
     addTarget,
+    addTargetReset,
     getUser,
     addUser,
     user,
@@ -47,8 +48,9 @@ export const Profile = ({
             var id = error ? errorInfo.message : "v-companies.target.success";
             const message = intl.formatMessage({ id, defaultMessage: id });
             notify(type, message);
+            addTargetReset();
         }
-    }, [target, intl]);
+    }, [addTargetReset, target, intl]);
 
     const handleAddTarget = data => {
         const companyId = company && company.result ? company.result._id : null;
@@ -119,7 +121,7 @@ const mapStateToProps = state => ({
 const composedHoc = compose(
     connect(
         mapStateToProps,
-        { getCompany, addTarget, getUser, addUser, getGoals }
+        { getCompany, addTarget, addTargetReset, getUser, addUser, getGoals }
     )
 );
 

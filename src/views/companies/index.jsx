@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter, FieldCenterFull } from "./styled";
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
-import { addInvitation } from "../../actions/team";
+import { addInvitation, addInvitationReset } from "../../actions/team";
 import { getGoals } from "../../actions/goals";
 import { connect } from "react-redux";
 import { injectIntl } from "react-intl";
@@ -23,6 +23,7 @@ export const Companies = ({
     getCompany,
     addCompany,
     addInvitation,
+    addInvitationReset,
     invitation,
     getGoals,
     goals,
@@ -44,8 +45,9 @@ export const Companies = ({
             var id = error ? errorInfo.message : "v-team.invitation.success";
             const message = intl.formatMessage({ id, defaultMessage: id });
             notify(type, message);
+            addInvitationReset();
         }
-    }, [invitation, intl]);
+    }, [addInvitationReset, invitation, intl]);
 
     const handleSelectFile = base64 => {
         setSelectedFile(base64);
@@ -130,7 +132,7 @@ const mapStateToProps = state => ({
 const composedHoc = compose(
     connect(
         mapStateToProps,
-        { getCompany, addCompany, addInvitation, getGoals }
+        { getCompany, addCompany, addInvitation, addInvitationReset, getGoals }
     )
 );
 

@@ -2,6 +2,7 @@ import {
     ADD_INVITATION_START,
     ADD_INVITATION_SUCCESS,
     ADD_INVITATION_ERROR,
+    ADD_INVITATION_RESET,
     ACCEPT_INVITATION_ERROR,
     ACCEPT_INVITATION_START,
     ACCEPT_INVITATION_SUCCESS
@@ -47,6 +48,10 @@ export function addInvitation(state = defaultState, { type, payload, errorInfo }
                     ended: false,
                     errorInfo
                 }
+            };
+        case ADD_INVITATION_RESET:
+            return {
+                ...defaultState
             };
         default:
             return state;

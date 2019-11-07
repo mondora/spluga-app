@@ -1,4 +1,4 @@
-import { addInvitation, acceptInvitation } from ".";
+import { addInvitation, addInvitationReset, acceptInvitation } from ".";
 import { Stitch } from "mongodb-stitch-browser-sdk";
 
 describe("Team Action", () => {
@@ -109,5 +109,14 @@ describe("Team Action", () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch.mock.calls[0][0].type).toEqual("ACCEPT_INVITATION_START");
         expect(dispatch.mock.calls[1][0].type).toEqual("ACCEPT_INVITATION_SUCCESS");
+    });
+
+    it("addInvitation reset", async () => {
+        const dispatch = jest.fn();
+
+        addInvitationReset()(dispatch);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_INVITATION_RESET");
     });
 });

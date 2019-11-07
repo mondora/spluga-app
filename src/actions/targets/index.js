@@ -41,3 +41,13 @@ export function addTarget(data, currentUser, companyId) {
         }
     };
 }
+
+export const ADD_TARGET_RESET = "ADD_TARGET_RESET";
+
+export function addTargetReset() {
+    return dispatch => {
+        dispatch({
+            type: ADD_TARGET_RESET
+        });
+    };
+}

@@ -2,6 +2,7 @@ import {
     ADD_INVITATION_START,
     ADD_INVITATION_SUCCESS,
     ADD_INVITATION_ERROR,
+    ADD_INVITATION_RESET,
     ACCEPT_INVITATION_ERROR,
     ACCEPT_INVITATION_START,
     ACCEPT_INVITATION_SUCCESS
@@ -93,6 +94,14 @@ describe("acceptInvitation", () => {
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
+    });
+
+    it("set status to ADD_INVITATION_RESET", () => {
+        stateRes = addInvitation(state, {
+            type: ADD_INVITATION_RESET
+        });
+
+        expect(stateRes).toEqual(defaultState);
     });
 
     it("set status to default", () => {

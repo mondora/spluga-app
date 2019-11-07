@@ -1,4 +1,4 @@
-import { ADD_TARGET_START, ADD_TARGET_SUCCESS, ADD_TARGET_ERROR } from "../../actions/targets";
+import { ADD_TARGET_START, ADD_TARGET_SUCCESS, ADD_TARGET_RESET, ADD_TARGET_ERROR } from "../../actions/targets";
 
 import { addTarget } from "../targets";
 
@@ -50,6 +50,14 @@ describe("addTarget", () => {
         });
 
         expect(stateRes.status).toEqual({ started: false, error: true, ended: false, errorInfo: error });
+    });
+
+    it("set status to ADD_TARGET_RESET", () => {
+        stateRes = addTarget(state, {
+            type: ADD_TARGET_RESET
+        });
+
+        expect(stateRes).toEqual(defaultState);
     });
 
     it("set status to default", () => {

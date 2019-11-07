@@ -1,4 +1,4 @@
-import { addTarget } from ".";
+import { addTarget, addTargetReset } from ".";
 import { Stitch } from "mongodb-stitch-browser-sdk";
 
 describe("Targets Action", () => {
@@ -35,5 +35,14 @@ describe("Targets Action", () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch.mock.calls[0][0].type).toEqual("ADD_TARGET_START");
         expect(dispatch.mock.calls[1][0].type).toEqual("ADD_TARGET_SUCCESS");
+    });
+
+    it("addTarget reset", async () => {
+        const dispatch = jest.fn();
+
+        addTargetReset()(dispatch);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_TARGET_RESET");
     });
 });
