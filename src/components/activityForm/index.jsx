@@ -30,7 +30,7 @@ export const ActivityForm = ({ handleSubmit, goals, result }) => {
     var options = [];
     if (goals) {
         goals.forEach(goal => {
-            options.push({ value: goal.key, label: goal.key + " (" + goal.unit + ")" });
+            options.push({ value: goal.key, label: <FormattedMessage id={"general.goals." + goal.key} /> });
         });
     }
 

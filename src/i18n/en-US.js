@@ -25,6 +25,16 @@ export default {
     "general.date": "Date",
     "general.value": "Value",
 
+    //Goals
+    "general.goals.paperSaved": "Paper saved (# of sheet)",
+    "general.goals.bikeTravel": "Bike travel (km)",
+    "general.goals.trainTravel": "Train travel (km)",
+    "general.goals.busTravel": "Bus travel (km)",
+    "general.goals.trainig": "Training (# of partecipant)",
+    "general.goals.co2Saved": "c02 saved (g)",
+    "general.goals.waterSaved": "Water saved (l)",
+    "general.goals.openSourceCode": "Open source code (# of commit)",
+
     //Components
     "c-companyForm.logo": "Logo",
     "c-companyForm.title": "Create company",
