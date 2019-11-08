@@ -19,7 +19,7 @@ describe("ActivityResult", () => {
     it("Render component with data", () => {
         const component = shallow(<ActivityResult {...propTypes} />);
 
-        expect(component.find("FormattedMessage").length).toBe(1);
+        expect(component.find("FormattedMessage").length).toBe(3);
         expect(component.find("Select").length).toBe(1);
         expect(component.find("ResponsiveContainer").length).toBe(1);
         expect(component.find("LineChart").length).toBe(1);

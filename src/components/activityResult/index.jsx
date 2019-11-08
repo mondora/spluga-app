@@ -61,7 +61,7 @@ export const ActivityResult = ({ activities, goals }) => {
                 <Select name="goal" onChange={handleGoalChange} defaultValue={goal.key}>
                     {goals.map(g => (
                         <Option key={g.key} value={g.key}>
-                            {g.key}
+                            <FormattedMessage id={"general.goals." + g.key} />
                         </Option>
                     ))}
                 </Select>
