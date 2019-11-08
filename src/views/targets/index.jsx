@@ -7,8 +7,10 @@ import { getCompany } from "../../actions/companies";
 
 import { Radio } from "antd";
 
-import { PageContainer, Cards, Header } from "./styled";
+import { PageContainer, Cards, Header, Title } from "./styled";
 import TargetCard from "../../components/targetCard";
+
+//TODO : add button for new targets
 
 export const Targets = ({ company, getCompany }) => {
     const [category, setCategory] = useState("All");
@@ -21,10 +23,11 @@ export const Targets = ({ company, getCompany }) => {
     const stakeholders = targets.map(t => t.stakeholder);
     const members = stakeholders ? stakeholders.filter((s, index) => stakeholders.indexOf(s) === index) : [];
 
+    const targetsExpired = targets.filter(target => target.startDate > target.endDate);
+    const targetsActive = targets.filter(target => target.startDate < target.endDate);
     return selectedCompany ? (
         <PageContainer>
             <Header>
-                  
                 <Radio.Group defaultValue={"All"} buttonStyle="solid" onChange={e => setCategory(e.target.value)}>
                     <Radio.Button value={"All"}>{<FormattedMessage id="v-targets.stakeholder" />}</Radio.Button>
                     {members.map(s => (
@@ -34,10 +37,19 @@ export const Targets = ({ company, getCompany }) => {
                     ))}
                 </Radio.Group>
             </Header>
+            <Title> {<FormattedMessage id="v-targets.titleActive" />}</Title>
             <Cards>
                 {category === "All"
-                    ? targets.map((target, index) => <TargetCard key={index} target={target} />)
-                    : targets
+                    ? targetsActive.map((target, index) => <TargetCard key={index} target={target} />)
+                    : targetsActive
+                          .filter(target => target.stakeholder === category)
+                          .map((target, index) => <TargetCard key={index} target={target} />)}
+            </Cards>
+            <Title> {<FormattedMessage id="v-targets.titleExpired" />}</Title>
+            <Cards>
+                {category === "All"
+                    ? targetsExpired.map((target, index) => <TargetCard key={index} target={target} />)
+                    : targetsExpired
                           .filter(target => target.stakeholder === category)
                           .map((target, index) => <TargetCard key={index} target={target} />)}
             </Cards>
