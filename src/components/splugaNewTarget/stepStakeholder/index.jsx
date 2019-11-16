@@ -13,7 +13,7 @@ export const StepStakeholder = ({ onChange, target }) => {
 
     return (
         <StepAction>
-            <FormattedMessage id="general.stakeholder" />
+            <FormattedMessage id="c-splugaNewTarget.stackeholder" />
             <SelectStringField
                 name="stakeholder"
                 onChange={handleStakeholderChange}

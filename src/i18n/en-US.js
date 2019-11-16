@@ -72,6 +72,16 @@ export default {
     "c-splugaNewTarget.summary.endDate": "end date",
     "c-splugaNewTarget.type": "Typology",
     "c-splugaNewTarget.type.value": "Value",
+    "c-splugaNewTarget.intro":
+        "Welcome! Here you can create personal targets you want to reach to contribute to the impact created by your company To create a target, click next.",
+    "c-splugaNewTarget.stackeholder": "Which stakeholder do you want to select for this target?",
+    "c-splugaNewTarget.goal": "Select the business goal you wish to contribute to and enter the target value",
+    "c-splugaNewTarget.period":
+        "Select the date you will start working on this goal, and the deadline by when you want to reach it.",
+    "c-splugaNewTarget.info":
+        "Give a name to your goal and write a brief description of what you will do. This will help you keep the focus on the target created.",
+    "c-splugaNewTarget.summary":
+        "Here is a summary of the goal you have created. To activate it click on Done, to change go back.",
 
     "c-splugaTarget.cardTitle": "Your Target's trend",
     "c-splugaTarget.view": "View all your targets",

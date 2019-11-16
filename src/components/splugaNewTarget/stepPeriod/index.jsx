@@ -28,6 +28,9 @@ export const StepPeriod = ({ onChange, target }) => {
 
     return (
         <StepAction>
+            <FormattedMessage id="c-splugaNewTarget.goal" />
+            <br />
+            <br />
             <FormattedMessage id="c-splugaNewTarget.startDate" />
             <ISO8601DayField
                 name="startDate"

@@ -26,7 +26,7 @@ export const StepGoal = ({ onChange, target, goals }) => {
 
     return (
         <StepAction>
-            Goal
+            <FormattedMessage id="c-splugaNewTarget.goal" />
             <SelectStringField name="goal" value={target.goal} onChange={handleGoalChange} options={options} />
             <FormattedMessage id="c-splugaNewTarget.type.value" />
             <NumberField name="value" value={value} onChange={handleOnChangeValue} />

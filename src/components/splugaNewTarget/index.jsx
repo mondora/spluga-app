@@ -6,6 +6,7 @@ import { targetFormSchema } from "../../utils/form-schema/target-form-schema";
 import { form } from "@mondora/conv-redux-form";
 
 import StepInfo from "./stepInfo";
+import StepIntro from "./stepIntro";
 import StepStakeholder from "./stepStakeholder";
 import StepGoal from "./stepGoal";
 import StepPeriod from "./stepPeriod";
@@ -23,8 +24,8 @@ export const SplugaNewTarget = ({ handleSubmit, goals }) => {
     const steps = [
         {
             key: 0,
-            content: <StepInfo onChange={setTarget} target={target} />,
-            nextDisabled: !target.name || !target.description
+            content: <StepIntro />,
+            nextDisabled: false
         },
         {
             key: 1,
@@ -43,6 +44,11 @@ export const SplugaNewTarget = ({ handleSubmit, goals }) => {
         },
         {
             key: 4,
+            content: <StepInfo onChange={setTarget} target={target} />,
+            nextDisabled: !target.name || !target.description
+        },
+        {
+            key: 5,
             content: <StepSummary target={target} />
         }
     ];
@@ -50,7 +56,7 @@ export const SplugaNewTarget = ({ handleSubmit, goals }) => {
     const isLastStep = currentStep === steps.length - 1;
 
     const _next = () => {
-        currentStep >= 3 ? setCurrentStep(4) : setCurrentStep(currentStep + 1);
+        currentStep >= 4 ? setCurrentStep(5) : setCurrentStep(currentStep + 1);
     };
 
     const _prev = () => {

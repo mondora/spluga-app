@@ -14,6 +14,11 @@ export const StepAction = styled.div`
     margin-top: 30px;
 `;
 
+export const StepIntroContainer = styled.div`
+    text-align: center;
+    margin-bottom: 20px;
+`;
+
 export const StepActionButton = styled.div`
     text-align: right;
 `;
@@ -33,4 +38,9 @@ export const GridValue = styled.div`
     grid-column-start: 3;
     grid-column-end: 4;
     text-align: right;
+`;
+
+export const Img = styled.img`
+    width: 30%;
+    opacity: 0.2;
 `;

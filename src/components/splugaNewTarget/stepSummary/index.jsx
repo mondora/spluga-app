@@ -9,6 +9,9 @@ export const StepSummary = ({ target }) => {
     const { name, description, stakeholder, goal, value, startDate, endDate } = target;
     return (
         <StepAction>
+            <FormattedMessage id="c-splugaNewTarget.summary" />
+            <br />
+            <br />
             <GridRow>
                 <GridTitle>
                     <FormattedMessage id="general.name" />:

@@ -71,6 +71,17 @@ export default {
     "c-splugaNewTarget.summary.endDate": "data di fine",
     "c-splugaNewTarget.type": "Tipologia",
     "c-splugaNewTarget.type.value": "Valore",
+    "c-splugaNewTarget.intro":
+        "Benvenuto! Qui potrai creare degli obiettivi personali che desideri raggiungere per contribuire all’impatto creato dalla tua azienda. Per creare un obiettivo clicca avanti.",
+    "c-splugaNewTarget.stackeholder": "Quale Stakeholder vuoi impattare attraverso le tue azioni per questo obiettivo?",
+    "c-splugaNewTarget.goal":
+        "Seleziona il goal aziendale a cui desideri contribuire e inserisci il valore che vuoi raggiungere.",
+    "c-splugaNewTarget.period":
+        "Seleziona la data in cui inizierai a lavorare a questo obiettivo, e la scadenza entro quando lo vuoi raggiungere.",
+    "c-splugaNewTarget.info":
+        "Dai un nome al tuo obiettivo e scrivi una breve descrizione di quello che farai. Questo ti aiuterà a mantenere il focus sull’obiettivo creato.",
+    "c-splugaNewTarget.summary":
+        "Ecco un riepilogo dell’obiettivo che hai creato. Per attivarlo clicca su Fatto, per modificare torna indietro.",
 
     "c-splugaTarget.cardTitle": "Come vanno i tuoi obiettivi",
     "c-splugaTarget.view": "Visualizza tutti i tuoi obbiettivi",
