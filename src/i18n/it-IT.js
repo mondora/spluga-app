@@ -151,6 +151,8 @@ export default {
     "v-goals.uom": "Unità di Misura",
 
     "v-targets.stakeholder": "Tutti",
+    "v-targets.titleActive": "Attivi",
+    "v-targets.titleExpired": "Scaduti",
 
     "v-team.invitation.error.400.invalid": "Link non valido o scaduto",
     "v-team.invitation.error.400.duplicate": "Utente gia invitato",

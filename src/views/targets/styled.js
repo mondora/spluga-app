@@ -14,3 +14,6 @@ export const Cards = styled.div`
     grid-template-rows: auto;
     margin: 10px;
 `;
+export const Title = styled.div`
+    margin: 20px;
+`;
