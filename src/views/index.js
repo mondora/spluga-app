@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { IntlProvider } from "react-intl";
+import { IntlProvider, FormattedMessage } from "react-intl";
 import { checkLogin } from "../actions/auth";
 import { compose } from "redux";
 import CookieConsent from "react-cookie-consent";
-import { FormattedMessage } from "react-intl";
 import { usePath } from "hookrouter";
 
 import { getMessagesLocale, getUserLocale } from "../i18n";
@@ -61,11 +60,6 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-const composedHoc = compose(
-    connect(
-        mapStateToProps,
-        { checkLogin }
-    )
-);
+const composedHoc = compose(connect(mapStateToProps, { checkLogin }));
 
 export default composedHoc(Routes);
