@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
-import { INFO_MAIL } from "../../config";
+import { INFO_EMAIL } from "../../config";
 import { Container, TextContainer, Date, Subtitle } from "./styled.js";
 import Footer from "../../components/landing/footer";
 import PolicyHeader from "../../components/landing/policyHeader";
@@ -15,7 +15,7 @@ export const Privacy = () => {
                     <FormattedMessage id="privacy.lastUpdate" />
                 </Date>
 
-                <FormattedHTMLMessage id="privacy.intro" values={{ email: INFO_MAIL }} />
+                <FormattedHTMLMessage id="privacy.intro" values={{ email: INFO_EMAIL }} />
 
                 <Subtitle>
                     <FormattedMessage id="privacy.question1" />
@@ -60,7 +60,7 @@ export const Privacy = () => {
                 <Subtitle>
                     <FormattedMessage id="privacy.question9" />
                 </Subtitle>
-                <FormattedHTMLMessage id="privacy.answer9" values={{ email: INFO_MAIL }} />
+                <FormattedHTMLMessage id="privacy.answer9" values={{ email: INFO_EMAIL }} />
 
                 <Subtitle>
                     <FormattedMessage id="privacy.question10" />
@@ -85,12 +85,12 @@ export const Privacy = () => {
                 <Subtitle>
                     <FormattedMessage id="privacy.question14" />
                 </Subtitle>
-                <FormattedHTMLMessage id="privacy.answer14" values={{ email: INFO_MAIL }} />
+                <FormattedHTMLMessage id="privacy.answer14" values={{ email: INFO_EMAIL }} />
 
                 <Subtitle>
                     <FormattedMessage id="privacy.question15" />
                 </Subtitle>
-                <FormattedHTMLMessage id="privacy.answer15" values={{ email: INFO_MAIL }} />
+                <FormattedHTMLMessage id="privacy.answer15" values={{ email: INFO_EMAIL }} />
             </TextContainer>
             <Footer />
         </Container>

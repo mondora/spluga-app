@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
 
-import { INFO_MAIL } from "../../config";
+import { INFO_EMAIL } from "../../config";
 import { Container, Subtitle, TextContainer, Date } from "./styled.js";
 import Footer from "../../components/landing/footer";
 import PolicyHeader from "../../components/landing/policyHeader";
@@ -35,7 +35,7 @@ export const Cookie = () => {
                 <Subtitle>
                     <FormattedMessage id="cookies.question4" />
                 </Subtitle>
-                <FormattedHTMLMessage id="cookies.answer4" values={{ email: INFO_MAIL }} />
+                <FormattedHTMLMessage id="cookies.answer4" values={{ email: INFO_EMAIL }} />
             </TextContainer>
             <Footer />
         </Container>
