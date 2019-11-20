@@ -5,6 +5,9 @@ export const PageContainer = styled.div`
 `;
 
 export const Header = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin: 10px;
 `;
 
@@ -16,4 +19,7 @@ export const Cards = styled.div`
 `;
 export const Title = styled.div`
     margin: 20px;
+`;
+export const FieldRight = styled.span`
+    margin-left: 30px;
 `;

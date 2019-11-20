@@ -57,6 +57,6 @@ describe("Targets", () => {
         console.log("target test", view.debug());
         expect(view.find("RadioGroup").length).toBe(1);
         expect(view.find("RadioButton").length).toBe(3);
-        expect(view.find("FormattedMessage").length).toBe(3);
+        expect(view.find("FormattedMessage").length).toBe(4);
     });
 });
