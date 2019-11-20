@@ -1,6 +1,6 @@
 {
   "name": "spluga-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "devDependencies": {
     "@types/jest": "^24.0.19",
@@ -16,10 +16,12 @@
     "@mondora/conv-redux-form": "^1.4.1",
     "antd": "^3.23.6",
     "commons-validator-js": "^1.0.1365",
+    "hookrouter": "^1.2.3",
     "moment": "^2.24.0",
     "mongodb-stitch-browser-sdk": "^4.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
+    "react-cookie-consent": "^2.5.0",
     "react-dom": "^16.10.2",
     "react-intl": "^3.3.2",
     "react-redux": "^5.1.1",

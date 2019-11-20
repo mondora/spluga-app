@@ -21,6 +21,9 @@ export const StepInfo = ({ onChange, target }) => {
 
     return (
         <StepAction>
+            <FormattedMessage id="c-splugaNewTarget.info" />
+            <br />
+            <br />
             <FormattedMessage id="general.name" />
             <TextField
                 id="name"

@@ -16,7 +16,7 @@ describe("SplugaNewTarget", () => {
 
     it("Render component with previous button", () => {
         const element = shallow(<SplugaNewTarget />);
-        expect(element.find("StepInfo").exists()).toBe(true);
+        expect(element.find("StepIntro").exists()).toBe(true);
         expect(element.find("Button").length).toBe(2);
         element
             .find("Button")
@@ -29,12 +29,12 @@ describe("SplugaNewTarget", () => {
             .find("Button")
             .at(0)
             .simulate("click");
-        expect(element.find("StepInfo").exists()).toBe(true);
+        expect(element.find("StepIntro").exists()).toBe(true);
     });
 
     it("Render component with reject button", () => {
         const element = shallow(<SplugaNewTarget handleSubmit={onSubmit} />);
-        expect(element.find("StepInfo").exists()).toBe(true);
+        expect(element.find("StepIntro").exists()).toBe(true);
         expect(element.find("Button").length).toBe(2);
         element
             .find("Button")
@@ -53,13 +53,13 @@ describe("SplugaNewTarget", () => {
             .find("Button")
             .at(1)
             .simulate("click");
-        expect(element.find("Steps").props().current).toEqual(4);
+        expect(element.find("Steps").props().current).toEqual(5);
         expect(element.find("Button").length).toBe(2);
     });
 
     it("Render component with done button", () => {
         const element = shallow(<SplugaNewTarget />);
-        expect(element.find("StepInfo").exists()).toBe(true);
+        expect(element.find("StepIntro").exists()).toBe(true);
         expect(element.find("Button").length).toBe(2);
         element
             .find("Button")

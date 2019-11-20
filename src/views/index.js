@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { IntlProvider } from "react-intl";
+import { IntlProvider, FormattedMessage } from "react-intl";
 import { checkLogin } from "../actions/auth";
 import { compose } from "redux";
+import CookieConsent from "react-cookie-consent";
+import { usePath } from "hookrouter";
 
 import { getMessagesLocale, getUserLocale } from "../i18n";
 import { Container } from "./styled.js";
@@ -11,6 +13,8 @@ import { Container } from "./styled.js";
 import Root from "./root";
 import PropTypes from "prop-types";
 import Landing from "./landing";
+import Cookie from "./cookie";
+import Privacy from "./privacy";
 
 export const Routes = ({ auth, checkLogin }) => {
     useEffect(() => {
@@ -19,8 +23,19 @@ export const Routes = ({ auth, checkLogin }) => {
 
     const locale = getUserLocale();
     const messages = getMessagesLocale();
+    const path = usePath();
 
-    const component = !auth.currentUser ? Landing : Root;
+    var component;
+    switch (path) {
+        case "/privacy":
+            component = Privacy;
+            break;
+        case "/cookie":
+            component = Cookie;
+            break;
+        default:
+            component = !auth.currentUser ? Landing : Root;
+    }
 
     return (
         <Container>
@@ -28,6 +43,9 @@ export const Routes = ({ auth, checkLogin }) => {
                 <BrowserRouter>
                     <Route path="/:page?" component={component} />
                 </BrowserRouter>
+                <CookieConsent location="bottom" buttonText="ok" cookieName="splugaCookie" expires={150}>
+                    <FormattedMessage id="general.cookie.text" />
+                </CookieConsent>
             </IntlProvider>
         </Container>
     );
@@ -42,11 +60,6 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-const composedHoc = compose(
-    connect(
-        mapStateToProps,
-        { checkLogin }
-    )
-);
+const composedHoc = compose(connect(mapStateToProps, { checkLogin }));
 
 export default composedHoc(Routes);

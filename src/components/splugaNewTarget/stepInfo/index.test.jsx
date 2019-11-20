@@ -14,7 +14,7 @@ describe("StepInfo", () => {
         const element = shallow(<StepInfo target={targetObject} />);
 
         expect(element.find("WrappedField").length).toBe(2);
-        expect(element.find("FormattedMessage").length).toBe(2);
+        expect(element.find("FormattedMessage").length).toBe(3);
     });
 
     it("Render component and change value", () => {

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter, FieldCenterFull } from "./styled";
+
 import { compose } from "redux";
 import { getCompany, addCompany } from "../../actions/companies";
 import { addInvitation, addInvitationReset } from "../../actions/team";
 import { getGoals } from "../../actions/goals";
 import { connect } from "react-redux";
-import { injectIntl } from "react-intl";
-
+import { useIntl } from "react-intl";
 import { Spin, notification } from "antd";
 
+import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter, FieldCenterFull } from "./styled";
+import { PUBLISHED_HOSTNAME } from "../../config";
 import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
 import CompanyTeam from "../../components/companyTeam";
@@ -26,9 +27,9 @@ export const Companies = ({
     addInvitationReset,
     invitation,
     getGoals,
-    goals,
-    intl
+    goals
 }) => {
+    const intl = useIntl();
     const [selectedFile, setSelectedFile] = useState("");
     useEffect(() => {
         getGoals({});
@@ -60,8 +61,11 @@ export const Companies = ({
 
     const handleInvite = data => {
         const companyId = company && company.result ? company.result._id : null;
-        const user = auth.currentUser.name;
-        addInvitation(data.email, companyId, user);
+        const companyName = company && company.result ? company.result.name : null;
+        const publishedHostName = PUBLISHED_HOSTNAME;
+        const message = intl.formatMessage({ id: "email.invitation.text" }, { companyName, publishedHostName });
+        const subject = intl.formatMessage({ id: "email.invitation.subject" });
+        addInvitation(data.email, companyId, subject, message);
     };
 
     const notify = (type, message) => {
@@ -130,10 +134,7 @@ const mapStateToProps = state => ({
 });
 
 const composedHoc = compose(
-    connect(
-        mapStateToProps,
-        { getCompany, addCompany, addInvitation, addInvitationReset, getGoals }
-    )
+    connect(mapStateToProps, { getCompany, addCompany, addInvitation, addInvitationReset, getGoals })
 );
 
-export default injectIntl(composedHoc(Companies));
+export default composedHoc(Companies);
