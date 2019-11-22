@@ -102,21 +102,25 @@ export default {
     "c-landing-header.desc": "Define your targets, <br> play the game, <br> improve your impact.",
 
     "c-landing-whatIs.desc":
-        "Spluga is a software platform that allows you to set targets and goals, measure your progress over time and improve your social and environmental impact. Whether you are focusing on the environment, the community or your workers, Spluga will help you define Objectives and Key results, meter and analyse team progress over time, suggest ways to improve your impact and gear you towards reaching your target results.",
-    "c-landing-whatIs.subTitle":
-        "Spluga is the place to be for companies looking to enhance their social and environmental responsibility.",
-    "c-landing-whatIs.subTitle2": "The platform can help you:",
+        "Spluga is a software platform that allows you to set targets and goals, measure your progress over time and improve your social and environmental impact. Whether you are focusing on the environment, the community or your workers, Spluga will help you define targets you want to reach, meter and analyse team progress over time, suggest ways to improve your impact and gear you towards reaching your goals. Based on the United Nations Sustainable Development Goals framework, Spluga helps you measure your progress against a set of internationally recognised standards, both as a company and as an individual worker.",
+    "c-landing-whatIs.subTitle": "Value your Business",
 
-    "c-landing-whatIs.action1": "Define and customise objectives and key results for your company.",
-    "c-landing-whatIs.action2": "Measure and track progress towards your set goals.",
-    "c-landing-whatIs.action3": "Measure and track positive impact for your app or service using api",
-    "c-landing-whatIs.action4": "Work in teams, assign objectives and manage player performance.",
-    "c-landing-whatIs.action5": "Gain valuable insights into your company’s impact creation.",
-    "c-landing-whatIs.action6": "Easily create an Impact Report and share it with your Stakeholders",
+    "c-landing-whatIs.action1":
+        "Measure, manage and improve individual and company impact against the Sustainable Development Goals",
+    "c-landing-whatIs.action2": "Create and manage your own personalised targets with our interactive wizard.",
+    "c-landing-whatIs.action3":
+        "Expand your impact by creating and managing Interdependence Agreements with other like-minded companies",
+    "c-landing-whatIs.action4": "Measure your progress over time and view your results in an interactive dashboard.",
 
-    "c-landing-howDoesItWork.setYourTraget": "Set your Target",
-    "c-landing-howDoesItWork.collectActivity": "Collect activity",
-    "c-landing-howDoesItWork.monitorYourProgress": "Monitor your progress",
+    "c-landing-howDoesItWork.create":
+        "Signup, create your company, define targets based on SDGs for different stakeholders",
+
+    "c-landing-howDoesItWork.collectActivity": " Track your daily activities in order to reach set targets ",
+    "c-landing-howDoesItWork.monitorYourProgress": " Create Apps in order to track activities automatically ",
+    "c-landing-howDoesItWork.invitePeople": " Invite other people in your team to increase your company results ",
+
+    "c-landing-howDoesItWork.subTitle":
+        "With Spluga you can create your company and team, create activities and set targets with the interactive wizard and track progress both manually within the platform and automatically by connecting to your company apps via our APIs.",
 
     "c-landing-thanks.message": "Thank you for joining Spluga and being part of the change!",
     "c-landing-joinUs.desc":

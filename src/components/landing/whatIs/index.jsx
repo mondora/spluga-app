@@ -14,9 +14,6 @@ export const WhatIs = () => {
             <SubTitle>
                 <FormattedMessage id="c-landing-whatIs.subTitle" />
             </SubTitle>
-            <SubTitle>
-                <FormattedMessage id="c-landing-whatIs.subTitle2" />
-            </SubTitle>
             <WhatIsGrid>
                 <WhatIsIcon>
                     <Icon type="check-circle" />
@@ -31,24 +28,18 @@ export const WhatIs = () => {
                     <li>
                         <FormattedMessage id="c-landing-whatIs.action1" />
                     </li>
+                </List>
+                <List>
                     <li>
                         <FormattedMessage id="c-landing-whatIs.action2" />
                     </li>
-                </List>
-                <List>
                     <li>
                         <FormattedMessage id="c-landing-whatIs.action3" />
                     </li>
-                    <li>
-                        <FormattedMessage id="c-landing-whatIs.action4" />
-                    </li>
                 </List>
                 <List>
                     <li>
-                        <FormattedMessage id="c-landing-whatIs.action5" />
-                    </li>
-                    <li>
-                        <FormattedMessage id="c-landing-whatIs.action6" />
+                        <FormattedMessage id="c-landing-whatIs.action4" />
                     </li>
                 </List>
             </WhatIsGrid>

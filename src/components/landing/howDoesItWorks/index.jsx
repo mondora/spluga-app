@@ -1,21 +1,33 @@
 import React from "react";
-import { Icon } from "antd";
+import { Steps, Icon } from "antd";
+
 import { FormattedMessage } from "react-intl";
-import { PageContainer, Title, StepsContainer, Col } from "./styled";
+import { PageContainer, Title, StepsContainer, SubTitle, Descriptions, Col } from "./styled";
+
+const { Step } = Steps;
 
 export const HowDoesItWorks = () => {
     return (
         <PageContainer>
             <Title>
                 <FormattedMessage id="general.howDoesItWork" />
+                <SubTitle>
+                    <FormattedMessage id="c-landing-howDoesItWork.subTitle" />
+                </SubTitle>
             </Title>
+
             <StepsContainer>
-                <Icon type="compass" />
-                <Icon type="play-circle" />
-                <Icon type="line-chart" />
-                <Icon type="smile" />
+                <Steps>
+                    <Step icon={<Icon type="login" style={{ fontSize: "40px", color: "#fff" }} />} />
+                    <Step icon={<Icon type="play-circle" style={{ fontSize: "40px", color: "#fff" }} />} />
+                    <Step icon={<Icon type="line-chart" style={{ fontSize: "40px", color: "#fff" }} />} />
+                    <Step icon={<Icon type="compass" style={{ fontSize: "40px", color: "#fff" }} />} />
+                    <Step icon={<Icon type="smile" style={{ fontSize: "40px", color: "#fff" }} />} />
+                </Steps>
+            </StepsContainer>
+            <Descriptions>
                 <Col>
-                    <FormattedMessage id="c-landing-howDoesItWork.setYourTraget" />
+                    <FormattedMessage id="c-landing-howDoesItWork.create" />
                 </Col>
                 <Col>
                     <FormattedMessage id="c-landing-howDoesItWork.collectActivity" />
@@ -24,9 +36,9 @@ export const HowDoesItWorks = () => {
                     <FormattedMessage id="c-landing-howDoesItWork.monitorYourProgress" />
                 </Col>
                 <Col>
-                    <FormattedMessage id="general.producePositiveImpact" />
+                    <FormattedMessage id="c-landing-howDoesItWork.invitePeople" />
                 </Col>
-            </StepsContainer>
+            </Descriptions>
         </PageContainer>
     );
 };

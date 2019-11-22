@@ -103,22 +103,28 @@ export default {
         "Definisci i tuoi obbiettivi, <br /> completa le tue attività, <br /> migliora il tuo impatto positivo.",
 
     "c-landing-whatIs.desc":
-        "Spluga è un software che ti permette di settare obbiettivi, misiurare i tuoi progressi nel tempo e migliorare il tuo impatto sociale e ambientale. Se ti stai concentrando sull'ambiente, sulla comunità o sui tuoi lavoratori, Spluga ti aiuta a definire i tuoi obbiettivi e ti consiglia su come migliorere il tuo impatto positivo.",
-    "c-landing-whatIs.subTitle":
-        "Spluga è il luogo ideale per le aziende che desiderano migliorare la propria responsabilità sociale e ambientale.",
-    "c-landing-whatIs.subTitle2": "Spluga ti aiuterà a:",
+        "Spluga è una piattaforma software che ti consente di stabilire obiettivi e traguardi, misurare i tuoi progressi nel tempo e migliorare il tuo impatto sociale e ambientale. Sia che ti concentri sull'ambiente, sulla comunità o sui tuoi lavoratori, Spluga ti aiuterà a definire gli obiettivi che desideri raggiungere, misurare e analizzare i progressi del team nel tempo, suggerire modi per migliorare il tuo impatto e orientarti verso il raggiungimento dei tuoi obiettivi. Basato sul quadro degli obiettivi di sviluppo sostenibile delle Nazioni Unite, Spluga ti aiuta a misurare i tuoi progressi rispetto a una serie di standard riconosciuti a livello internazionale, sia come azienda che come singolo lavoratore.",
+    "c-landing-whatIs.subTitle": "Valorizza il tuo business",
 
-    "c-landing-whatIs.action1": "Definire e gestire gli obbiettivi per la tua azienda",
-    "c-landing-whatIs.action2": "Misurare i tuoi progressi",
-    "c-landing-whatIs.action3": "Misurare l'impatto positivo della tua app o servizio automaticamente tramite api",
-    "c-landing-whatIs.action4": "Lavorare in team assegnare obbiettivi e monitorare l'andamento del gruppo.",
-    "c-landing-whatIs.action5":
-        "Ottieni informazioni e suggerimenti preziosi per migliorare l'imnpatto della tua azienda",
-    "c-landing-whatIs.action6": "Creare facilmente report di impatto da condividere",
+    "c-landing-whatIs.action1":
+        "Misurare, gestire e migliorare l'impatto individuale e aziendale rispetto agli obiettivi di sviluppo sostenibile",
+    "c-landing-whatIs.action2":
+        "Crea e gestisci i tuoi obiettivi personalizzati con la nostra procedura guidata interattiva",
+    "c-landing-whatIs.action3":
+        "Misura i tuoi progressi nel tempo e visualizza i risultati in una dashboard interattiva",
+    "c-landing-whatIs.action4":
+        "Espandi il tuo impatto creando e gestendo accordi di interdipendenza con altre aziende che la pensano allo stesso modo",
 
-    "c-landing-howDoesItWork.setYourTraget": "Setta gli obbiettivi",
-    "c-landing-howDoesItWork.collectActivity": "Salva le tue attività",
-    "c-landing-howDoesItWork.monitorYourProgress": "Controlla i tuoi progressi",
+    "c-landing-howDoesItWork.create":
+        "Iscriviti, crea la tua azienda, definisci obiettivi basati su SDG per diversi stakeholder",
+    "c-landing-howDoesItWork.collectActivity":
+        " Tieni traccia delle tue attività quotidiane al fine di raggiungere obiettivi prefissati",
+    "c-landing-howDoesItWork.monitorYourProgress": " Crea app per tenere traccia delle attività automaticamente ",
+    "c-landing-howDoesItWork.invitePeople":
+        "Invita altre persone nel tuo team per aumentare i risultati della tua azienda",
+
+    "c-landing-howDoesItWork.subTitle":
+        "Con Spluga puoi creare la tua azienda e il tuo team, creare attività e fissare obiettivi con la procedura guidata interattiva e tenere traccia dei progressi sia manualmente all'interno della piattaforma che automaticamente connettendoti alle app della tua azienda tramite le nostre API. ",
 
     "c-landing-thanks.message": "Grazie per esserti unito a Spluga ed essere parte del cambiamento!",
 
