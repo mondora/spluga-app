@@ -129,7 +129,7 @@ export default {
     "c-landing-thanks.message": "Grazie per esserti unito a Spluga ed essere parte del cambiamento!",
 
     "c-landing-joinUs.desc":
-        "Stiamo cercando  utenti per la nostra versione beta di Spluga. Se desideri testare la piattaforma e iniziare a misurare l'impatto e raggiungere gli obiettivi lascia il tuo indirizzo email",
+        "Stiamo cercando utenti per la nostra versione beta di Spluga. Se desideri testare la piattaforma e iniziare a misurare l'impatto e raggiungere gli obiettivi.",
 
     "c-activityForm.title": "Aggiungi le tue attività",
     "c-activityForm.desc": "Qui puoi salvare le tua attività giornaliere....",

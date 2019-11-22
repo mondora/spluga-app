@@ -10,8 +10,7 @@ describe("JoinUs", () => {
     it("Render component with data", () => {
         const element = shallow(<JoinUs />);
 
-        expect(element.find("FormattedMessage").length).toBe(3);
-        expect(element.find("WrappedField").length).toBe(1);
-        expect(element.find("Button").length).toBe(1);
+        expect(element.find("FormattedMessage").length).toBe(2);
+        expect(element.find("a").length).toBe(1);
     });
 });
