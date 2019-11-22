@@ -10,7 +10,8 @@ describe("HowDoesItWorks", () => {
     it("Render component with data", () => {
         const element = shallow(<HowDoesItWorks />);
 
-        expect(element.find("FormattedMessage").length).toBe(5);
-        expect(element.find("Icon").length).toBe(4);
+        expect(element.find("FormattedMessage").length).toBe(6);
+        expect(element.find("Step").length).toBe(5);
+        expect(element.find("Steps").length).toBe(1);
     });
 });
