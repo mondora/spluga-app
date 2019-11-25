@@ -35,6 +35,13 @@ export default {
     "general.goals.waterSaved": "Water saved (l)",
     "general.goals.openSourceCode": "Open source code (# of commit)",
 
+    "general.goals.unit.sheet": "sheet",
+    "general.goals.unit.km": "km",
+    "general.goals.unit.people": "people",
+    "general.goals.unit.g": "g",
+    "general.goals.unit.l": "l",
+    "general.goals.unit.commit": "commits",
+
     //Components
     "c-companyForm.logo": "Logo",
     "c-companyForm.title": "Create company",

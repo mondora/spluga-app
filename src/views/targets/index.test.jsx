@@ -7,6 +7,7 @@ import { Targets } from ".";
 Enzyme.configure({ adapter: new Adapter() });
 
 const propTypes = {
+    goals: { goals: [] },
     company: {
         status: { ended: true },
         result: {
@@ -19,16 +20,20 @@ const propTypes = {
                     description: "Target test with goal paperSaved, stakeholder Environment",
                     stakeholder: "Environment",
                     goal: "paperSaved",
-                    value: 100
+                    value: 100,
+                    startDate: "2019-01-01",
+                    endDate: "2019-03-01"
                 },
                 {
                     key: 2,
-                    actual: 3915,
+                    actual: 90,
                     description: "Target with goal co2 saved and stakeholder Community",
                     goal: "co2Saved",
                     name: "Target save CO2",
                     stakeholder: "Community",
-                    value: 100
+                    value: 100,
+                    startDate: "2019-01-01",
+                    endDate: "2020-01-01"
                 },
                 {
                     key: 3,
@@ -37,7 +42,20 @@ const propTypes = {
                     goal: "waterSaved",
                     name: "water save",
                     stakeholder: "Environment",
-                    value: 1000
+                    value: 1000,
+                    startDate: "2019-01-01",
+                    endDate: "2019-03-01"
+                },
+                {
+                    key: 4,
+                    actual: 90,
+                    description: "Target 4",
+                    goal: "co2Saved",
+                    name: "Target save CO2",
+                    stakeholder: "Community",
+                    value: 100,
+                    startDate: "2019-01-01",
+                    endDate: "2020-01-01"
                 }
             ]
         },
@@ -56,6 +74,6 @@ describe("Targets", () => {
         const view = shallow(<Targets {...propTypes} />);
         expect(view.find("RadioGroup").length).toBe(1);
         expect(view.find("RadioButton").length).toBe(3);
-        expect(view.find("FormattedMessage").length).toBe(4);
+        expect(view.find("FormattedMessage").length).toBe(5);
     });
 });

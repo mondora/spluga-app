@@ -14,8 +14,7 @@ describe("SplugaCard", () => {
     });
 
     it("Render component with prop", () => {
-        const target = { name: "name", description: "description", acutal: 2, value: 100 };
-        const component = mount(<TargetCard target={target} />);
-        expect(component.prop("target")).toEqual(target);
+        const target = { name: "name", description: "description", acutal: 2, value: 100, startDate: 0, endDate: 0 };
+        const component = shallow(<TargetCard target={target} />);
     });
 });

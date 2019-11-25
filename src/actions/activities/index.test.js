@@ -26,11 +26,11 @@ describe("Activities Action", () => {
 
     it("addActivityCompany success", async () => {
         const dispatch = jest.fn();
-        const updateOne = Stitch.getAppClient()
+        const updateMany = Stitch.getAppClient()
             .getServiceClient()
             .db()
-            .collection().updateOne;
-        updateOne.mockImplementationOnce(() => {
+            .collection().updateMany;
+        updateMany.mockImplementationOnce(() => {
             return Promise.resolve({ modifiedCount: 1 });
         });
 

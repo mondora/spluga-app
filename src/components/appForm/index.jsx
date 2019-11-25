@@ -13,8 +13,7 @@ export const AppForm = ({ handleSubmit, onSelectFile }) => {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = evt => {
-            const fileContent = evt.target.result;
-            const base64 = fileContent.split(",")[1];
+            const base64 = evt.target.result.split(",")[1];
             onSelectFile(base64);
         };
     };

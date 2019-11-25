@@ -3,18 +3,16 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { injectIntl, FormattedMessage } from "react-intl";
+import { Modal, Icon, Radio } from "antd";
+import { Link } from "react-router-dom";
+import moment from "moment";
+
 import { getCompany } from "../../actions/companies";
 import { addTarget } from "../../actions/targets";
 import { getGoals } from "../../actions/goals";
-import { Link } from "react-router-dom";
-
-import { Modal, Icon, Radio } from "antd";
-
-import { PageContainer, Cards, Header, Title, FieldRight } from "./styled";
+import { PageContainer, Cards, Header, Title, SubTitle, FieldRight } from "./styled";
 import TargetCard from "../../components/targetCard";
-import { SplugaNewTarget } from "../../components/splugaNewTarget";
-
-//TODO : add button for new targets
+import SplugaNewTarget from "../../components/splugaNewTarget";
 
 export const Targets = ({ auth, company, getCompany, addTarget, goals, getGoals }) => {
     const [category, setCategory] = useState("All");
@@ -32,23 +30,35 @@ export const Targets = ({ auth, company, getCompany, addTarget, goals, getGoals 
         setVisible(true);
     };
 
-    const createTarget = data => {
-        console.log("data", data);
+    const createTarget = target => {
         const companyId = company && company.result ? company.result._id : null;
         setVisible(false);
-        addTarget(data, auth.currentUser, companyId);
+        addTarget(target, auth.currentUser, companyId);
     };
 
-    const goalsList = goals ? goals.goals : [];
+    const goalsList = goals && goals.goals ? goals.goals : [];
     const selectedCompany = company && company.status.ended && company.result ? company.result : null;
     const targets = selectedCompany && selectedCompany.targets ? selectedCompany.targets : [];
     const stakeholders = targets.map(t => t.stakeholder);
     const members = stakeholders ? stakeholders.filter((s, index) => stakeholders.indexOf(s) === index) : [];
 
-    const targetsExpired = targets.filter(target => target.startDate > target.endDate);
-    const targetsActive = targets.filter(target => target.startDate < target.endDate);
+    const targetFilter = category === "All" ? targets : targets.filter(target => target.stakeholder === category);
+
+    const targetsExpired = targetFilter
+        .filter(target => moment().diff(target.endDate, "days") > 0)
+        .sort(function(a, b) {
+            return new Date(a.endDate) - new Date(b.endDate);
+        });
+    const targetsActive = targetFilter
+        .filter(target => moment().diff(target.endDate, "days") < 0)
+        .sort(function(a, b) {
+            return new Date(a.endDate) - new Date(b.endDate);
+        });
     return selectedCompany ? (
         <PageContainer>
+            <Title>
+                <FormattedMessage id="c-splugaTarget.cardTitle" />
+            </Title>
             <Header>
                 <Radio.Group defaultValue={"All"} buttonStyle="solid" onChange={e => setCategory(e.target.value)}>
                     <Radio.Button value={"All"}>{<FormattedMessage id="v-targets.stakeholder" />}</Radio.Button>
@@ -75,24 +85,27 @@ export const Targets = ({ auth, company, getCompany, addTarget, goals, getGoals 
                     onCancel={() => setVisible(false)}
                 >
                     <SplugaNewTarget onSubmit={createTarget} goals={goalsList} />
-                    {console.log(goalsList)}
                 </Modal>
             </Header>
-            <Title> {<FormattedMessage id="v-targets.titleActive" />}</Title>
+            <SubTitle> {<FormattedMessage id="v-targets.titleActive" />}</SubTitle>
             <Cards>
-                {category === "All"
-                    ? targetsActive.map((target, index) => <TargetCard key={index} target={target} />)
-                    : targetsActive
-                          .filter(target => target.stakeholder === category)
-                          .map((target, index) => <TargetCard key={index} target={target} />)}
+                {targetsActive.map((target, index) => (
+                    <TargetCard
+                        key={index}
+                        target={target}
+                        goal={goalsList.filter(goal => goal.key === target.goal)[0]}
+                    />
+                ))}
             </Cards>
-            <Title> {<FormattedMessage id="v-targets.titleExpired" />}</Title>
+            <SubTitle> {<FormattedMessage id="v-targets.titleExpired" />}</SubTitle>
             <Cards>
-                {category === "All"
-                    ? targetsExpired.map((target, index) => <TargetCard key={index} target={target} />)
-                    : targetsExpired
-                          .filter(target => target.stakeholder === category)
-                          .map((target, index) => <TargetCard key={index} target={target} />)}
+                {targetsExpired.map((target, index) => (
+                    <TargetCard
+                        key={index}
+                        target={target}
+                        goal={goalsList.filter(goal => goal.key === target.goal)[0]}
+                    />
+                ))}
             </Cards>
         </PageContainer>
     ) : (

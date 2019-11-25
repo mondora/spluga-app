@@ -3,6 +3,7 @@ jest.mock("mongodb-stitch-browser-sdk", () => {
     const toArray = jest.fn();
     const insertOne = jest.fn();
     const updateOne = jest.fn();
+    const updateMany = jest.fn();
     const callFunction = jest.fn();
     const loginWithRedirect = jest.fn();
     const handleRedirectResult = jest.fn();
@@ -34,7 +35,8 @@ jest.mock("mongodb-stitch-browser-sdk", () => {
                             findOne,
                             find: () => ({ toArray }),
                             insertOne,
-                            updateOne
+                            updateOne,
+                            updateMany
                         })
                     })
                 })

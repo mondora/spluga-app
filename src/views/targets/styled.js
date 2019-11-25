@@ -5,9 +5,8 @@ export const PageContainer = styled.div`
 `;
 
 export const Header = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
     margin: 10px;
 `;
 
@@ -17,9 +16,13 @@ export const Cards = styled.div`
     grid-template-rows: auto;
     margin: 10px;
 `;
-export const Title = styled.div`
-    margin: 20px;
-`;
+
+export const Title = styled.h2``;
+
+export const SubTitle = styled.h5``;
+
 export const FieldRight = styled.span`
-    margin-left: 30px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: right;
 `;

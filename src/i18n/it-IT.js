@@ -35,6 +35,13 @@ export default {
     "general.goals.waterSaved": "Acqua risparmiata (l)",
     "general.goals.openSourceCode": "Codice open source (# commit)",
 
+    "general.goals.unit.sheet": "fogli",
+    "general.goals.unit.km": "km",
+    "general.goals.unit.people": "persone",
+    "general.goals.unit.g": "g",
+    "general.goals.unit.l": "l",
+    "general.goals.unit.commit": "commits",
+
     //Components
     "c-companyForm.logo": "Logo",
     "c-companyForm.title": "Crea azienda",

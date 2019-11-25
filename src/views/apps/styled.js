@@ -18,4 +18,4 @@ export const FieldRight = styled.div`
     text-align: right;
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h2``;

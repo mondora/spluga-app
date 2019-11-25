@@ -54,6 +54,7 @@ export function addActivityUser(data, currentUser, companyId, impact) {
             const { id } = currentUser;
             let result = [data];
             await upsertActivity({ ...data, companyId }, id, "users");
+            //client.callFunction("addActivity", [{ ...data, companyId }, companyId, "companies"]);
 
             //impact
             if (impact) {
@@ -70,6 +71,7 @@ export function addActivityUser(data, currentUser, companyId, impact) {
                     };
                     result.push(activityImpact);
                     await upsertActivity(activityImpact, id, "users");
+                    //client.callFunction("addActivity", [activityImpact, companyId, "companies"]);
                 });
             }
 
@@ -99,9 +101,10 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
             let result = [data];
 
             await upsertActivity({ ...data, userId: currentUser.id }, companyId, "companies");
+            //client.callFunction("addActivity", [{ ...data, userId: currentUser.id }, companyId, "companies"]);
 
             //increment target actual
-            await companies.updateOne(
+            await companies.updateMany(
                 {
                     _id: companyId,
                     targets: {
@@ -130,8 +133,9 @@ export function addActivityCompany(data, currentUser, companyId, impact) {
                     };
                     result.push(activityImpact);
                     upsertActivity(activityImpact, companyId, "companies");
+                    //client.callFunction("addActivity", [activityImpact, companyId, "companies"]);
 
-                    companies.updateOne(
+                    companies.updateMany(
                         {
                             _id: companyId,
                             targets: {
