@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { PageContainer, Title, Desc } from "./styled";
 export const JoinUs = () => {

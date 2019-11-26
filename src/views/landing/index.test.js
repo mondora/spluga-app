@@ -10,8 +10,9 @@ describe("Landing view", () => {
     it("Render view without error when proprs are empty", () => {
         const element = shallow(<Landing />);
         expect(element.find("NavBar").length).toBe(1);
-        expect(element.find("Element").length).toBe(3);
+        expect(element.find("Element").length).toBe(4);
         expect(element.find("WhatIs").length).toBe(1);
         expect(element.find("HowDoesItWorks").length).toBe(1);
+        expect(element.find("ValueYourBusiness").length).toBe(1);
     });
 });
