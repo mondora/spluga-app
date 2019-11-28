@@ -133,7 +133,7 @@ export default {
 
     "c-landing-thanks.message": "Thank you for joining Spluga and being part of the change!",
     "c-landing-joinUs.desc":
-        "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets.",
+        "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets please contact us by email at",
 
     "c-activityForm.title": "Add your activities",
     "c-activityForm.desc": "Here you can save your daily activities....",
