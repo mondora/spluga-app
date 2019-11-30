@@ -19,7 +19,6 @@
 .idea
 .npmrc
 package-lock.json
-/yarn.lock
 
 env-dev.sh
 /.vs
