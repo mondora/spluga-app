@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-
 import { compose } from "redux";
-import { getCompany, addCompany } from "../../actions/companies";
-import { addInvitation, addInvitationReset } from "../../actions/team";
-import { getGoals } from "../../actions/goals";
 import { connect } from "react-redux";
 import { useIntl } from "react-intl";
 import { Spin, notification } from "antd";
 
-import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter, FieldCenterFull } from "./styled";
+import { getCompany, addCompany } from "../../actions/companies";
+import { addInvitation, addInvitationReset } from "../../actions/team";
+import { getGoals } from "../../actions/goals";
+import { getActivities } from "../../actions/activities";
+
 import { PUBLISHED_HOSTNAME } from "../../config";
 import SplugaCard from "../../components/splugaCard";
 import CompanyForm from "../../components/companyForm";
@@ -17,8 +17,11 @@ import CompanyTeam from "../../components/companyTeam";
 import SplugaTips from "../../components/splugaTips";
 import ActivityResult from "../../components/activityResult";
 
+import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter, FieldCenterFull } from "./styled";
+
 export const Companies = ({
     auth,
+    activities,
     company,
     companyCreated,
     getCompany,
@@ -27,6 +30,7 @@ export const Companies = ({
     addInvitationReset,
     invitation,
     getGoals,
+    getActivities,
     goals
 }) => {
     const intl = useIntl();
@@ -38,6 +42,11 @@ export const Companies = ({
     useEffect(() => {
         getCompany({});
     }, [getCompany, companyCreated]);
+
+    useEffect(() => {
+        const companyId = company && company.result ? company.result._id.toString() : null;
+        getActivities({ companyId: companyId });
+    }, [getActivities, company]);
 
     useEffect(() => {
         const { ended, error, errorInfo } = invitation;
@@ -82,7 +91,7 @@ export const Companies = ({
     const loading =
         getCompanyStatus && createCompanyStatus ? getCompanyStatus.started || createCompanyStatus.started : true;
 
-    const activities = selectedCompany ? selectedCompany.activities : [];
+    const activitiesList = activities ? activities.activities : [];
     const goalsList = goals ? goals.goals : [];
 
     return !loading ? (
@@ -95,7 +104,7 @@ export const Companies = ({
                     <CompanyTeam onInvite={handleInvite} team={selectedCompany.team} />
                 </FieldRight>
                 <FieldCenterFull>
-                    <ActivityResult activities={activities} goals={goalsList} />
+                    <ActivityResult activities={activitiesList} goals={goalsList} />
                 </FieldCenterFull>
                 <SplugaTips isCompany />
             </PageContainer>
@@ -116,6 +125,7 @@ export const Companies = ({
 Companies.propTypes = {
     auth: PropTypes.object.isRequired,
     company: PropTypes.object,
+    activities: PropTypes.object,
     companyCreated: PropTypes.object,
     getCompany: PropTypes.func,
     addCompany: PropTypes.func,
@@ -127,6 +137,7 @@ Companies.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
+    activities: state.getActivities,
     company: state.getCompany,
     companyCreated: state.addCompany,
     invitation: state.addInvitation.status,
@@ -134,7 +145,7 @@ const mapStateToProps = state => ({
 });
 
 const composedHoc = compose(
-    connect(mapStateToProps, { getCompany, addCompany, addInvitation, addInvitationReset, getGoals })
+    connect(mapStateToProps, { getCompany, addCompany, addInvitation, addInvitationReset, getGoals, getActivities })
 );
 
 export default composedHoc(Companies);

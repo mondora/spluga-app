@@ -1,5 +1,6 @@
 jest.mock("mongodb-stitch-browser-sdk", () => {
     const findOne = jest.fn();
+    const find = jest.fn();
     const toArray = jest.fn();
     const insertOne = jest.fn();
     const updateOne = jest.fn();

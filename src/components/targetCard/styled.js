@@ -8,7 +8,7 @@ export const CardContainer = styled.div`
     background-color: white;
     border: 3px solid #bfbccb;
     text-align: center;
-    margin: 20px;
+    margin: 10px;
 `;
 
 export const CardTitle = styled.h3``;

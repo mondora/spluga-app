@@ -1,4 +1,4 @@
-import { addActivityCompany, addActivityUser } from ".";
+import { addActivity, getActivities } from ".";
 
 import { Stitch } from "mongodb-stitch-browser-sdk";
 
@@ -7,71 +7,63 @@ describe("Activities Action", () => {
     const currentUser = { id: "id" };
     const impact = [{ key: "paperSaved", value: 0 }];
 
-    it("addActivityCompany error", async () => {
+    it("addActivity error", async () => {
         const dispatch = jest.fn();
-        const updateOne = Stitch.getAppClient()
-            .getServiceClient()
-            .db()
-            .collection().updateOne;
-        updateOne.mockImplementationOnce(() => {
-            return Promise.reject();
+        const callFunction = Stitch.getAppClient().callFunction;
+        callFunction.mockImplementationOnce(() => {
+            return reject();
         });
 
-        await addActivityCompany(data, currentUser, "companyId", impact)(dispatch);
+        await addActivity(data, currentUser, "companyId", impact)(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_ACTIVITY_COMPANY_START");
-        expect(dispatch.mock.calls[1][0].type).toEqual("ADD_ACTIVITY_COMPANY_ERROR");
+        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_ACTIVITY_START");
+        expect(dispatch.mock.calls[1][0].type).toEqual("ADD_ACTIVITY_ERROR");
     });
 
-    it("addActivityCompany success", async () => {
+    it("addActivity success", async () => {
         const dispatch = jest.fn();
-        const updateMany = Stitch.getAppClient()
-            .getServiceClient()
-            .db()
-            .collection().updateMany;
-        updateMany.mockImplementationOnce(() => {
-            return Promise.resolve({ modifiedCount: 1 });
-        });
+        const callFunction = Stitch.getAppClient().callFunction;
+        callFunction.mockImplementation();
 
-        await addActivityCompany(data, currentUser, "companyId", impact)(dispatch);
+        await addActivity(data, currentUser, "companyId", impact)(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_ACTIVITY_COMPANY_START");
-        expect(dispatch.mock.calls[1][0].type).toEqual("ADD_ACTIVITY_COMPANY_SUCCESS");
+        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_ACTIVITY_START");
+        expect(dispatch.mock.calls[1][0].type).toEqual("ADD_ACTIVITY_SUCCESS");
     });
 
-    it("addActivityUser error", async () => {
+    it("getActivities error", async () => {
         const dispatch = jest.fn();
-        const updateOne = Stitch.getAppClient()
+        const toArray = Stitch.getAppClient()
             .getServiceClient()
             .db()
-            .collection().updateOne;
-        updateOne.mockImplementationOnce(() => {
-            return Promise.reject();
+            .collection()
+            .find().toArray;
+        toArray.mockImplementationOnce(() => {
+            return reject();
         });
 
-        await addActivityUser(data, currentUser, "companyId", impact)(dispatch);
+        await getActivities({})(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_ACTIVITY_USER_START");
-        expect(dispatch.mock.calls[1][0].type).toEqual("ADD_ACTIVITY_USER_ERROR");
+        expect(dispatch.mock.calls[0][0].type).toEqual("GET_ACTIVITIES_START");
+        expect(dispatch.mock.calls[1][0].type).toEqual("GET_ACTIVITIES_ERROR");
     });
 
-    it("addActivityUser success", async () => {
+    it("getActivities success", async () => {
         const dispatch = jest.fn();
-        const updateOne = Stitch.getAppClient()
+        const toArray = Stitch.getAppClient()
             .getServiceClient()
             .db()
-            .collection().updateOne;
-        updateOne.mockImplementationOnce(() => {
-            return Promise.resolve({ modifiedCount: 0 });
-        });
+            .collection()
+            .find().toArray;
+        toArray.mockImplementation();
 
-        await addActivityUser(data, currentUser, "companyId", impact)(dispatch);
+        await getActivities({})(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch.mock.calls[0][0].type).toEqual("ADD_ACTIVITY_USER_START");
-        expect(dispatch.mock.calls[1][0].type).toEqual("ADD_ACTIVITY_USER_SUCCESS");
+        expect(dispatch.mock.calls[0][0].type).toEqual("GET_ACTIVITIES_START");
+        expect(dispatch.mock.calls[1][0].type).toEqual("GET_ACTIVITIES_SUCCESS");
     });
 });

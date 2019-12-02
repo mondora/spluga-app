@@ -10,6 +10,7 @@ export default {
     "general.delete": "Delete",
     "general.form.email-required": "Email required",
     "general.form.field-required": "Mandatory field",
+    "general.form.field-length": "Field may not be over 30 characters",
     "general.reject": "Reject",
     "general.done": "Done",
     "general.previous": "Previous",

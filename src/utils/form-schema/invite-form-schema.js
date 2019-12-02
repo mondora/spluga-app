@@ -8,11 +8,13 @@ export const inviteFormSchema = {
     properties: {
         email: {
             type: "string",
-            validate: combineValidators(
-                fieldRequired(translateMessage("general.form.field-required")),
-                value =>
-                    !new EmailValidator().isValid(value ? value : "") && translateMessage("general.form.email-required")
-            )
+            validate: desc =>
+                combineValidators(
+                    fieldRequired(translateMessage("general.form.field-required")),
+                    value =>
+                        !new EmailValidator().isValid(value ? value : "") &&
+                        translateMessage("general.form.email-required")
+                )(desc)
         }
     }
 };

@@ -1,10 +1,10 @@
 import {
-    ADD_ACTIVITY_COMPANY_ERROR,
-    ADD_ACTIVITY_COMPANY_START,
-    ADD_ACTIVITY_COMPANY_SUCCESS,
-    ADD_ACTIVITY_USER_ERROR,
-    ADD_ACTIVITY_USER_START,
-    ADD_ACTIVITY_USER_SUCCESS
+    ADD_ACTIVITY_ERROR,
+    ADD_ACTIVITY_START,
+    ADD_ACTIVITY_SUCCESS,
+    GET_ACTIVITIES_ERROR,
+    GET_ACTIVITIES_START,
+    GET_ACTIVITIES_SUCCESS
 } from "../../actions/activities";
 
 const defaultState = {
@@ -19,9 +19,9 @@ const defaultState = {
     }
 };
 
-export function addActivityUser(state = defaultState, { type, payload, errorInfo }) {
+export function addActivity(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
-        case ADD_ACTIVITY_USER_START:
+        case ADD_ACTIVITY_START:
             return {
                 status: {
                     started: true,
@@ -29,7 +29,7 @@ export function addActivityUser(state = defaultState, { type, payload, errorInfo
                     ended: false
                 }
             };
-        case ADD_ACTIVITY_USER_SUCCESS:
+        case ADD_ACTIVITY_SUCCESS:
             return {
                 status: {
                     started: false,
@@ -38,7 +38,7 @@ export function addActivityUser(state = defaultState, { type, payload, errorInfo
                 },
                 ...payload
             };
-        case ADD_ACTIVITY_USER_ERROR:
+        case ADD_ACTIVITY_ERROR:
             return {
                 ...state,
                 status: {
@@ -53,9 +53,9 @@ export function addActivityUser(state = defaultState, { type, payload, errorInfo
     }
 }
 
-export function addActivityCompany(state = defaultState, { type, payload, errorInfo }) {
+export function getActivities(state = defaultState, { type, payload, errorInfo }) {
     switch (type) {
-        case ADD_ACTIVITY_COMPANY_START:
+        case GET_ACTIVITIES_START:
             return {
                 status: {
                     started: true,
@@ -63,7 +63,7 @@ export function addActivityCompany(state = defaultState, { type, payload, errorI
                     ended: false
                 }
             };
-        case ADD_ACTIVITY_COMPANY_SUCCESS:
+        case GET_ACTIVITIES_SUCCESS:
             return {
                 status: {
                     started: false,
@@ -72,7 +72,7 @@ export function addActivityCompany(state = defaultState, { type, payload, errorI
                 },
                 ...payload
             };
-        case ADD_ACTIVITY_COMPANY_ERROR:
+        case GET_ACTIVITIES_ERROR:
             return {
                 ...state,
                 status: {

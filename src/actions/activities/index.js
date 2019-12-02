@@ -1,5 +1,4 @@
 import { Stitch, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
-import moment from "moment";
 import { STITCH_APP_ID, MONGO_DB_NAME } from "../../config";
 
 function getClient() {
@@ -11,77 +10,48 @@ function getClient() {
 const client = getClient();
 const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
 
-export const ADD_ACTIVITY_USER_START = "ADD_ACTIVITY_USER_START";
-export const ADD_ACTIVITY_USER_SUCCESS = "ADD_ACTIVITY_USER_SUCCESS";
-export const ADD_ACTIVITY_USER_ERROR = "ADD_ACTIVITY_USER_ERROR";
+export const ADD_ACTIVITY_START = "ADD_ACTIVITY_START";
+export const ADD_ACTIVITY_SUCCESS = "ADD_ACTIVITY_SUCCESS";
+export const ADD_ACTIVITY_ERROR = "ADD_ACTIVITY_ERROR";
 
-export const ADD_ACTIVITY_COMPANY_START = "ADD_ACTIVITY_COMPANY_START";
-export const ADD_ACTIVITY_COMPANY_SUCCESS = "ADD_ACTIVITY_COMPANY_SUCCESS";
-export const ADD_ACTIVITY_COMPANY_ERROR = "ADD_ACTIVITY_COMPANY_ERROR";
-
-async function upsertActivity(data, id, collectionName) {
-    const collection = mongodb.db(MONGO_DB_NAME).collection(collectionName);
-    const { goal, description, date, companyId, userId, value } = data;
-
-    const result = await collection.updateOne(
-        {
-            _id: id,
-            activities: {
-                $elemMatch: {
-                    goal: goal,
-                    description: description,
-                    date: date,
-                    userId: userId,
-                    companyId: companyId
-                }
-            }
-        },
-        { $inc: { "activities.$.value": value } }
-    );
-
-    if (result && result.modifiedCount === 0) {
-        await collection.updateOne({ _id: id }, { $push: { activities: data } });
-    }
-}
-
-export function addActivityUser(data, currentUser, companyId, impact) {
+export function addActivity(activity, currentUser, companyId, impact) {
     return async dispatch => {
         dispatch({
-            type: ADD_ACTIVITY_USER_START
+            type: ADD_ACTIVITY_START
         });
 
         try {
-            const { id } = currentUser;
-            let result = [data];
-            await upsertActivity({ ...data, companyId }, id, "users");
-            //client.callFunction("addActivity", [{ ...data, companyId }, companyId, "companies"]);
+            const userId = currentUser.id;
+            activity = { ...activity, companyId, userId };
+            let result = [activity];
+            client.callFunction("addActivity", [activity]);
 
-            //impact
             if (impact) {
-                impact.forEach(async goal => {
+                impact.forEach(goal => {
                     const { key, quantity } = goal;
-                    const { date, description } = data;
-                    const value = data.value * quantity;
+                    const { date, description } = activity;
+                    const value = activity.value * quantity;
                     const activityImpact = {
                         description,
                         date,
                         goal: key,
                         companyId,
+                        userId,
                         value
                     };
                     result.push(activityImpact);
-                    await upsertActivity(activityImpact, id, "users");
-                    //client.callFunction("addActivity", [activityImpact, companyId, "companies"]);
+                    client.callFunction("addActivity", [activityImpact]);
                 });
             }
+            client.callFunction("upsertCompanyTarget", [result]);
 
             dispatch({
-                type: ADD_ACTIVITY_USER_SUCCESS,
+                type: ADD_ACTIVITY_SUCCESS,
                 payload: { result: result }
             });
         } catch (error) {
             dispatch({
-                type: ADD_ACTIVITY_USER_ERROR,
+                type: ADD_ACTIVITY_ERROR,
                 error: true,
                 errorInfo: { code: 500, message: error }
             });
@@ -89,75 +59,26 @@ export function addActivityUser(data, currentUser, companyId, impact) {
     };
 }
 
-export function addActivityCompany(data, currentUser, companyId, impact) {
+export const GET_ACTIVITIES_START = "GET_ACTIVITIES_START";
+export const GET_ACTIVITIES_SUCCESS = "GET_ACTIVITIES_SUCCESS";
+export const GET_ACTIVITIES_ERROR = "GET_ACTIVITIES_ERROR";
+
+export function getActivities(query) {
     return async dispatch => {
         dispatch({
-            type: ADD_ACTIVITY_COMPANY_START
+            type: GET_ACTIVITIES_START
         });
 
+        const collection = mongodb.db(MONGO_DB_NAME).collection("activities");
         try {
-            const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
-            const { goal, date, value } = data;
-            let result = [data];
-
-            await upsertActivity({ ...data, userId: currentUser.id }, companyId, "companies");
-            //client.callFunction("addActivity", [{ ...data, userId: currentUser.id }, companyId, "companies"]);
-
-            //increment target actual
-            await companies.updateMany(
-                {
-                    _id: companyId,
-                    targets: {
-                        $elemMatch: {
-                            goal: goal,
-                            startDate: { $lte: moment(date).toDate() },
-                            endDate: { $gte: moment(date).toDate() }
-                        }
-                    }
-                },
-                { $inc: { "targets.$.actual": value } }
-            );
-
-            //increment target actual impact
-            if (impact) {
-                await impact.forEach(goal => {
-                    const { key, quantity } = goal;
-                    const { value, date, description } = data;
-                    const impactValue = quantity * value;
-                    const activityImpact = {
-                        description,
-                        date,
-                        goal: key,
-                        userId: currentUser.id,
-                        value: impactValue
-                    };
-                    result.push(activityImpact);
-                    upsertActivity(activityImpact, companyId, "companies");
-                    //client.callFunction("addActivity", [activityImpact, companyId, "companies"]);
-
-                    companies.updateMany(
-                        {
-                            _id: companyId,
-                            targets: {
-                                $elemMatch: {
-                                    goal: key,
-                                    startDate: { $lte: moment(date).toDate() },
-                                    endDate: { $gte: moment(date).toDate() }
-                                }
-                            }
-                        },
-                        { $inc: { "targets.$.actual": impactValue } }
-                    );
-                });
-            }
-
+            const result = await collection.find(query).toArray();
             dispatch({
-                type: ADD_ACTIVITY_COMPANY_SUCCESS,
-                payload: { result: result }
+                type: GET_ACTIVITIES_SUCCESS,
+                payload: { activities: result }
             });
         } catch (error) {
             dispatch({
-                type: ADD_ACTIVITY_COMPANY_ERROR,
+                type: GET_ACTIVITIES_ERROR,
                 error: true,
                 errorInfo: { code: 500, message: error }
             });

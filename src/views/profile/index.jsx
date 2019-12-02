@@ -3,21 +3,26 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { injectIntl } from "react-intl";
+import { Spin, notification } from "antd";
+
 import { getCompany } from "../../actions/companies";
 import { getUser, addUser } from "../../actions/users";
 import { getGoals } from "../../actions/goals";
+import { addTarget, addTargetReset } from "../../actions/targets";
+import { getActivities } from "../../actions/activities";
 
 import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
-import { Spin, notification } from "antd";
-import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
 import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
-import { addTarget, addTargetReset } from "../../actions/targets";
+
+import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
 
 export const Profile = ({
     auth,
+    activities,
     getCompany,
+    getActivities,
     addTarget,
     addTargetReset,
     getUser,
@@ -40,6 +45,10 @@ export const Profile = ({
     useEffect(() => {
         getUser({});
     }, [getUser]);
+
+    useEffect(() => {
+        getActivities({ userId: auth.currentUser.id });
+    }, [getActivities, auth]);
 
     useEffect(() => {
         const { ended, error, errorInfo } = target;
@@ -74,7 +83,7 @@ export const Profile = ({
     const loading = company && company.status ? company.status.started : true;
     const selectedCompany = company && company.result ? company.result : null;
     const targets = selectedCompany ? selectedCompany.targets : [];
-    const activities = selectedUser ? selectedUser.activities : [];
+    const activitiesList = activities ? activities.activities : [];
     const goalsList = goals ? goals.goals : [];
 
     return !loading ? (
@@ -86,7 +95,7 @@ export const Profile = ({
                 <CompanyTarget onAddTarget={handleAddTarget} targets={targets} goals={goalsList} />
             </FieldRight>
             <FieldCenter>
-                <ActivityResult activities={activities} goals={goalsList} />
+                <ActivityResult activities={activitiesList} goals={goalsList} />
             </FieldCenter>
 
             <SplugaTips isCompany={false} />
@@ -99,6 +108,7 @@ export const Profile = ({
 };
 Profile.propTypes = {
     auth: PropTypes.object.isRequired,
+    activities: PropTypes.object,
     company: PropTypes.object,
     user: PropTypes.object,
     target: PropTypes.object,
@@ -112,6 +122,7 @@ Profile.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
+    activities: state.getActivities,
     company: state.getCompany,
     user: state.getUser,
     goals: state.getGoals,
@@ -119,10 +130,7 @@ const mapStateToProps = state => ({
 });
 
 const composedHoc = compose(
-    connect(
-        mapStateToProps,
-        { getCompany, addTarget, addTargetReset, getUser, addUser, getGoals }
-    )
+    connect(mapStateToProps, { getCompany, addTarget, addTargetReset, getUser, addUser, getGoals, getActivities })
 );
 
 export default injectIntl(composedHoc(Profile));

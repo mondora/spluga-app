@@ -5,19 +5,10 @@ import { connect } from "react-redux";
 import { PageContainer } from "./styled";
 import ActivityForm from "../../components/activityForm";
 import { getGoals } from "../../actions/goals";
-import { addActivityUser, addActivityCompany } from "../../actions/activities";
+import { addActivity } from "../../actions/activities";
 import { getCompany } from "../../actions/companies";
 
-export const Activities = ({
-    auth,
-    company,
-    getCompany,
-    getGoals,
-    addActivityUser,
-    addActivityCompany,
-    goals,
-    activitiesUser
-}) => {
+export const Activities = ({ auth, company, getCompany, getGoals, addActivity, goals, activities }) => {
     useEffect(() => {
         if (!getGoals.started) {
             getGoals({});
@@ -31,15 +22,14 @@ export const Activities = ({
     }, [getCompany]);
 
     const handleSubmit = data => {
-        const companyId = company && company.result ? company.result._id : null;
+        const companyId = company && company.result ? company.result._id.toString() : null;
         const goalKey = data ? data.goal : null;
         const goal = goals.filter(goal => goal.key === goalKey)[0];
         const impact = goal ? goal.impact : null;
-        addActivityUser(data, auth.currentUser, companyId, impact);
-        addActivityCompany(data, auth.currentUser, companyId, impact);
+        addActivity(data, auth.currentUser, companyId, impact);
     };
 
-    const result = activitiesUser ? activitiesUser.result : null;
+    const result = activities ? activities.result : null;
 
     return (
         <PageContainer>
@@ -52,17 +42,14 @@ Activities.propTypes = {
     auth: PropTypes.object,
     getGoals: PropTypes.func,
     getCompany: PropTypes.func,
-    activitiesUser: PropTypes.object
+    activities: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     goals: state.getGoals.goals,
     company: state.getCompany,
-    activitiesUser: state.addActivityUser
+    activities: state.addActivity
 });
 
-export default connect(
-    mapStateToProps,
-    { getGoals, getCompany, addActivityUser, addActivityCompany }
-)(Activities);
+export default connect(mapStateToProps, { getGoals, getCompany, addActivity })(Activities);

@@ -1,13 +1,13 @@
 import {
-    ADD_ACTIVITY_COMPANY_ERROR,
-    ADD_ACTIVITY_COMPANY_START,
-    ADD_ACTIVITY_COMPANY_SUCCESS,
-    ADD_ACTIVITY_USER_ERROR,
-    ADD_ACTIVITY_USER_START,
-    ADD_ACTIVITY_USER_SUCCESS
+    ADD_ACTIVITY_ERROR,
+    ADD_ACTIVITY_START,
+    ADD_ACTIVITY_SUCCESS,
+    GET_ACTIVITIES_ERROR,
+    GET_ACTIVITIES_START,
+    GET_ACTIVITIES_SUCCESS
 } from "../../actions/activities";
 
-import { addActivityUser, addActivityCompany } from "../activities";
+import { addActivity, getActivities } from "../activities";
 
 const defaultState = {
     status: {
@@ -26,19 +26,19 @@ let payload = { payload: "payload value" };
 let error = "error";
 let stateRes;
 
-describe("addActivityUser", () => {
-    it("set status to ADD_ACTIVITY_USER_START", () => {
-        stateRes = addActivityUser(state, {
-            type: ADD_ACTIVITY_USER_START
+describe("addActivity", () => {
+    it("set status to ADD_ACTIVITY_START", () => {
+        stateRes = addActivity(state, {
+            type: ADD_ACTIVITY_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
         expect(stateRes.payload).toEqual(undefined);
         expect(stateRes.error).toEqual(undefined);
     });
 
-    it("set status to ADD_ACTIVITY_USER_SUCCESS", () => {
-        stateRes = addActivityUser(state, {
-            type: ADD_ACTIVITY_USER_SUCCESS,
+    it("set status to ADD_ACTIVITY_SUCCESS", () => {
+        stateRes = addActivity(state, {
+            type: ADD_ACTIVITY_SUCCESS,
             payload,
             error
         });
@@ -48,9 +48,9 @@ describe("addActivityUser", () => {
         expect(stateRes.error).toEqual(undefined);
     });
 
-    it("set status to ADD_ACTIVITY_USER_ERROR", () => {
-        stateRes = addActivityUser(state, {
-            type: ADD_ACTIVITY_USER_ERROR,
+    it("set status to ADD_ACTIVITY_ERROR", () => {
+        stateRes = addActivity(state, {
+            type: ADD_ACTIVITY_ERROR,
             payload,
             error,
             errorInfo: "error"
@@ -60,24 +60,24 @@ describe("addActivityUser", () => {
     });
 
     it("set status to default", () => {
-        stateRes = addActivityUser(defaultState, { type: null });
+        stateRes = addActivity(defaultState, { type: null });
         expect(stateRes).toEqual(defaultState);
     });
 });
 
-describe("addActivityCompany", () => {
-    it("set status to ADD_ACTIVITY_COMPANY_START", () => {
-        stateRes = addActivityCompany(state, {
-            type: ADD_ACTIVITY_COMPANY_START
+describe("getActivities", () => {
+    it("set status to GET_ACTIVITIES_START", () => {
+        stateRes = getActivities(state, {
+            type: GET_ACTIVITIES_START
         });
         expect(stateRes.status).toEqual({ started: true, error: false, ended: false });
         expect(stateRes.payload).toEqual(undefined);
         expect(stateRes.error).toEqual(undefined);
     });
 
-    it("set status to ADD_ACTIVITY_COMPANY_SUCCESS", () => {
-        stateRes = addActivityCompany(state, {
-            type: ADD_ACTIVITY_COMPANY_SUCCESS,
+    it("set status to GET_ACTIVITIES_SUCCESS", () => {
+        stateRes = getActivities(state, {
+            type: GET_ACTIVITIES_SUCCESS,
             payload,
             error
         });
@@ -87,9 +87,9 @@ describe("addActivityCompany", () => {
         expect(stateRes.error).toEqual(undefined);
     });
 
-    it("set status to ADD_ACTIVITY_COMPANY_ERROR", () => {
-        stateRes = addActivityCompany(state, {
-            type: ADD_ACTIVITY_COMPANY_ERROR,
+    it("set status to GET_ACTIVITIES_ERROR", () => {
+        stateRes = getActivities(state, {
+            type: GET_ACTIVITIES_ERROR,
             payload,
             error,
             errorInfo: "error"
@@ -99,7 +99,7 @@ describe("addActivityCompany", () => {
     });
 
     it("set status to default", () => {
-        stateRes = addActivityCompany(defaultState, { type: null });
+        stateRes = getActivities(defaultState, { type: null });
         expect(stateRes).toEqual(defaultState);
     });
 });

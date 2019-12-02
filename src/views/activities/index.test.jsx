@@ -9,8 +9,7 @@ const propTypes = {
     auth: {},
     goal: { key: "key" },
     goals: [{ key: "key" }],
-    addActivityUser: jest.fn(() => {}),
-    addActivityCompany: jest.fn(() => {})
+    addActivity: jest.fn(() => {})
 };
 
 describe("Activities", () => {
@@ -20,7 +19,6 @@ describe("Activities", () => {
         expect(view.find("ReduxForm").length).toBe(1);
 
         view.find("ReduxForm").simulate("submit");
-        expect(propTypes.addActivityUser).toHaveBeenCalledTimes(1);
-        expect(propTypes.addActivityCompany).toHaveBeenCalledTimes(1);
+        expect(propTypes.addActivity).toHaveBeenCalledTimes(1);
     });
 });

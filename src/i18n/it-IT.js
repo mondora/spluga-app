@@ -10,6 +10,7 @@ export default {
     "general.delete": "Elimina",
     "general.form.email-required": "Il valore inserito non è una mail",
     "general.form.field-required": "Campo obbligatorio",
+    "general.form.field-length": "Il campo deve avere una lughezza massima di 30 caratteri",
     "general.reject": "Annulla",
     "general.done": "Fatto",
     "general.previous": "Indietro",
