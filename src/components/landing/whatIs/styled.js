@@ -22,5 +22,9 @@ export const Title = styled.h1`
 `;
 
 export const Desc = styled.div`
+    display: block;
+    text-align: center;
     padding-bottom: 30px;
+    font-weight: 150;
+    font-size: 30px;
 `;

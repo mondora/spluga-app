@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-    background-color: #fff;
+    background: url("https://spluga.io/img/bg-pattern.png"), linear-gradient(to left, #bbe5ed, #b399a2);
     display: grid;
     grid-template-columns: auto;
     text-align: center;
@@ -11,11 +11,12 @@ export const PageContainer = styled.div`
     min-height: 775px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h1`
     text-align: center;
-    padding-top: 60px;
+    padding-top: 90px;
     font-size: 50px;
     font-weight: 250;
+    color: #fff;
 `;
 export const List = styled.ul`
     padding-bottom: 30px;
@@ -24,10 +25,12 @@ export const List = styled.ul`
 
 export const VYBIcon = styled.div`
     font-size: 80px;
-    color: #b399a2;
+    color: #fff;
 `;
 
 export const VYBGrid = styled.div`
+    font-size: 25px;
     display: grid;
     grid-template-columns: auto auto auto;
+    color: #fff;
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-    background: url("https://spluga.io/img/bg-pattern.png"), linear-gradient(to left, #bbe5ed, #b399a2);
+    background: #fff;
     display: flex;
     flex-direction: column;
     padding-left: 10%;
@@ -10,23 +10,21 @@ export const PageContainer = styled.div`
     min-height: 775px;
     padding-top: 0;
     padding-bottom: 0;
-    color: #fff;
 `;
 
 export const Title = styled.h1`
     margin: 10px 10px 0 0;
-
     font-weight: 250;
     text-align: center;
     font-size: 50px;
-    color: #fff;
     padding-top: 90px;
     padding-bottom: 40px;
 `;
 
 export const StepsContainer = styled.div`
-    margin-top: 40px;
+    padding-top: 40px;
     font-size: 80px;
+    color: #fff;
 `;
 export const SubTitle = styled.span`
     display: block;

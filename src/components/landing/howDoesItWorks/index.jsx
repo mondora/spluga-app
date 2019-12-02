@@ -17,12 +17,12 @@ export const HowDoesItWorks = () => {
             </Title>
 
             <StepsContainer>
-                <Steps>
-                    <Step icon={<Icon type="login" style={{ fontSize: "40px", color: "#fff" }} />} />
-                    <Step icon={<Icon type="play-circle" style={{ fontSize: "40px", color: "#fff" }} />} />
-                    <Step icon={<Icon type="line-chart" style={{ fontSize: "40px", color: "#fff" }} />} />
-                    <Step icon={<Icon type="compass" style={{ fontSize: "40px", color: "#fff" }} />} />
-                    <Step icon={<Icon type="smile" style={{ fontSize: "40px", color: "#fff" }} />} />
+                <Steps current={-1}>
+                    <Step icon={<Icon type="login" style={{ fontSize: "40px" }} />} />
+                    <Step icon={<Icon type="play-circle" style={{ fontSize: "40px" }} />} />
+                    <Step icon={<Icon type="line-chart" style={{ fontSize: "40px" }} />} />
+                    <Step icon={<Icon type="compass" style={{ fontSize: "40px" }} />} />
+                    <Step icon={<Icon type="smile" style={{ fontSize: "40px" }} />} />
                 </Steps>
             </StepsContainer>
             <Descriptions>

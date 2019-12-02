@@ -6,7 +6,7 @@ export const Thanks = () => {
     return (
         <PageContainer>
             <ImageContainer>
-                <Img src="img/spluga-logo-white-02.png" alt="spluga-logo" />
+                <Img src="img/spluga-logo-black-02.png" alt="spluga-logo" />
             </ImageContainer>
             <Desc>
                 <FormattedMessage id="c-landing-thanks.message" />

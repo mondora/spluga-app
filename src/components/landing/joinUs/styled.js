@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.form`
-    background-color: #fff;
+    background: url("https://spluga.io/img/bg-pattern.png"), linear-gradient(to left, #bbe5ed, #b399a2);
     display: grid;
     grid-template-columns: auto;
     text-align: center;
@@ -17,6 +17,7 @@ export const Title = styled.h1`
     padding-bottom: 30px;
     font-size: 50px;
     font-weight: 250;
+    color: #fff;
 `;
 
 export const Desc = styled.div`
@@ -25,6 +26,18 @@ export const Desc = styled.div`
     padding-bottom: 30px;
     font-weight: 150;
     font-size: 30px;
+    color: #fff;
+`;
+
+export const Link = styled.a`
+    text-align: center;
+    padding-bottom: 30px;
+    font-weight: 150;
+    font-size: 30px;
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
 `;
 
 export const FormContainer = styled.div`

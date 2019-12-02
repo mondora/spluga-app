@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-    background: url("https://spluga.io/img/bg-pattern.png"), linear-gradient(to left, #bbe5ed, #b399a2);
+    background: #fff;
     display: grid;
     grid-template-columns: auto;
     text-align: center;
@@ -12,7 +12,6 @@ export const PageContainer = styled.div`
 `;
 
 export const Desc = styled.h1`
-    color: #fff;
     display: block;
     text-align: center;
     font-size: 50px;

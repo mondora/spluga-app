@@ -11,6 +11,5 @@ describe("JoinUs", () => {
         const element = shallow(<JoinUs />);
 
         expect(element.find("FormattedMessage").length).toBe(2);
-        expect(element.find("a").length).toBe(1);
     });
 });
