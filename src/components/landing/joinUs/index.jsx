@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
+
+import { INFO_EMAIL } from "../../../config";
+
 import { PageContainer, Title, Desc } from "./styled";
 export const JoinUs = () => {
     return (
@@ -12,8 +14,7 @@ export const JoinUs = () => {
                 <Desc>
                     <FormattedMessage id="c-landing-joinUs.desc" />
                 </Desc>
-
-                <a href="info@spluga.io">info@spluga.io</a>
+                <a href={`mailto:${INFO_EMAIL}`}>info@spluga.io</a>
             </PageContainer>
         </Fragment>
     );

@@ -11,6 +11,7 @@ import Footer from "../../components/landing/footer";
 import { Container } from "./styled.js";
 
 import * as Scroll from "react-scroll";
+import ValueYourBusiness from "../../components/landing/valueYourBusiness";
 
 var Element = Scroll.Element;
 export const Landing = ({ login }) => {
@@ -20,6 +21,9 @@ export const Landing = ({ login }) => {
             <Header />
             <Element name="what-is-spluga" className="element">
                 <WhatIs />
+            </Element>
+            <Element name="value-your-business" className="element">
+                <ValueYourBusiness />
             </Element>
             <Element name="how-does-it-work" className="element">
                 <HowDoesItWorks />

@@ -18,6 +18,7 @@ export default {
     "general.send": "Send",
     "general.email": "Email",
     "general.whatIs": "What is Spluga?",
+    "general.valueYourBusiness": "Value your Business",
     "general.howDoesItWork": "How does it work?",
     "general.joinUs": "Join us!",
     "general.login": "Login",
@@ -111,14 +112,15 @@ export default {
 
     "c-landing-whatIs.desc":
         "Spluga is a software platform that allows you to set targets and goals, measure your progress over time and improve your social and environmental impact. Whether you are focusing on the environment, the community or your workers, Spluga will help you define targets you want to reach, meter and analyse team progress over time, suggest ways to improve your impact and gear you towards reaching your goals. Based on the United Nations Sustainable Development Goals framework, Spluga helps you measure your progress against a set of internationally recognised standards, both as a company and as an individual worker.",
-    "c-landing-whatIs.subTitle": "Value your Business",
 
-    "c-landing-whatIs.action1":
+    "c-landing-valueYourBusiness.action1":
         "Measure, manage and improve individual and company impact against the Sustainable Development Goals",
-    "c-landing-whatIs.action2": "Create and manage your own personalised targets with our interactive wizard.",
-    "c-landing-whatIs.action3":
+    "c-landing-valueYourBusiness.action2":
+        "Create and manage your own personalised targets with our interactive wizard.",
+    "c-landing-valueYourBusiness.action3":
         "Expand your impact by creating and managing Interdependence Agreements with other like-minded companies",
-    "c-landing-whatIs.action4": "Measure your progress over time and view your results in an interactive dashboard.",
+    "c-landing-valueYourBusiness.action4":
+        "Measure your progress over time and view your results in an interactive dashboard.",
 
     "c-landing-howDoesItWork.create":
         "Signup, create your company, define targets based on SDGs for different stakeholders",
@@ -132,7 +134,7 @@ export default {
 
     "c-landing-thanks.message": "Thank you for joining Spluga and being part of the change!",
     "c-landing-joinUs.desc":
-        "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets.",
+        "We are now accepting users for our beta version of Spluga. If you would like to test the platform and start measuring impact and reaching targets please contact us by email at",
 
     "c-activityForm.title": "Add your activities",
     "c-activityForm.desc": "Here you can save your daily activities....",
