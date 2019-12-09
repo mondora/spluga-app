@@ -2,27 +2,24 @@ import styled from "styled-components";
 
 export const PageContainer = styled.div`
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: auto auto;
     grid-template-rows: auto;
-    justify-items: stretch;
     padding: 10px;
+    width: 100%;
 `;
 
 export const FieldLeft = styled.div`
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column: 1/3;
     margin: 10px;
 `;
 
 export const FieldRight = styled.div`
-    grid-column-start: 3;
-    grid-column-end: 6;
+    grid-column: 3/6;
     margin: 10px;
 `;
 
 export const FieldCenter = styled.div`
-    grid-column-start: 1;
-    grid-column-end: 6;
+    grid-column: 1/6;
     margin: 10px;
 `;
 
