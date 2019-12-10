@@ -11,6 +11,7 @@ import Profile from "../profile";
 import Companies from "../companies";
 import Apps from "../apps";
 import Team from "../team";
+import Sdgs from "../sdgs";
 
 import { Container, Menu, Page, PageContainer } from "./styled.js";
 
@@ -30,6 +31,7 @@ export const Root = ({ match, auth }) => {
                         <Route path="/targets" component={Targets} />
                         <Route path="/team" component={Team} />
                         <Route path="/activities" component={Activities} />
+                        <Route path="/sdgs" component={Sdgs} />
                     </Switch>
                 </Page>
             </Container>

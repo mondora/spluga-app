@@ -43,6 +43,13 @@ export const NavBar = ({ currentPage }) => {
                         <FormattedMessage id="c-navbar.app" />
                     </Link>
                 </Menu.Item>
+
+                <Menu.Item key="sgds">
+                    <Link to="/sdgs">
+                        <Icon type="global" />
+                        SDGs
+                    </Link>
+                </Menu.Item>
             </Menu>
         </PageContainer>
     );
