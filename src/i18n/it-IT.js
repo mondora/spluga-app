@@ -59,7 +59,7 @@ export default {
     "c-navbar.profile": "Profilo",
     "c-navbar.company": "Azienda",
     "c-navbar.app": "Apps",
-    "c-navbar.targets": "Obbiettivi",
+    "c-navbar.targets": "Obiettivi",
     "c-navbar.activities": "Attività",
     "c-splugaNewTarget.create": "Crea un nuovo obiettivo",
     "c-splugaNewTarget.placeholder.name": "Inserisci il nome del target",
@@ -93,7 +93,7 @@ export default {
         "Ecco un riepilogo dell’obiettivo che hai creato. Per attivarlo clicca su Fatto, per modificare torna indietro.",
 
     "c-splugaTarget.cardTitle": "Come vanno i tuoi obiettivi",
-    "c-splugaTarget.view": "Visualizza tutti i tuoi obbiettivi",
+    "c-splugaTarget.view": "Visualizza tutti i tuoi obiettivi",
 
     "c-splugaTips.title.company": "Ecco cosa potete fare insieme",
     "c-splugaTips.title.user": "Supera te stesso",
@@ -109,7 +109,7 @@ export default {
         "Diventa green e vai in bici al lavoro! Sapevi che puoi acquistare piccole luci e dispositivi riflettenti in modo da poter guidare in sicurezza?",
 
     "c-landing-header.desc":
-        "Definisci i tuoi obbiettivi, <br /> completa le tue attività, <br /> migliora il tuo impatto positivo.",
+        "Definisci i tuoi obiettivi, <br /> completa le tue attività, <br /> migliora il tuo impatto positivo.",
 
     "c-landing-whatIs.desc":
         "Spluga è una piattaforma software che ti consente di stabilire obiettivi, misurare i tuoi progressi nel tempo e migliorare il tuo impatto sociale e ambientale. Sia che ti concentri sull'ambiente, sulla comunità o sui tuoi lavoratori, Spluga ti aiuterà a definire gli obiettivi che desideri raggiungere, misurare e analizzare i progressi del team nel tempo, suggerire modi per migliorare il tuo impatto e orientarti verso il raggiungimento dei tuoi obiettivi. Basato sugli obiettivi di sviluppo sostenibile delle Nazioni Unite ( Sustainable Development Goals o, in forma abbreviata, SDG ), Spluga ti aiuta a misurare i tuoi progressi rispetto a una serie di standard riconosciuti a livello internazionale, sia come azienda che come singolo lavoratore.",
@@ -172,5 +172,5 @@ export default {
     "v-team.invitation.error.400.duplicate": "Utente gia invitato",
     "v-team.invitation.success": "Invito inviato correttamente",
 
-    "v-companies.target.success": "Obbiettivo creato"
+    "v-companies.target.success": "Obiettivo creato"
 };

@@ -31,11 +31,15 @@ export const TipContainer = styled.div`
     width: 100%;
 `;
 export const Avatar = styled.img`
-    width: 80px;
+    width: 100%;
     border-radius: 8px;
     margin: 20px;
 `;
-
+export const AvatarContainer = styled.div`
+    width: 200px;
+    border-radius: 8px;
+    margin: 20px;
+`;
 export const Tip = styled.div`
     text-align: justify;
     margin: 30px 30px 10px 30px;
