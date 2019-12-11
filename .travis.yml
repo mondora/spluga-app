@@ -8,5 +8,6 @@ cache:
 before_script:
   - npm install -g codecov
 script:
+  - echo "//registry.npmjs.org/:_authToken=${NPM_RO_TOKEN}" > .npmrc
   - CI=true yarn test --coverage
   - codecov
