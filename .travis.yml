@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 12
+cache:
+  yarn: true
+  directories:
+    - node_modules
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=${NPM_RO_TOKEN}" > .npmrc
+before_script:
+  - npm install -g codecov
+script:
+  - CI=true yarn test --coverage
+  - codecov

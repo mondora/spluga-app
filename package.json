@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.7.4",
     "@types/jest": "^24.0.19",
     "cross-env": "^5.2.0",
     "enzyme": "^3.9.0",

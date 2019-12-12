@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ed0d1c3f-af76-4006-9d6d-b5da8e80b528/deploy-status)](https://app.netlify.com/sites/spluga-dev/deploys)
+[![codecov](https://codecov.io/gh/mondora/spluga-app/branch/master/graph/badge.svg)](https://codecov.io/gh/mondora/spluga-app)
+
 # spluga app
 
 Spluga App single page application.
