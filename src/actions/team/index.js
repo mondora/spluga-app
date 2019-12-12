@@ -79,7 +79,7 @@ export function acceptInvitation(currentUser) {
 
         try {
             const result = await companies.updateOne(
-                { team: { $elemMatch: { status: "active", email: email } } },
+                { team: { $elemMatch: { status: "invited", email: email } } },
                 {
                     $set: {
                         "team.$.id": id,
