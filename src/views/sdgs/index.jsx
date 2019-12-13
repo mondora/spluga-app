@@ -29,7 +29,7 @@ import { Modal } from "antd";
 
 export const PageContainer = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     grid-template-rows: auto;
     grid-column-gap: 0px;
     align-items: stretch;
