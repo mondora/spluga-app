@@ -11,7 +11,7 @@ describe("Sdgs", () => {
     it("Renders view without error", () => {
         const view = shallow(<Sdgs />);
         expect(view.find(PageContainer).length).toBe(1);
-        expect(view.find("img").length).toBe(18);
-        expect(view.find(Sdg).length).toBe(18);
+        expect(view.find("img").length).toBe(25);
+        expect(view.find(Sdg).length).toBe(25);
     });
 });
