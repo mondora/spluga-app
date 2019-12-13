@@ -13,7 +13,7 @@ export const Header = styled.div`
 
 export const Cards = styled.div`
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     grid-template-rows: auto;
     margin: 5px;
 `;
