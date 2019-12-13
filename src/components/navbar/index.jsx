@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 export const NavBar = ({ currentPage }) => {
     return (
         <PageContainer>
-            <Menu selectedKeys={[currentPage]} mode="inline">
+            <Menu selectedKeys={[currentPage]} mode="inline" style={{ height: "100%" }}>
                 <Menu.Item key="profile">
                     <Link to="/">
                         <Icon type="user" />
