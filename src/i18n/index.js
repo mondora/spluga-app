@@ -8,8 +8,8 @@ import itEmail from "./it-IT-email";
 import enEmail from "./en-US-email";
 
 export const availableLocalisations = {
-    "en-US": { ...en, ...enPrivacy, ...enCookies, ...enEmail },
-    "it-IT": { ...it, ...itPrivacy, ...itCookies, ...itEmail }
+    en: { ...en, ...enPrivacy, ...enCookies, ...enEmail },
+    it: { ...it, ...itPrivacy, ...itCookies, ...itEmail }
 };
 
 export const getUserLocale = () =>
