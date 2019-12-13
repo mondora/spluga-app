@@ -13,5 +13,6 @@ describe("Sdgs", () => {
         expect(view.find(PageContainer).length).toBe(1);
         expect(view.find("img").length).toBe(25);
         expect(view.find(Sdg).length).toBe(25);
+        expect(view.find("Modal").length).toBe(8);
     });
 });
