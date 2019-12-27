@@ -77,7 +77,7 @@ const Sdgs = () => {
 
     return (
         <PageContainer>
-            <Sdg onClick={() => renderDescription(1)} onKeyPress={() => renderDescription(0)}>
+            <Sdg onClick={() => renderDescription(1)} onKeyPress={() => renderDescription(1)}>
                 <img src={SDG1} alt="sdg-1" />
             </Sdg>
             <Modal visible={visible} onOk={() => setVisible(false)} onCancel={() => setVisible(false)}>
