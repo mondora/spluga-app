@@ -5,6 +5,7 @@ export const Container = styled.div`
     flex-direction: row;
     flex: 1;
     height: 100vh;
+    width: 100vw;
 `;
 
 export const Menu = styled.div`
@@ -23,4 +24,5 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
 `;
