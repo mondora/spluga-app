@@ -11,9 +11,9 @@ describe("Sdgs", () => {
     it("Renders view without error", () => {
         const view = shallow(<Sdgs />);
         expect(view.find(PageContainer).length).toBe(1);
-        expect(view.find("img").length).toBe(25);
-        expect(view.find(Sdg).length).toBe(25);
-        expect(view.find("Modal").length).toBe(8);
+        expect(view.find("img").length).toBe(26);
+        expect(view.find(Sdg).length).toBe(26);
+        expect(view.find("Modal").length).toBe(9);
     });
     describe("when I click on Sdg", () => {
         it("Renders modal with description if click is defined", () => {
@@ -138,7 +138,7 @@ describe("Sdgs", () => {
                     .find("Modal")
                     .at(5)
                     .prop("visible")
-            ).toBe(true);
+            ).toBe(false);
             //sdg14
             view.find(Sdg)
                 .at(19)
@@ -149,7 +149,7 @@ describe("Sdgs", () => {
                     .find("Modal")
                     .at(6)
                     .prop("visible")
-            ).toBe(true);
+            ).toBe(false);
 
             //sdg 15
             view.find(Sdg)
@@ -161,7 +161,7 @@ describe("Sdgs", () => {
                     .find("Modal")
                     .at(7)
                     .prop("visible")
-            ).toBe(true);
+            ).toBe(false);
         });
     });
     describe("when I press enter on Sdg", () => {
@@ -287,7 +287,7 @@ describe("Sdgs", () => {
                     .find("Modal")
                     .at(5)
                     .prop("visible")
-            ).toBe(true);
+            ).toBe(false);
             //sdg14
             view.find(Sdg)
                 .at(19)
@@ -298,7 +298,7 @@ describe("Sdgs", () => {
                     .find("Modal")
                     .at(6)
                     .prop("visible")
-            ).toBe(true);
+            ).toBe(false);
 
             //sdg 15
             view.find(Sdg)
@@ -310,7 +310,7 @@ describe("Sdgs", () => {
                     .find("Modal")
                     .at(7)
                     .prop("visible")
-            ).toBe(true);
+            ).toBe(false);
         });
     });
 });
