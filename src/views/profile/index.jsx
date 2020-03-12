@@ -17,6 +17,7 @@ import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
 
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
+import CardContribution from "../../components/cardContribution";
 
 export const Profile = ({
     auth,
@@ -97,7 +98,7 @@ export const Profile = ({
             <FieldCenter>
                 <ActivityResult activities={activitiesList} goals={goalsList} />
             </FieldCenter>
-
+            <CardContribution cardGoals={goalsList} />
             <SplugaTips isCompany={false} />
         </PageContainer>
     ) : (
