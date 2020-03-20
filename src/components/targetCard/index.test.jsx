@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, { shallow, mount } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 import { TargetCard } from ".";
@@ -15,6 +15,6 @@ describe("SplugaCard", () => {
 
     it("Render component with prop", () => {
         const target = { name: "name", description: "description", acutal: 2, value: 100, startDate: 0, endDate: 0 };
-        const component = shallow(<TargetCard target={target} />);
+        shallow(<TargetCard target={target} />); // TODO ?
     });
 });
