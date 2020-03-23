@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Container = styled.div`
     border: 3px solid #bfbccb;
@@ -47,7 +47,7 @@ const getNames = goals => {
 const CardContribution = cardGoals => {
     const goals = cardGoals.cardGoals;
 
-    return <Container>{getNames(goals) && getNames(goals).map(x => <Name>{x}</Name>)}</Container>;
+    return <Container>{getNames(goals) && getNames(goals).map((x, index) => <Name key={index}>{x}</Name>)}</Container>;
 };
 
 export default CardContribution;

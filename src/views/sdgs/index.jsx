@@ -44,17 +44,16 @@ export const Sdg = styled.button`
     height: 173px;
     background: transparent;
     border: none;
+    cursor: pointer;
 
     ${props =>
         props.isUsed
             ? css`
-                  cursor: pointer;
                   &:hover {
                       filter: contrast(160%) brightness(100%);
                   }
               `
             : css`
-                  cursor: initial;
                   filter: opacity(25%) grayscale(0.3);
               `}
 
