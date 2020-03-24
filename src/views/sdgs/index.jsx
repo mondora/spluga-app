@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
+import { useHover } from "../../lib/hooks";
+
 import styled, { css } from "styled-components";
+
 import SDG1 from "../sdgs/assets/E_PRINT_01.jpg";
-import SDG1b from "../sdgs/assets/E_GIF_01.gif";
 import SDG3 from "../sdgs/assets/E_WEB_03.png";
 import SDG3b from "../sdgs/assets/E_GIF_03.gif";
 import SDG2 from "../sdgs/assets/E_WEB_02.png";
@@ -84,6 +87,15 @@ const Sdgs = () => {
     const [visible14, setVisible14] = useState(false);
     const [visible15, setVisible15] = useState(false);
 
+    const [hoverRef3, isHovered3] = useHover();
+    const [hoverRef4, isHovered4] = useHover();
+    const [hoverRef8, isHovered8] = useHover();
+    const [hoverRef11, isHovered11] = useHover();
+    const [hoverRef12, isHovered12] = useHover();
+    const [hoverRef13, isHovered13] = useHover();
+    const [hoverRef14, isHovered14] = useHover();
+    const [hoverRef15, isHovered15] = useHover();
+
     const renderDescription = index => {
         index === 1 && setVisible(true);
         index === 3 && setVisible3(true);
@@ -105,9 +117,6 @@ const Sdgs = () => {
                 </Sdg>
 
                 <Modal visible={visible} onOk={() => setVisible(false)} onCancel={() => setVisible(false)}>
-                    <Sdg>
-                        <img src={SDG1b} alt="sdg-1b" />
-                    </Sdg>
                     PROGRESS OF GOAL 1 IN 2019: <br />
                     The decline of global extreme poverty continues, but has slowed. The deceleration indicates that the
                     world is not on track to achieve the target of less than 3 per cent of the world living in extreme
@@ -121,24 +130,28 @@ const Sdgs = () => {
                     <img src={SDG2} alt="sdg-2" />
                 </Sdg>
 
-                <Sdg onClick={() => renderDescription(3)} onKeyPress={() => renderDescription(3)} isUsed={true}>
-                    <img src={SDG3} alt="sdg-3" />
+                <Sdg
+                    ref={hoverRef3}
+                    onClick={() => renderDescription(3)}
+                    onKeyPress={() => renderDescription(3)}
+                    isUsed={true}
+                >
+                    {isHovered3 ? <img src={SDG3b} alt="sdg-3b" /> : <img src={SDG3} alt="sdg-3" />}
                 </Sdg>
                 <Modal visible={visible3} onOk={() => setVisible3(false)} onCancel={() => setVisible3(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG3b} alt="sdg-3b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     To ensure healthy lives and promote well-being for all at all ages.
                 </Modal>
 
-                <Sdg onClick={() => renderDescription(4)} onKeyPress={() => renderDescription(4)} isUsed={true}>
-                    <img src={SDG4} alt="sdg-4" />
+                <Sdg
+                    ref={hoverRef4}
+                    onClick={() => renderDescription(4)}
+                    onKeyPress={() => renderDescription(4)}
+                    isUsed={true}
+                >
+                    {isHovered4 ? <img src={SDG4b} alt="sdg-4b" /> : <img src={SDG4} alt="sdg-4" />}
                 </Sdg>
                 <Modal visible={visible4} onOk={() => setVisible4(false)} onCancel={() => setVisible4(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG4b} alt="sdg-4b" />
-                    </Sdg>
                     What is the goal here? <br />
                     Ensure inclusive and qual- ity education for all and promote lifelong learning.
                 </Modal>
@@ -155,13 +168,15 @@ const Sdgs = () => {
                     <img src={SDG7} alt="sdg-7" />
                 </Sdg>
 
-                <Sdg onClick={() => renderDescription(8)} onKeyPress={() => renderDescription(8)} isUsed={true}>
-                    <img src={SDG8} alt="sdg-8" />
+                <Sdg
+                    ref={hoverRef8}
+                    onClick={() => renderDescription(8)}
+                    onKeyPress={() => renderDescription(8)}
+                    isUsed={true}
+                >
+                    {isHovered8 ? <img src={SDG8b} alt="sdg-8b" /> : <img src={SDG8} alt="sdg-8" />}
                 </Sdg>
                 <Modal visible={visible8} onOk={() => setVisible8(false)} onCancel={() => setVisible8(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG8b} alt="sdg-8b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     To promote inclusive and sustainable economic growth, employment and decent work for all.
                 </Modal>
@@ -174,57 +189,67 @@ const Sdgs = () => {
                     <img src={SDG10} alt="sdg-10" />
                 </Sdg>
 
-                <Sdg onClick={() => renderDescription(11)} onKeyPress={() => renderDescription(11)} isUsed={true}>
-                    <img src={SDG11} alt="sdg-11" />
+                <Sdg
+                    ref={hoverRef11}
+                    onClick={() => renderDescription(11)}
+                    onKeyPress={() => renderDescription(11)}
+                    isUsed={true}
+                >
+                    {isHovered11 ? <img src={SDG11b} alt="sdg-11b" /> : <img src={SDG11} alt="sdg-11" />}
                 </Sdg>
                 <Modal visible={visible11} onOk={() => setVisible11(false)} onCancel={() => setVisible11(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG11b} alt="sdg-11b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     To make cities inclu- sive, safe, resilient and sustainable
                 </Modal>
 
-                <Sdg onClick={() => renderDescription(12)} onKeyPress={() => renderDescription(12)} isUsed={true}>
-                    <img src={SDG12} alt="sdg-12" />
+                <Sdg
+                    ref={hoverRef12}
+                    onClick={() => renderDescription(12)}
+                    onKeyPress={() => renderDescription(12)}
+                    isUsed={true}
+                >
+                    {isHovered12 ? <img src={SDG12b} alt="sdg-12b" /> : <img src={SDG12} alt="sdg-12" />}
                 </Sdg>
                 <Modal visible={visible12} onOk={() => setVisible12(false)} onCancel={() => setVisible12(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG12b} alt="sdg-12b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     To ensure sustainable consumption and pro- duction patterns
                 </Modal>
 
-                <Sdg onClick={() => renderDescription(13)} onKeyPress={() => renderDescription(13)} isUsed={true}>
-                    <img src={SDG13} alt="sdg-13" />
+                <Sdg
+                    ref={hoverRef13}
+                    onClick={() => renderDescription(13)}
+                    onKeyPress={() => renderDescription(13)}
+                    isUsed={true}
+                >
+                    {isHovered13 ? <img src={SDG13b} alt="sdg-13b" /> : <img src={SDG13} alt="sdg-13" />}
                 </Sdg>
                 <Modal visible={visible13} onOk={() => setVisible13(false)} onCancel={() => setVisible13(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG13b} alt="sdg-13b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     Taking urgent action to tackle climate change and its impacts.
                 </Modal>
 
-                <Sdg onClick={() => renderDescription(14)} onKeyPress={() => renderDescription(14)} isUsed={true}>
-                    <img src={SDG14} alt="sdg-14" />
+                <Sdg
+                    ref={hoverRef14}
+                    onClick={() => renderDescription(14)}
+                    onKeyPress={() => renderDescription(14)}
+                    isUsed={true}
+                >
+                    {isHovered14 ? <img src={SDG14b} alt="sdg-14b" /> : <img src={SDG14} alt="sdg-14" />}
                 </Sdg>
                 <Modal visible={visible14} onOk={() => setVisible14(false)} onCancel={() => setVisible14(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG14b} alt="sdg-14b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     To conserve and sustain- ably use the world’s oceans, seas and marine resources.
                 </Modal>
 
-                <Sdg onClick={() => renderDescription(15)} onKeyPress={() => renderDescription(15)} isUsed={true}>
-                    <img src={SDG15} alt="sdg-15" />
+                <Sdg
+                    ref={hoverRef15}
+                    onClick={() => renderDescription(15)}
+                    onKeyPress={() => renderDescription(15)}
+                    isUsed={true}
+                >
+                    {isHovered15 ? <img src={SDG15b} alt="sdg-15b" /> : <img src={SDG15} alt="sdg-15" />}
                 </Sdg>
                 <Modal visible={visible15} onOk={() => setVisible15(false)} onCancel={() => setVisible15(false)}>
-                    <Sdg isUsed={true}>
-                        <img src={SDG15b} alt="sdg-15b" />
-                    </Sdg>
                     What’s the goal here? <br />
                     To sustainably manage forests, combat deserti- fication, halt and reverse land degradation, and halt
                     biodiversity loss.
