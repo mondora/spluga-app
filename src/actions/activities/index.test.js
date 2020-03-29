@@ -10,9 +10,7 @@ describe("Activities Action", () => {
     it("addActivity error", async () => {
         const dispatch = jest.fn();
         const callFunction = Stitch.getAppClient().callFunction;
-        callFunction.mockImplementationOnce(() => {
-            return reject();
-        });
+        callFunction.mockRejectedValue(new Error("Some kind of error"));
 
         await addActivity(data, currentUser, "companyId", impact)(dispatch);
 
@@ -40,9 +38,7 @@ describe("Activities Action", () => {
             .db()
             .collection()
             .find().toArray;
-        toArray.mockImplementationOnce(() => {
-            return reject();
-        });
+        toArray.mockRejectedValue(new Error("Some kind of error"));
 
         await getActivities({})(dispatch);
 

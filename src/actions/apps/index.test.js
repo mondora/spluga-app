@@ -3,10 +3,6 @@ import { addApp, disableApp, enableApp, deleteApp } from ".";
 import { Stitch } from "mongodb-stitch-browser-sdk";
 
 describe("Apps Action", () => {
-    const data = { goal: "paperSaved", date: "2019-09-11", value: 0 };
-    const currentUser = { id: "id" };
-    const impact = [{ key: "paperSaved", value: 0 }];
-
     it("addApps error", async () => {
         const dispatch = jest.fn();
         const createApiKey = Stitch.getAppClient().auth.getProviderClient().createApiKey;

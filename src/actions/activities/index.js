@@ -24,7 +24,7 @@ export function addActivity(activity, currentUser, companyId, impact) {
             const userId = currentUser.id;
             activity = { ...activity, companyId, userId };
             let result = [activity];
-            client.callFunction("addActivity", [activity]);
+            await client.callFunction("addActivity", [activity]);
 
             if (impact) {
                 impact.forEach(goal => {
