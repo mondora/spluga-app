@@ -37,10 +37,8 @@ export const sdgs = [
                 particolarmente vulnerabili alle crisi economiche e politiche, alle problematiche di biodiversità e
                 degli ecosistemi, delle catastrofi naturali e della violenza. Per garantire che i popoli fuggiti alla
                 povertà non ricadano di nuovo in essa, questo obiettivo prevede anche misure per rafforzare la
-                resilienza al sostentamento e i sistemi di sicurezza sociale.
-                <br />
-                <br />
-                <b>Obiettivo 1: porre fine alla povertà in tutte le sue forme in tutto il mondo </b>`
+                resilienza al sostentamento e i sistemi di sicurezza sociale.`,
+        summary: "Obiettivo 1: porre fine alla povertà in tutte le sue forme in tutto il mondo"
     },
     {
         sdgIcon: SDG2,
@@ -57,13 +55,9 @@ export const sdgs = [
     quanto la quantità di cibo. L’Obiettivo 2 mira anche agli aspetti economici, come ad esempio a
     raddoppiare la produttività agricola e il reddito dei piccoli agricoltori entro il 2030. Inoltre, è
     dotato di disposizioni in materia di agricoltura sostenibile per prevenire un aumento della
-    produzione di cibo che possa danneggiare l'ambiente.
-    <br />
-    <br />
-    <b>
-        Obiettivo 2: porre fine alla fame, realizzare la sicurezza alimentare e una migliore nutrizione
-        e promuovere l'agricoltura sostenibile
-    </b>`
+    produzione di cibo che possa danneggiare l'ambiente.`,
+        summary:
+            "Obiettivo 2: porre fine alla fame, realizzare la sicurezza alimentare e una migliore nutrizione e promuovere l'agricoltura sostenibile"
     },
     {
         sdgIcon: SDG3,
@@ -82,10 +76,8 @@ export const sdgs = [
     incidenti stradali e abuso di droghe. Tutte le persone dovrebbero avere accesso ai servizi sanitari
     e ai farmaci di buona qualità. Un altro obiettivo per il 2030 è quello di garantire l'accesso
     universale alla salute sessuale e riproduttiva, compresa la pianificazione familiare, l'informazione
-    e l'educazione.
-    <br />
-    <br />
-    <b>Obiettivo 3: Garantire una vita sana e promuovere il benessere per tutti a tutte le età </b>`
+    e l'educazione.`,
+        summary: "Obiettivo 3: Garantire una vita sana e promuovere il benessere per tutti a tutte le età"
     },
     {
         sdgIcon: SDG4,
@@ -100,13 +92,9 @@ export const sdgs = [
     state affrontate nel MDG. Obiettivo 4 mira a garantire che tutti i bambini, gli adolescenti e gli
     adulti - soprattutto quelle più emarginate e vulnerabili - abbiano accesso all'istruzione e
     formazione adeguate alle loro esigenze e al contesto in cui vivono. Questo rende l'istruzione un
-    fattore che contribuisce a rendere il mondo più sicuro, sostenibile e interdipendente.
-    <br />
-    <br />
-    <b>
-        Obiettivo 4: Garantire un'istruzione di qualità inclusiva e paritaria e di promuovere
-        opportunità di apprendimento permanente per tutti
-    </b>`
+    fattore che contribuisce a rendere il mondo più sicuro, sostenibile e interdipendente.`,
+        summary:
+            "Obiettivo 4: Garantire un'istruzione di qualità inclusiva e paritaria e di promuovere opportunità di apprendimento permanente per tutti"
     },
     {
         sdgIcon: SDG5,
@@ -120,10 +108,8 @@ export const sdgs = [
     violenza contro le donne, le disparità economiche e la bassa partecipazione delle donne al processo
     decisionale politico. Il Goal 5 sostiene le pari opportunità tra uomini e donne nella vita
     economica, l'eliminazione di tutte le forme di violenza contro le donne e le ragazze, l'eliminazione
-    dei matrimoni precoci e forzati, e la parità di partecipazione a tutti i livelli.
-    <br />
-    <br />
-    <b>Obiettivo 5. Raggiungere la parità di genere e l'empowerment di tutte le donne e le ragazze</b>`
+    dei matrimoni precoci e forzati, e la parità di partecipazione a tutti i livelli.`,
+        summary: "Obiettivo 5. Raggiungere la parità di genere e l'empowerment di tutte le donne e le ragazze"
     },
     {
         sdgIcon: SDG6,
@@ -139,13 +125,9 @@ export const sdgs = [
     montagne, foreste, zone umide, fiumi e laghi). Obiettivo 6 mira a migliorare la qualità dell'acqua e
     ridurre l'inquinamento delle acque, in particolare quello da sostanze chimiche pericolose. Si
     sostiene anche la cooperazione transfrontaliera, come la chiave per la gestione delle risorse
-    idriche in modo integrato a tutti i livelli.
-    <br />
-    <br />
-    <b>
-        Obiettivo 6: Garantire la disponibilità e la gestione sostenibile delle risorse idriche e
-        servizi igienico-sanitari per tutti
-    </b>`
+    idriche in modo integrato a tutti i livelli.`,
+        summary:
+            "Obiettivo 6: Garantire la disponibilità e la gestione sostenibile delle risorse idriche e servizi igienico-sanitari per tutti"
     },
     {
         sdgIcon: SDG7,
@@ -161,13 +143,9 @@ export const sdgs = [
     dipende lo sviluppo economico e dal clima, l’obiettivo 7 mira ad un notevole aumento della quota di
     energie rinnovabili nell’ambito delle energie globali e un raddoppiamento del tasso globale di
     miglioramento dell'efficienza energetica. Un altro obiettivo è quello di promuovere la ricerca nelle
-    energie rinnovabili, nonché l’ investimento in infrastrutture e tecnologie di energia pulita.
-    <br />
-    <br />
-    <b>
-        Obiettivo 7: Assicurare l'accesso all'energia a prezzi accessibili, affidabile, sostenibile e
-        moderno per tutti
-    </b>`
+    energie rinnovabili, nonché l’ investimento in infrastrutture e tecnologie di energia pulita.`,
+        summary:
+            "Obiettivo 7: Assicurare l'accesso all'energia a prezzi accessibili, affidabile, sostenibile e moderno per tutti"
     },
     {
         sdgIcon: SDG8,
@@ -183,13 +161,9 @@ export const sdgs = [
     schiavitù moderna e traffico di esseri umani entro il 2030. La crescita economica sostenibile non
     deve avvenire a scapito dell'ambiente, ed è per questo che l’obiettivo 8 mira anche a una migliore
     efficienza dei consumi delle risorse globali e della produzione prevenendo un degrado ambientale
-    legato alla crescita economica.
-    <br />
-    <br />
-    <b>
-        Obiettivo 8: Promuovere una crescita economica duratura, inclusiva e sostenibile, la piena e
-        produttiva occupazione e un lavoro dignitoso per tutti
-    </b>`
+    legato alla crescita economica.`,
+        summary:
+            " Obiettivo 8: Promuovere una crescita economica duratura, inclusiva e sostenibile, la piena e produttiva occupazione e un lavoro dignitoso per tutti"
     },
     {
         sdgIcon: SDG9,
@@ -206,13 +180,9 @@ export const sdgs = [
     l'innovazione soprattutto nei paesi in via di sviluppo, fornire a piccole industrie e aziende un
     maggiore accesso ai servizi finanziari e di credito a prezzi accessibili, e aumentare l'integrazione
     di queste aziende nei mercati. Mira anche a sostenere l'accesso universale e accessibile a internet
-    nei paesi meno sviluppati del mondo.
-    <br />
-    <br />
-    <b>
-        Obiettivo 9: Costruire infrastrutture resistenti, promuovere l'industrializzazione inclusiva e
-        sostenibile e promuovere l'innovazione
-    </b>`
+    nei paesi meno sviluppati del mondo.`,
+        summary:
+            " Obiettivo 9: Costruire infrastrutture resistenti, promuovere l'industrializzazione inclusiva e sostenibile e promuovere l'innovazione"
     },
     {
         sdgIcon: SDG10,
@@ -230,10 +200,8 @@ export const sdgs = [
     regolarizzata e sicura migrazione umana attraverso l'attuazione di adeguate politiche di migrazione.
     L’obiettivo prevede anche una maggiore rappresentanza e una maggiore voce dei paesi in via di
     sviluppo nel processo decisionale all'interno delle istituzioni economiche e finanziarie
-    internazionali.
-    <br />
-    <br />
-    <b>Obiettivo 10: Ridurre le disuguaglianze all'interno e tra i paesi</b>`
+    internazionali.`,
+        summary: "Obiettivo 10: Ridurre le disuguaglianze all'interno e tra i paesi"
     },
     {
         sdgIcon: SDG11,
@@ -251,13 +219,8 @@ export const sdgs = [
     integrato e sostenibile alla pianificazione urbana. Inoltre, esso mira a garantire l'accesso
     universale a spazi verdi e pubblici sicuri e inclusivi, soprattutto per le donne ei bambini, gli
     anziani e le persone con disabilità, e di fornire l'accesso ai sistemi di trasporto sicuri e
-    convenienti.
-    <br />
-    <br />
-    <b>
-        Obiettivo 11: rendere le città e gli insediamenti umani inclusivi, sicuri, flessibili e
-        sostenibili
-    </b>`
+    convenienti.`,
+        summary: "Obiettivo 11: rendere le città e gli insediamenti umani inclusivi, sicuri, flessibili e sostenibili"
     },
     {
         sdgIcon: SDG12,
@@ -271,10 +234,8 @@ export const sdgs = [
     nonché a una sostanziale riduzione della produzione di rifiuti attraverso misure quali il
     riciclaggio. L’Obiettivo 12 ha anche lo scopo di dimezzare lo spreco alimentare, incoraggiare le
     imprese ad adottare pratiche sostenibili e promuovere politiche in materia di appalti pubblici
-    sostenibili.
-    <br />
-    <br />
-    <b>Obiettivo 12: Garantire modelli di consumo e produzione sostenibili</b>`
+    sostenibili.`,
+        summary: " Obiettivo 12: Garantire modelli di consumo e produzione sostenibili"
     },
     {
         sdgIcon: SDG13,
@@ -292,13 +253,8 @@ export const sdgs = [
     rispondere alle sfide quando necessario. L’obiettivo 13 è favorevole al rafforzamento della
     resilienza alle calamità naturali legate al clima e riafferma l'impegno assunto dai paesi sviluppati
     a mobilitare ogni anno 100 miliardi di dollari congiuntamente da tutte le fonti, entro il 2020, per
-    aiutare i paesi in via di sviluppo ad adattarsi ai cambiamenti climatici.
-    <br />
-    <br />
-    <b>
-        Obiettivo 13: adottare misure urgenti per combattere il cambiamento climatico e le sue
-        conseguenze
-    </b>`
+    aiutare i paesi in via di sviluppo ad adattarsi ai cambiamenti climatici.`,
+        summary: "Obiettivo 13: adottare misure urgenti per combattere il cambiamento climatico e le sue conseguenze"
     },
     {
         sdgIcon: SDG14,
@@ -314,13 +270,9 @@ export const sdgs = [
     gestione e la protezione degli ecosistemi marini e costieri. Esso mira inoltre, entro il 2020, a
     regolamentare la raccolta in modo efficace e a bloccare la pesca eccessiva, ponendo fine alla pesca
     illegale e non regolamentata e le pratiche di pesca distruttive. Inoltre, obiettivo 14 tende a
-    vietare determinati tipi di sovvenzioni alla pesca.
-    <br />
-    <br />
-    <b>
-        Obiettivo 14: conservare e utilizzare in modo durevole gli oceani, i mari e delle risorse marine
-        per lo sviluppo sostenibile
-    </b>`
+    vietare determinati tipi di sovvenzioni alla pesca.`,
+        summary:
+            "Obiettivo 14: conservare e utilizzare in modo durevole gli oceani, i mari e delle risorse marine per lo sviluppo sostenibile"
     },
     {
         sdgIcon: SDG15,
@@ -338,14 +290,9 @@ export const sdgs = [
     aumentare il rimboschimento entro il 2020. Inoltre, partecipa alla lotta alla desertificazione entro
     il 2030 e al ripristino dei terreni interessati dalla desertificazione, siccità e inondazioni. Per
     proteggere la biodiversità, l’obiettivo 15 chiede misure urgenti per porre fine bracconaggio e il
-    traffico di specie animali e vegetali protette.
-    <br />
-    <br />
-    <b>
-        Obiettivo 15: proteggere, restaurare e promuovere l'uso sostenibile degli ecosistemi terrestri,
-        gestire in modo sostenibile le foreste, lotta alla desertificazione, e fermare e invertire il
-        degrado del suolo e arrestare la perdita di biodiversità
-    </b>`
+    traffico di specie animali e vegetali protette.`,
+        summary:
+            "Obiettivo 15: proteggere, restaurare e promuovere l'uso sostenibile degli ecosistemi terrestri, gestire in modo sostenibile le foreste, lotta alla desertificazione, e fermare e invertire il degrado del suolo e arrestare la perdita di biodiversità"
     },
     {
         sdgIcon: SDG16,
@@ -360,14 +307,9 @@ export const sdgs = [
     Inoltre, obiettivo 16 prevede di ridurre in modo significativo corruzione e concussione, così come
     flussi finanziari illeciti e di armi. Per garantire che le società siano pacifiche e inclusive,
     L’Obiettivo 16 ha anche lo scopo di promuovere le istituzioni inclusive e lo stato di diritto, e di
-    garantire la parità di accesso alla giustizia.
-    <br />
-    <br />
-    <b>
-        Obiettivo 16: promuovere società pacifiche e inclusivi per lo sviluppo sostenibile, fornire
-        l'accesso alla giustizia per tutti e costruire istituzioni efficaci, responsabili e inclusive a
-        tutti i livelli
-    </b>`
+    garantire la parità di accesso alla giustizia.`,
+        summary:
+            "Obiettivo 16: promuovere società pacifiche e inclusivi per lo sviluppo sostenibile, fornire l'accesso alla giustizia per tutti e costruire istituzioni efficaci, responsabili e inclusive a tutti i livelli"
     },
     {
         sdgIcon: SDG17,
@@ -384,12 +326,8 @@ export const sdgs = [
     maggiore collaborazione internazionale nel campo delle scienze, tecnologia e innovazione, e la
     promozione di un sistema commerciale multilaterale equo. L’Obiettivo 17 sostiene anche il
     miglioramento della stabilità macroeconomica e la coerenza delle politiche nell'interesse di uno
-    sviluppo sostenibile.
-    <br />
-    <br />
-    <b>
-        Obiettivo 17: Rafforzare le modalità di attuazione e di rivitalizzare il partenariato globale
-        per lo sviluppo sostenibile
-    </b>`
+    sviluppo sostenibile.`,
+        summary:
+            " Obiettivo 17: Rafforzare le modalità di attuazione e di rivitalizzare il partenariato globale per lo sviluppo sostenibile"
     }
 ];

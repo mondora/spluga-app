@@ -30,7 +30,16 @@ export const SdgButton = styled.button`
     }
 `;
 
-const Sdg = ({ sdgIcon, sdgGif, isUsed = false, alt = "sdg", description = "" }) => {
+const Description = styled.div`
+    font-size: 16px;
+    padding-bottom: 8px;
+`;
+
+const Summary = styled.div`
+    font-weight: 600;
+`;
+
+const Sdg = ({ sdgIcon, sdgGif, isUsed = false, alt = "sdg", description = "", summary = "" }) => {
     const [visible, setVisible] = useState(false);
     const [hoverRef, isHovered] = useHover();
     return (
@@ -45,7 +54,9 @@ const Sdg = ({ sdgIcon, sdgGif, isUsed = false, alt = "sdg", description = "" })
             </SdgButton>
 
             <Modal title={"Descrizione"} show={visible} handleClose={() => setVisible(false)}>
-                {description}
+                <Description>{description}</Description>
+
+                <Summary>{summary}</Summary>
             </Modal>
         </>
     );
@@ -56,7 +67,8 @@ Sdg.propTypes = {
     sdgGif: PropTypes.any,
     isUsed: PropTypes.bool,
     alt: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
+    summary: PropTypes.string
 };
 
 export default Sdg;

@@ -38,6 +38,7 @@ const Sdgs = () => {
                         isUsed={sdg.isUsed}
                         alt={`sdg-${index}`}
                         description={sdg.description}
+                        summary={sdg.summary}
                     />
                 ))}
             </SdgsContainer>
