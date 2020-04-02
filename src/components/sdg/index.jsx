@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { useHover } from "../../lib/hooks";
 
-import { Modal } from "antd";
+import Modal from "../modal";
 
 import styled, { css } from "styled-components";
 
@@ -43,7 +43,8 @@ const Sdg = ({ sdgIcon, sdgGif, isUsed = false, alt = "sdg", description = "" })
             >
                 {isHovered && isUsed ? <img src={sdgGif} alt={alt} /> : <img src={sdgIcon} alt={alt} />}
             </SdgButton>
-            <Modal visible={visible} onOk={() => setVisible(false)} onCancel={() => setVisible(false)}>
+
+            <Modal title={"Descrizione"} show={visible} handleClose={() => setVisible(false)}>
                 {description}
             </Modal>
         </>
