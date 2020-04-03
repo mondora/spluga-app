@@ -10,5 +10,6 @@ before_install:
 before_script:
   - npm install -g codecov
 script:
+  - yarn lint
   - CI=true yarn test --coverage
   - codecov

@@ -26,9 +26,7 @@ describe("Auth Action", () => {
         });
         const handleRedirectResult = Stitch.getAppClient().auth.handleRedirectResult;
 
-        handleRedirectResult.mockImplementationOnce(() => {
-            return reject();
-        });
+        handleRedirectResult.mockRejectedValue(new Error("Some kind of error"));
 
         await checkLogin()(dispatch);
 
