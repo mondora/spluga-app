@@ -49,6 +49,7 @@ const Sdgs = () => {
                 <a
                     href={"https://www.aics.gov.it/home-ita/settori/obiettivi-di-sviluppo-sostenibile-sdgs/"}
                     target={"_blank"}
+                    rel="noopener noreferrer"
                 >
                     {"visita la pagina ufficiale per maggiori informazioni sugli SDGs"}
                 </a>
