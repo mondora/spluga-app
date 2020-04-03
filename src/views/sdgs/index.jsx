@@ -8,7 +8,7 @@ const PageContainer = styled.div`
     margin: 32px;
 `;
 
-const Description = styled.div`
+export const Description = styled.div`
     margin: 8px;
     text-align: center;
 `;

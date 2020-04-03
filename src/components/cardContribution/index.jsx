@@ -1,3 +1,5 @@
+//TODO
+
 import React from "react";
 import styled from "styled-components";
 
@@ -15,7 +17,7 @@ const Name = styled.span`
     padding: 20px;
 `;
 
-const getLabels = label => {
+const getLabels = (label) => {
     switch (label) {
         case "paperSaved":
             return "CARTA RISPARMIATA";
@@ -38,13 +40,13 @@ const getLabels = label => {
     }
 };
 
-const getNames = goals => {
+const getNames = (goals) => {
     if (goals) {
-        return goals.map(x => getLabels(x.key));
+        return goals.map((x) => getLabels(x.key));
     }
 };
 
-const CardContribution = cardGoals => {
+const CardContribution = (cardGoals) => {
     const goals = cardGoals.cardGoals;
 
     return <Container>{getNames(goals) && getNames(goals).map((x, index) => <Name key={index}>{x}</Name>)}</Container>;

@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-const Container = styled.div`
+
+export const Container = styled.div`
     display: none;
     position: fixed;
     right: 0;
@@ -11,7 +13,7 @@ const Container = styled.div`
     background-color: rgba(51, 51, 51, 0.7);
     z-index: 1;
 
-    ${props =>
+    ${(props) =>
         props.showModal &&
         css`
             display: flex;
@@ -32,7 +34,7 @@ const Container = styled.div`
     }
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -52,23 +54,23 @@ const Content = styled.div`
     }
 `;
 
-const Header = styled.h2`
+export const Header = styled.h2`
     border-bottom: 1px solid #ccc;
     padding: 16px;
     margin: 0;
 `;
 
-const Body = styled.div`
+export const Body = styled.div`
     padding: 16px;
 `;
 
-const Actions = styled.div`
+export const Actions = styled.div`
     display: flex;
     justify-content: center;
     padding: 16px;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
     border: 0;
     background: #bfbccb;
     border-radius: 5px;
@@ -89,6 +91,13 @@ const Modal = ({ handleClose, show, title, children }) => {
             </Content>
         </Container>
     );
+};
+
+Modal.propTypes = {
+    children: PropTypes.node,
+    handleClose: PropTypes.func,
+    show: PropTypes.bool,
+    title: PropTypes.string,
 };
 
 export default Modal;
