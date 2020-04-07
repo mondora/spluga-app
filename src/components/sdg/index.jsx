@@ -14,7 +14,7 @@ export const SdgButton = styled.button`
     border: none;
     cursor: pointer;
 
-    ${props =>
+    ${(props) =>
         props.isUsed
             ? css`
                   &:hover {
@@ -30,12 +30,12 @@ export const SdgButton = styled.button`
     }
 `;
 
-const Description = styled.div`
+export const Description = styled.div`
     font-size: 16px;
     padding-bottom: 8px;
 `;
 
-const Summary = styled.div`
+export const Summary = styled.div`
     font-weight: 600;
 `;
 
@@ -68,7 +68,7 @@ Sdg.propTypes = {
     isUsed: PropTypes.bool,
     alt: PropTypes.string,
     description: PropTypes.string,
-    summary: PropTypes.string
+    summary: PropTypes.string,
 };
 
 export default Sdg;
