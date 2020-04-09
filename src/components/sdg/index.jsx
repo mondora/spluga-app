@@ -63,8 +63,8 @@ const Sdg = ({ sdgIcon, sdgGif, isUsed = false, alt = "sdg", description = "", s
 };
 
 Sdg.propTypes = {
-    sdgIcon: PropTypes.any,
-    sdgGif: PropTypes.any,
+    sdgIcon: PropTypes.string,
+    sdgGif: PropTypes.string,
     isUsed: PropTypes.bool,
     alt: PropTypes.string,
     description: PropTypes.string,
