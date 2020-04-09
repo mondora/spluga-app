@@ -32,7 +32,7 @@ export const Profile = ({
     target,
     intl,
     getGoals,
-    goals
+    goals,
 }) => {
     useEffect(() => {
         getCompany({});
@@ -61,7 +61,7 @@ export const Profile = ({
         }
     }, [addTargetReset, target, intl]);
 
-    const handleAddTarget = data => {
+    const handleAddTarget = (data) => {
         const companyId = company && company.result ? company.result._id : null;
         addTarget(data, auth.currentUser, companyId);
     };
@@ -69,7 +69,7 @@ export const Profile = ({
     const notify = (type, message) => {
         notification[type]({
             message: type,
-            description: message
+            description: message,
         });
     };
 
@@ -97,7 +97,6 @@ export const Profile = ({
             <FieldCenter>
                 <ActivityResult activities={activitiesList} goals={goalsList} />
             </FieldCenter>
-
             <SplugaTips isCompany={false} />
         </PageContainer>
     ) : (
@@ -117,16 +116,16 @@ Profile.propTypes = {
     addUser: PropTypes.func,
     addTarget: PropTypes.func,
     getGoals: PropTypes.func,
-    goals: PropTypes.object
+    goals: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     auth: state.auth,
     activities: state.getActivities,
     company: state.getCompany,
     user: state.getUser,
     goals: state.getGoals,
-    target: state.addTarget.status
+    target: state.addTarget.status,
 });
 
 const composedHoc = compose(
