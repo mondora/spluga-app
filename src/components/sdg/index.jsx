@@ -5,30 +5,25 @@ import Modal from "../modal";
 
 import styled, { css } from "styled-components";
 
-export const SdgButton = styled.button`
-    width: 173px;
-    height: 173px;
+export const SdgButton = styled.div`
+    margin: 2px;
+    width: 170px;
+    height: 170px;
     background: transparent;
     border: none;
     cursor: pointer;
+    content: url(${(props) => props.img});
 
     ${(props) =>
         props.isUsed
             ? css`
                   &:hover {
-                      filter: contrast(160%) brightness(100%);
-                      img {
-                          content: url(${(props) => props.gif});
-                      }
+                      content: url(${(props) => props.gif});
                   }
               `
             : css`
-                  filter: opacity(25%) grayscale(0.3);
+                  filter: opacity(25%);
               `}
-
-    img {
-        width: 100%;
-    }
 `;
 
 export const Description = styled.div`
@@ -49,9 +44,8 @@ const Sdg = ({ sdgIcon, sdgGif, isUsed = false, alt = "sdg", description = "", s
                 onKeyPress={() => setVisible(true)}
                 isUsed={isUsed}
                 gif={sdgGif}
-            >
-                {<img src={sdgIcon} alt={alt} />}
-            </SdgButton>
+                img={sdgIcon}
+            />
 
             <Modal title={"Descrizione"} show={visible} handleClose={() => setVisible(false)}>
                 <Description>{description}</Description>
