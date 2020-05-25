@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Sdgs", () => {
     it("Renders view without error", () => {
         const view = shallow(<Sdgs />);
-        expect(view.find(SdgsContainer).length).toBe(1);
+        expect(view.find(SdgsContainer).length).toBe(2);
         expect(view.find(Sdg).length).toBe(17);
         expect(view.find(Description).length).toBe(1);
     });
