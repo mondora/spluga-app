@@ -1,16 +1,23 @@
 import SDG1 from "../assets/E_WEB_01.png";
+import SDG1b from "../assets/E_GIF_01.gif";
 import SDG3 from "../assets/E_WEB_03.png";
 import SDG3b from "../assets/E_GIF_03.gif";
 import SDG2 from "../assets/E_WEB_02.png";
+import SDG2b from "../assets/E_GIF_02.gif";
 import SDG4 from "../assets/E_WEB_04.png";
 import SDG4b from "../assets/E_GIF_04.gif";
 import SDG5 from "../assets/E_WEB_05.png";
+import SDG5b from "../assets/E_GIF_05.gif";
 import SDG6 from "../assets/E_WEB_06.png";
+import SDG6b from "../assets/E_GIF_06.gif";
 import SDG7 from "../assets/E_WEB_07.png";
+import SDG7b from "../assets/E_GIF_07.gif";
 import SDG8 from "../assets/E_WEB_08.png";
 import SDG8b from "../assets/E_GIF_08.gif";
 import SDG9 from "../assets/E_WEB_09.png";
+import SDG9b from "../assets/E_GIF_09.gif";
 import SDG10 from "../assets/E_WEB_10.png";
+import SDG10b from "../assets/E_GIF_10.gif";
 import SDG11 from "../assets/E_WEB_11.png";
 import SDG11b from "../assets/E_GIF_11.gif";
 import SDG12 from "../assets/E_WEB_12.png";
@@ -22,12 +29,14 @@ import SDG14b from "../assets/E_GIF_14.gif";
 import SDG15 from "../assets/E_WEB_15.png";
 import SDG15b from "../assets/E_GIF_15.gif";
 import SDG16 from "../assets/E_WEB_16.png";
+import SDG16b from "../assets/E_GIF_16.gif";
 import SDG17 from "../assets/E_WEB_17.png";
+import SDG17b from "../assets/E_GIF_17.gif";
 
 export const sdgs = [
     {
         sdgIcon: SDG1,
-        sdgGif: SDG1,
+        sdgGif: SDG1b,
         isUsed: false,
         description: `Nonostante i notevoli progressi nella lotta contro la povertà a partire dal 1990, più di 800 milioni di
                 persone, il 70% dei quali sono donne, vivono ancora in condizioni di estrema povertà. La nuova Agenda
@@ -42,7 +51,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG2,
-        sdgGif: SDG2,
+        sdgGif: SDG2b,
         isUsed: false,
         description: `Anche se la situazione è migliorata in numerosi paesi, molte persone soffrono ancora la fame e 
     la malnutrizione in tutto il mondo. La denutrizione colpisce quasi 800 milioni di persone in tutto il mondo - la maggior parte dei quali donne e bambini. L'obiettivo del 2030 dell’ Agenda è quello di 
@@ -98,7 +107,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG5,
-        sdgGif: SDG5,
+        sdgGif: SDG5b,
         isUsed: false,
         description: ` La disuguaglianza di genere è uno dei maggiori ostacoli allo sviluppo sostenibile, alla crescita
     economica e alla riduzione della povertà. Grazie all’ OSM 3 sulla parità di genere e l'empowerment
@@ -113,7 +122,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG6,
-        sdgGif: SDG6,
+        sdgGif: SDG6b,
         isUsed: false,
         description: ` L'accesso all'acqua potabile e ai servizi igienici è un diritto umano e, insieme con le risorse
     idriche, un fattore determinante in tutti gli aspetti dello sviluppo sociale, economico e
@@ -131,7 +140,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG7,
-        sdgGif: SDG7,
+        sdgGif: SDG7b,
         isUsed: false,
         description: `L'accesso all'energia è un prerequisito essenziale per raggiungere molti obiettivi di sviluppo
     sostenibile che si estendono ben al di là del settore energetico, come ad esempio l'eliminazione
@@ -167,7 +176,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG9,
-        sdgGif: SDG9,
+        sdgGif: SDG9b,
         isUsed: false,
         description: ` Gli investimenti in infrastrutture sostenibili e nella ricerca scientifica e tecnologica aumentano
     la crescita economica, creano posti di lavoro e promuovono la prosperità. I progetti
@@ -186,7 +195,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG10,
-        sdgGif: SDG10,
+        sdgGif: SDG10b,
         isUsed: false,
         description: ` Le disuguaglianze a livello globale sono enormi e presentano uno dei maggiori ostacoli allo sviluppo
     sostenibile e alla lotta contro la povertà. La disuguaglianza all'interno di molti paesi è in
@@ -296,7 +305,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG16,
-        sdgGif: SDG16,
+        sdgGif: SDG16b,
         isUsed: false,
         description: `   E’ evidente che senza una comunità pacifica e inclusiva e una governance efficace, lo sviluppo non
     può essere sostenibile. Ad esempio, i paesi colpiti da conflitti sono i più lontani dal
@@ -313,7 +322,7 @@ export const sdgs = [
     },
     {
         sdgIcon: SDG17,
-        sdgGif: SDG17,
+        sdgGif: SDG17b,
         isUsed: false,
         description: `  Il successo dell'attuazione dei 17 obiettivi di sviluppo sostenibile dipende da un quadro di
     finanziamento globale che va al di là degli impegni ufficiali di assistenza allo sviluppo. Accanto a
