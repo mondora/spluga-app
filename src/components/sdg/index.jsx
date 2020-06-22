@@ -8,8 +8,8 @@ import styled, { css } from "styled-components";
 export const SdgButton = styled.div`
     position: relative;
     margin: 2px;
-    width: 170px;
-    height: 170px;
+    width: 150px;
+    height: 150px;
     background: none;
     border: none;
     cursor: pointer;
@@ -17,7 +17,8 @@ export const SdgButton = styled.div`
     ${(props) =>
         props.isUsed ||
         css`
-            filter: opacity(25%);
+            width: 110px;
+            height: 110px;
         `}
 `;
 
