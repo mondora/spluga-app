@@ -15,9 +15,9 @@ export const ADD_TARGET_SUCCESS = "ADD_TARGET_SUCCESS";
 export const ADD_TARGET_ERROR = "ADD_TARGET_ERROR";
 export function addTarget(data, currentUser, companyId) {
     const { id } = currentUser;
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch({
-            type: ADD_TARGET_START
+            type: ADD_TARGET_START,
         });
 
         try {
@@ -30,13 +30,13 @@ export function addTarget(data, currentUser, companyId) {
             );
 
             dispatch({
-                type: ADD_TARGET_SUCCESS
+                type: ADD_TARGET_SUCCESS,
             });
         } catch (error) {
             dispatch({
                 type: ADD_TARGET_ERROR,
                 error: true,
-                errorInfo: { code: 500, message: error }
+                errorInfo: { code: 500, message: error },
             });
         }
     };
@@ -45,9 +45,9 @@ export function addTarget(data, currentUser, companyId) {
 export const ADD_TARGET_RESET = "ADD_TARGET_RESET";
 
 export function addTargetReset() {
-    return dispatch => {
+    return (dispatch) => {
         dispatch({
-            type: ADD_TARGET_RESET
+            type: ADD_TARGET_RESET,
         });
     };
 }

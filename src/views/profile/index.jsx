@@ -15,8 +15,29 @@ import SplugaCard from "../../components/splugaCard";
 import CompanyTarget from "../../components/companyTarget";
 import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
+import SDGImpactChart from "../../components/sdgImpactChart";
 
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
+
+const goals = [
+    "bikeTravel",
+    "busTravel",
+    "trainTravel",
+    "paperSaved",
+    "training",
+    "co2Saved",
+    "waterSaved",
+    "openSourceCode",
+    "plasticSaved",
+    "treeSaved",
+];
+const activitiesMock = Array.from({ length: Math.floor(Math.random() * 70) }, () => ({
+    date: new Date(
+        new Date("2020-01-01").getTime() +
+            Math.random() * (new Date("2020-12-31").getTime() - new Date("2020-01-01").getTime())
+    ),
+    goal: goals[Math.floor(Math.random() * goals.length)],
+}));
 
 export const Profile = ({
     auth,
@@ -96,6 +117,9 @@ export const Profile = ({
             </FieldRight>
             <FieldCenter>
                 <ActivityResult activities={activitiesList} goals={goalsList} />
+            </FieldCenter>
+            <FieldCenter>
+                <SDGImpactChart activities={activitiesMock} />
             </FieldCenter>
             <SplugaTips isCompany={false} />
         </PageContainer>
