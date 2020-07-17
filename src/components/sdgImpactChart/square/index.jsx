@@ -8,19 +8,17 @@ const Square = React.memo(({ sdg, x, y }) => {
     const [rotation] = useState(Math.random() * 24 - 12);
 
     return (
-        <>
-            <Container
-                onMouseOver={() => setTooltipVisibility(true)}
-                onMouseLeave={() => setTooltipVisibility(false)}
-                x={x}
-                y={y}
-            >
-                <ColoredSquare color={sdg.color} rotation={rotation} />
-                <Tooltip isVisible={isTooltipVisible} color={sdg.color}>
-                    {sdg.name}
-                </Tooltip>
-            </Container>
-        </>
+        <Container
+            onMouseOver={() => setTooltipVisibility(true)}
+            onMouseLeave={() => setTooltipVisibility(false)}
+            x={x}
+            y={y}
+        >
+            <ColoredSquare color={sdg.color} rotation={rotation} />
+            <Tooltip isVisible={isTooltipVisible} color={sdg.color}>
+                {sdg.name}
+            </Tooltip>
+        </Container>
     );
 });
 

@@ -116,26 +116,6 @@ describe("SDGImpactChart", () => {
         }
     });
 
-    it.skip("correctly sets y prop of Square", () => {
-        const activities = [
-            {
-                "1": 1,
-                "3": 3,
-                "6": 1,
-                "7": 1,
-                "8": 1,
-                "10": 2,
-                "11": 1,
-                "12": 1,
-            },
-        ];
-        const component = shallow(<SDGImpactChart activities={activities} />);
-
-        for (let i = 0; i < 16; i++) {
-            expect(component.find(Square).at(i).prop("y")).toBe(16 - i);
-        }
-    });
-
     describe("for Sqaure positioning", () => {
         it("renders a column for each element present in the normalized activities list setting y correctly", () => {
             const activities = [

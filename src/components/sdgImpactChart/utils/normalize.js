@@ -4,39 +4,36 @@
  * in a column does not excede 17
  */
 export default (rawSDGImpactMap) => {
-    // get min and max
-    const [min, max] = rawSDGImpactMap.reduce(
-        (acc, i) => {
-            const [currentMin, currentMax] = acc;
-            const values = Object.values(i);
-            return [
-                Math.min(...values) < currentMin ? Math.min(...values) : currentMin,
-                Math.max(...values) > currentMax ? Math.max(...values) : currentMax,
-            ];
-        },
-        [16, 0]
-    );
-    // find the max number of empty square
-    const maxSquareNumber = rawSDGImpactMap.reduce((acc, i) => {
-        const max = 16 - Object.values(i).length;
-        return max < acc ? max : acc;
-    }, 16);
-    // normalize the series, after that the elements with value equal to min are removed
+    // if the sum of the values for every column is not greater than 17 a normalization is not require
+    if (
+        !rawSDGImpactMap
+            .map((column) => Object.values(column).reduce((acc, value) => acc + value, 0) > 17)
+            .find((sumIsGreaterThan17) => sumIsGreaterThan17)
+    ) {
+        return rawSDGImpactMap;
+    }
+
+    // get min value
+    const min = rawSDGImpactMap.reduce((currentMin, i) => {
+        const values = Object.values(i);
+        return Math.min(...values) < currentMin ? Math.min(...values) : currentMin;
+    }, 17);
+
+    // normalize the series, after that, the elements with value equal to min are removed
     // because for those 1 is setted by default
-    const normalizedImpactMap = rawSDGImpactMap.map((column) =>
-        Object.keys(column).reduce(
+    return rawSDGImpactMap.map((column) => {
+        // count the goals that has one square
+        const oneSquareGoalsCount = Object.values(column).reduce((acc, value) => (value === min ? ++acc : acc), 0);
+        const columnValuesSum = Object.values(column).reduce((acc, value) => acc + value, 0);
+        return Object.keys(column).reduce(
             (acc, key) =>
                 column[key] === min
                     ? { ...acc, [key]: 1 }
                     : {
                           ...acc,
-                          [key]: Math.round(
-                              ((column[key] - (min + 1)) / (max - (min + 1))) * (maxSquareNumber - 2) + 2
-                          ),
+                          [key]: Math.round(((17 - oneSquareGoalsCount) * column[key]) / columnValuesSum),
                       },
             {}
-        )
-    );
-
-    return normalizedImpactMap;
+        );
+    });
 };
