@@ -4,9 +4,10 @@ import React from "react";
 import sdgs from "../../common/sdgs";
 import distribute from "./utils/distribute";
 import normalize from "./utils/normalize";
-import { Container } from "./styled";
-import Square from "./square";
 import EmptySquare from "./emptySquare";
+import MonthsBar from "./monthsBar";
+import Square from "./square";
+import { Chart } from "./styled";
 
 /*
  * The goal of the component is to draw a grid composed by:
@@ -21,25 +22,28 @@ import EmptySquare from "./emptySquare";
 const SDGImpactChart = React.memo(({ activities }) => {
     const normalizedActivities = normalize(distribute(activities));
     return (
-        <Container>
-            {normalizedActivities.map((column, x) => {
-                // random sort of SDG impact
-                const shuffoledSDGImpact = Object.keys(column).reduce(
-                    (acc, i) =>
-                        Math.random() > 0.5
-                            ? [...acc, ...Array.from({ length: column[i] }, () => i)]
-                            : [...Array.from({ length: column[i] }, () => i), ...acc],
-                    []
-                );
-                return Array.from({ length: 16 }, (v, y) =>
-                    shuffoledSDGImpact[y] ? (
-                        <Square sdg={sdgs[shuffoledSDGImpact[y]]} key={`${x}${y}`} x={x} y={16 - y} />
-                    ) : (
-                        <EmptySquare key={`${x}${y}`} x={x} y={16 - y} />
-                    )
-                );
-            })}
-        </Container>
+        <div>
+            <Chart>
+                {normalizedActivities.map((column, x) => {
+                    // random sort of SDG impact
+                    const shuffoledSDGImpact = Object.keys(column).reduce(
+                        (acc, i) =>
+                            Math.random() > 0.5
+                                ? [...acc, ...Array.from({ length: column[i] }, () => i)]
+                                : [...Array.from({ length: column[i] }, () => i), ...acc],
+                        []
+                    );
+                    return Array.from({ length: 16 }, (v, y) =>
+                        shuffoledSDGImpact[y] ? (
+                            <Square sdg={sdgs[shuffoledSDGImpact[y]]} key={`${x}${y}`} x={x} y={16 - y} />
+                        ) : (
+                            <EmptySquare key={`${x}${y}`} x={x} y={16 - y} />
+                        )
+                    );
+                })}
+            </Chart>
+            <MonthsBar />
+        </div>
     );
 });
 

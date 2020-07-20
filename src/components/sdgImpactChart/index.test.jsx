@@ -5,6 +5,7 @@ import distribute from "./utils/distribute";
 import normalize from "./utils/normalize";
 import Square from "./square";
 import EmptySquare from "./emptySquare";
+import { Chart } from "./styled";
 import SDGImpactChart from "./";
 
 jest.mock("./utils/distribute", () => jest.fn().mockImplementation((activities) => activities));
@@ -36,19 +37,19 @@ describe("SDGImpactChart", () => {
         ];
         const component = shallow(<SDGImpactChart activities={activities} />);
 
-        expect(component.children().length).toBe(16);
+        expect(component.find(Chart).children().length).toBe(16);
         // check that the first 6 elements are Square
         let firstSixSquares = [];
         for (let i = 0; i < 6; i++) {
-            expect(component.childAt(i).type()).toBe(Square);
-            firstSixSquares = [...firstSixSquares, component.childAt(i).prop("sdg")];
+            expect(component.find(Chart).childAt(i).type()).toBe(Square);
+            firstSixSquares = [...firstSixSquares, component.find(Chart).childAt(i).prop("sdg")];
         }
         expect(firstSixSquares.filter((i) => i.name === "Sustainable Cities and Communities").length).toBe(1);
         expect(firstSixSquares.filter((i) => i.name === "Responsible Consumption and Production").length).toBe(3);
         expect(firstSixSquares.filter((i) => i.name === "Climate Action").length).toBe(2);
         // check that the last 10 elements are EmptySquare
         for (let i = 7; i < 16; i++) {
-            expect(component.childAt(i).type()).toBe(EmptySquare);
+            expect(component.find(Chart).childAt(i).type()).toBe(EmptySquare);
         }
     });
 
@@ -63,12 +64,12 @@ describe("SDGImpactChart", () => {
         ];
         const component = shallow(<SDGImpactChart activities={activities} />);
 
-        expect(component.children().length).toBe(16);
+        expect(component.find(Chart).children().length).toBe(16);
         // check that the first 6 elements are Square
         let firstFourteenSquares = [];
         for (let i = 0; i < 14; i++) {
-            expect(component.childAt(i).type()).toBe(Square);
-            firstFourteenSquares = [...firstFourteenSquares, component.childAt(i).prop("sdg")];
+            expect(component.find(Chart).childAt(i).type()).toBe(Square);
+            firstFourteenSquares = [...firstFourteenSquares, component.find(Chart).childAt(i).prop("sdg")];
         }
         expect(firstFourteenSquares.filter((i) => i.name === "Gender Equality").length).toBe(6);
         expect(firstFourteenSquares.filter((i) => i.name === "No Poverty").length).toBe(4);
@@ -76,7 +77,7 @@ describe("SDGImpactChart", () => {
         expect(firstFourteenSquares.filter((i) => i.name === "Clean Water and Sanitation").length).toBe(1);
         // check that the last 2 elements are EmptySquare
         for (let i = 14; i < 16; i++) {
-            expect(component.childAt(i).type()).toBe(EmptySquare);
+            expect(component.find(Chart).childAt(i).type()).toBe(EmptySquare);
         }
     });
 
@@ -95,12 +96,12 @@ describe("SDGImpactChart", () => {
         ];
         const component = shallow(<SDGImpactChart activities={activities} />);
 
-        expect(component.children().length).toBe(16);
+        expect(component.find(Chart).children().length).toBe(16);
         // check that the first 6 elements are Square
         let firstElevenSquares = [];
         for (let i = 0; i < 11; i++) {
-            expect(component.childAt(i).type()).toBe(Square);
-            firstElevenSquares = [...firstElevenSquares, component.childAt(i).prop("sdg")];
+            expect(component.find(Chart).childAt(i).type()).toBe(Square);
+            firstElevenSquares = [...firstElevenSquares, component.find(Chart).childAt(i).prop("sdg")];
         }
         expect(firstElevenSquares.filter((i) => i.name === "Climate Action").length).toBe(1);
         expect(firstElevenSquares.filter((i) => i.name === "Responsible Consumption and Production").length).toBe(1);
@@ -112,7 +113,7 @@ describe("SDGImpactChart", () => {
         expect(firstElevenSquares.filter((i) => i.name === "Sustainable Cities and Communities").length).toBe(2);
         // check that the last 5 elements are EmptySquare
         for (let i = 11; i < 16; i++) {
-            expect(component.childAt(i).type()).toBe(EmptySquare);
+            expect(component.find(Chart).childAt(i).type()).toBe(EmptySquare);
         }
     });
 
@@ -136,15 +137,15 @@ describe("SDGImpactChart", () => {
             expect(component.find(Square).length).toBe(9);
             // first column
             for (let i = 0; i < 16; i++) {
-                expect(component.childAt(i).prop("x")).toBe(0);
+                expect(component.find(Chart).childAt(i).prop("x")).toBe(0);
             }
             // second column
             for (let i = 16; i < 32; i++) {
-                expect(component.childAt(i).prop("x")).toBe(1);
+                expect(component.find(Chart).childAt(i).prop("x")).toBe(1);
             }
             // third column
             for (let i = 32; i < 48; i++) {
-                expect(component.childAt(i).prop("x")).toBe(2);
+                expect(component.find(Chart).childAt(i).prop("x")).toBe(2);
             }
         });
     });

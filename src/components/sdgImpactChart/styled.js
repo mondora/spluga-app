@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Chart = styled.div`
     display: grid;
     grid-template-columns: repeat(36, 16px);
     grid-template-rows: repeat(16, 16px);

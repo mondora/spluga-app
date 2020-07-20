@@ -11,10 +11,9 @@ import { getGoals } from "../../actions/goals";
 import { addTarget, addTargetReset } from "../../actions/targets";
 import { getActivities } from "../../actions/activities";
 
-import SplugaCard from "../../components/splugaCard";
-import CompanyTarget from "../../components/companyTarget";
-import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
+import SplugaCard from "../../components/splugaCard";
+import { SplugaTips } from "../../components/splugaTips";
 import SDGImpactChart from "../../components/sdgImpactChart";
 
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
@@ -82,11 +81,6 @@ export const Profile = ({
         }
     }, [addTargetReset, target, intl]);
 
-    const handleAddTarget = (data) => {
-        const companyId = company && company.result ? company.result._id : null;
-        addTarget(data, auth.currentUser, companyId);
-    };
-
     const notify = (type, message) => {
         notification[type]({
             message: type,
@@ -102,8 +96,6 @@ export const Profile = ({
     }
 
     const loading = company && company.status ? company.status.started : true;
-    const selectedCompany = company && company.result ? company.result : null;
-    const targets = selectedCompany ? selectedCompany.targets : [];
     const activitiesList = activities ? activities.activities : [];
     const goalsList = goals ? goals.goals : [];
 
@@ -113,13 +105,10 @@ export const Profile = ({
                 <SplugaCard auth={auth} type={"user"} />
             </FieldLeft>
             <FieldRight>
-                <CompanyTarget onAddTarget={handleAddTarget} targets={targets} goals={goalsList} />
+                <SDGImpactChart activities={activitiesMock} />
             </FieldRight>
             <FieldCenter>
                 <ActivityResult activities={activitiesList} goals={goalsList} />
-            </FieldCenter>
-            <FieldCenter>
-                <SDGImpactChart activities={activitiesMock} />
             </FieldCenter>
             <SplugaTips isCompany={false} />
         </PageContainer>
