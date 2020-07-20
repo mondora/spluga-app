@@ -1,4 +1,4 @@
-import SDG1 from "../views/sdgs/assets/E_PRINT_01.jpg";
+import SDG1 from "../views/sdgs/assets/E_WEB_01.png";
 import SDG2 from "../views/sdgs/assets/E_WEB_02.png";
 import SDG3 from "../views/sdgs/assets/E_WEB_03.png";
 import SDG4 from "../views/sdgs/assets/E_WEB_04.png";

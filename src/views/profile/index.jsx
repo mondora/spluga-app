@@ -8,7 +8,6 @@ import { Spin, notification } from "antd";
 import { getCompany } from "../../actions/companies";
 import { getUser, addUser } from "../../actions/users";
 import { getGoals } from "../../actions/goals";
-import { addTargetReset } from "../../actions/targets";
 import { getActivities } from "../../actions/activities";
 
 import { ActivityResult } from "../../components/activityResult";
@@ -43,7 +42,6 @@ export const Profile = ({
     activities,
     getCompany,
     getActivities,
-    addTargetReset,
     getUser,
     addUser,
     user,
@@ -76,9 +74,8 @@ export const Profile = ({
             var id = error ? errorInfo.message : "v-companies.target.success";
             const message = intl.formatMessage({ id, defaultMessage: id });
             notify(type, message);
-            addTargetReset();
         }
-    }, [addTargetReset, target, intl]);
+    }, [target, intl]);
 
     const notify = (type, message) => {
         notification[type]({
@@ -139,8 +136,6 @@ const mapStateToProps = (state) => ({
     target: state.addTarget.status,
 });
 
-const composedHoc = compose(
-    connect(mapStateToProps, { getCompany, addTargetReset, getUser, addUser, getGoals, getActivities })
-);
+const composedHoc = compose(connect(mapStateToProps, { getCompany, getUser, addUser, getGoals, getActivities }));
 
 export default injectIntl(composedHoc(Profile));
