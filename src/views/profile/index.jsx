@@ -8,7 +8,7 @@ import { Spin, notification } from "antd";
 import { getCompany } from "../../actions/companies";
 import { getUser, addUser } from "../../actions/users";
 import { getGoals } from "../../actions/goals";
-import { addTarget, addTargetReset } from "../../actions/targets";
+import { addTargetReset } from "../../actions/targets";
 import { getActivities } from "../../actions/activities";
 
 import { ActivityResult } from "../../components/activityResult";
@@ -43,7 +43,6 @@ export const Profile = ({
     activities,
     getCompany,
     getActivities,
-    addTarget,
     addTargetReset,
     getUser,
     addUser,
@@ -127,7 +126,6 @@ Profile.propTypes = {
     getCompany: PropTypes.func,
     getUser: PropTypes.func,
     addUser: PropTypes.func,
-    addTarget: PropTypes.func,
     getGoals: PropTypes.func,
     goals: PropTypes.object,
 };
@@ -142,7 +140,7 @@ const mapStateToProps = (state) => ({
 });
 
 const composedHoc = compose(
-    connect(mapStateToProps, { getCompany, addTarget, addTargetReset, getUser, addUser, getGoals, getActivities })
+    connect(mapStateToProps, { getCompany, addTargetReset, getUser, addUser, getGoals, getActivities })
 );
 
 export default injectIntl(composedHoc(Profile));
