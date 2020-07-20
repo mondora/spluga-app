@@ -5,7 +5,7 @@ import Adapter from "enzyme-adapter-react-16";
 
 import Sdg, { Description, Summary, SdgButton } from ".";
 import Modal from "../modal";
-import SDG1 from "../../views/sdgs/assets/E_PRINT_01.jpg";
+import SDG1 from "../../views/sdgs/assets/E_WEB_01.png";
 
 Enzyme.configure({ adapter: new Adapter() });
 
