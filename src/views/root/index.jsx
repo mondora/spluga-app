@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-import NavBar from "../../components/navbar";
+// import NavBar from "../../components/navbar";
 import Header from "../../components/header";
 import Targets from "../targets";
 import Activities from "../activities";
@@ -13,16 +13,17 @@ import Apps from "../apps";
 import Team from "../team";
 import Sdgs from "../sdgs";
 
-import { Container, Menu, Page, PageContainer } from "./styled.js";
+import { Container, Page, PageContainer } from "./styled.js";
+import SideBar from "../../components/sidebar";
 
 export const Root = ({ match, auth }) => {
     return (
         <PageContainer>
-            <Header user={auth.currentUser} />
+            <SideBar />
+
             <Container>
-                <Menu>
-                    <NavBar currentPage={match.params.page} />
-                </Menu>
+                <Header user={auth.currentUser} />
+
                 <Page>
                     <Switch>
                         <Route exact path="/" component={Profile} />
@@ -40,10 +41,10 @@ export const Root = ({ match, auth }) => {
 };
 
 Root.PropType = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-    auth: state.auth
+const mapStateToProps = (state) => ({
+    auth: state.auth,
 });
 
 export default connect(mapStateToProps)(Root);

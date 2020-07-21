@@ -2,14 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Avatar } from "antd";
 
-import { Container, Logo, User, AvatarContainer } from "./styled";
+import { Container, User, AvatarContainer } from "./styled";
 export const Header = ({ user }) => {
     const data = user && user.profile ? user.profile.data : null;
     return (
         <Container>
-            <Logo>
-                <img src="https://spluga.io/img/spluga-logo-white.png" alt="spluga" width={150} />
-            </Logo>
             <User>
                 {data ? data.name : null}
                 <AvatarContainer>
@@ -21,7 +18,7 @@ export const Header = ({ user }) => {
 };
 
 Header.propTypes = {
-    user: PropTypes.object
+    user: PropTypes.object,
 };
 
 export default Header;
