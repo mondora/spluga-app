@@ -8,23 +8,40 @@ import { Spin, notification } from "antd";
 import { getCompany } from "../../actions/companies";
 import { getUser, addUser } from "../../actions/users";
 import { getGoals } from "../../actions/goals";
-import { addTarget, addTargetReset } from "../../actions/targets";
 import { getActivities } from "../../actions/activities";
 
-import SplugaCard from "../../components/splugaCard";
-import CompanyTarget from "../../components/companyTarget";
-import { SplugaTips } from "../../components/splugaTips";
 import { ActivityResult } from "../../components/activityResult";
+import SplugaCard from "../../components/splugaCard";
+import { SplugaTips } from "../../components/splugaTips";
+import SDGImpactChart from "../../components/sdgImpactChart";
 
 import { PageContainer, SpinContainer, FieldLeft, FieldRight, FieldCenter } from "./styled";
+
+const goals = [
+    "bikeTravel",
+    "busTravel",
+    "trainTravel",
+    "paperSaved",
+    "training",
+    "co2Saved",
+    "waterSaved",
+    "openSourceCode",
+    "plasticSaved",
+    "treeSaved",
+];
+const activitiesMock = Array.from({ length: Math.floor(Math.random() * 70) }, () => ({
+    date: new Date(
+        new Date("2020-01-01").getTime() +
+            Math.random() * (new Date("2020-12-31").getTime() - new Date("2020-01-01").getTime())
+    ),
+    goal: goals[Math.floor(Math.random() * goals.length)],
+}));
 
 export const Profile = ({
     auth,
     activities,
     getCompany,
     getActivities,
-    addTarget,
-    addTargetReset,
     getUser,
     addUser,
     user,
@@ -57,14 +74,8 @@ export const Profile = ({
             var id = error ? errorInfo.message : "v-companies.target.success";
             const message = intl.formatMessage({ id, defaultMessage: id });
             notify(type, message);
-            addTargetReset();
         }
-    }, [addTargetReset, target, intl]);
-
-    const handleAddTarget = (data) => {
-        const companyId = company && company.result ? company.result._id : null;
-        addTarget(data, auth.currentUser, companyId);
-    };
+    }, [target, intl]);
 
     const notify = (type, message) => {
         notification[type]({
@@ -81,8 +92,6 @@ export const Profile = ({
     }
 
     const loading = company && company.status ? company.status.started : true;
-    const selectedCompany = company && company.result ? company.result : null;
-    const targets = selectedCompany ? selectedCompany.targets : [];
     const activitiesList = activities ? activities.activities : [];
     const goalsList = goals ? goals.goals : [];
 
@@ -92,7 +101,7 @@ export const Profile = ({
                 <SplugaCard auth={auth} type={"user"} />
             </FieldLeft>
             <FieldRight>
-                <CompanyTarget onAddTarget={handleAddTarget} targets={targets} goals={goalsList} />
+                <SDGImpactChart activities={activitiesMock} />
             </FieldRight>
             <FieldCenter>
                 <ActivityResult activities={activitiesList} goals={goalsList} />
@@ -114,7 +123,6 @@ Profile.propTypes = {
     getCompany: PropTypes.func,
     getUser: PropTypes.func,
     addUser: PropTypes.func,
-    addTarget: PropTypes.func,
     getGoals: PropTypes.func,
     goals: PropTypes.object,
 };
@@ -128,8 +136,6 @@ const mapStateToProps = (state) => ({
     target: state.addTarget.status,
 });
 
-const composedHoc = compose(
-    connect(mapStateToProps, { getCompany, addTarget, addTargetReset, getUser, addUser, getGoals, getActivities })
-);
+const composedHoc = compose(connect(mapStateToProps, { getCompany, getUser, addUser, getGoals, getActivities }));
 
 export default injectIntl(composedHoc(Profile));

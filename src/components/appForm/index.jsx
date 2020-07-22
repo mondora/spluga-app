@@ -9,10 +9,10 @@ import { Upload, Icon } from "antd";
 import { appFormSchema } from "../../utils/form-schema/app-form-schema";
 
 export const AppForm = ({ handleSubmit, onSelectFile }) => {
-    const handleSelectFile = file => {
+    const handleSelectFile = (file) => {
         var reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = evt => {
+        reader.onload = (evt) => {
             const base64 = evt.target.result.split(",")[1];
             onSelectFile(base64);
         };
@@ -26,8 +26,8 @@ export const AppForm = ({ handleSubmit, onSelectFile }) => {
                         accept="image/*"
                         listType="picture-card"
                         id={"logo"}
-                        beforeUpload={file => handleSelectFile(file)}
-                        onRemove={file => console.log(file)}
+                        beforeUpload={(file) => handleSelectFile(file)}
+                        onRemove={() => {}}
                     >
                         <Button>
                             <Icon type="upload" /> <FormattedMessage id="c-companyForm.logo" />
@@ -46,12 +46,12 @@ export const AppForm = ({ handleSubmit, onSelectFile }) => {
 };
 
 AppForm.propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
 };
 
 const formDefinition = {
     form: "app-form",
-    schema: appFormSchema
+    schema: appFormSchema,
 };
 
 export default form(formDefinition)(AppForm);
