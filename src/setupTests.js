@@ -59,7 +59,6 @@ jest.mock("react-intl", () => {
     return {
         FormattedMessage: ({ id }) => <span>`${id}`</span>,
         FormattedNumber: () => <span />,
-        FormattedHTMLMessage: ({ id }) => <span>id</span>,
         injectIntl: (Component) => (props) => <Component {...props} intl={intl} />,
         useIntl: () => intl,
         IntlProvider: ({ children }) => <div>{children}</div>,

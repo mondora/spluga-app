@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 
 import { PageContainer, RowContainer, ImageContainer, RowText, Img } from "./styled";
@@ -12,7 +12,7 @@ export const PolicyHeader = ({ title }) => {
             </ImageContainer>
             <RowContainer>
                 <RowText>
-                    <FormattedHTMLMessage id={title} />
+                    <FormattedMessage id={title} />
                 </RowText>
             </RowContainer>
         </PageContainer>
@@ -20,7 +20,7 @@ export const PolicyHeader = ({ title }) => {
 };
 
 PolicyHeader.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
 };
 
 export default PolicyHeader;
