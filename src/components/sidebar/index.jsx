@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import SidebarIcon from "./sidebar-icon/index";
 
 export const SideBarContainer = styled.div`
+    position: fixed;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

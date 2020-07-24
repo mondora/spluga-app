@@ -11,6 +11,8 @@ import { persistor } from "./reducers/index";
 
 import { SpinContainer } from "./styled";
 
+import "./index.css";
+
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate
