@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as TargetIcon } from "./assets/award.svg";
+import SidebarIcon from "./sidebar-icon/index";
 
 export const SideBarContainer = styled.div`
     display: flex;
@@ -14,7 +14,7 @@ export const SideBarContainer = styled.div`
     color: #ffffff;
 `;
 
-const Icon = styled(TargetIcon)`
+const Icon = styled(SidebarIcon)`
     width: 18px;
     height: 18px;
     fill: white;
@@ -31,10 +31,14 @@ const ItemContainer = styled.div`
 
 const Label = styled.div``;
 
+// export const SideBarItems = [{
+//     icon:
+// }];
+
 const SideBarItem = ({ icon, label }) => {
     return (
         <ItemContainer>
-            <Icon />
+            <Icon name="targets" />
             <Label>{"Targets"}</Label>
         </ItemContainer>
     );
@@ -52,42 +56,42 @@ const SideBar = ({ currentPage }) => {
             <Link to="/" style={{ color: "white" }}>
                 <ItemContainer>
                     <Icon />
-                    <Label>{"Targets"}</Label>
+                    <Label>{"Profile"}</Label>
                 </ItemContainer>
             </Link>
 
             <Link to="/companies" style={{ color: "white" }}>
                 <ItemContainer>
-                    <Icon />
-                    <Label>{"Targets"}</Label>
+                    <Icon name="company" />
+                    <Label>{"Company"}</Label>
                 </ItemContainer>
             </Link>
 
             <Link to="/targets" style={{ color: "white" }}>
                 <ItemContainer>
-                    <Icon />
+                    <Icon name="targets" />
                     <Label>{"Targets"}</Label>
                 </ItemContainer>
             </Link>
 
             <Link to="/activities" style={{ color: "white" }}>
                 <ItemContainer>
-                    <Icon />
-                    <Label>{"Targets"}</Label>
+                    <Icon name="activities" />
+                    <Label>{"Activities"}</Label>
                 </ItemContainer>
             </Link>
 
             <Link to="/apps" style={{ color: "white" }}>
                 <ItemContainer>
-                    <Icon />
-                    <Label>{"Targets"}</Label>
+                    <Icon name="apps" />
+                    <Label>{"Apps"}</Label>
                 </ItemContainer>
             </Link>
 
             <Link to="/sdgs" style={{ color: "white" }}>
                 <ItemContainer>
-                    <Icon />
-                    <Label>{"Targets"}</Label>
+                    <Icon name="SDGs" />
+                    <Label>{"SDGs"}</Label>
                 </ItemContainer>
             </Link>
         </SideBarContainer>
