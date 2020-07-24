@@ -10,6 +10,6 @@ describe("PolicyHeader", () => {
     it("Render component with data", () => {
         const element = shallow(<PolicyHeader />);
 
-        expect(element.find("FormattedHTMLMessage").length).toBe(1);
+        expect(element.find("FormattedMessage").length).toBe(1);
     });
 });

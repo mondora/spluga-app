@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { PageContainer, RowContainer, ImageContainer, RowText, RowLink, LinkContainer, Img } from "./styled";
 
 export const Header = () => {
@@ -7,7 +7,7 @@ export const Header = () => {
         <PageContainer>
             <RowContainer>
                 <RowText>
-                    <FormattedHTMLMessage id="c-landing-header.desc" />
+                    <FormattedMessage id="c-landing-header.desc" />
                 </RowText>
                 <RowLink>
                     <LinkContainer to="what-is-spluga" smooth={true} duration={1500}>

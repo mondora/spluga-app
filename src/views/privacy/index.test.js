@@ -9,6 +9,6 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Privacy view", () => {
     it("Render view without error when proprs are empty", () => {
         const element = shallow(<Privacy />);
-        expect(element.find("FormattedMessage").length).toBe(16);
+        expect(element.find("FormattedMessage").length).toBe(32);
     });
 });
