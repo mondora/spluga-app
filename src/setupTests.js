@@ -1,4 +1,8 @@
+import Adapter from "enzyme-adapter-react-16";
+import Enzyme from "enzyme";
 import React from "react";
+
+Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock("mongodb-stitch-browser-sdk", () => {
     const findOne = jest.fn();
@@ -28,7 +32,7 @@ jest.mock("mongodb-stitch-browser-sdk", () => {
                     handleRedirectResult,
                     hasRedirectResult,
                     isLoggedIn: true,
-                    user: {}
+                    user: {},
                 },
                 callFunction,
                 getServiceClient: () => ({
@@ -38,26 +42,25 @@ jest.mock("mongodb-stitch-browser-sdk", () => {
                             find: () => ({ toArray }),
                             insertOne,
                             updateOne,
-                            updateMany
-                        })
-                    })
-                })
-            })
-        }
+                            updateMany,
+                        }),
+                    }),
+                }),
+            }),
+        },
     };
 });
 
 jest.mock("react-intl", () => {
     const intl = {
         formatMessage: jest.fn(({ id }) => id),
-        formatHtmlMessage: jest.fn(({ id }) => id)
+        formatHtmlMessage: jest.fn(({ id }) => id),
     };
     return {
         FormattedMessage: ({ id }) => <span>`${id}`</span>,
         FormattedNumber: () => <span />,
-        FormattedHTMLMessage: ({ id }) => <span>id</span>,
-        injectIntl: Component => props => <Component {...props} intl={intl} />,
+        injectIntl: (Component) => (props) => <Component {...props} intl={intl} />,
         useIntl: () => intl,
-        IntlProvider: ({ children }) => <div>{children}</div>
+        IntlProvider: ({ children }) => <div>{children}</div>,
     };
 });

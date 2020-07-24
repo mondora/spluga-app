@@ -150,6 +150,19 @@ export default {
 
     "c-targetStatus.daysLeft": "Days left",
 
+    "c-sdgImpactChart-months-0": "jan",
+    "c-sdgImpactChart-months-1": "feb",
+    "c-sdgImpactChart-months-2": "mar",
+    "c-sdgImpactChart-months-3": "apr",
+    "c-sdgImpactChart-months-4": "may",
+    "c-sdgImpactChart-months-5": "jun",
+    "c-sdgImpactChart-months-6": "jul",
+    "c-sdgImpactChart-months-7": "aug",
+    "c-sdgImpactChart-months-8": "sep",
+    "c-sdgImpactChart-months-9": "oct",
+    "c-sdgImpactChart-months-10": "nov",
+    "c-sdgImpactChart-months-11": "dec",
+
     //Views
     "v-app.message": "Make sure to copy key value below somewhere safe, otherwise you will need to generate a new key.",
     "v-app.create": "New app {appName} created",
@@ -168,5 +181,5 @@ export default {
     "v-team.invitation.error.400.duplicate": "User already invited",
     "v-team.invitation.success": "Invitation sent",
 
-    "v-companies.target.success": "Target created"
+    "v-companies.target.success": "Target created",
 };

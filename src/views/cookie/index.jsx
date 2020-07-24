@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 import { INFO_EMAIL } from "../../config";
 import { Container, Subtitle, TextContainer, Date } from "./styled.js";
@@ -15,27 +15,27 @@ export const Cookie = () => {
                     <FormattedMessage id="cookies.lastUpdate" />
                 </Date>
 
-                <FormattedHTMLMessage id="cookies.intro" />
+                <FormattedMessage id="cookies.intro" />
 
                 <Subtitle>
                     <FormattedMessage id="cookies.question1" />
                 </Subtitle>
-                <FormattedHTMLMessage id="cookies.answer1" />
+                <FormattedMessage id="cookies.answer1" />
 
                 <Subtitle>
                     <FormattedMessage id="cookies.question2" />
                 </Subtitle>
-                <FormattedHTMLMessage id="cookies.answer2" />
+                <FormattedMessage id="cookies.answer2" />
 
                 <Subtitle>
                     <FormattedMessage id="cookies.question3" />
                 </Subtitle>
-                <FormattedHTMLMessage id="cookies.answer3" />
+                <FormattedMessage id="cookies.answer3" />
 
                 <Subtitle>
                     <FormattedMessage id="cookies.question4" />
                 </Subtitle>
-                <FormattedHTMLMessage id="cookies.answer4" values={{ email: INFO_EMAIL }} />
+                <FormattedMessage id="cookies.answer4" values={{ email: INFO_EMAIL }} />
             </TextContainer>
             <Footer />
         </Container>

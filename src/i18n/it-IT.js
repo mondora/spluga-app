@@ -153,6 +153,19 @@ export default {
 
     "c-targetStatus.daysLeft": "Giorni rimanenti",
 
+    "c-sdgImpactChart-months-0": "gen",
+    "c-sdgImpactChart-months-1": "feb",
+    "c-sdgImpactChart-months-2": "mar",
+    "c-sdgImpactChart-months-3": "apr",
+    "c-sdgImpactChart-months-4": "mag",
+    "c-sdgImpactChart-months-5": "giu",
+    "c-sdgImpactChart-months-6": "lug",
+    "c-sdgImpactChart-months-7": "ago",
+    "c-sdgImpactChart-months-8": "set",
+    "c-sdgImpactChart-months-9": "ott",
+    "c-sdgImpactChart-months-10": "nov",
+    "c-sdgImpactChart-months-11": "dic",
+
     //Views
     "v-app.message":
         "Assicurati di copiare il valore della chiave in un punto sicuro, altrimenti dovrai generare una nuova chiave.",
@@ -172,5 +185,5 @@ export default {
     "v-team.invitation.error.400.duplicate": "Utente gia invitato",
     "v-team.invitation.success": "Invito inviato correttamente",
 
-    "v-companies.target.success": "Obiettivo creato"
+    "v-companies.target.success": "Obiettivo creato",
 };

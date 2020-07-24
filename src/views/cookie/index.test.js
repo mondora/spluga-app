@@ -10,7 +10,6 @@ describe("Cookie view", () => {
     it("Render view without error when proprs are empty", () => {
         const element = shallow(<Cookie />);
         expect(element.find("PolicyHeader").length).toBe(1);
-        expect(element.find("FormattedMessage").length).toBe(5);
-        expect(element.find("FormattedHTMLMessage").length).toBe(5);
+        expect(element.find("FormattedMessage").length).toBe(10);
     });
 });
