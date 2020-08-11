@@ -1,37 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-import SidebarIcon from "./sidebar-icon/index";
-
-export const SideBarContainer = styled.div`
-    position: fixed;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 150px;
-    background-color: #000000;
-    color: #ffffff;
-`;
-
-const Icon = styled(SidebarIcon)`
-    width: 18px;
-    height: 18px;
-    fill: white;
-    margin: 4px;
-`;
-
-const ItemContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 8px;
-`;
-
-const Label = styled.div``;
+import { Icon, SideBarContainer, Label, ItemContainer } from "./styled";
 
 // export const SideBarItems = [{
 //     icon:
