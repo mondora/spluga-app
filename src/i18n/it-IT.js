@@ -61,6 +61,7 @@ export default {
     "c-navbar.app": "Apps",
     "c-navbar.targets": "Obiettivi",
     "c-navbar.activities": "Attività",
+    "c-navbar.sdgs": "SDGs",
     "c-splugaNewTarget.create": "Crea un nuovo obiettivo",
     "c-splugaNewTarget.placeholder.name": "Inserisci il nome del target",
     "c-splugaNewTarget.placeholder.description": "Inserisci la descrizione del target",

@@ -2,16 +2,49 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Icon, SideBarContainer, Label, ItemContainer } from "./styled";
+import { PROFILE, COMPANIES, TARGETS, ACTIVITIES, APPS, SDGs } from "../../constants/routes";
+import { FormattedMessage } from "react-intl";
 
-// export const SideBarItems = [{
-//     icon:
-// }];
+export const SideBarItems = [
+    {
+        name: "",
+        labelId: "c-navbar.profile",
+        urlLink: PROFILE,
+    },
+    {
+        name: "company",
+        labelId: "c-navbar.company",
+        urlLink: COMPANIES,
+    },
+    {
+        name: "targets",
+        labelId: "c-navbar.targets",
+        urlLink: TARGETS,
+    },
+    {
+        name: "activities",
+        labelId: "c-navbar.activities",
+        urlLink: ACTIVITIES,
+    },
+    {
+        name: "apps",
+        labelId: "c-navbar.app",
+        urlLink: APPS,
+    },
+    {
+        name: "SDGs",
+        labelId: "c-navbar.sdgs",
+        urlLink: SDGs,
+    },
+];
 
-const SideBarItem = ({ icon, label }) => {
+const SideBarItem = ({ currentPage, name, labelId, urlLink }) => {
     return (
-        <ItemContainer>
-            <Icon name="targets" />
-            <Label>{"Targets"}</Label>
+        <ItemContainer clicked={currentPage === urlLink}>
+            <Icon name={name} />
+            <Label>
+                <FormattedMessage id={labelId} />
+            </Label>
         </ItemContainer>
     );
 };
@@ -19,53 +52,24 @@ const SideBarItem = ({ icon, label }) => {
 SideBarItem.propTypes = {
     icon: PropTypes.string,
     label: PropTypes.string,
+    link: PropTypes.string,
 };
 
 const SideBar = ({ currentPage }) => {
     return (
         <SideBarContainer>
             <img src="https://spluga.io/img/spluga-logo-white.png" alt="spluga" width={140} style={{ margin: "8px" }} />
-            <Link to="/" style={{ color: "white" }}>
-                <ItemContainer>
-                    <Icon />
-                    <Label>{"Profile"}</Label>
-                </ItemContainer>
-            </Link>
 
-            <Link to="/companies" style={{ color: "white" }}>
-                <ItemContainer>
-                    <Icon name="company" />
-                    <Label>{"Company"}</Label>
-                </ItemContainer>
-            </Link>
-
-            <Link to="/targets" style={{ color: "white" }}>
-                <ItemContainer>
-                    <Icon name="targets" />
-                    <Label>{"Targets"}</Label>
-                </ItemContainer>
-            </Link>
-
-            <Link to="/activities" style={{ color: "white" }}>
-                <ItemContainer>
-                    <Icon name="activities" />
-                    <Label>{"Activities"}</Label>
-                </ItemContainer>
-            </Link>
-
-            <Link to="/apps" style={{ color: "white" }}>
-                <ItemContainer>
-                    <Icon name="apps" />
-                    <Label>{"Apps"}</Label>
-                </ItemContainer>
-            </Link>
-
-            <Link to="/sdgs" style={{ color: "white" }}>
-                <ItemContainer>
-                    <Icon name="SDGs" />
-                    <Label>{"SDGs"}</Label>
-                </ItemContainer>
-            </Link>
+            {SideBarItems.map((sidebarItem) => (
+                <Link to={sidebarItem.urlLink} style={{ color: "white" }}>
+                    <SideBarItem
+                        currentPage={currentPage}
+                        name={sidebarItem.name}
+                        labelId={sidebarItem.labelId}
+                        urlLink={sidebarItem.urlLink}
+                    />
+                </Link>
+            ))}
         </SideBarContainer>
     );
 };

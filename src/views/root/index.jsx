@@ -19,7 +19,7 @@ import SideBar from "../../components/sidebar";
 export const Root = ({ match, auth }) => {
     return (
         <PageContainer>
-            <SideBar />
+            <SideBar currentPage={match.url} />
 
             <Container>
                 <Header user={auth.currentUser} />

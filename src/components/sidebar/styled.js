@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import SidebarIcon from "./sidebar-icon/index";
 
@@ -28,9 +28,16 @@ export const ItemContainer = styled.div`
     margin: 8px;
 
     &:active,
+    &:focus,
     &:hover {
         filter: brightness(0.5);
     }
+
+    ${(props) =>
+        props.clicked &&
+        css`
+            filter: brightness(0.5);
+        `}
 `;
 
 export const Label = styled.div``;
