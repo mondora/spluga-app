@@ -3,7 +3,6 @@ import { PropTypes } from "prop-types";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-// import NavBar from "../../components/navbar";
 import Header from "../../components/header";
 import Targets from "../targets";
 import Activities from "../activities";
