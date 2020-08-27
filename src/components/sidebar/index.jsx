@@ -5,7 +5,7 @@ import { Icon, SideBarContainer, Label, ItemContainer } from "./styled";
 import { PROFILE, COMPANIES, TARGETS, ACTIVITIES, APPS, SDGs } from "../../constants/routes";
 import { FormattedMessage } from "react-intl";
 
-export const SideBarItems = [
+export const sideBarItems = [
     {
         name: "",
         labelId: "c-navbar.profile",
@@ -38,7 +38,7 @@ export const SideBarItems = [
     },
 ];
 
-const SideBarItem = ({ currentPage, name, labelId, urlLink }) => {
+export const SideBarItem = ({ currentPage, name, labelId, urlLink }) => {
     return (
         <ItemContainer clicked={currentPage === urlLink}>
             <Icon name={name} />
@@ -60,7 +60,7 @@ const SideBar = ({ currentPage }) => {
         <SideBarContainer>
             <img src="https://spluga.io/img/spluga-logo-white.png" alt="spluga" width={140} style={{ margin: "8px" }} />
 
-            {SideBarItems.map((sidebarItem) => (
+            {sideBarItems.map((sidebarItem) => (
                 <Link to={sidebarItem.urlLink} style={{ color: "white" }}>
                     <SideBarItem
                         currentPage={currentPage}
