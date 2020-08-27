@@ -53,11 +53,11 @@ export const Routes = ({ auth, checkLogin }) => {
 
 Routes.propTypes = {
     auth: PropTypes.object.isRequired,
-    checkLogin: PropTypes.func
+    checkLogin: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-    auth: state.auth
+const mapStateToProps = (state) => ({
+    auth: state.auth,
 });
 
 const composedHoc = compose(connect(mapStateToProps, { checkLogin }));

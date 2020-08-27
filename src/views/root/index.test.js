@@ -9,13 +9,12 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("Root view", () => {
     const propTypes = {
         auth: {},
-        match: { params: {} }
+        match: { params: {} },
     };
 
     it("Render view without error when proprs are empty", () => {
         const element = shallow(<Root {...propTypes} />);
         expect(element.find("Header").length).toBe(1);
-        expect(element.find("NavBar").length).toBe(1);
         expect(element.find("Switch").length).toBe(1);
         expect(element.find("Route").length).toBe(7);
     });
