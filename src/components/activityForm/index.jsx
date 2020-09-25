@@ -14,7 +14,7 @@ import {
     Element,
     AppTutprial,
     Result,
-    ResultTitle
+    ResultTitle,
 } from "./styled";
 import { form } from "@mondora/conv-redux-form";
 import { FormattedMessage } from "react-intl";
@@ -29,18 +29,18 @@ import { activityFormSchema } from "../../utils/form-schema/activity-form-schema
 export const ActivityForm = ({ handleSubmit, goals, result }) => {
     var options = [];
     if (goals) {
-        goals.forEach(goal => {
+        goals.forEach((goal) => {
             options.push({ value: goal.key, label: <FormattedMessage id={"general.goals." + goal.key} /> });
         });
     }
 
-    const disabledDate = current => {
+    const disabledDate = (current) => {
         return current && current > moment().endOf("day");
     };
 
     if (result) {
-        result.forEach(r => {
-            const goal = goals.find(g => g.key === r.goal);
+        result.forEach((r) => {
+            const goal = goals.find((g) => g.key === r.goal);
             r.unit = goal.unit;
         });
     }
@@ -73,7 +73,7 @@ export const ActivityForm = ({ handleSubmit, goals, result }) => {
             <Result>
                 {result ? <FormattedMessage id="c-activityForm.result.message" /> : null}
                 <ul>
-                    {result ? result.map(r => <li key={r.goal}>{r.goal + ":" + r.value + " " + r.unit}</li>) : null}
+                    {result ? result.map((r) => <li key={r.goal}>{r.goal + ":" + r.value + " " + r.unit}</li>) : null}
                 </ul>
             </Result>
             <AppTutprial>
@@ -96,12 +96,12 @@ export const ActivityForm = ({ handleSubmit, goals, result }) => {
 
 ActivityForm.propTypes = {
     handleSubmit: PropTypes.func,
-    result: PropTypes.array
+    result: PropTypes.array,
 };
 
 const formDefinition = {
     form: "activity-form",
-    schema: activityFormSchema
+    schema: activityFormSchema,
 };
 
 export default form(formDefinition)(ActivityForm);

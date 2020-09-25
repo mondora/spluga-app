@@ -5,7 +5,7 @@ import {
     ADD_INVITATION_RESET,
     ACCEPT_INVITATION_ERROR,
     ACCEPT_INVITATION_START,
-    ACCEPT_INVITATION_SUCCESS
+    ACCEPT_INVITATION_SUCCESS,
 } from "../../actions/team";
 
 const defaultState = {
@@ -15,9 +15,9 @@ const defaultState = {
         ended: false,
         errorInfo: {
             code: "",
-            message: ""
-        }
-    }
+            message: "",
+        },
+    },
 };
 
 export function addInvitation(state = defaultState, { type, payload, errorInfo }) {
@@ -27,17 +27,17 @@ export function addInvitation(state = defaultState, { type, payload, errorInfo }
                 status: {
                     started: true,
                     error: false,
-                    ended: false
-                }
+                    ended: false,
+                },
             };
         case ADD_INVITATION_SUCCESS:
             return {
                 status: {
                     started: false,
                     error: false,
-                    ended: true
+                    ended: true,
                 },
-                ...payload
+                ...payload,
             };
         case ADD_INVITATION_ERROR:
             return {
@@ -46,12 +46,12 @@ export function addInvitation(state = defaultState, { type, payload, errorInfo }
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo
-                }
+                    errorInfo,
+                },
             };
         case ADD_INVITATION_RESET:
             return {
-                ...defaultState
+                ...defaultState,
             };
         default:
             return state;
@@ -65,17 +65,17 @@ export function acceptInvitation(state = defaultState, { type, payload, errorInf
                 status: {
                     started: true,
                     error: false,
-                    ended: false
-                }
+                    ended: false,
+                },
             };
         case ACCEPT_INVITATION_SUCCESS:
             return {
                 status: {
                     started: false,
                     error: false,
-                    ended: true
+                    ended: true,
                 },
-                ...payload
+                ...payload,
             };
         case ACCEPT_INVITATION_ERROR:
             return {
@@ -84,8 +84,8 @@ export function acceptInvitation(state = defaultState, { type, payload, errorInf
                     started: false,
                     error: true,
                     ended: false,
-                    errorInfo
-                }
+                    errorInfo,
+                },
             };
         default:
             return state;

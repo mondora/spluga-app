@@ -68,11 +68,13 @@ export const Profile = ({
     }, [getActivities, auth]);
 
     useEffect(() => {
-        const { ended, error, errorInfo } = target;
+        const { ended, error } = target;
         if (ended || error) {
             const type = error ? "error" : "info";
-            var id = error ? errorInfo.message : "v-companies.target.success";
-            const message = intl.formatMessage({ id, defaultMessage: id });
+            const message = intl.formatMessage({
+                id: "v-companies.target.success",
+                defaultMessage: "v-companies.target.success",
+            });
             notify(type, message);
         }
     }, [target, intl]);
