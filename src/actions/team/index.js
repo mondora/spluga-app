@@ -16,13 +16,13 @@ const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atla
 
 const actionError = {
     duplicate: { code: 400, message: "v-team.invitation.error.400.duplicate" },
-    invalidLink: { code: 400, message: "v-team.invitation.error.400.invalid" }
+    invalidLink: { code: 400, message: "v-team.invitation.error.400.invalid" },
 };
 
-export function addInvitation(email, companyId, subject, message) {
-    return async dispatch => {
+export function addInvitation(email, companyId, subject, messageFirst, messageSecond, mailHostParam) {
+    return async (dispatch) => {
         dispatch({
-            type: ADD_INVITATION_START
+            type: ADD_INVITATION_START,
         });
 
         try {
@@ -30,34 +30,34 @@ export function addInvitation(email, companyId, subject, message) {
             const company = await companies.findOne({ _id: companyId });
             const team = company.team;
 
-            const alreadyExist = team.filter(x => {
+            const alreadyExist = team.filter((x) => {
                 return x.email === email;
             });
-
             if (alreadyExist.length > 0) {
                 dispatch({
                     type: ADD_INVITATION_ERROR,
                     error: true,
-                    errorInfo: actionError.duplicate
+                    errorInfo: actionError.duplicate,
                 });
                 return;
             }
 
-            client.callFunction("sendMail", [email, subject, message]);
+            client.callFunction("sendMail", [email, subject, messageFirst, messageSecond, mailHostParam]);
 
             await companies.updateOne(
                 { _id: companyId },
-                { $push: { team: { email, status: "invited", invitedAt: new Date() } } }
+                { $push: { team: { email, status: "invited", invitedAt: new Date() } } },
+                { upsert: true }
             );
 
             dispatch({
-                type: ADD_INVITATION_SUCCESS
+                type: ADD_INVITATION_SUCCESS,
             });
         } catch (error) {
             dispatch({
                 type: ADD_INVITATION_ERROR,
                 error: true,
-                errorInfo: { code: 500, message: error }
+                errorInfo: { code: 500, message: error },
             });
         }
     };
@@ -70,9 +70,9 @@ export const ACCEPT_INVITATION_ERROR = "ACCEPT_INVITATION_ERROR";
 export function acceptInvitation(currentUser) {
     const { profile, id } = currentUser;
     const { picture, name, email } = profile.data;
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch({
-            type: ACCEPT_INVITATION_START
+            type: ACCEPT_INVITATION_START,
         });
 
         const companies = mongodb.db(MONGO_DB_NAME).collection("companies");
@@ -87,8 +87,8 @@ export function acceptInvitation(currentUser) {
                         "team.$.picture": picture,
                         "team.$.name": name,
                         "team.$.status": "active",
-                        "team.$.activatedAt": new Date()
-                    }
+                        "team.$.activatedAt": new Date(),
+                    },
                 }
             );
 
@@ -96,18 +96,18 @@ export function acceptInvitation(currentUser) {
                 dispatch({
                     type: ACCEPT_INVITATION_ERROR,
                     error: true,
-                    errorInfo: actionError.invalidLink
+                    errorInfo: actionError.invalidLink,
                 });
             } else {
                 dispatch({
-                    type: ACCEPT_INVITATION_SUCCESS
+                    type: ACCEPT_INVITATION_SUCCESS,
                 });
             }
         } catch (error) {
             dispatch({
                 type: ACCEPT_INVITATION_ERROR,
                 error: true,
-                errorInfo: { code: 500, message: error }
+                errorInfo: { code: 500, message: error },
             });
         }
     };
@@ -116,9 +116,9 @@ export function acceptInvitation(currentUser) {
 export const ADD_INVITATION_RESET = "ADD_INVITATION_RESET";
 
 export function addInvitationReset() {
-    return dispatch => {
+    return (dispatch) => {
         dispatch({
-            type: ADD_INVITATION_RESET
+            type: ADD_INVITATION_RESET,
         });
     };
 }

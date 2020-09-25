@@ -31,7 +31,7 @@ export const Companies = ({
     invitation,
     getGoals,
     getActivities,
-    goals
+    goals,
 }) => {
     const intl = useIntl();
     const [selectedFile, setSelectedFile] = useState("");
@@ -49,38 +49,44 @@ export const Companies = ({
     }, [getActivities, company]);
 
     useEffect(() => {
-        const { ended, error, errorInfo } = invitation;
-        if (ended || error) {
-            const type = error ? "error" : "info";
-            var id = error ? errorInfo.message : "v-team.invitation.success";
-            const message = intl.formatMessage({ id, defaultMessage: id });
-            notify(type, message);
+        if (invitation) {
+            const { ended, error } = invitation;
+            if (ended || error) {
+                const type = error ? "error" : "info";
+                const message = intl.formatMessage({
+                    id: "v-companies.target.success",
+                    defaultMessage: "v-companies.target.success",
+                });
+                notify(type, message);
+            }
             addInvitationReset();
         }
-    }, [addInvitationReset, invitation, intl]);
+    }, [invitation, addInvitationReset, intl]);
 
-    const handleSelectFile = base64 => {
+    const handleSelectFile = (base64) => {
         setSelectedFile(base64);
     };
 
-    const handleSubmit = data => {
+    const handleSubmit = (data) => {
         data.logo = selectedFile;
         addCompany(data, auth.currentUser);
     };
 
-    const handleInvite = data => {
+    const handleInvite = (data) => {
         const companyId = company && company.result ? company.result._id : null;
         const companyName = company && company.result ? company.result.name : null;
-        const publishedHostName = PUBLISHED_HOSTNAME;
-        const message = intl.formatMessage({ id: "email.invitation.text" }, { companyName, publishedHostName });
+
+        const publishedHostName = `${PUBLISHED_HOSTNAME}/team`;
+        const messageFirst = intl.formatMessage({ id: "email.invitation.firstText" }, { companyName: companyName });
+        const messageSecond = intl.formatMessage({ id: "email.invitation.secondText" });
         const subject = intl.formatMessage({ id: "email.invitation.subject" });
-        addInvitation(data.email, companyId, subject, message);
+        addInvitation(data.email, companyId, subject, messageFirst, messageSecond, publishedHostName);
     };
 
     const notify = (type, message) => {
         notification[type]({
             message: type,
-            description: message
+            description: message,
         });
     };
 
@@ -132,16 +138,16 @@ Companies.propTypes = {
     addInvitation: PropTypes.func,
     invitation: PropTypes.object,
     getGoals: PropTypes.func,
-    goals: PropTypes.object
+    goals: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     auth: state.auth,
     activities: state.getActivities,
     company: state.getCompany,
     companyCreated: state.addCompany,
     invitation: state.addInvitation.status,
-    goals: state.getGoals
+    goals: state.getGoals,
 });
 
 const composedHoc = compose(
