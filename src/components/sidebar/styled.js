@@ -9,7 +9,7 @@ export const SideBarContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 80px;
-    background-color: #000000;
+    background-color: #395c6b;
     color: #ffffff;
 `;
 

@@ -17,4 +17,6 @@ export default {
     royalBlue: "#00689d",
     navyBlue: "#19486a",
     gray: "#f1f1f1",
+    white: "#ffffff",
+    black: "#000000",
 };
