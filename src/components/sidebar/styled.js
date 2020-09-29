@@ -8,7 +8,7 @@ export const SideBarContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 150px;
+    width: var(--sidebar-width);
     background-color: #395c6b;
     color: #ffffff;
 `;
@@ -41,3 +41,10 @@ export const ItemContainer = styled.div`
 `;
 
 export const Label = styled.div``;
+
+export const ImgContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+`;

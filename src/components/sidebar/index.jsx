@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Icon, SideBarContainer, Label, ItemContainer } from "./styled";
+import { Icon, SideBarContainer, Label, ItemContainer, ImgContainer } from "./styled";
 import { PROFILE, COMPANIES, TARGETS, ACTIVITIES, APPS, SDGs } from "../../constants/routes";
 import { FormattedMessage } from "react-intl";
+
+import LogoText from "./img/logo-text.png";
+import Logo from "./img/logo.png";
 
 export const sideBarItems = [
     {
@@ -58,7 +61,10 @@ SideBarItem.propTypes = {
 const SideBar = ({ currentPage }) => {
     return (
         <SideBarContainer>
-            <img src="https://spluga.io/img/spluga-logo-white.png" alt="spluga" width={140} style={{ margin: "8px" }} />
+            <ImgContainer>
+                <img src={Logo} alt="logo" width={50} />
+                <img src={LogoText} alt="logo-text" width={72} />
+            </ImgContainer>
 
             {sideBarItems.map((sidebarItem) => (
                 <Link to={sidebarItem.urlLink} style={{ color: "white" }}>
