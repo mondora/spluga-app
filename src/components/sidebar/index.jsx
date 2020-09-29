@@ -5,8 +5,8 @@ import { Icon, SideBarContainer, Label, ItemContainer, ImgContainer } from "./st
 import { PROFILE, COMPANIES, TARGETS, ACTIVITIES, APPS, SDGs } from "../../constants/routes";
 import { FormattedMessage } from "react-intl";
 
-import SplugaScritta from "./img/splugascritta.png";
-import SplugaLogo from "./img/spluga-logo.png";
+import LogoText from "./img/logo-text.png";
+import Logo from "./img/logo.png";
 
 export const sideBarItems = [
     {
@@ -62,8 +62,8 @@ const SideBar = ({ currentPage }) => {
     return (
         <SideBarContainer>
             <ImgContainer>
-                <img src={SplugaLogo} alt="spluga" width={50} />
-                <img src={SplugaScritta} alt="spluga" width={72} />
+                <img src={Logo} alt="logo" width={50} />
+                <img src={LogoText} alt="logo-text" width={72} />
             </ImgContainer>
 
             {sideBarItems.map((sidebarItem) => (
