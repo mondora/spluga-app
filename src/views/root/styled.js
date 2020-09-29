@@ -5,9 +5,10 @@ export const Container = styled.div`
     flex-direction: column;
     flex: 1;
     position: absolute;
+
     /** for positioning content after sidebar */
-    left: 150px;
-    width: calc(100% - 150px);
+    left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
 `;
 
 export const Page = styled.div`
