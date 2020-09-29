@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
     display: grid;
     padding: 10px;
+    color: #395c6b;
 `;
 
 export const Header = styled.div`
@@ -12,10 +13,10 @@ export const Header = styled.div`
 `;
 
 export const Cards = styled.div`
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto;
-    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px;
 `;
 
 export const Title = styled.h2``;
