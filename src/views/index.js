@@ -18,7 +18,7 @@ import Privacy from "./privacy";
 
 export const Routes = ({ auth, checkLogin }) => {
     useEffect(() => {
-        checkLogin({});
+        checkLogin();
     }, [checkLogin]);
 
     const locale = getUserLocale();
