@@ -17,6 +17,7 @@ import SDG16 from "../views/sdgs/assets/E_WEB_16.png";
 import SDG17 from "../views/sdgs/assets/E_WEB_17.png";
 import colors from "./colors";
 
+// eslint-disable-next-line
 export default [
     { name: "No Poverty", color: colors.red, icon: SDG1 },
     { name: "Zero Hunger", color: colors.mustard, icon: SDG2 },

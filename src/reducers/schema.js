@@ -7,7 +7,7 @@ import { getGoals } from "./goals";
 import { addTarget } from "./targets";
 import { addInvitation, acceptInvitation } from "./team";
 import { addApp, enableApp, disableApp, deleteApp } from "./apps";
-
+// eslint-disable-next-line
 export default {
     auth,
     addActivity,
@@ -24,5 +24,5 @@ export default {
     addInvitation,
     acceptInvitation,
     getUser,
-    addUser
+    addUser,
 };

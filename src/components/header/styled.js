@@ -16,3 +16,7 @@ export const User = styled.div`
 export const AvatarContainer = styled.div`
     padding: 0px 5px;
 `;
+
+export const FlexDiv = styled.div`
+    display: flex;
+`;

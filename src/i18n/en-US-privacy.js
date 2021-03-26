@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     "privacy.title": "Privacy Policy for Spluga",
     "privacy.lastUpdate": "Last updated November 19, 2019",
@@ -47,5 +48,5 @@ export default {
         "<p><span>If you have questions or comments about this policy, you may email us at  <a href='mailto:{email}'>{email}</a>.</span></p>",
     "privacy.question15": "How can you review, update, or delete the data we collect from you?",
     "privacy.answer15":
-        "<p><span>Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, you may email us at  <a href='mailto:{email}'>{email}</a>. We will respond to your request within 30 days.</span> </p>"
+        "<p><span>Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, you may email us at  <a href='mailto:{email}'>{email}</a>. We will respond to your request within 30 days.</span> </p>",
 };

@@ -3,6 +3,8 @@
  * the goal is that every goal in a column has at leat one square, and that the sum of the squares
  * in a column does not excede 17
  */
+
+// eslint-disable-next-line
 export default (rawSDGImpactMap) => {
     // if the sum of the values for every column is not greater than 17 a normalization is not require
     if (

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     "privacy.title": "Informativa sulla privacy per Spluga",
     "privacy.lastUpdate": "Ultimo aggiornamento 09 Novembre 2019",
@@ -47,5 +48,5 @@ export default {
         "<p><span>Se hai domande o commenti su questa politica, puoi inviarci un&#39;e-mail a  <a href='mailto:{email}'>{email}</a>.</span></p>",
     "privacy.question15": "Come puoi rivedere, aggiornare o eliminare i dati che raccogliamo da te?",
     "privacy.answer15":
-        "<p><span>In base alle leggi di alcuni Paesi, potresti avere il diritto di richiedere l&#39;accesso alle informazioni personali che raccogliamo da te, modificare tali informazioni o eliminarle in alcune circostanze. Per richiedere la revisione, l&#39;aggiornamento o l&#39;eliminazione delle informazioni personali, si prega di inviare un modulo di richiesta facendo clic qui. Risponderemo alla tua richiesta entro 30 giorni.</span></p> </body> </html>"
+        "<p><span>In base alle leggi di alcuni Paesi, potresti avere il diritto di richiedere l&#39;accesso alle informazioni personali che raccogliamo da te, modificare tali informazioni o eliminarle in alcune circostanze. Per richiedere la revisione, l&#39;aggiornamento o l&#39;eliminazione delle informazioni personali, si prega di inviare un modulo di richiesta facendo clic qui. Risponderemo alla tua richiesta entro 30 giorni.</span></p> </body> </html>",
 };

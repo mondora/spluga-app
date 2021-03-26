@@ -18,6 +18,7 @@ const goalToSDG = {
     treeSaved: [11, 12, 13, 14, 15],
 };
 
+// eslint-disable-next-line
 export default (activities) => {
     const rawDistribution = activities.reduce((acc, activity) => {
         // get the split of the month

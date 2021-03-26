@@ -1,7 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { PropTypes } from "prop-types";
 import { Switch, Route } from "react-router-dom";
-import { connect } from "react-redux";
 
 import Header from "../../components/header";
 import Targets from "../targets";
@@ -14,14 +14,17 @@ import Sdgs from "../sdgs";
 
 import { Container, Page, PageContainer } from "./styled.js";
 import SideBar from "../../components/sidebar";
+import { logOut } from "../../actions/auth";
 
 export const Root = ({ match, auth }) => {
+    const dispatch = useDispatch();
+
     return (
         <PageContainer>
             <SideBar currentPage={match.url} />
 
             <Container>
-                <Header user={auth.currentUser} />
+                <Header user={auth.currentUser} onClick={() => dispatch(logOut())} />
 
                 <Page>
                     <Switch>
@@ -41,9 +44,7 @@ export const Root = ({ match, auth }) => {
 
 Root.PropType = {
     auth: PropTypes.object.isRequired,
+    match: PropTypes.object,
 };
-const mapStateToProps = (state) => ({
-    auth: state.auth,
-});
 
-export default connect(mapStateToProps)(Root);
+export default Root;

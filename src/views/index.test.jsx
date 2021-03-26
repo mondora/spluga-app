@@ -2,15 +2,15 @@ import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import { Routes } from ".";
+import Routes from ".";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Routes", () => {
     const propTypes = {
         auth: {
-            currentUser: { profile: { data: { name: "name" } } }
-        }
+            currentUser: { profile: { data: { name: "name" } } },
+        },
     };
 
     it("Render view with only required data", () => {

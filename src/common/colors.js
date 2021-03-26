@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     red: "#e5243b",
     mustard: "#dda63a",

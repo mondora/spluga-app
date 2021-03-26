@@ -1,6 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import { logInWithGoogle } from "../../actions/auth";
 import NavBar from "../../components/landing/navbar";
 import Header from "../../components/landing/header";
 import WhatIs from "../../components/landing/whatIs";
@@ -12,12 +11,15 @@ import { Container } from "./styled.js";
 
 import * as Scroll from "react-scroll";
 import ValueYourBusiness from "../../components/landing/valueYourBusiness";
+import { useDispatch } from "react-redux";
 
 var Element = Scroll.Element;
-export const Landing = ({ login }) => {
+export const Landing = () => {
+    const dispatch = useDispatch();
+
     return (
         <Container>
-            <NavBar onLogin={login} />
+            <NavBar onLogin={() => dispatch(logInWithGoogle())} />
             <Header />
             <Element name="what-is-spluga" className="element">
                 <WhatIs />
@@ -37,4 +39,4 @@ export const Landing = ({ login }) => {
     );
 };
 
-export default connect(null, { login })(Landing);
+export default Landing;

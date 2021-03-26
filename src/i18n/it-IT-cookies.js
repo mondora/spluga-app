@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     "general.cookie.text":
         "Questo sito fa uso di cookie per migliorare l’esperienza di navigazione degli utenti e per raccogliere informazioni sull’utilizzo del sito stesso. Proseguendo nella navigazione si accetta l’uso dei cookie; in caso contrario è possibile abbandonare il sito.",
@@ -17,5 +18,5 @@ export default {
         "<p><span>Di tanto in tanto potremmo aggiornare la presente Informativa sui cookie per fini operativi, legali o normativi. Ti preghiamo pertanto di visitare periodicamente la presente Informativa sui cookie per rimanere informato sul nostro utilizzo dei cookie e delle relative tecnologie.</span></p> <p><span>La data all&#39;inizio di questa Informativa sui cookie indica quando &egrave; stato aggiornato l&#39;ultima volta.</span></p>",
     "cookies.question4": "Dove posso ottenere maggiori informazioni?",
     "cookies.answer4":
-        "<p><span>In caso di domande sul nostro utilizzo dei cookie o di altre tecnologie, inviare un&#39;e-mail a info@mondora.com o per posta a  <a href='mailto:{email}'>{email}</a>.</span></p>"
+        "<p><span>In caso di domande sul nostro utilizzo dei cookie o di altre tecnologie, inviare un&#39;e-mail a info@mondora.com o per posta a  <a href='mailto:{email}'>{email}</a>.</span></p>",
 };

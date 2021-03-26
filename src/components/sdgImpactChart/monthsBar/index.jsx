@@ -9,8 +9,8 @@ const MonthsBar = React.memo(() => (
     <div>
         {Array.from({ length: 12 }, (v, i) =>
             getCurrentMonth() + i >= 12 ? getCurrentMonth() + i - 12 : getCurrentMonth() + i
-        ).map((month) => (
-            <Month>
+        ).map((month, index) => (
+            <Month key={index}>
                 <FormattedMessage key={month} id={`c-sdgImpactChart-months-${month}`} />
             </Month>
         ))}

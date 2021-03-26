@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     "general.cookie.text":
         "This website uses cookies to improve user experience and to collect information about use of this website. By continuing to navigate this website you accept the use of cookies; otherwise you can leave the site.",
@@ -17,5 +18,5 @@ export default {
         "<p><span>We may update this Cookie Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal or regulatory reasons. Please therefore re-visit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.</span></p> <p><span>The date at the top of this Cookie Policy indicates when it was last updated.</span> </p>",
     "cookies.question4": "Where can I get more information? ",
     "cookies.answer4":
-        " <p><span>If you have any questions about our use of cookies or other technologies, please email us at  <a href='mailto:{email}'>{email}</a>.</span></p>"
+        " <p><span>If you have any questions about our use of cookies or other technologies, please email us at  <a href='mailto:{email}'>{email}</a>.</span></p>",
 };

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default {
     "email.invitation.subject": "Benvenuto in Spluga!",
     "email.invitation.firstText": "Ciao! Sei appena stato invitato da {companyName} in Spluga. ",
