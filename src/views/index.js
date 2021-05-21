@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import CookieConsent from "react-cookie-consent";
@@ -12,11 +12,34 @@ import Root from "./root";
 import Landing from "./landing";
 import Cookie from "./cookie";
 import Privacy from "./privacy";
+
+import * as Realm from "realm-web";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
+
 const Routes = () => {
-    const auth = useSelector((state) => state.auth);
+    const realm = useSelector((state) => state.realm);
+
     const locale = getUserLocale();
     const messages = getMessagesLocale();
     const path = usePath();
+
+    useEffect(() => {
+        Realm.handleAuthRedirect();
+
+        // eslint-disable-next-line
+    }, []);
+
+    useEffect(() => {
+        if (realm.isLoggedIn) {
+            history.push("/");
+        }
+        console.log("history", history);
+        console.log("routes realm", realm);
+
+        // eslint-disable-next-line
+    }, [realm.isLoggedIn]);
 
     var component;
     switch (path) {
@@ -27,15 +50,15 @@ const Routes = () => {
             component = Cookie;
             break;
         default:
-            component = auth.currentUser ? Root : Landing;
+            component = realm.currentUser ? Root : Landing;
     }
 
     return (
         <Container>
             <IntlProvider locale={locale} messages={messages}>
-                <BrowserRouter>
-                    <Route path="/:page?" component={component} auth={auth} />
-                </BrowserRouter>
+                <Router history={history}>
+                    <Route path="/:page?" component={component} realm={realm} />
+                </Router>
                 <CookieConsent location="bottom" buttonText="ok" cookieName="splugaCookie" expires={150}>
                     <FormattedMessage id="general.cookie.text" />
                 </CookieConsent>

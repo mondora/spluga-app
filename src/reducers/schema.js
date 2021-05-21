@@ -1,4 +1,4 @@
-import { auth } from "./auth";
+import { realm } from "../features/realm";
 import { getCompany, addCompany } from "./companies";
 import { getUser, addUser } from "./users";
 import { reducer as formReducer } from "redux-form";
@@ -9,7 +9,7 @@ import { addInvitation, acceptInvitation } from "./team";
 import { addApp, enableApp, disableApp, deleteApp } from "./apps";
 // eslint-disable-next-line
 export default {
-    auth,
+    realm,
     addActivity,
     getActivities,
     getCompany,

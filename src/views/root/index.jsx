@@ -16,7 +16,7 @@ import { Container, Page, PageContainer } from "./styled.js";
 import SideBar from "../../components/sidebar";
 import { logOut } from "../../actions/auth";
 
-export const Root = ({ match, auth }) => {
+export const Root = ({ match, realm }) => {
     const dispatch = useDispatch();
 
     return (
@@ -24,7 +24,7 @@ export const Root = ({ match, auth }) => {
             <SideBar currentPage={match.url} />
 
             <Container>
-                <Header user={auth.currentUser} onClick={() => dispatch(logOut())} />
+                <Header user={realm} onClick={() => dispatch(logOut())} />
 
                 <Page>
                     <Switch>
@@ -43,7 +43,7 @@ export const Root = ({ match, auth }) => {
 };
 
 Root.PropType = {
-    auth: PropTypes.object.isRequired,
+    realm: PropTypes.object.isRequired,
     match: PropTypes.object,
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { logInWithGoogle } from "../../actions/auth";
+import { logInWithGoogle } from "../../features/realm";
 import NavBar from "../../components/landing/navbar";
 import Header from "../../components/landing/header";
 import WhatIs from "../../components/landing/whatIs";
